@@ -1,0 +1,705 @@
+<!doctype html>
+<html>
+<head>
+<title>El Monstruo</title>
+ <meta charset="UTF-8">    
+<meta name="viewport" content="width = 1050, user-scalable = no" />
+<link rel="icon" type="image/png" href="../../pics/favicon.png" />
+<script type="text/javascript" src="extras/jquery.min.1.7.js"></script>
+<script type="text/javascript" src="extras/jquery-ui-1.8.20.custom.min.js"></script>
+<script type="text/javascript" src="extras/modernizr.2.5.3.min.js"></script>
+<script type="text/javascript" src="lib/hash.js"></script>
+<script type="text/javascript" src="js/jquery.blast.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+    <script type="text/javascript" src="js/tracks.js"></script>
+<script type="text/javascript" src="js/audioSync.js"></script>    
+<script>
+    var language = "EN"
+    if(parent.window.location.search){
+        var params = parent.window.location.search.trim(1)
+        var regex = /language=(..)/i
+        var result = regex.exec(params)
+        if(result){
+            language = result[result.index].toUpperCase()    
+        }else{
+            language = "ES"
+        } 
+    }    
+    
+var languagePages = [
+                {
+                    page:1,
+                    ES:"A varios kilómetros de Yogópolis se encuentra un viejo castillo deshabitado, con un enorme y oscuro lago donde vive una criatura muy especial.",
+                    EN:"Far away from Yogopolis, there was an old, abandoned castle with a dark lake where a special creature lived."
+                },
+                {
+                    page:2,
+                    ES:"Aunque nadie la ha visto a la luz del día, saben de su existencia. La gente de los alrededores le teme y muchos otros cuentan relatos terribles sobre la criatura marina.",
+                    EN:"Although no one had seen it during the daylight, people were afraid of the creature.  Many told horrible stories about the creature in the lake." 
+                },
+                {
+                    page:3,
+                    ES:"-Deberíamos correr a esa horrible criatura- dijo un Bean. -¡Sí!- gritó otro. -¿Por qué la van a correr? ¿Les ha hecho algo? -interrumpió Thefannie.",
+                    EN:"'We should make that horrible creature leave,' said a Bean. 'Yes!' another screamed. 'Why do you want it to leave? Has it done something to you?' Thefannie interrupted."
+                },
+                {
+                    page:4,
+                    ES:"-¡Dicen que es horrible!  -dijo un Bean. -Y dicen que por las noches espanta a la gente que camina cerca del lago -gritó otro. -¿Alguno de ustedes lo conoce? -dijo Thefannie Todos se vieron entre sí pero nadie respondió; nadie lo conocía realmente. -¿No creen que es algo injusto hablar mal de alguien que no conocen?",
+                    EN:"'They say it's horrible!' said a Bean. 'They say it scares people that pass by the lake at night.' screamed another Bean. 'Do any of you know the creature?' said Thefannie. They looked at each other but nobody answered. No one really knew the creature. 'Don't you think it's unfair to talk about someone you don't know?'"
+                },
+                {
+                    page:5,
+                    ES:"-¡Miren! Ahí está -dijo uno de los Beans. Todos voltearon a ver a la criatura marina. -No se ve tan horrible y espantoso como me habían contado -dijo uno de los Beans.",
+                    EN:"'Look! There it is.' said one of the Beans. Everybody turned to see the creature in the lake. 'It doesn't look as scary and horrible as I was told,' said a Bean." 
+                },
+                {
+                    page:6,
+                    ES:"-Hola, mi nombre es Arthurius. -Yo soy Thefannie. -Yo soy Aji -respondió la criatura marina.",
+                    EN:"'Hi! My name is Arthurius.' 'I'm Thefannie.' 'I'm Aji,' said the creature."
+                },
+                {
+                    page:7,
+                    ES:"Durante esa noche todos intercambiaron ideas e historias, se presentaron  y descubrieron que el pequeño Aji sólo era una criatura tímida y sin amigos. Desde ese día los Beans aprendieron a no juzgar por las apariencias, ni a fiarse de los relatos de terceras personas.",
+                    EN:"That night, everyone shared ideas and stories. They realized little Aji was only a shy, lonely creature. From that day on, the Beans learned not to judge others by their looks or trust everything people say."
+                }
+                ]    
+    
+    
+    </script>   
+</head>
+<body>
+
+<div id="canvas">
+
+<div class="zoom-icon zoom-icon-in"></div>
+
+<div class="magazine-viewport">
+	<div class="container">
+        
+		<div class="magazine">
+            <div id="p1" depth="5" class="hard"> <div class="side"></div> </div>
+			<div depth="5" class="hard front-side"> <div class="depth"></div> </div>
+			<div class="hard fixed back-side p17"> <div class="depth"></div> </div>
+			<div class="hard p18"></div>
+
+            </div>
+            <script>
+                //console.log(languagePages[0][language]);
+                if(language == "ES"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1ES.png')");
+                }else if(language == "EN"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1EN.png')");
+                }
+            
+            </script>
+        
+        
+			<!-- Next button -->
+		</div>
+	</div>
+   <a onclick="goBack()"><div id="homeButton"><img src="images/homeButton.png" /></div></a>
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+    <div class="languageButton"><img src="images/icon-languages.png"></div>
+    <div class="idiomas">
+        <div id="ButtonLanEs" class="overLanguage">Español</div>
+        <div id="ButtonLanEn" class="overLanguage">English</div>
+    </div>
+    <div id="audiosGroup"></div>
+	<div class="bottom">
+        <div ignore="1" class="next-button">
+            <div id="activeNext">
+                <img src="images/nextButtonActive.png">
+            </div>
+            <img src="images/nextButton.png">
+            </div>
+			<!-- Previous button -->
+			<div ignore="1" class="previous-button">
+    <img src="images/prevButton.png">
+            </div>        
+		<div id="slider-bar" class="turnjs-slider timeline-style">
+			<div id="slider">
+            </div>
+		</div>
+         <div id="sectionPlayButton" ><img id="buttonPlay" src="images/Play.png"></div>
+	</div>
+    
+</div>
+
+<script type="text/javascript">
+    $("#sectionPlayButton").hide();
+    var audioNumber;
+    var clearTimeOut;
+    var audioReady;
+    var playing = false;
+    var audioPlayer; 
+    //cambio de regex
+    function replaceQueryParam(param, newval, search) {
+        var regex = new RegExp("([?;&])" + param + "[^&;]*[;&]?");
+        var query = search.replace(regex, "$1").replace(/&$/, '');
+
+        return (query.length > 2 ? query + "&" : "?") + (newval ? param + "=" + newval : '');
+    }    
+    
+    
+    $("#ButtonLanEs").click(function(){
+
+        var str = window.location.search
+        str = replaceQueryParam('language', "ES", str)
+        window.location = window.location.pathname + str + "#page/" + audioNumber;
+    });
+    
+    $("#ButtonLanEn").click(function(){
+
+        var str = window.location.search
+        str = replaceQueryParam('language', "EN", str)
+        window.location = window.location.pathname + str + "#page/" + audioNumber;
+    });
+    
+    $(".languageButton").click(function(){
+        var idioma = $(".idiomas");
+        if (idioma.css("display") === "block") {
+            idioma.css("display","none");
+        } else {
+            idioma.css("display","block");
+        }
+    
+        
+    });
+    
+    TweenMax.fromTo($("#activeNext"),1,{alpha:0.5},{alpha:1,yoyo:true,repeat:-1});
+    
+    $("#audiosGroup").append('<audio id="audio0" preload="true" src="audios/' +  0 + '.mp3"></audio>') 
+    for(var i = 1;i<=6;i++){
+       $("#audiosGroup").append('<audio id="audio'+i+'" preload="true" src="audios/' +[language] + "/" +  i + '.mp3"></audio>')  
+    }
+    
+
+function loadApp() {
+
+ 	$('#canvas').fadeIn(1000);
+
+ 	var flipbook = $('.magazine');
+
+ 	// Check if the CSS was already loaded
+	
+	if (flipbook.width()==0 || flipbook.height()==0) {
+		setTimeout(loadApp, 10);
+		return;
+	}
+	
+	// Create the flipbook
+
+	flipbook.turn({
+			
+			// Magazine width
+
+			width: 922,
+
+			// Magazine height
+
+			height: 600,
+
+			// Duration in millisecond
+
+			duration: 1000,
+
+			// Enables gradients
+
+			gradients: true,
+			
+			// Auto center this flipbook
+
+			autoCenter: true,
+
+			// Elevation from the edge of the flipbook when turning a page
+
+			elevation: 50,
+
+			// The number of pages
+
+			pages: 18,
+
+			// Events
+
+			when: {
+                
+                
+                
+				turning: function(event, page, view) {
+					
+					var book = $(this),
+					currentPage = book.turn('page'),
+					pages = book.turn('pages');
+                    
+		
+
+				updateDepth(book, page);
+				
+				if (page>=2)
+					$('.magazine .p2').addClass('fixed');
+				else
+					$('.magazine .p2').removeClass('fixed');
+
+				if (page<book.turn('pages'))
+					$('.magazine .p17').addClass('fixed');
+				else
+					$('.magazine .p17').removeClass('fixed');
+
+
+					Hash.go('page/' + page).update();
+
+					// Show and hide navigation buttons
+                    audioNumber = page;
+					disableControls(page);
+
+				},
+                
+				turned: function(event, page, view) {
+
+					disableControls(page);
+                    var object = $(this);
+
+					$(this).turn('center');
+                   
+
+					$('#slider').slider('value', getViewNumber(object, page));
+                    audioNumber = page;
+            
+					if (page==1) { 
+						$(this).turn('peel', 'br');
+					}
+
+				},
+
+				missing: function (event, pages) {
+
+					// Add pages that aren't in the magazine
+
+					for (var i = 0; i < pages.length; i++)
+						addPage(pages[i], $(this));
+
+				}
+			}
+
+        
+	});
+
+	// Zoom.js
+
+    
+    
+	$('.magazine-viewport').zoom({
+		flipbook: $('.magazine'),
+
+		max: function() { 
+			
+			return largeMagazineWidth()/$('.magazine').width();
+
+		}, 
+
+		when: {
+			swipeLeft: function() {
+
+				$(this).zoom('flipbook').turn('next');
+                
+                stopAllSounds();
+
+			},
+
+			swipeRight: function() {
+				
+				$(this).zoom('flipbook').turn('previous');
+                stopAllSounds();
+
+			},
+
+			resize: function(event, scale, page, pageElement) {
+
+//				if (scale==1)
+//					loadSmallPage(page, pageElement);
+//				else
+//					loadLargePage(page, pageElement);
+
+			},
+
+			zoomIn: function () {
+
+				$('#slider-bar').hide();
+				$('.made').hide();
+				$('.magazine').removeClass('animated').addClass('zoom-in');
+				$('.zoom-icon').removeClass('zoom-icon-in').addClass('zoom-icon-out');
+				
+				if (!window.escTip && !$.isTouch) {
+					escTip = true;
+
+					$('<div />', {'class': 'exit-message'}).
+						html('<div>Press ESC to exit</div>').
+							appendTo($('body')).
+							delay(2000).
+							animate({opacity:0}, 500, function() {
+								$(this).remove();
+							});
+				}
+			},
+
+			zoomOut: function () {
+
+				$('#slider-bar').fadeIn();
+				$('.exit-message').hide();
+				$('.made').fadeIn();
+				$('.zoom-icon').removeClass('zoom-icon-out').addClass('zoom-icon-in');
+
+				setTimeout(function(){
+					$('.magazine').addClass('animated').removeClass('zoom-in');
+					resizeViewport();
+				}, 0);
+
+			}
+		}
+	});
+
+	// Zoom event
+
+	if ($.isTouch)
+		$('.magazine-viewport').bind('zoom.doubleTap', zoomTo);
+	else
+		$('.magazine-viewport').bind('zoom.tap', zoomTo);
+
+
+	// Using arrow keys to turn the page
+
+	$(document).keydown(function(e){
+
+		var previous = 37, next = 39, esc = 27;
+
+		switch (e.keyCode) {
+			case previous:
+
+				// left arrow
+				$('.magazine').turn('previous');
+                stopAllSounds();
+                
+				e.preventDefault();
+
+			break;
+			case next:
+
+				//right arrow
+				$('.magazine').turn('next');
+                stopAllSounds();
+				e.preventDefault();
+
+			break;
+			case esc:
+				
+				$('.magazine-viewport').zoom('zoomOut');	
+				e.preventDefault();
+
+			break;
+		}
+	});
+
+	// URIs - Format #/page/1 
+
+    
+    
+	Hash.on('^page\/([0-9]*)$', {
+		yep: function(path, parts) {
+			var page = parts[1];
+
+			if (page!==undefined) {
+				if ($('.magazine').turn('is'))
+					$('.magazine').turn('page', page);
+                audioReady = page;
+                
+			}
+
+		},
+		nop: function(path) {
+
+			if ($('.magazine').turn('is'))
+				$('.magazine').turn('page', 1);
+		}
+	});
+
+
+	$(window).resize(function() {
+		resizeViewport();
+	}).bind('orientationchange', function() {
+		resizeViewport();
+	});
+
+	// Regions
+
+	if ($.isTouch) {
+		$('.magazine').bind('touchstart', regionClick);
+	} else {
+		$('.magazine').click(regionClick);
+	}
+
+	// Events for the next button
+
+	$('.next-button').bind($.mouseEvents.over, function() {
+		
+		$(this).addClass('next-button-hover');
+
+	}).bind($.mouseEvents.out, function() {
+		
+		$(this).removeClass('next-button-hover');
+
+	}).bind($.mouseEvents.down, function() {
+		
+		$(this).addClass('next-button-down');
+
+	}).bind($.mouseEvents.up, function() {
+		
+		$(this).removeClass('next-button-down');
+
+	}).click(function() {
+		
+		$('.magazine').turn('next');
+        stopAllSounds();
+        
+	});
+
+	// Events for the next button
+	
+	$('.previous-button').bind($.mouseEvents.over, function() {
+		
+		$(this).addClass('previous-button-hover');
+
+	}).bind($.mouseEvents.out, function() {
+		
+		$(this).removeClass('previous-button-hover');
+
+	}).bind($.mouseEvents.down, function() {
+		
+		$(this).addClass('previous-button-down');
+
+	}).bind($.mouseEvents.up, function() {
+		
+		$(this).removeClass('previous-button-down');
+
+	}).click(function() {
+		
+		$('.magazine').turn('previous');
+            stopAllSounds();
+
+	});
+
+
+	// Slider
+
+	$( "#slider" ).slider({
+		min: 1,
+		max: numberOfViews(flipbook),
+/*
+		start: function(event, ui) {
+
+			if (!window._thumbPreview) {
+				_thumbPreview = $('<div />', {'class': 'thumbnail'}).html('<div></div>');
+				setPreview(ui.value);
+				_thumbPreview.appendTo($(ui.handle));
+			} else
+				setPreview(ui.value);
+
+			moveBar(false);
+
+		},
+*/
+		slide: function(event, ui) {
+
+			setPreview(ui.value);
+
+		},
+
+		stop: function() {
+
+			if (window._thumbPreview)
+				_thumbPreview.removeClass('show');
+			
+			$('.magazine').turn('page', Math.max(1, $(this).slider('value')*2 - 2));
+
+		}
+	});
+
+	resizeViewport();
+
+	$('.magazine').addClass('animated');
+
+}
+
+// Zoom icon
+
+ $('.zoom-icon').bind('mouseover', function() { 
+ 	
+ 	if ($(this).hasClass('zoom-icon-in'))
+ 		$(this).addClass('zoom-icon-in-hover');
+
+ 	if ($(this).hasClass('zoom-icon-out'))
+ 		$(this).addClass('zoom-icon-out-hover');
+ 
+ }).bind('mouseout', function() { 
+ 	
+ 	 if ($(this).hasClass('zoom-icon-in'))
+ 		$(this).removeClass('zoom-icon-in-hover');
+ 	
+ 	if ($(this).hasClass('zoom-icon-out'))
+ 		$(this).removeClass('zoom-icon-out-hover');
+
+ }).bind('click', function() {
+
+ 	if ($(this).hasClass('zoom-icon-in'))
+ 		$('.magazine-viewport').zoom('zoomIn');
+ 	else if ($(this).hasClass('zoom-icon-out'))	
+		$('.magazine-viewport').zoom('zoomOut');
+
+ });
+      
+    
+function visibleNext(){
+    $("#activeNext").css("display","block")
+}    
+    
+    
+    function stopAllSounds(){
+//        $("#activeNext").css("display","none");
+//        playing = false;
+//        audiosNumbers();
+//       audioPlayer = document.getElementById("audio" +  audioReady);
+//        $("#buttonPlay").attr("src","images/Play.png");
+//          for(i= 0; i<=6;i++){
+//                    var audio = document.getElementById("audio" + i);
+//                        audio.pause();
+//                        audio.currentTime = 0;
+//                    
+//                } 
+        
+    }
+
+    
+function audiosNumbers(){
+               
+            switch(audioNumber){
+                case 1:
+                    audioReady = 0
+                   break;
+                case 2:
+                    audioReady = 0
+                   break;
+                case 3:
+                    audioReady = 0
+                   break;
+                case 4:
+                    audioReady = 1
+                   break;
+                case 5:
+                    audioReady = 1
+                   break;
+                case 6:
+                    audioReady = 2
+                   break;
+                case 7:
+                    audioReady = 2
+                   break;
+                case 8:
+                    audioReady = 3
+                   break;
+                case 9:
+                    audioReady = 3
+                   break;
+                case 10:
+                    audioReady = 4
+                   break;
+                case 11:
+                    audioReady = 4
+                   break;
+                case 12:
+                    audioReady = 5
+                   break;
+                case 13:
+                    audioReady = 5
+                   break;
+                case 14:
+                    audioReady = 6
+                   break;
+                case 15:
+                    audioReady = 6
+                   break;
+                case 16:
+                    audioReady = 0
+                   break;
+            
+            }
+}    
+
+    
+$("#buttonPlay").click(function(){
+   if(!playing) {
+        $("#buttonPlay").attr("src","images/Pause.png");
+       autoPlay();
+       audioPlayer.currentTime = 0;
+   }else{
+       
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                    $("#buttonPlay").attr("src","images/Pause.png");
+                } else {
+                    audioPlayer.pause();
+                    $("#buttonPlay").attr("src","images/Play.png");
+                }
+       if(language == "ES"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaES" + audioReady)); 
+        }else if(language == "EN"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaEN" + audioReady));
+        }else{
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaES" + audioReady));
+        }       
+       
+       
+   }    
+    
+});
+
+function autoPlay(){
+    audiosNumbers();
+    console.log("audioReady: " + audioReady);
+    audioPlayer = document.getElementById("audio" +  audioReady); 
+      
+    if(audioNumber == 16){
+        $("#buttonPlay").attr("src","images/Play.png");
+    }else{
+        audioPlayer.play();
+        if(language == "ES"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaES" + audioReady)); 
+        }else if(language == "EN"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaEN" + audioReady));
+        }else{
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaES" + audioReady));
+        }         
+        audioPlayer.addEventListener("timeupdate", function(e){
+            playing = true;
+        });
+
+    }
+}       
+    
+ $('#canvas').hide();
+
+
+yepnope({
+	test : Modernizr.csstransforms,
+	yep: ['lib/turn.min.js'],
+	nope: ['lib/turn.html4.min.js', 'css/jquery.ui.html4.css'],
+	both: ['lib/zoom.min.js', 'css/jquery.ui.css', 'js/magazine.js', 'css/magazine.css','css/custom_fonts.css'],
+	complete: loadApp
+});
+
+</script>
+</body>
+</html>

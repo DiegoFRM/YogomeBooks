@@ -1,0 +1,22 @@
+
+<div class="odd gradient"></div>
+
+<div class="textPage">
+<div id="texto7">
+
+    </div>
+</div>
+<script>
+    $("#texto7").text(languagePages[6][language])
+
+    if(!$("#texto7").find("br")){
+            
+        }else{
+          $("#texto7").blast({ delimiter: "word" });
+
+        $("#texto7").find('span').each(function(i){
+        $(this).attr('id', 'c_' + i);
+         });       
+        } 
+
+</script>
