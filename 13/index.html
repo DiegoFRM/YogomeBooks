@@ -74,8 +74,8 @@ var languagePages = [
 		<div class="magazine">
             <div id="p1" depth="5" class="hard"> <div class="side"></div> </div>
 			<div depth="5" class="hard front-side"> <div class="depth"></div> </div>
-			<div class="hard fixed back-side p15"> <div class="depth"></div> </div>
-			<div class="hard p16"></div>
+			<div class="hard fixed back-side p17"> <div class="depth"></div> </div>
+			<div class="hard p18"></div>
 
             </div>
             <script>
@@ -216,7 +216,7 @@ function loadApp() {
 
 			// The number of pages
 
-			pages: 16,
+			pages: 18,
 
 			// Events
 
@@ -240,9 +240,9 @@ function loadApp() {
 					$('.magazine .p2').removeClass('fixed');
 
 				if (page<book.turn('pages'))
-					$('.magazine .p15').addClass('fixed');
+					$('.magazine .p17').addClass('fixed');
 				else
-					$('.magazine .p15').removeClass('fixed');
+					$('.magazine .p17').removeClass('fixed');
 
 
 					Hash.go('page/' + page).update();
