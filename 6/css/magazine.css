@@ -462,8 +462,9 @@ body{
 .languageButton{
     position: absolute;
     top: 1%;
+    right: 5%;
     width: 100%;
-    text-align: center;
+    text-align: right;
     height: 20%;   
     z-index: 1000;
 }
