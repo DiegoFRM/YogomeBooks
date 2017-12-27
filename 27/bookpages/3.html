@@ -5,6 +5,25 @@
 <meta name="viewport" content="width = 1050, user-scalable = no" />
 </head>
 <body>
-    <img class="book-img" src="bookpages/3.png">
+    <img class="book-img">
     </body>
+    <script>
+    
+        if(language == "ES"){
+                    $(".book-img").css("background-image","url('bookpages/3ES.png')");
+                }else if(language == "EN"){
+                    $(".book-img").css("background-image","url('bookpages/3EN.png')");
+                }else if(language == "ZH"){
+                    $(".book-img").css("background-image","url('bookpages/3ZH.png')");
+                }else if(language == "KO"){
+                    $(".book-img").css("background-image","url('bookpages/3KO.png')");
+                }else if(language == "JA"){
+                    $(".book-img").css("background-image","url('bookpages/3JA.png')");
+                }else if(language == "PT"){
+                    $(".book-img").css("background-image","url('bookpages/3PT.png')");
+                }else{
+                    $(".book-img").css("background-image","url('bookpages/3EN.png')");
+                }
+    
+    </script>
 </html>
