@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>El Monstruo</title>
+<title class="languageTitle">El Monstruo</title>
  <meta charset="UTF-8">    
 <meta name="viewport" content="width = 1050, user-scalable = no" />
 <link rel="icon" type="image/png" href="../../pics/favicon.png" />
@@ -14,6 +14,17 @@
     <script type="text/javascript" src="js/tracks.js"></script>
 <script type="text/javascript" src="js/audioSync.js"></script>    
 <script>
+    var languageTitles = [
+        {
+            ES:"El Monstruo",
+            EN:"The Monster",
+            PT:"",
+            ZH:"",
+            JA:"",
+            KO:"특별한 친구"
+        }
+    ]
+    
     var language = "EN"
     if(parent.window.location.search){
         var params = parent.window.location.search.trim(1)
@@ -25,6 +36,26 @@
             language = "ES"
         } 
     }    
+    
+    function changeTitle(){
+        if(language == "ES"){
+            $(".languageTitle").text(languageTitles[0][language])
+        }else if(language == "EN"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "PT"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "ZH"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "JA"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "KO"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else{
+            $(".languageTitle").text(languageTitles[0].EN)    
+        }
+    }    
+    
+    changeTitle()
     
 var languagePages = [
                 {
