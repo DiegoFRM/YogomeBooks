@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>Eagle entiende la navidad</title>
+<title class="languageTitle">Eagle entiende la navidad</title>
  <meta charset="UTF-8">    
 <meta name="viewport" content="width = 1050, user-scalable = no" />
 <link rel="icon" type="image/png" href="../../pics/favicon.png" />
@@ -14,6 +14,17 @@
     <script type="text/javascript" src="js/tracks.js"></script>
 <script type="text/javascript" src="js/audioSync.js"></script>    
 <script>
+var languageTitles = [
+        {
+            ES:"Eagle entiende la navidad",
+            EN:"Eagle learns about Christmas",
+            PT:"",
+            ZH:"",
+            JA:"",
+            KO:"이글이의 크리스마스 이해하기"
+        }
+    ]
+    
     var language = "EN"
     if(parent.window.location.search){
         var params = parent.window.location.search.trim(1)
@@ -24,42 +35,87 @@
         }else{
             language = "ES"
         } 
+    } 
+    
+     function changeTitle(){
+        if(language == "ES"){
+            $(".languageTitle").text(languageTitles[0][language])
+        }else if(language == "EN"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "PT"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "ZH"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "JA"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "KO"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else{
+            $(".languageTitle").text(languageTitles[0].EN)    
+        }
     }    
     
+    changeTitle()
 var languagePages = [
                 {
                     page:1,
                     ES:"En su laboratorio Eagle se encontraba, pensando qué regalar, mientras los otros la casa decoraban. Era Navidad y a Eagle no le emocionaba.",
-                    EN:"Eagle was in his laboratory thinking of the presents he would give on Christmas, while the rest of his friends were decorating the house. Eagle was not excited."
+                    EN:"Eagle was in his laboratory thinking of the presents he would give on Christmas, while the rest of his friends were decorating the house. Eagle was not excited.",
+                    PT:"",
+                    ZH:"",
+                    JA:"",
+                    KO:"이글이는 실험실에서 친구들에게 줄 크리스마스 선물을 곰곰히 생각하고 있었어요. 이글이 친구들은 집을 예쁘게 꾸미고 있었지만 이글이는 전혀 관심이 없었어요."
                 },
                 {
                     page:2,
                     ES:"¡JO-JO-JO! Sonó e Eagle volteó. Era un viejo barbón que a Eagle preguntó: ¿Qué pasa Yogotar? ¿Por qué no sales a decorar?",
-                    EN:"HO-HO HO! Eagle turned to find an old bearded man who asked What's wrong Yogotar? Why aren't you decorating the house?" 
+                    EN:"HO-HO HO! Eagle turned to find an old bearded man who asked What's wrong Yogotar? Why aren't you decorating the house?",
+                    PT:"",
+                    ZH:"",
+                    JA:"",
+                    KO:"“호-호-호!” 이글이는 고개를 돌려 수염이 긴 할아버지를 보았어요. 할아버지는 이렇게 물으셨어요. “무슨 일이 있니 요고타야? 왜 친구들과 함께 집을 꾸미지 않는거니?”"
                 },
                 {
                     page:3,
                     ES:"¿Con qué he de decorar si no tengo que regalar? No dejo de pensar, pero nada puedo crear.",
-                    EN:"How can I decorate if I have no presents to give? I have no idea what to give my friends."
+                    EN:"How can I decorate if I have no presents to give? I have no idea what to give my friends.",
+                    PT:"",
+                    ZH:"",
+                    JA:"",
+                    KO:"친구들에게 줄 선물이 없는데 어떻게 집을 꾸밀 수 있겠어요? 친구들에게 뭘 선물할지 전혀 모르겠어요."
                 },
                 {
                     page:4,
                     ES:"¡JO-JO-JO! Mi querido Yogotar, la navidad no se trata de regalar, se trata de hornear, cenar y en familia disfrutar.",
-                    EN:"HO-HO-HO! My dear Yogotar, Christmas is not about giving presents, it's about enjoying some time together with your friends and family. "
+                    EN:"HO-HO-HO! My dear Yogotar, Christmas is not about giving presents, it's about enjoying some time together with your friends and family. ",
+                    PT:"",
+                    ZH:"",
+                    JA:"",
+                    KO:"호-호-호!우리사랑스러운요고타야,크리스마스선물을주는게중요한게아니란다.크리스마스는가족과친구들과함께모여서즐거운시간을갖는게중요한거란다."
                 },
                 {
                     page:5,
                     ES:"- ¡Lo tengo! Ya sé que les voy a regalar- dijo Eagle, antes de ponerse a trabajar en una gran estrella, para el árbol adornar.",
-                    EN:"I've got it! I know what I'll give my friends, said Eagle. Eagle began working on a big star to decorate the Christmas Tree."
+                    EN:"I've got it! I know what I'll give my friends, said Eagle. Eagle began working on a big star to decorate the Christmas Tree.",
+                    PT:"",
+                    ZH:"",
+                    JA:"",
+                    KO:"“아!알겠어요!이제친구들에게뭘선물하지생각이났어요!”이글이가말했어요.이글이는크리스마스트리에장식할큰별을만들기시작했어요."
                 },
                 {
                     page:6,
                     ES:"Entonces nuestro querido Yogotar la estrella colocó y a todos juntó, para cantar, disfrutar y con sus sonrisas a la navidad iluminar. ",
-                    EN:"Then, our dear Yogotar put the star on top of the tree. His friends gathered around to sing and enjoy their time together. The bright smiles on their faces lit up Christmas."
+                    EN:"Then, our dear Yogotar put the star on top of the tree. His friends gathered around to sing and enjoy their time together. The bright smiles on their faces lit up Christmas.",
+                    PT:"",
+                    ZH:"",
+                    JA:"",
+                    KO:"마침내 우리의 사랑스러운 요고타는 큰 별을 트리 맨 꼭대기에 달았어요. 그리고 친구들과 함께 모여서 같이 노래를 부르고 즐거운 시간을 보냈어요. 모두의 얼굴에 웃음꽃이 활짝 피었어요."
                 }
                 ]    
     
-    
+
+
+
     </script>   
 </head>
 <body>
