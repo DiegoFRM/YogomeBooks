@@ -704,6 +704,22 @@ yepnope({
 	complete: loadApp
 });
 
+$(document).ready(function () {
+    /**
+     * * Metodo implementado en mixpanel.js
+     */
+    var credentials = epicModel.getCredentials();
+
+    mixpanel.track(
+        "OnBookOpen",
+        {
+            "user_id": credentials.educationID,
+            "app": "web",
+            "bookID" : 6
+        }
+    );
+});    
+    
 </script>
 </body>
 </html>
