@@ -33,7 +33,7 @@ function audioSync(subtitles,soundTrack,arraypistas){
                                       $("#" + subtitles).find('#c_' + index).append(" ");
                               }
                           }else{
-                              if(language=="ES" || language=="EN"){
+                              if(language=="ES" || language=="EN" || language=="KO"){
                                 $("#" + subtitles).find('#c_' + index).removeClass("newColor");
                               }
                           }
