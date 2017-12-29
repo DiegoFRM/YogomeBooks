@@ -27,7 +27,7 @@ function audioSync(subtitles,soundTrack,arraypistas){
                               if(audioPlayer.currentTime == audioPlayer.duration){
                                   visibleNext();
                               }  
-                              if(language=="ES" || language=="EN"){
+                              if(language=="ES" || language=="EN" || language=="KO"){
                               //console.log(syncData[[syncData.length]-1])
                                       $("#" + subtitles).find('#c_' + index).addClass("newColor");
                                       $("#" + subtitles).find('#c_' + index).append(" ");
@@ -35,7 +35,7 @@ function audioSync(subtitles,soundTrack,arraypistas){
                               
                           }else{
                               
-                              if(language=="ES" || language=="EN"){
+                              if(language=="ES" || language=="EN" || language=="KO"){
                                     $("#" + subtitles).find('#c_' + index).removeClass("newColor");
                               }
                           }
