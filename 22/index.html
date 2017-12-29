@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>El Monstruo</title>
+<title class="languageTitle">El Monstruo</title>
  <meta charset="UTF-8">    
 <meta name="viewport" content="width = 1050, user-scalable = no" />
 <link rel="icon" type="image/png" href="../../pics/favicon.png" />
@@ -13,7 +13,21 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
     <script type="text/javascript" src="js/tracks.js"></script>
 <script type="text/javascript" src="js/audioSync.js"></script>    
+    <!--ESta de manera absoluta la direccion de epic model, por la profundidad que tiene dentro del server-->
+<script type="text/javascript" src="http://play.yogome.com/js/epic/models/epicModel.js"></script>    
+<script type="text/javascript" src="../../js/mixpanel/mixpanel.js"></script>         
 <script>
+    var languageTitles = [
+        {
+            ES:"El Monstruo",
+            EN:"The Monster",
+            PT:"O monstro",
+            ZH:"怪物",
+            JA:"モンスター",
+            KO:"특별한 친구"
+        }
+    ]
+    
     var language = "EN"
     if(parent.window.location.search){
         var params = parent.window.location.search.trim(1)
@@ -26,69 +40,80 @@
         } 
     }    
     
+    function changeTitle(){
+        if(language == "ES"){
+            $(".languageTitle").text(languageTitles[0][language])
+        }else if(language == "EN"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "PT"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "ZH"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "JA"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "KO"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else{
+            $(".languageTitle").text(languageTitles[0].EN)    
+        }
+    }    
+    
+    changeTitle()
+    
 var languagePages = [
                 {
                     page:1,
                     ES:"A varios kilómetros de Yogópolis se encuentra un viejo castillo deshabitado, con un enorme y oscuro lago donde vive una criatura muy especial.",
                     EN:"Far away from Yogopolis, there was an old, abandoned castle with a dark lake where a special creature lived.",
                     KO:"요고폴리스에서 아주 멀리 떨어진 곳에, 아무도 살지 않는 오래된 성이 있었어요. 그 성 안에는 검은 호수가 있었고 그 호수 안에는 특별한 생물이 살고 있었어요.",
-                    ZH:"",
-                    PT:"",
-                    JA:""
+                    ZH:"在离Yogopolis很远的地方有一座古老的废弃城堡，那里有一个黑暗的湖泊，里面生活着一只特殊的生物。",
+                    PT:"Bem longe de Yogópolis, havia um antigo castelo abandonado com um lago escuro onde vivia uma criatura especial.",
+                    JA:"ヨゴポリスからずっとはなれたところにふるくてだれもいないおしろがありました。そこにはかわったいきものがすんでいるみずうみがあります。"
                 },
                 {
                     page:2,
                     ES:"Aunque nadie la ha visto a la luz del día, saben de su existencia. La gente de los alrededores le teme y muchos otros cuentan relatos terribles sobre la criatura marina.",
                     EN:"Although no one had seen it during the daylight, people were afraid of the creature.  Many told horrible stories about the creature in the lake.",
                     KO:"해가 떠 있을 때 아무도 그 생물을 본 적이 없지만, 모두 그 생물을 두려워했어요. 많은 사람들이 호수에 사는 생물에 대한 무시무시한 이야기를 나누었어요.",
-                    ZH:"",
-                    PT:"",
-                    JA:""
+                    ZH:"虽然没有人在白天见过它，但人们还是很害怕它。很多人都在讲关于湖里怪物的可怕故事。",
+                    PT:"Embora ninguém a tivesse visto durante o dia, as pessoas tinham medo da criatura. Muitos contavam histórias horríveis sobre a criatura no lago.",
+                    JA:"それをみた人はいませんがみんなとてもおそれていました。みんなはみずうみにすむそのいきもののおそろしいはなしばかりをします。"
                 },
                 {
                     page:3,
-                    ES:"-Deberíamos correr a esa horrible criatura -dijo un Bean.<br> -¡Sí! -gritó otro.<br> -¿Por qué la van a correr? ¿Les ha hecho algo? -interrumpió Thefannie.",
+                    ES:"-Deberíamos correr a esa horrible criatura -dijo un Bean.</br> -¡Sí! -gritó otro.<br> -¿Por qué la van a correr? ¿Les ha hecho algo? -interrumpió Thefannie.",
                     EN:"“We should make that horrible creature leave,” said a Bean. “Yes!” another screamed. “Why do you want it to leave? Has it done something to you?” Thefannie interrupted.",
                     KO:'"우리는그무서운생물을내쫓아야해."빈이가말했어요. "맞아!"다른빈이가소리쳤어요. "왜그생물을내쫓아야해?우리에게아무런잘못도하지않았는걸?"티파니가중간에말했어요.',
-                    ZH:"",
-                    PT:"",
-                    JA:""
+                    ZH:"“我们应该让那个可怕的怪物离开。”一个豆子说。“就是！”另一个尖叫着说。“你为什么要它离开？它对你做什么了吗？”范妮插话了。",
+                    PT:"“A gente devia expulsar aquela criatura horrível”, disse um Bean. “Isso mesmo!”, gritou outro. “Por que vocês querem que ela vá embora? Ela fez alguma coisa para você?” Thefannie interrompeu.",
+                    JA:"「そのおそろしいいきものをおいださなくては」ビーンがいいました。「そうだ！」もうひとりがさけびました。「どうしておいだしたいの？そのいきものはきみになにかしたの？」ティファニーがいいました。"
                 },
                 {
                     page:4,
                     ES:"-¡Dicen que es horrible! -dijo un Bean.<br> -Y dicen que por las noches espanta a la gente que camina cerca del lago -gritó otro.<br> -¿Alguno de ustedes lo conoce? -dijo Thefannie.<br> Todos se vieron entre sí pero nadie respondió; nadie lo conocía realmente. <br>-¿No creen que es algo injusto hablar mal de alguien que no conocen?",
                     EN:"“They say it's horrible!” said a Bean. “They say it scares people that pass by the lake at night.” screamed another Bean. “Do any of you know the creature?” said Thefannie. They looked at each other but nobody answered. No one really knew the creature. “Don't you think it's unfair to talk about someone you don't know?”",
                     KO:'"그동물은너무무섭다고했어."빈이가말했어요. "그동물이밤에호수를지나가는사람들을놀래킨다고들었어."다른빈이가소리쳤어요. "너희중누구라고그생물을아는사람이있니?"티파니가물었어요.모두들서로를쳐다보기만하고대답을하지못했어요.아무도그생물을직접알지못했거든요. "알지도못하는사람에대해서말을하는건불공평하지않아?"',
-                    ZH:"",
-                    PT:"",
-                    JA:""
+                    ZH:"“别人说它太可怕了！”豆子说。“他们说晚上经过湖边的人会害怕。”另一个豆子尖叫道。“你们中有谁见过这个怪物吗？”范妮说。他们面面相觑，但没有人回答。没有人真正见过这个怪物。“你不觉得谈论一个你不认识的人不公平吗？”",
+                    PT:"“Dizem que ela é horrível!”, disse um Bean. “Dizem que ela assusta as pessoas que passam pelo lago à noite”, gritou outro Bean. “Alguém de vocês conhece a criatura?”, disse Thefannie. Eles olharam um para o outro, mas ninguém respondeu. Ninguém conhecia a criatura de verdade. “Vocês não acham que é injusto falar de alguém que não conhecem?”",
+                    JA:"「みんながひどいやつだっていうんだ！」ビーンがいいました。「よるにみずうみにちかづくひとびとをおどかしているそうだよ。」もう一人のビーンがさけびました。「あなたたちのなかでそのいきものをみた人はいるの？」ティファニーがいいました。みんなはおたがいにかおをみあわせましたがだれもこたえませんでした。だれもそのいきものをみたことがなかったのです。「しらないひとのことをあれこれいうのはふこうへいだとおもわない？」"
                 },
                 {
                     page:5,
-                    ES:"-¡Miren! Ahí está -dijo uno de los Beans.<br> Todos voltearon a ver a la criatura marina.<br> -No se ve tan horrible y espantoso como me habían contado -dijo uno de los Beans.",
-                    EN:"“Look! There it is.” said one of the Beans. Everybody turned to see the creature in the lake. “It doesn't look as scary and horrible as I was told,” said a Bean.",
-                    KO:'"저길 봐! 저기 있다." 한 빈이가 말했어요. 모두들 고개를 돌려서 호수에 산다는 생물을 보았어요. "내 생각하고는 전혀 다르게 무섭지도 않고 못생기지도 않았네." 한 빈이가 말했어요.',
-                    ZH:"",
-                    PT:"",
-                    JA:""
+                    ES:"-¡Miren! Ahí está -dijo uno de los Beans.<br> Todos voltearon a ver a la criatura marina.<br> -No se ve tan horrible y espantoso como me habían contado -dijo uno de los Beans.  -Hola, mi nombre es Arthurius.<br> -Yo soy Thefannie.<br> -Yo soy Aji -respondió la criatura marina.",
+                    EN:"“Look! There it is.” said one of the Beans. Everybody turned to see the creature in the lake. “It doesn't look as scary and horrible as I was told,” said a Bean.  “Hi! My name is Arthurius.” “I'm Thefannie.” “I'm Aji,” said the creature.",
+                    KO:'"저길 봐! 저기 있다." 한 빈이가 말했어요. 모두들 고개를 돌려서 호수에 산다는 생물을 보았어요. "내 생각하고는 전혀 다르게 무섭지도 않고 못생기지도 않았네." 한 빈이가 말했어요.    "안녕! 나는 알투리우스야." "나는 티파니야." "나는 아히라고 해." 생물이 자기 소개를 했어요.',
+                    ZH:"“看！就在那里。”其中一个豆子说。大家都转过头去看湖里的怪物。“它看起来并不像我听说的那样恐怖和可怕。”   ”一个豆子说。“嗨！我的名字叫亚瑟鲁。”“我叫范妮。“我叫阿吉。”那个怪物说道。",
+                    PT:"“Vejam! Aí está ela”, disse um dos Beans. Todos se viraram para ver a criatura no lago. “Não parece tão assustadora e horrível como disseram”, disse um Bean.   “Olá! Meu nome é Arthurius.” “Eu sou Thefannie.” “Eu sou Aji”, disse a criatura.",
+                    JA:"「みて！そこにいる。」ビーンのひとりがいいました。みんなはみずうみにいるいきものをみようとふりかえりました。  「きいていたほどこわくもおそろしくもなさそうだ」ビーンのひとりがいいました。「やあ！ぼくのなまえはアーサリウス。」「わたしはティファニー。」「ぼくはアジ。」そのいきものがこたえました。"
                 },
                 {
                     page:6,
-                    ES:"-Hola, mi nombre es Arthurius.<br> -Yo soy Thefannie.<br> -Yo soy Aji -respondió la criatura marina.",
-                    EN:"“Hi! My name is Arthurius.” “I'm Thefannie.” “I'm Aji,” said the creature.",
-                    KO:'"안녕! 나는 알투리우스야." "나는 티파니야." "나는 아히라고 해." 생물이 자기 소개를 했어요.',
-                    ZH:"",
-                    PT:"",
-                    JA:""
-                },
-                {
-                    page:7,
                     ES:"Durante esa noche todos intercambiaron ideas e historias, se presentaron  y descubrieron que el pequeño Aji sólo era una criatura tímida y sin amigos. Desde ese día los Beans aprendieron a no juzgar por las apariencias, ni a fiarse de los relatos de terceras personas.",
                     EN:"That night, everyone shared ideas and stories. They realized little Aji was only a shy, lonely creature. From that day on, the Beans learned not to judge others by their looks or trust everything people say.",
                     KO:"그날밤,모두들자기의생각과이야기를나누었어요.다들작은아히는그저수줍고외로운친구라는걸알게되었어요.그날이후로,빈이들은절대다른사람의외모를보고평가하거나다른사람들이하는얘기를모두믿지않기로결심했어요.",
-                    ZH:"",
-                    PT:"",
-                    JA:""
+                    ZH:"那天晚上，每个人都分享了他们的想法和故事。他们意识到小阿吉只是一个害羞、孤独的生物。从那一天起，豆子们学会了不应以貌取人，也不应相信道听途说的一切。",
+                    PT:"Naquela noite, todos compartilharam ideias e contaram histórias. Eles perceberam que a pequena Aji só era uma criatura tímida e solitária. A partir daquele dia, os Beans aprenderam a não julgar outros pela aparência nem confiar em tudo que as pessoas falam.",
+                    JA:"そのよる、みんなはじぶんたちのかんがえやストーリーをはなしあいました。そしてみんなはアジははずかしがりやでさびしいいきものだったことにきづきました。ビーンたちはだれかをみためではんだんしたりうわさをしんじたりしてはいけないということがわかりました。"
                 }
                 ]    
     
@@ -280,6 +305,7 @@ function loadApp() {
 				
 				if (page>=2)
 					$('.magazine .p2').addClass('fixed');
+                    
 				else
 					$('.magazine .p2').removeClass('fixed');
 
@@ -287,6 +313,24 @@ function loadApp() {
 					$('.magazine .p19').addClass('fixed');
 				else
 					$('.magazine .p19').removeClass('fixed');
+                    
+                    
+                    
+                if(language == "ES"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ES.png')");
+                }else if(language == "EN"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2EN.png')");
+                }else if(language == "ZH"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ZH.png')");
+                }else if(language == "KO"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2KO.png')");
+                }else if(language == "JA"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2JA.png')");
+                }else if(language == "PT"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2PT.png')");
+                }else{
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2EN.png')");
+                }
 
 
 					Hash.go('page/' + page).update();
@@ -737,7 +781,121 @@ yepnope({
 	both: ['lib/zoom.min.js', 'css/jquery.ui.css', 'js/magazine.js', 'css/magazine.css','css/custom_fonts.css'],
 	complete: loadApp
 });
+/*MIX PANEL*/
+var credentials = epicModel.getCredentials();    
+var allPages =  20    
+    
+    
+$(document).ready(function () {
+    /**
+     * * Metodo implementado en mixpanel.js
+     */
+    var credentials1 = epicModel.getCredentials();   
 
+    mixpanel.track(
+        "OnBookOpen",
+        {
+            "user_id": credentials1.educationID,
+            "app": "web",
+            "bookID" : "22",
+            "bookName" : "El Monstruo"
+        }
+    );
+    
+    
+
+    
+});    
+
+function mixPanelClose(){
+        mixpanel.track(
+            "OnBookClose", 
+            {
+                "user_id": credentials.educationID,
+                "app": "web",
+                "bookID" : "22",
+                "bookName" : "El Monstruo",
+                "lastPage" : audioNumber
+            }
+        );
+}   
+    
+
+    function stopAllSounds(){
+        if(audioNumber >= [allPages-2]){
+                mixpanel.track("OnBookFinished",{
+                        "user_id": credentials.educationID,
+                        "app": "web",
+                        "bookID" : "22",
+                        "bookName" : "El Monstruo"
+                    });      
+        }
+        
+        
+        $("#activeNext").css("display","none");
+        playing = false;
+        audiosNumbers();
+       audioPlayer = document.getElementById("audio" +  audioReady);
+        $("#buttonPlay").attr("src","images/Play.png");
+          for(i= 0; i<=6;i++){
+                    var audio = document.getElementById("audio" + i);
+                        audio.pause();
+                        audio.currentTime = 0;
+                    
+                } 
+        
+    }    
+    
+    var leaving = true;
+    var isClose = false;
+
+    function EndChatSession() {
+        var request = GetRequest();
+        request.open("GET", "../Chat.aspx", true);
+        request.send();
+    }
+    document.onkeydown = checkKeycode
+    function checkKeycode(e) {
+        var keycode;
+        if (window.event)
+            keycode = window.event.keyCode;
+        else if (e)
+            keycode = e.which;
+        if (keycode == 116) {
+            isClose = true;
+        }
+    }
+    function somefunction() {
+        isClose = true;
+    }
+    
+    window.onbeforeunload = function (e) {
+       if (!e) e = event;
+        if (leaving) {
+             EndChatSession();
+             mixPanelClose();
+             //e.returnValue = "Are You Sure";
+
+        }
+    }
+    function GetRequest() {
+        var xmlHttp = null;
+        try {
+            // Firefox, Opera 8.0+, Safari
+            xmlHttp = new XMLHttpRequest();
+        }
+        catch (e) {
+            //Internet Explorer
+            try {
+                xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+            }
+            catch (e) {
+                xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+        }
+        return xmlHttp;
+    }     
+       
 </script>
 </body>
 </html>

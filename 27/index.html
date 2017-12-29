@@ -12,18 +12,21 @@
 <script type="text/javascript" src="js/jquery.blast.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
     <script type="text/javascript" src="js/tracks.js"></script>
-<script type="text/javascript" src="js/audioSync.js"></script>    
+<script type="text/javascript" src="js/audioSync.js"></script> 
+    <!--ESta de manera absoluta la direccion de epic model, por la profundidad que tiene dentro del server-->
+<script type="text/javascript" src="http://play.yogome.com/js/epic/models/epicModel.js"></script>    
+<script type="text/javascript" src="../../js/mixpanel/mixpanel.js"></script>           
 <script>
-var languageTitles = [
-        {
-            ES:"Eagle entiende la navidad",
-            EN:"Eagle learns about Christmas",
-            PT:"",
-            ZH:"",
-            JA:"",
-            KO:"이글이의 크리스마스 이해하기"
-        }
-    ]
+    var languageTitles = [
+            {
+                ES:"Eagle entiende la navidad",
+                EN:"Eagle learns about Christmas",
+                PT:"Eagle entende o Natal",
+                ZH:"伊戈领悟圣诞节的真谛",
+                JA:"イーグルとクリスマス",
+                KO:"이글이의 크리스마스 이해하기"
+            }
+        ]
     
     var language = "EN"
     if(parent.window.location.search){
@@ -56,66 +59,63 @@ var languageTitles = [
     }    
     
     changeTitle()
+    
 var languagePages = [
                 {
                     page:1,
                     ES:"En su laboratorio Eagle se encontraba, pensando qué regalar, mientras los otros la casa decoraban. Era Navidad y a Eagle no le emocionaba.",
                     EN:"Eagle was in his laboratory thinking of the presents he would give on Christmas, while the rest of his friends were decorating the house. Eagle was not excited.",
-                    PT:"",
-                    ZH:"",
-                    JA:"",
+                    PT:"Eagle estava em seu laboratório, pensando nos presentes que daria no Natal, enquanto seus amigos enfeitavam a casa. Eagle não estava muito empolgado.",
+                    ZH:"伊戈正在他的实验室里思索着圣诞节送什么礼物，而他的朋友们正在装饰房子。伊戈并没有兴奋的感觉。",
+                    JA:"イーグルはクリスマスにわたすプレゼントのことをかんがえていました。ともだちはみんな、いえのかざりつけをしています。イーグルはたのしくありません。",
                     KO:"이글이는 실험실에서 친구들에게 줄 크리스마스 선물을 곰곰히 생각하고 있었어요. 이글이 친구들은 집을 예쁘게 꾸미고 있었지만 이글이는 전혀 관심이 없었어요."
                 },
                 {
                     page:2,
                     ES:"¡JO-JO-JO! Sonó e Eagle volteó. Era un viejo barbón que a Eagle preguntó: ¿Qué pasa Yogotar? ¿Por qué no sales a decorar?",
                     EN:"HO-HO HO! Eagle turned to find an old bearded man who asked What's wrong Yogotar? Why aren't you decorating the house?",
-                    PT:"",
-                    ZH:"",
-                    JA:"",
+                    PT:'“HO HO HO!" Eagle se virou e viu um velhinho barbudo, que perguntou: “Qual o problema, Yogotar? Por que você não está enfeitando a casa?”',
+                    ZH:"“呵呵呵！”伊戈转过身来，看到一位满脸胡须的老人问他：“怎么了，Yogotar？你为什么不装饰房子呢？”如果我没有礼物要送，我该怎么装饰呢？我不知道该送朋友什么。",
+                    JA:"「ホー、ホー、ホー！」イーグルがふりかえるとひげのおじいさんがいました。「ヨゴター、どうしたんだい？なぜいえのかざりつけをしないんだい？」",
                     KO:"“호-호-호!” 이글이는 고개를 돌려 수염이 긴 할아버지를 보았어요. 할아버지는 이렇게 물으셨어요. “무슨 일이 있니 요고타야? 왜 친구들과 함께 집을 꾸미지 않는거니?”"
                 },
                 {
                     page:3,
                     ES:"¿Con qué he de decorar si no tengo que regalar? No dejo de pensar, pero nada puedo crear.",
                     EN:"How can I decorate if I have no presents to give? I have no idea what to give my friends.",
-                    PT:"",
-                    ZH:"",
-                    JA:"",
+                    PT:"Como eu posso enfeitar a casa se não tenho presentes para dar? Não faço ideia do que vou dar para meus amigos.",
+                    ZH:"如果我没有礼物要送，我该怎么装饰呢？我不知道该送朋友什么。",
+                    JA:"わたすプレゼントがないのにかざりつけなんてしてもしかたないよ。ともだちになにをあげたらいいかわからないんだ。",
                     KO:"친구들에게 줄 선물이 없는데 어떻게 집을 꾸밀 수 있겠어요? 친구들에게 뭘 선물할지 전혀 모르겠어요."
                 },
                 {
                     page:4,
                     ES:"¡JO-JO-JO! Mi querido Yogotar, la navidad no se trata de regalar, se trata de hornear, cenar y en familia disfrutar.",
                     EN:"HO-HO-HO! My dear Yogotar, Christmas is not about giving presents, it's about enjoying some time together with your friends and family. ",
-                    PT:"",
-                    ZH:"",
-                    JA:"",
+                    PT:'HO HO HO! Meu bom Yogotar, o Natal não é só dar presentes. O importante é passar tempo com seus amigos e sua família.',
+                    ZH:"呵呵呵！亲爱的Yogotar，圣诞节的意义不是送礼物，而是和你的朋友家人享受在一起的时光。",
+                    JA:"ホー、ホー、ホー！プレゼントをわたすことだけがクリスマスではない。ともだちやかぞくとたのしくすごすのがクリスマスさ。",
                     KO:"호-호-호!우리사랑스러운요고타야,크리스마스선물을주는게중요한게아니란다.크리스마스는가족과친구들과함께모여서즐거운시간을갖는게중요한거란다."
                 },
                 {
                     page:5,
                     ES:"- ¡Lo tengo! Ya sé que les voy a regalar- dijo Eagle, antes de ponerse a trabajar en una gran estrella, para el árbol adornar.",
                     EN:"I've got it! I know what I'll give my friends, said Eagle. Eagle began working on a big star to decorate the Christmas Tree.",
-                    PT:"",
-                    ZH:"",
-                    JA:"",
+                    PT:'“Entendi! Já sei o que vou dar para os meus amigos”, disse Eagle. Eagle começou a fazer uma grande estrela para enfeitar a Árvore de Natal.',
+                    ZH:"“我知道了！我知道该送朋友什么了。”伊戈说。伊戈开始制作一颗大星星，用来装饰圣诞树。",
+                    JA:"「そうか！ともだちになにをあげたらいいかわかったよ」イーグルはいいました。イーグルはクリスマスツリーにかざるおおきなほしをつくりはじめました。",
                     KO:"“아!알겠어요!이제친구들에게뭘선물하지생각이났어요!”이글이가말했어요.이글이는크리스마스트리에장식할큰별을만들기시작했어요."
                 },
                 {
                     page:6,
                     ES:"Entonces nuestro querido Yogotar la estrella colocó y a todos juntó, para cantar, disfrutar y con sus sonrisas a la navidad iluminar. ",
                     EN:"Then, our dear Yogotar put the star on top of the tree. His friends gathered around to sing and enjoy their time together. The bright smiles on their faces lit up Christmas.",
-                    PT:"",
-                    ZH:"",
-                    JA:"",
+                    PT:"Depois, nosso querido Yogotar colocou a estrela no alto da árvore. Seus amigos se reuniram em volta para cantar e passar tempo juntos. O sorriso brilhante no rosto deles iluminou o Natal.",
+                    ZH:"然后，我们亲爱的Yogotar把星星放在树冠上。他的朋友们围坐在一起唱歌，享受欢聚的时光。他们脸上灿烂的笑容照亮了圣诞节。",
+                    JA:"ヨゴターはツリーのてっぺんにほしをつけました。ともだちがあつまってきてうたをうたいたのしいときをすごしました。みんなのえがおがキラキラとしてクリスマスをいろどりました。",
                     KO:"마침내 우리의 사랑스러운 요고타는 큰 별을 트리 맨 꼭대기에 달았어요. 그리고 친구들과 함께 모여서 같이 노래를 부르고 즐거운 시간을 보냈어요. 모두의 얼굴에 웃음꽃이 활짝 피었어요."
                 }
                 ]    
-    
-
-
-
     </script>   
 </head>
 <body>
@@ -310,6 +310,22 @@ function loadApp() {
 					$('.magazine .p17').addClass('fixed');
 				else
 					$('.magazine .p17').removeClass('fixed');
+                    
+                    if(language == "ES"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ES.png')");
+                }else if(language == "EN"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2EN.png')");
+                }else if(language == "ZH"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ZH.png')");
+                }else if(language == "KO"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2KO.png')");
+                }else if(language == "JA"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2JA.png')");
+                }else if(language == "PT"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2PT.png')");
+                }else{
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2EN.png')");
+                }
 
 
 					Hash.go('page/' + page).update();
@@ -760,7 +776,120 @@ yepnope({
 	both: ['lib/zoom.min.js', 'css/jquery.ui.css', 'js/magazine.js', 'css/magazine.css','css/custom_fonts.css'],
 	complete: loadApp
 });
+/*MIX PANEL*/
+var credentials = epicModel.getCredentials();    
+var allPages =  18    
+    
+    
+$(document).ready(function () {
+    /**
+     * * Metodo implementado en mixpanel.js
+     */
+    var credentials1 = epicModel.getCredentials();   
 
+    mixpanel.track(
+        "OnBookOpen",
+        {
+            "user_id": credentials1.educationID,
+            "app": "web",
+            "bookID" : "27",
+            "bookName" : "Eagle entiende la navidad"
+        }
+    );
+    
+    
+
+    
+});    
+
+function mixPanelClose(){
+        mixpanel.track(
+            "OnBookClose", 
+            {
+                "user_id": credentials.educationID,
+                "app": "web",
+                "bookID" : "27",
+                "bookName" : "Eagle entiende la navidad",
+                "lastPage" : audioNumber
+            }
+        );
+}   
+    
+
+    function stopAllSounds(){
+        if(audioNumber >= [allPages-2]){
+                mixpanel.track("OnBookFinished",{
+                        "user_id": credentials.educationID,
+                        "app": "web",
+                        "bookID" : "27",
+                        "bookName" : "Eagle entiende la navidad"
+                    });      
+        }
+        
+        
+        $("#activeNext").css("display","none");
+        playing = false;
+        audiosNumbers();
+       audioPlayer = document.getElementById("audio" +  audioReady);
+        $("#buttonPlay").attr("src","images/Play.png");
+          for(i= 0; i<=6;i++){
+                    var audio = document.getElementById("audio" + i);
+                        audio.pause();
+                        audio.currentTime = 0;
+                    
+                } 
+        
+    }    
+    
+    var leaving = true;
+    var isClose = false;
+
+    function EndChatSession() {
+        var request = GetRequest();
+        request.open("GET", "../Chat.aspx", true);
+        request.send();
+    }
+    document.onkeydown = checkKeycode
+    function checkKeycode(e) {
+        var keycode;
+        if (window.event)
+            keycode = window.event.keyCode;
+        else if (e)
+            keycode = e.which;
+        if (keycode == 116) {
+            isClose = true;
+        }
+    }
+    function somefunction() {
+        isClose = true;
+    }
+    
+    window.onbeforeunload = function (e) {
+       if (!e) e = event;
+        if (leaving) {
+             EndChatSession();
+             mixPanelClose();
+             //e.returnValue = "Are You Sure";
+
+        }
+    }
+    function GetRequest() {
+        var xmlHttp = null;
+        try {
+            // Firefox, Opera 8.0+, Safari
+            xmlHttp = new XMLHttpRequest();
+        }
+        catch (e) {
+            //Internet Explorer
+            try {
+                xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+            }
+            catch (e) {
+                xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+        }
+        return xmlHttp;
+    }  
 </script>
 </body>
 </html>
