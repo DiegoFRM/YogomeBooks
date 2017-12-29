@@ -141,13 +141,13 @@ var languagePages = [
                 }else if(language == "EN"){
                     $(".magazine").find("#p1").css("background-image","url('bookpages/1EN.png')");
                 }else if(language == "ZH"){
-                    $(".magazine").find("#p1").css("background-image","url('bookpages/1ZH.png')");
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1EN.png')");
                 }else if(language == "KO"){
-                    $(".magazine").find("#p1").css("background-image","url('bookpages/1KO.png')");
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1EN.png')");
                 }else if(language == "JA"){
-                    $(".magazine").find("#p1").css("background-image","url('bookpages/1JA.png')");
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1EN.png')");
                 }else if(language == "PT"){
-                    $(".magazine").find("#p1").css("background-image","url('bookpages/1PT.png')");
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1EN.png')");
                 }else{
                     $(".magazine").find("#p1").css("background-image","url('bookpages/1EN.png')");
                 }
@@ -169,6 +169,10 @@ function goBack() {
     <div class="idiomas">
         <div id="ButtonLanEs" class="overLanguage">Español</div>
         <div id="ButtonLanEn" class="overLanguage">English</div>
+        <div id="ButtonLanZh" class="overLanguage">中國</div>
+        <div id="ButtonLanJa" class="overLanguage">日本語</div>
+        <div id="ButtonLanKo" class="overLanguage">한국어</div>
+        <div id="ButtonLanPt" class="overLanguage">PORTUGUES</div>
     </div>
     <div id="audiosGroup"></div>
 	<div class="bottom">
@@ -192,7 +196,7 @@ function goBack() {
 </div>
 
 <script type="text/javascript">
-    $("#sectionPlayButton").hide();
+    //$("#sectionPlayButton").hide();
     var audioNumber;
     var clearTimeOut;
     var audioReady;
@@ -218,6 +222,34 @@ function goBack() {
 
         var str = window.location.search
         str = replaceQueryParam('language', "EN", str)
+        window.location = window.location.pathname + str + "#page/" + audioNumber;
+    });
+    
+    $("#ButtonLanZh").click(function(){
+
+        var str = window.location.search
+        str = replaceQueryParam('language', "ZH", str)
+        window.location = window.location.pathname + str + "#page/" + audioNumber;
+    });
+    
+    $("#ButtonLanJa").click(function(){
+
+        var str = window.location.search
+        str = replaceQueryParam('language', "JA", str)
+        window.location = window.location.pathname + str + "#page/" + audioNumber;
+    });
+    
+    $("#ButtonLanKo").click(function(){
+
+        var str = window.location.search
+        str = replaceQueryParam('language', "KO", str)
+        window.location = window.location.pathname + str + "#page/" + audioNumber;
+    });
+    
+    $("#ButtonLanPt").click(function(){
+
+        var str = window.location.search
+        str = replaceQueryParam('language', "PT", str)
         window.location = window.location.pathname + str + "#page/" + audioNumber;
     });
     
@@ -314,17 +346,17 @@ function loadApp() {
                     if(language == "ES"){
                     $(".magazine").find(".p2").css("background-image","url('bookpages/2ES.png')");
                 }else if(language == "EN"){
-                    $(".magazine").find(".p2").css("background-image","url('bookpages/2EN.png')");
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ES.png')");
                 }else if(language == "ZH"){
-                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ZH.png')");
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ES.png')");
                 }else if(language == "KO"){
-                    $(".magazine").find(".p2").css("background-image","url('bookpages/2KO.png')");
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ES.png')");
                 }else if(language == "JA"){
-                    $(".magazine").find(".p2").css("background-image","url('bookpages/2JA.png')");
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ES.png')");
                 }else if(language == "PT"){
-                    $(".magazine").find(".p2").css("background-image","url('bookpages/2PT.png')");
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ES.png')");
                 }else{
-                    $(".magazine").find(".p2").css("background-image","url('bookpages/2EN.png')");
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ES.png')");
                 }
 
 
@@ -645,17 +677,17 @@ function visibleNext(){
     
     
     function stopAllSounds(){
-//        $("#activeNext").css("display","none");
-//        playing = false;
-//        audiosNumbers();
-//       audioPlayer = document.getElementById("audio" +  audioReady);
-//        $("#buttonPlay").attr("src","images/Play.png");
-//          for(i= 0; i<=6;i++){
-//                    var audio = document.getElementById("audio" + i);
-//                        audio.pause();
-//                        audio.currentTime = 0;
-//                    
-//                } 
+        $("#activeNext").css("display","none");
+        playing = false;
+        audiosNumbers();
+       audioPlayer = document.getElementById("audio" +  audioReady);
+        $("#buttonPlay").attr("src","images/Play.png");
+          for(i= 0; i<=6;i++){
+                    var audio = document.getElementById("audio" + i);
+                        audio.pause();
+                        audio.currentTime = 0;
+                    
+                } 
         
     }
 
@@ -734,6 +766,8 @@ $("#buttonPlay").click(function(){
             audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaES" + audioReady)); 
         }else if(language == "EN"){
             audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaEN" + audioReady));
+        }else if(language == "KO"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaKO" + audioReady));
         }else{
             audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaES" + audioReady));
         }       
@@ -756,6 +790,8 @@ function autoPlay(){
             audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaES" + audioReady)); 
         }else if(language == "EN"){
             audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaEN" + audioReady));
+        }else if(language == "KO"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaKO" + audioReady));
         }else{
             audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaES" + audioReady));
         }         
