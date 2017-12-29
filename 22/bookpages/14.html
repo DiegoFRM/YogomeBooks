@@ -1,2 +1,22 @@
+
 <div class="odd gradient"></div>
-    <img class="book-img" src="bookpages/15.png">
+
+<div class="textPage">
+<div id="texto6">
+
+    </div>
+</div>
+<script>
+    $("#texto6").text(languagePages[5][language])
+
+    if(!$("#texto6").find("br")){
+            
+        }else{
+          $("#texto6").blast({ delimiter: "word" });
+
+        $("#texto6").find('span').each(function(i){
+        $(this).attr('id', 'c_' + i);
+         });       
+        } 
+
+</script>

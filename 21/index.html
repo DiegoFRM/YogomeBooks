@@ -96,24 +96,15 @@ var languagePages = [
                 },
                 {
                     page:5,
-                    ES:"Tomiko estaba muy cansada, el agua del río hacía pesados sus pasos, no sólo los de ella, también los del resto de los competidores.",
-                    EN:"Tomiko was really tired and the river made her steps heavy.",
-                    KO:"토미코는 너무 지쳤고 강물을 가로지르면서 뛰는건 어려웠어요.",
-                    ZH:"富子真的很累，河水使她步履沉重",
-                    JA:"トミコはとてもつかれてしまいました。みずのなかではあしがおもくなります。",
-                    PT:"Tomiko estava muito cansada, e o rio deixava seus pés pesados."
+                    ES:"Tomiko estaba muy cansada, el agua del río hacía pesados sus pasos, no sólo los de ella, también los del resto de los competidores.   Después de varios minutos sintió que algo la jalaba... era la mano de Nao, ayudándola a subir a una roca.",
+                    EN:"Tomiko was really tired and the river made her steps heavy.    After several minutes she felt someone pull her out. It was Nao's hand helping her from the top of a rock.",
+                    KO:"토미코는 너무 지쳤고 강물을 가로지르면서 뛰는건 어려웠어요.   몇 분 후에 토미코는 넘어졌고, 그 순간 누군가 토미코를 구해줬어요. 토미코를 강물에서 꺼내준 건 나오의 손이었어요. 나오는 바위 위에서 토미코를 구해줬어요.",
+                    ZH:"富子真的很累，河水使她步履沉重   几分钟后，她感觉有人把她拉了出来。原来是奈绪站在石头上伸出手来帮助她。",
+                    JA:"トミコはとてもつかれてしまいました。みずのなかではあしがおもくなります。  なんふんかたったあと、だれかがトミコをひっぱりあげるのにきづきました。それはナオの手でした。石のうえからたすけようとしているのです。",
+                    PT:"Tomiko estava muito cansada, e o rio deixava seus pés pesados.    Depois de alguns minutos, ela sentiu alguém puxá-la. Era a mão de Nao ajudando-a de cima de uma pedra."
                 },
                 {
                     page:6,
-                    ES:"Después de varios minutos sintió que algo la jalaba... era la mano de Nao, ayudándola a subir a una roca.",
-                    EN:"After several minutes she felt someone pull her out. It was Nao's hand helping her from the top of a rock.",
-                    KO:"몇 분 후에 토미코는 넘어졌고, 그 순간 누군가 토미코를 구해줬어요. 토미코를 강물에서 꺼내준 건 나오의 손이었어요. 나오는 바위 위에서 토미코를 구해줬어요.",
-                    ZH:"几分钟后，她感觉有人把她拉了出来。原来是奈绪站在石头上伸出手来帮助她。",
-                    JA:"なんふんかたったあと、だれかがトミコをひっぱりあげるのにきづきました。それはナオの手でした。石のうえからたすけようとしているのです。",
-                    PT:"Depois de alguns minutos, ela sentiu alguém puxá-la. Era a mão de Nao ajudando-a de cima de uma pedra."
-                },
-                {
-                    page:7,
                     ES:"-¡Ganamos! ¿Cómo lograste llegar hasta donde me encontraba?<br> -Fácil, el río estaba lleno de grandes rocas y salté sobre cada una en vez de caminar por el agua -respondió Nao con tranquilidad.<br> -Pero… ¿Cómo lo supiste? -dijo Tomiko, algo sorprendida.<br> -Antes de actuar debemos ser pacientes, lo importante no es ganar, sino llegar.",
                     EN:"“We won! How did you get to me?”  “Easy! The river was filled with big rocks and I jumped over them instead of walking through water,” answered Nao. “But... How did you figure that out?” said Tomiko surprised. “We must be patient before we act. The most important thing is to get to your destination safely, not winning.”",
                     KO:'"우리가이겼어!어떻게나를구해준거니?" "간단해!강에는큰바위가많이있었어.난그래서강을뛰어서건너가지않고바위위를징검다리처럼건너서왔어."나오가대답했어요. "너는…어떻게그걸알아낸거니?"토미코가놀라서물었어요. "우리는무엇을할지충분히생각하고행동해야해. 이기는게중요한게아니라어떻게결승선까지안전하게가는지가중요한거야."',
@@ -138,8 +129,8 @@ var languagePages = [
 		<div class="magazine">
             <div id="p1" depth="5" class="hard"> <div class="side"></div> </div>
 			<div depth="5" class="hard front-side"> <div class="depth"></div> </div>
-			<div class="hard fixed back-side p19"></div>
-			<div class="hard p20"></div>
+			<div class="hard fixed back-side p17"></div>
+			<div class="hard p18"></div>
 
             </div>
             <script>
@@ -291,7 +282,7 @@ function loadApp() {
 
 			// The number of pages
 
-			pages: 20,
+			pages: 18,
 
 			// Events
 
@@ -315,9 +306,9 @@ function loadApp() {
 					$('.magazine .p2').removeClass('fixed');
 
 				if (page<book.turn('pages'))
-					$('.magazine .p19').addClass('fixed');
+					$('.magazine .p17').addClass('fixed');
 				else
-					$('.magazine .p19').removeClass('fixed');
+					$('.magazine .p17').removeClass('fixed');
                     
                     
                     if(language == "ES"){
@@ -714,18 +705,12 @@ function audiosNumbers(){
                     audioReady = 5
                    break;
                 case 14:
-                    audioReady = 5
+                    audioReady = 6
                    break;
                 case 15:
-                    audioReady = 5
+                    audioReady = 6
                    break;
                 case 16:
-                    audioReady = 6
-                   break;
-                case 17:
-                    audioReady = 6
-                   break;
-                case 18:
                     audioReady = 0
                    break;
             

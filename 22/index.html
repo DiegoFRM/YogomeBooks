@@ -129,8 +129,8 @@ var languagePages = [
 		<div class="magazine">
             <div id="p1" depth="5" class="hard"> <div class="side"></div> </div>
 			<div depth="5" class="hard front-side"> <div class="depth"></div> </div>
-			<div class="hard fixed back-side p19"></div>
-			<div class="hard p20"></div>
+			<div class="hard fixed back-side p17"></div>
+			<div class="hard p18"></div>
 
             </div>
             <script>
@@ -191,7 +191,7 @@ function goBack() {
 </div>
 
 <script type="text/javascript">
-    $("#sectionPlayButton").hide();
+    //$("#sectionPlayButton").hide();
     var audioNumber;
     var clearTimeOut;
     var audioReady;
@@ -282,7 +282,7 @@ function loadApp() {
 
 			// The number of pages
 
-			pages: 20,
+			pages: 18,
 
 			// Events
 
@@ -307,9 +307,9 @@ function loadApp() {
 					$('.magazine .p2').removeClass('fixed');
 
 				if (page<book.turn('pages'))
-					$('.magazine .p19').addClass('fixed');
+					$('.magazine .p17').addClass('fixed');
 				else
-					$('.magazine .p19').removeClass('fixed');
+					$('.magazine .p17').removeClass('fixed');
                     
                     
                     
@@ -647,17 +647,17 @@ function visibleNext(){
     
     
     function stopAllSounds(){
-//        $("#activeNext").css("display","none");
-//        playing = false;
-//        audiosNumbers();
-//       audioPlayer = document.getElementById("audio" +  audioReady);
-//        $("#buttonPlay").attr("src","images/Play.png");
-//          for(i= 0; i<=6;i++){
-//                    var audio = document.getElementById("audio" + i);
-//                        audio.pause();
-//                        audio.currentTime = 0;
-//                    
-//                } 
+        $("#activeNext").css("display","none");
+        playing = false;
+        audiosNumbers();
+       audioPlayer = document.getElementById("audio" +  audioReady);
+        $("#buttonPlay").attr("src","images/Play.png");
+          for(i= 0; i<=6;i++){
+                    var audio = document.getElementById("audio" + i);
+                        audio.pause();
+                        audio.currentTime = 0;
+                    
+                } 
         
     }
 
@@ -708,7 +708,7 @@ function audiosNumbers(){
                     audioReady = 6
                    break;
                 case 15:
-                    audioReady = 6
+                    audioReady = 0
                    break;
                 case 16:
                     audioReady = 0
