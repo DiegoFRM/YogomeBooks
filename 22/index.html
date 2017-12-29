@@ -96,24 +96,15 @@ var languagePages = [
                 },
                 {
                     page:5,
-                    ES:"-¡Miren! Ahí está -dijo uno de los Beans.<br> Todos voltearon a ver a la criatura marina.<br> -No se ve tan horrible y espantoso como me habían contado -dijo uno de los Beans.",
-                    EN:"“Look! There it is.” said one of the Beans. Everybody turned to see the creature in the lake. “It doesn't look as scary and horrible as I was told,” said a Bean.",
-                    KO:'"저길 봐! 저기 있다." 한 빈이가 말했어요. 모두들 고개를 돌려서 호수에 산다는 생물을 보았어요. "내 생각하고는 전혀 다르게 무섭지도 않고 못생기지도 않았네." 한 빈이가 말했어요.',
-                    ZH:"“看！就在那里。”其中一个豆子说。大家都转过头去看湖里的怪物。“它看起来并不像我听说的那样恐怖和可怕。”",
-                    PT:"“Vejam! Aí está ela”, disse um dos Beans. Todos se viraram para ver a criatura no lago. “Não parece tão assustadora e horrível como disseram”, disse um Bean.",
-                    JA:"「みて！そこにいる。」ビーンのひとりがいいました。みんなはみずうみにいるいきものをみようとふりかえりました。"
+                    ES:"-¡Miren! Ahí está -dijo uno de los Beans.<br> Todos voltearon a ver a la criatura marina.<br> -No se ve tan horrible y espantoso como me habían contado -dijo uno de los Beans.  -Hola, mi nombre es Arthurius.<br> -Yo soy Thefannie.<br> -Yo soy Aji -respondió la criatura marina.",
+                    EN:"“Look! There it is.” said one of the Beans. Everybody turned to see the creature in the lake. “It doesn't look as scary and horrible as I was told,” said a Bean.  “Hi! My name is Arthurius.” “I'm Thefannie.” “I'm Aji,” said the creature.",
+                    KO:'"저길 봐! 저기 있다." 한 빈이가 말했어요. 모두들 고개를 돌려서 호수에 산다는 생물을 보았어요. "내 생각하고는 전혀 다르게 무섭지도 않고 못생기지도 않았네." 한 빈이가 말했어요.    "안녕! 나는 알투리우스야." "나는 티파니야." "나는 아히라고 해." 생물이 자기 소개를 했어요.',
+                    ZH:"“看！就在那里。”其中一个豆子说。大家都转过头去看湖里的怪物。“它看起来并不像我听说的那样恐怖和可怕。”   ”一个豆子说。“嗨！我的名字叫亚瑟鲁。”“我叫范妮。“我叫阿吉。”那个怪物说道。",
+                    PT:"“Vejam! Aí está ela”, disse um dos Beans. Todos se viraram para ver a criatura no lago. “Não parece tão assustadora e horrível como disseram”, disse um Bean.   “Olá! Meu nome é Arthurius.” “Eu sou Thefannie.” “Eu sou Aji”, disse a criatura.",
+                    JA:"「みて！そこにいる。」ビーンのひとりがいいました。みんなはみずうみにいるいきものをみようとふりかえりました。  「きいていたほどこわくもおそろしくもなさそうだ」ビーンのひとりがいいました。「やあ！ぼくのなまえはアーサリウス。」「わたしはティファニー。」「ぼくはアジ。」そのいきものがこたえました。"
                 },
                 {
                     page:6,
-                    ES:"-Hola, mi nombre es Arthurius.<br> -Yo soy Thefannie.<br> -Yo soy Aji -respondió la criatura marina.",
-                    EN:"“Hi! My name is Arthurius.” “I'm Thefannie.” “I'm Aji,” said the creature.",
-                    KO:'"안녕! 나는 알투리우스야." "나는 티파니야." "나는 아히라고 해." 생물이 자기 소개를 했어요.',
-                    ZH:"”一个豆子说。“嗨！我的名字叫亚瑟鲁。”“我叫范妮。“我叫阿吉。”那个怪物说道。",
-                    PT:"“Olá! Meu nome é Arthurius.” “Eu sou Thefannie.” “Eu sou Aji”, disse a criatura.",
-                    JA:"「きいていたほどこわくもおそろしくもなさそうだ」ビーンのひとりがいいました。「やあ！ぼくのなまえはアーサリウス。」「わたしはティファニー。」「ぼくはアジ。」そのいきものがこたえました。"
-                },
-                {
-                    page:7,
                     ES:"Durante esa noche todos intercambiaron ideas e historias, se presentaron  y descubrieron que el pequeño Aji sólo era una criatura tímida y sin amigos. Desde ese día los Beans aprendieron a no juzgar por las apariencias, ni a fiarse de los relatos de terceras personas.",
                     EN:"That night, everyone shared ideas and stories. They realized little Aji was only a shy, lonely creature. From that day on, the Beans learned not to judge others by their looks or trust everything people say.",
                     KO:"그날밤,모두들자기의생각과이야기를나누었어요.다들작은아히는그저수줍고외로운친구라는걸알게되었어요.그날이후로,빈이들은절대다른사람의외모를보고평가하거나다른사람들이하는얘기를모두믿지않기로결심했어요.",
@@ -311,6 +302,7 @@ function loadApp() {
 				
 				if (page>=2)
 					$('.magazine .p2').addClass('fixed');
+                    
 				else
 					$('.magazine .p2').removeClass('fixed');
 
@@ -318,6 +310,24 @@ function loadApp() {
 					$('.magazine .p19').addClass('fixed');
 				else
 					$('.magazine .p19').removeClass('fixed');
+                    
+                    
+                    
+                if(language == "ES"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ES.png')");
+                }else if(language == "EN"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2EN.png')");
+                }else if(language == "ZH"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ZH.png')");
+                }else if(language == "KO"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2KO.png')");
+                }else if(language == "JA"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2JA.png')");
+                }else if(language == "PT"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2PT.png')");
+                }else{
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2EN.png')");
+                }
 
 
 					Hash.go('page/' + page).update();

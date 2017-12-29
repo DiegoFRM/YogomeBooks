@@ -69,7 +69,7 @@ var languagePages = [
                 },
                 {
                     page:2,
-                    ES:"Nao se detuvo a observar lo que se encontraba frente a él y Tomiko comenzó a desesperarse.<br> -¡Corre! No te detengas -dijo.<br> -Espera, es mejor pensar antes de actuar -dijo Nao tranquilamente.<br> -Nos van a ganar -Tomiko gritó.",
+                    ES:"Nao se detuvo a observar lo que se encontraba frente a él y Tomiko comenzó a desesperarse. -¡Corre! No te detengas -dijo. -Espera, es mejor pensar antes de actuar -dijo Nao tranquilamente. -Nos van a ganar -Tomiko gritó.",
                     EN:"Nao stopped and stared. Tomiko became desperate. “Run! Don't stop” she said. “Wait, it's better to think before you act,” said Nao clamly. “We are going to lose,” shouted Tomiko.",
                     KO:'나오는 멈춰서서 강을 바라보았어요. 토미코는 마음이 조급해졌어요. "뛰어! 멈추지 마," 토미코가 말했어요. "기다려 봐, 무작정 뛰기 전에 무엇을 할지 미리 생각해보자." 나오가 아주 침착하게 말했어요. "우리는 이러다 질거야" 토미코가 소리쳤어요.',
                     ZH:"奈绪停下来，目不转睛地观察着。富子都要绝望了。“快跑！不要停下来。”她说。“等等，在你行动之前最好思考一下。”奈绪平静地说。“我们要输了！”富子喊道。",
@@ -200,7 +200,7 @@ function goBack() {
 </div>
 
 <script type="text/javascript">
-    $("#sectionPlayButton").hide();
+    //$("#sectionPlayButton").hide();
     var audioNumber;
     var clearTimeOut;
     var audioReady;
@@ -318,6 +318,23 @@ function loadApp() {
 					$('.magazine .p19').addClass('fixed');
 				else
 					$('.magazine .p19').removeClass('fixed');
+                    
+                    
+                    if(language == "ES"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ES.png')");
+                }else if(language == "EN"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2EN.png')");
+                }else if(language == "ZH"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ZH.png')");
+                }else if(language == "KO"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2KO.png')");
+                }else if(language == "JA"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2JA.png')");
+                }else if(language == "PT"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2PT.png')");
+                }else{
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2EN.png')");
+                }
 
 
 					Hash.go('page/' + page).update();
@@ -327,6 +344,8 @@ function loadApp() {
 					disableControls(page);
 
 				},
+                
+                
                 
 				turned: function(event, page, view) {
 
@@ -637,17 +656,17 @@ function visibleNext(){
     
     
     function stopAllSounds(){
-//        $("#activeNext").css("display","none");
-//        playing = false;
-//        audiosNumbers();
-//       audioPlayer = document.getElementById("audio" +  audioReady);
-//        $("#buttonPlay").attr("src","images/Play.png");
-//          for(i= 0; i<=6;i++){
-//                    var audio = document.getElementById("audio" + i);
-//                        audio.pause();
-//                        audio.currentTime = 0;
-//                    
-//                } 
+        $("#activeNext").css("display","none");
+        playing = false;
+        audiosNumbers();
+       audioPlayer = document.getElementById("audio" +  audioReady);
+        $("#buttonPlay").attr("src","images/Play.png");
+          for(i= 0; i<=6;i++){
+                    var audio = document.getElementById("audio" + i);
+                        audio.pause();
+                        audio.currentTime = 0;
+                    
+                } 
         
     }
 
@@ -695,12 +714,18 @@ function audiosNumbers(){
                     audioReady = 5
                    break;
                 case 14:
-                    audioReady = 6
+                    audioReady = 5
                    break;
                 case 15:
-                    audioReady = 6
+                    audioReady = 5
                    break;
                 case 16:
+                    audioReady = 6
+                   break;
+                case 17:
+                    audioReady = 6
+                   break;
+                case 18:
                     audioReady = 0
                    break;
             
@@ -740,7 +765,7 @@ function autoPlay(){
     console.log("audioReady: " + audioReady);
     audioPlayer = document.getElementById("audio" +  audioReady); 
       
-    if(audioNumber == 16){
+    if(audioNumber == 18){
         $("#buttonPlay").attr("src","images/Play.png");
     }else{
         audioPlayer.play();

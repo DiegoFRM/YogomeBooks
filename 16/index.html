@@ -78,7 +78,7 @@ var languagePages = [
                 },
                 {
                     page:3,
-                    ES:"-Pero… ¿Qué están haciendo? -dijo Oof.<br> -Tomando nuestros regalos -dijo el Zuhlurk.<br> -Si no pagas por ellos, estás robando -dijo Oof.<br> -Nadie se va a dar cuenta, no te preocupes -dijo el otro Zuhlurk.",
+                    ES:"-Pero… ¿Qué están haciendo? -dijo Oof.-Tomando nuestros regalos -dijo el Zuhlurk. -Si no pagas por ellos, estás robando -dijo Oof. -Nadie se va a dar cuenta, no te preocupes -dijo el otro Zuhlurk.",
                     EN:"“But... What are you doing? Oof said.” “We are taking our presents,” said one of the Zuhlurks. “If you don't pay for them, you are stealing,” said Oof. “Don't worry! No one will notice,” said the Zuhlurk.",
                     KO:'그렇지만…뭐 하고 계세요?" 우프가 물었어요. "우리는 우리 선물을 챙겨가는거야." 한 즐러크가 말했어요. "돈을 내지 않고 가져가는 건 훔치는 거잖아요." 우프가 말했어요. "걱정마! 아무도 모를거야" 다른 즐러크가 대답했어요.',
                     ZH:"“可是...你们在做什么？”奥夫说。“我们正在拿礼物，”其中一个Zuhlurk说。“如果你不付钱，你就是在偷东西。”奥夫说。“别担心！反正没人注意。”Zuhlurk说。",
@@ -87,7 +87,7 @@ var languagePages = [
                 },
                 {
                     page:4,
-                    ES:"Oof observa a Justice, una voz interior le dice que debe hacer lo correcto, pero el Zuhlurk le dice lo contrario:<br> -Ni lo intentes., si nadie se entera, no pasa nada. Sólo toma tu regalo y vete.",
+                    ES:"Oof observa a Justice, una voz interior le dice que debe hacer lo correcto, pero el Zuhlurk le dice lo contrario: -Ni lo intentes., si nadie se entera, no pasa nada. Sólo toma tu regalo y vete.",
                     EN:"Oof sees Justice, a voice within tells him to do the right thing but the Zuhlurks says the opposite. “Don't even try it. If nobody notices, nothing will happen. Just take you present and go”",
                     KO:'우프는 바른 일을 해야 한다고 말하는 저스티스를 바라보아요. 그렇지만 즐러크들은 전혀 다른 이야기를 해요. "다른 생각은 하지도 마. 아무도 모르면, 아무 일도 일어나지 않는거야. 얼른 선물을 챙겨서 나가자!"',
                     ZH:"奥夫看到了正义，内心有一个声音告诉他要做对的事情，但Zuhlurk说的正好相反。“想都不用想。如果没人注意到，什么事也没有。拿上你的礼物走吧——”",
@@ -191,7 +191,7 @@ function goBack() {
 </div>
 
 <script type="text/javascript">
-    $("#sectionPlayButton").hide();
+    //$("#sectionPlayButton").hide();
     var audioNumber;
     var clearTimeOut;
     var audioReady;
@@ -309,6 +309,23 @@ function loadApp() {
 					$('.magazine .p17').addClass('fixed');
 				else
 					$('.magazine .p17').removeClass('fixed');
+                    
+                    
+                    if(language == "ES"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ES.png')");
+                }else if(language == "EN"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2EN.png')");
+                }else if(language == "ZH"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ZH.png')");
+                }else if(language == "KO"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2KO.png')");
+                }else if(language == "JA"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2JA.png')");
+                }else if(language == "PT"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2PT.png')");
+                }else{
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2EN.png')");
+                }
 
 
 					Hash.go('page/' + page).update();
@@ -628,17 +645,17 @@ function visibleNext(){
     
     
     function stopAllSounds(){
-//        $("#activeNext").css("display","none");
-//        playing = false;
-//        audiosNumbers();
-//       audioPlayer = document.getElementById("audio" +  audioReady);
-//        $("#buttonPlay").attr("src","images/Play.png");
-//          for(i= 0; i<=6;i++){
-//                    var audio = document.getElementById("audio" + i);
-//                        audio.pause();
-//                        audio.currentTime = 0;
-//                    
-//                } 
+        $("#activeNext").css("display","none");
+        playing = false;
+        audiosNumbers();
+       audioPlayer = document.getElementById("audio" +  audioReady);
+        $("#buttonPlay").attr("src","images/Play.png");
+          for(i= 0; i<=6;i++){
+                    var audio = document.getElementById("audio" + i);
+                        audio.pause();
+                        audio.currentTime = 0;
+                    
+                } 
         
     }
 
@@ -692,6 +709,12 @@ function audiosNumbers(){
                     audioReady = 6
                    break;
                 case 16:
+                    audioReady = 6
+                   break;
+                case 17:
+                    audioReady = 0
+                   break;
+                case 18:
                     audioReady = 0
                    break;
             
