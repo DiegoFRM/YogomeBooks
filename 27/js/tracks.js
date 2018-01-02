@@ -1,261 +1,283 @@
 var pistaES0 = [{ "start": "0.000","text": "empty" }]
-var pistaEN0 = [{ "start": "0.000","text": "empty" }]
-var pistaPT0 = [{ "start": "0.000","text": "empty" }]
-var pistaZH0 = [{ "start": "0.000","text": "empty" }]
-var pistaJA0 = [{ "start": "0.000","text": "empty" }]
-var pistaKO0 = [{ "start": "0.000","text": "empty" }]
-
-
-/*--------------------------------Spanish--------------------------------*/
-
-
-var pistaES1 = [
-            {"start": "0.100","text": "En su" },
-            {"start": "0.500","text": "laboratorio" },
-            {"start": "1.943","text": "Eagle se" },
-            {"start": "2.366","text": "encontraba," },
-            {"start": "3.187","text": "pensando" },
-            {"start": "3.986","text": "qué" },
-            {"start": "4.150","text": "regalar," },
-            {"start": "5.356","text": "mientras" },
-            {"start": "5.967","text": "los" },
-            {"start": "6.222","text": "otros" },
-            {"start": "6.779","text": "la" },
-            {"start": "7.056","text": "casa" },
-            {"start": "7.332","text": "decoraban" },
-            {"start": "9.078","text": "Era" },
-            {"start": "9.413","text": "navidad" },
-            {"start": "10.121","text": "y a" },
-            {"start": "10.355","text": "Eagle" },
-            {"start": "11.2443","text": "no le" },
-            {"start": "11.561","text": "emocionaba" }
-];
-           
-var pistaES2 = [
-            { "start": "0.070","text": "¡JO-JO-JO!" },
-            {"start": "1.915","text": "Sonó" },
-            {"start": "2.996","text": "e" },
-            {"start": "3.112","text": "Eagle" },
-            {"start": "3.606","text": "volteó," },
-            {"start": "5.613","text": "Era" },
-            {"start": "5.863","text": "un" },
-            {"start": "6.074","text": "viejo" },
-            {"start": "6.486","text": "barbón" },
-            {"start": "7.113","text": "que a" },
-            {"start": "7.315","text": "Eagle" },
-            {"start": "7.756","text": "preguntó:" },
-            {"start": "4.845","text": "¿Qué" },
-            {"start": "5.026","text": "pasa " },
-            {"start": "5.167","text": "Yogotar?" },
-            {"start": "5.961","text": "¿Por" },
-            {"start": "6.323","text": "qué no" },
-            {"start": "6.666","text": "sales a" },
-            {"start": "6.816","text": "decorar?" }
-];
-¿Con qué he de decorar si no tengo que regalar? No dejo de pensar, pero nada puedo crear.
-var pistaES3 = [
-            { "start": "0.209","text": "Thefannie" },
-            {"start": "0.731","text": "no" },
-            {"start": "0.996","text": "puede" },
-            {"start": "1.340","text": "hacer" },
-            {"start": "1.605","text": "la" },
-            {"start": "1.808","text": "tarea" },
-            {"start": "2.843","text": "el" },
-            {"start": "3.108","text": "parque" },
-            {"start": "3.601","text": "no" },
-            {"start": "3.869","text": "parece" },
-            {"start": "4.359","text": "ser" },
-            {"start": "4.680","text": "una" },
-            {"start": "4.930","text": "buena" },
-            {"start": "5.203","text": "idea" },
-            {"start": "6.164","text": "al" },
-            {"start": "6.429","text": "menos" },
-            {"start": "7.140","text": "no" },
-            {"start": "7.372","text": "donde" },
-            {"start": "7.651","text": "sus" },
-            {"start": "7.784","text": "amigas" },
-            {"start": "8.415","text": "juegan" },
-            {"start": "8.786","text": "a" },
-            {"start": "8.834","text": "la" },
-            {"start": "8.998","text": "pelota" }
+ var pistaEN0 = [{ "start": "0.000","text": "empty" }]
+ var pistaPT0 = [{ "start": "0.000","text": "empty" }]
+ var pistaZH0 = [{ "start": "0.000","text": "empty" }]
+ var pistaJA0 = [{ "start": "0.000","text": "empty" }]
+ var pistaKO0 = [{ "start": "0.000","text": "empty" }]
+ 
+ 
+ /*--------------------------------Spanish--------------------------------*/
+  
+  
+  var pistaES1 = [
+                {"start": "0.100","text": "En su" },
+                {"start": "0.500","text": "laboratorio" },
+                {"start": "1.943","text": "Eagle se" },
+                {"start": "2.366","text": "encontraba," },
+                {"start": "3.187","text": "pensando" },
+                {"start": "3.986","text": "qué" },
+                {"start": "4.150","text": "regalar," },
+                {"start": "5.356","text": "mientras" },
+                {"start": "5.967","text": "los" },
+                {"start": "6.222","text": "otros" },
+                {"start": "6.779","text": "la" },
+                {"start": "7.056","text": "casa" },
+                {"start": "7.332","text": "decoraban" },
+                {"start": "9.078","text": "Era" },
+                {"start": "9.413","text": "navidad" },
+                {"start": "10.121","text": "y a" },
+                {"start": "10.355","text": "Eagle" },
+                {"start": "11.2443","text": "no le" },
+                {"start": "11.561","text": "emocionaba" }
+  ]
+             
+  var pistaES2 = [
+                {"start": "0.070","text": "¡JO-JO-JO!" },
+                {"start": "1.915","text": "Sonó" },
+                {"start": "2.996","text": "e" },
+                {"start": "3.112","text": "Eagle" },
+                {"start": "3.606","text": "volteó," },
+                {"start": "5.613","text": "Era" },
+                {"start": "5.863","text": "un" },
+                {"start": "6.074","text": "viejo" },
+                {"start": "6.486","text": "barbón" },
+                {"start": "7.113","text": "que a" },
+                {"start": "7.315","text": "Eagle" },
+                {"start": "7.756","text": "preguntó:" },
+                {"start": "9.937","text": "¿Qué" },
+                {"start": "10.194","text": "pasa " },
+                {"start": "10.768","text": "Yogotar?" },
+                {"start": "12.162","text": "¿Por" },
+                {"start": "12.452","text": "qué" },
+                {"start": "12.625","text": "no" },
+                {"start": "12.480","text": "sales" },
+                {"start": "13.165","text": "a" },
+                {"start": "13.291","text": "decorar?" }
+ ];
+      
+ var pistaES3 = [
+             { "start": "0.209","text": "¿Con qué" },
+             {"start": "0.731","text": "he de" },
+             {"start": "0.996","text": "decorar" },
+             {"start": "1.340","text": "si no " },
+             {"start": "1.605","text": "tengo" },
+             {"start": "1.808","text": "que" },
+             {"start": "2.843","text": "regalar?" },
+             {"start": "3.108","text": "No dejo" },
+             {"start": "3.601","text": "de pensar" },
+             {"start": "3.869","text": "pero " },
+             {"start": "4.359","text": "nada" },
+             {"start": "4.680","text": "puedo" },
+             {"start": "4.930","text": "crear" }
+ ]
+  
+ var pistaES4 = [
+             { "start": "0.109","text": "¡JO-JO-JO!" },
+             { "start": "0.629","text": "Mi querido" },
+             { "start": "1.190","text": "Yogotar"},
+             { "start": "2.283","text": "la navidad"},
+             { "start": "2.447","text": "no se"},
+             { "start": "4.158","text": "trata"},
+             { "start": "4.479","text": "de regalar"},
+             { "start": "5.115","text": "se trata"},
+             { "start": "5.313","text": "de hornear"},
+             { "start": "5.313","text": "cenar"},
+             { "start": "5.313","text": "y en"},
+             { "start": "5.313","text": "familia"},
+             { "start": "5.313","text": "disfrutar"}
+             
+ ]
+       
+ var pistaES5 = [
+             { "start": "0.109","text": "¡Lo tengo!" },
+             { "start": "0.629","text": "Ya sé" },
+             { "start": "0.629","text": "que" },
+             { "start": "0.629","text": "les voy" },
+             { "start": "0.629","text": "a regalar" },
+             { "start": "0.629","text": "dijo" },
+             { "start": "0.629","text": "Eagle" },
+             { "start": "0.629","text": "antes" },
+             { "start": "0.629","text": "de" },
+             { "start": "0.629","text": "ponerse" },
+             { "start": "0.629","text": "a trabajar" },
+             { "start": "0.629","text": "en una" },
+             { "start": "0.629","text": "gran" },
+             { "start": "0.629","text": "estrella" },
+             { "start": "0.629","text": "para" },
+             { "start": "0.629","text": "el árbol" },
+             { "start": "0.629","text": "adornar" }
+ ]
+      
+ var pistaES6 = [
+             { "start": "0.109","text": "Entonces" },
+             { "start": "0.629","text": "nuestro" },
+             { "start": "0.629","text": "querido" },
+             { "start": "0.629","text": "Yogotar" },
+             { "start": "0.629","text": "la estrella " },
+             { "start": "0.629","text": "colocó" },
+             { "start": "0.629","text": "y a " },
+             { "start": "0.629","text": "todos" },
+             { "start": "0.629","text": "juntó" },
+             { "start": "0.629","text": "para" },
+             { "start": "0.629","text": "cantar" },
+             { "start": "0.629","text": "disfrutar" },
+             { "start": "0.629","text": "y con sus" },
+             { "start": "0.629","text": "sonrisas" },
+             { "start": "0.629","text": "a la" },
+             { "start": "0.629","text": "navidad" },
+             { "start": "0.629","text": "iluminar" }
 ]
-¡JO-JO-JO! Mi querido Yogotar, la navidad no se trata de regalar, se trata de hornear, cenar y en familia disfrutar. 
-var pistaES4 = [
-            { "start": "0.109","text": "Thefannie" },
-            { "start": "0.629","text": "respira" },
-            { "start": "1.190","text": "profundamente"},
-            { "start": "2.283","text": "para"},
-            { "start": "2.447","text": "tranquilizarse"},
-            { "start": "4.158","text": "Está"},
-            { "start": "4.479","text": "molesta"},
-            { "start": "5.115","text": "y"},
-            { "start": "5.313","text": "cansada"}
-            
-]
--¡Lo tengo! Ya sé que les voy a regalar- dijo Eagle, antes de ponerse a trabajar en una gran estrella, para el árbol adornar.        
-var pistaES5 = [
-            { "start": "0.109","text": "Ella" },
-            { "start": "0.629","text": "Comienza" },
-            { "start": "0.629","text": "a" },
-            { "start": "0.629","text": "limpiar" },
-            { "start": "0.629","text": "su" },
-            { "start": "0.629","text": "viejo" },
-            { "start": "0.629","text": "escritorio" },
-            { "start": "0.629","text": "Retira" },
-            { "start": "0.629","text": "el" },
-            { "start": "0.629","text": "polvo" },
-            { "start": "0.629","text": "y" },
-            { "start": "0.629","text": "todos" },
-            { "start": "0.629","text": "los" },
-            { "start": "0.629","text": "objetos" },
-            { "start": "0.629","text": "que" },
-            { "start": "0.629","text": "estaban" },
-            { "start": "0.629","text": "sobre" },
-            { "start": "0.629","text": "él" }
-            
-]
-Entonces nuestro querido Yogotar la estrella colocó y a todos juntó, para cantar, disfrutar y con sus sonrisas a la navidad iluminar.
-var pistaES6 = [
-            { "start": "0.109","text": "Thefannie" },
-            { "start": "0.629","text": "ha" },
-            { "start": "0.629","text": "encontrado" },
-            { "start": "0.629","text": "un" },
-            { "start": "0.629","text": "espacio" },
-            { "start": "0.629","text": "tranquilo" },
-            { "start": "0.629","text": "Un" },
-            { "start": "0.629","text": "lugar" },
-            { "start": "0.629","text": "donde" },
-            { "start": "0.629","text": "puede" },
-            { "start": "0.629","text": "pensar" },
-            { "start": "0.629","text": "con" },
-            { "start": "0.629","text": "claridad" },
-            { "start": "0.629","text": "y" },
-            { "start": "0.629","text": "libre" },
-            { "start": "0.629","text": "de" },
-            { "start": "0.629","text": "las" },
-            { "start": "0.629","text": "distracciones" },
-            { "start": "0.629","text": "del" },
-            { "start": "0.629","text": "exterior" }
-    ]
 
 
 /*--------------------------------English--------------------------------*/
 
 
-Eagle was in his laboratory thinking of the presents he would give on Christmas, while the rest of his friends were decorating the house. Eagle was not excited. 
 var pistaEN1 = [
-            { "start": "0.578","text": "Thefannie" },
-            {"start": "0.872","text": "has" },
-            {"start": "1.216","text": "to" },
-            {"start": "1.308","text": "do" },
-            {"start": "1.543","text": "homework" },
-            {"start": "2.052","text": "and" },
-            {"start": "2.307","text": "study" },
-            {"start": "2.562","text": "for" },
-            {"start": "2.667","text": "her" },
-            {"start": "2.933","text": "exam" }
+             { "start":"0.526","text": "Eagle" },
+             {"start": "0.781","text": "was in" },
+             {"start": "1.277","text": "his" },
+             {"start": "1.547","text": "laboratory," },
+             {"start": "2.509","text": "thinking" },
+             {"start": "2.719","text": "of the" },
+             {"start": "3.080","text": "presents" },
+             {"start": "3.733","text": "he," },
+             {"start": "3.839","text": "would" },
+             {"start": "4.056","text": "give" },
+             {"start": "4.406","text": "on" },
+             {"start": "4.640","text": "Christmas" },
+             {"start": "5.536","text": "while the" },
+             {"start": "5.822","text": "rest" },
+             {"start": "6.152","text": "of his" },
+             {"start": "6.479","text": "friends" },
+             {"start": "6.911","text": "were" },
+             {"start": "7.110","text": "decorating" },
+             {"start": "7.752","text": "the house" },
+             {"start": "8.905","text": "Eagle" },
+             {"start": "9.581","text": "was" },
+             {"start": "9.807","text": "not" },
+             {"start": "10.363","text": "excited" }
 ]
-"HO-HO HO!" Eagle turned to find an old bearded man who asked "What's wrong Yogotar? Why aren't you decorating the house?"
+
 var pistaEN2 = [
-            { "start": "0.600","text": "Thefannie" },
-            {"start": "1.004","text": "can´t" },
-            {"start": "1.282","text": "read" },
-            {"start": "1.910","text": "The" },
-            {"start": "2.019","text": "dining" },
-            {"start": "2.315","text": "room" },
-            {"start": "2.510","text": "is" },
-            {"start": "2.699","text": "very" },
-            {"start": "3.082","text": "noisy" },
-            {"start": "3.669","text": "and" },
-            {"start": "3.780","text": "her" },
-            {"start": "4.000","text": "friends" },
-            {"start": "4.335","text": "won´t" },
-            {"start": "4.706","text": "stop" },
-            {"start": "4.910","text": "laughing" }
+             {"start": "0.711","text": "HO-HO HO!" },
+             {"start": "2.876","text": "Eagle" },
+             {"start": "3.301","text": "turned" },
+             {"start": "3.549","text": "to find" },
+             {"start": "4.245","text": "an old" },
+             {"start": "4.894","text": "bearded" },
+             {"start": "5.296","text": "man" },
+             {"start": "5.745","text": "who" },
+             {"start": "5.900","text": "asked" },
+             {"start": "6.734","text": "What's" },
+             {"start": "7.113","text": "wrong" },
+             {"start": "7.484","text": "Yogotar?" },
+             {"start": "8.783","text": "Why" },
+             {"start": "9.232","text": "aren't" },
+             {"start": "9.518","text": "you" },
+             {"start": "9.754","text": "decorating" },
+             {"start": "10.446","text": "the" },
+             {"start": "10.519","text": "house?" },
 ]
-How can I decorate if I have no presents to give? I have no idea what to give my friends.
+
 var pistaEN3 = [
-            { "start": "0.601","text": "Thefannie" },
-            {"start": "1.024","text": "can´t" },
-            {"start": "1.325","text": "do" },
-            {"start": "1.500","text": "her" },
-            {"start": "1.751","text": "homework" },
-            {"start": "2.448","text": "The" },
-            {"start": "2.593","text": "park" },
-            {"start": "3.007","text": "doesn´t" },
-            {"start": "3.411","text": "seem" },
-            {"start": "3.614","text": "to" },
-            {"start": "3.773","text": "be" },
-            {"start": "3.896","text": "a" },
-            {"start": "4.015","text": "good" },
-            {"start": "4.377","text": "idea" },
-            {"start": "4.903","text": "At" },
-            {"start": "5.090","text": "least" },
-            {"start": "5.326","text": "not" },
-            {"start": "5.600","text": "where" },
-            {"start": "5.744","text": "her" },
-            {"start": "5.953","text": "friends" },
-            {"start": "6.164","text": "are" },
-            {"start": "6.410","text": "playing" }
+             {"start": "0.597","text": "How" },
+             {"start": "0.839","text": "can I" },
+             {"start": "1.436","text": "decorate" },
+             {"start": "1.905","text": "if I " },
+             {"start": "2.077","text": "have" },
+             {"start": "2.462","text": "no" },
+             {"start": "2.889","text": "presents" },
+             {"start": "3.494","text": "to" },
+             {"start": "3.645","text": "give?" },
+             {"start": "4.544","text": "I" },
+             {"start": "4.716","text": "have" },
+             {"start": "5.010","text": "no" },
+             {"start": "5.271","text": "idea" },
+             {"start": "5.933","text": "what" },
+             {"start": "6.248","text": "to" },
+             {"start": "6.441","text": "give" },
+             {"start": "6.686","text": "my" },
+             {"start": "6.972","text": "friends" }
 ]
-HO-HO-HO! My dear Yogotar, Christmas is not about giving presents, it's about enjoying some time together with your friends and family. 
+
 var pistaEN4 = [
-            { "start": "0.633","text": "Thefannie" },
-            { "start": "1.008","text": "takes" },
-            { "start": "1.280","text": "a"},
-            { "start": "1.470","text": "deep"},
-            { "start": "1.733","text": "breath"},
-            { "start": "2.093","text": "to"},
-            { "start": "2.236","text": "help"},
-            { "start": "2.429","text": "her"},
-            { "start": "2.601","text": "calm"},
-            { "start": "2.856","text": "down"},
-            { "start": "3.582","text": "She"},
-            { "start": "3.779","text": "is"},
-            { "start": "4.043","text": "mad"},
-            { "start": "4.554","text": "and"},
-            { "start": "4.756","text": "tired"}
+            { "start": "0.899","text": "HO-HO-HO!" },
+            { "start": "2.353","text": "My" },
+            { "start": "2.803","text": "dear" },
+            { "start": "3.209","text": "Yogotar"},
+            { "start": "4.525","text": "Christmas"},
+            { "start": "4.955","text": "is not"},
+            { "start": "5.377","text": "about"},
+            { "start": "5.826","text": "giving"},
+            { "start": "6.335","text": "presents"},
+            { "start": "7.541","text": "it's"},
+            { "start": "7.719","text": "about"},
+            { "start": "8.101","text": "enjoying"},
+            { "start": "8.692","text": "some"},
+            { "start": "8.921","text": "time"},
+            { "start": "9.307","text": "together"},
+            { "start": "9.875","text": "with"},
+            { "start": "10.017","text": "your"},
+            { "start": "10.324","text": "friends"},
+            { "start": "10.715","text": "and"},
+            { "start": "10.994","text": "family"},
             
 ]
-"I've got it! I know what I'll give my friends," said Eagle. Eagle began working on a big star to decorate the Christmas Tree. 
+ 
 var pistaEN5 = [
-            { "start": "0.627","text": "She" },
-            { "start": "0.791","text": "starts" },
-            { "start": "1.269","text": "cleaning" },
-            { "start": "1.678","text": "her" },
-            { "start": "1.745","text": "old" },
-            { "start": "1.988","text": "desk" },
-            { "start": "2.774","text": "She" },
-            { "start": "3.043","text": "removes" },
-            { "start": "3.369","text": "the" },
-            { "start": "3.535","text": "dust" },
-            { "start": "4.036","text": "and" },
-            { "start": "4.221","text": "all" },
-            { "start": "4.455","text": "of" },
-            { "start": "4.508","text": "the" },
-            { "start": "4.639","text": "objects" },
-            { "start": "5.157","text": "on" },
-            { "start": "5.388","text": "it" }
-            
+            { "start": "0.645","text": "I've" },
+            { "start": "0.923","text": "got it!" },
+            { "start": "1.733","text": "I" },
+            { "start": "1.937","text": "know" },
+            { "start": "2.138","text": "what" },
+            { "start": "2.239","text": "I'll" },
+            { "start": "2.466","text": "give" },
+            { "start": "2.663","text": "my" },
+            { "start": "3.000","text": "friends" },
+            { "start": "3.836","text": "said" },
+            { "start": "3.992","text": "Eagle" },
+            { "start": "5.080","text": "Eagle" },
+            { "start": "5.485","text": "began" },
+            { "start": "5.945","text": "working" },
+            { "start": "6.282","text": "on a" },
+            { "start": "6.801","text": "big" },
+            { "start": "7.009","text": "star" },
+            { "start": "7.705","text": "to" },
+            { "start": "7.896","text": "decorate" },
+            { "start": "8.427","text": "the" },
+            { "start": "8.547","text": "Christmas" },
+            { "start": "9.052","text": "Tree" },
+
 ]
-Then, our dear Yogotar put the star on top of the tree. His friends gathered around to sing and enjoy their time together. The bright smiles on their faces lit up Christmas.  
+  
 var pistaEN6 = [
-            { "start": "0.109","text": "Thefannie" },
-            { "start": "0.629","text": "has" },
-            { "start": "0.629","text": "found" },
-            { "start": "0.629","text": "her" },
-            { "start": "0.629","text": "quiet" },
-            { "start": "0.629","text": "space!" },
-            { "start": "0.629","text": "A" },
-            { "start": "0.629","text": "place" },
-            { "start": "0.629","text": "where" },
-            { "start": "0.629","text": "she" },
-            { "start": "0.629","text": "can" },
-            { "start": "0.629","text": "think" },
-            { "start": "0.629","text": "peacefully" },
-            { "start": "0.629","text": "without" },
-            { "start": "0.629","text": "any" },
-            { "start": "0.629","text": "distraction" }
+            { "start": "0.681","text": "Then" },
+            { "start": "1.340","text": "our" },
+            { "start": "1.715","text": "dear" },
+            { "start": "2.114","text": "Yogotar" },
+            { "start": "2.907","text": "put the" },
+            { "start": "3.194","text": "star" },
+            { "start": "3.704","text": "on" },
+            { "start": "3.973","text": "top" },
+            { "start": "4.219","text": "of the" },
+            { "start": "4.478","text": "tree" },
+            { "start": "5.809","text": "His" },
+            { "start": "6.080","text": "friends" },
+            { "start": "6.458","text": "gathered" },
+            { "start": "6.926","text": "around" },
+            { "start": "7.338","text": "to sing" },
+            { "start": "8.000","text": "and" },
+            { "start": "8.140","text": "enjoy" },
+            { "start": "8.613","text": "their" },
+            { "start": "8.891","text": "time" },
+            { "start": "9.193","text": "together" },
+            { "start": "10.467","text": "The" },
+            { "start": "10.676","text": "bright" },
+            { "start": "11.107","text": "smiles" },
+            { "start": "11.548","text": "on their" },
+            { "start": "11.951","text": "faces" },
+            { "start": "12.456","text": "lit up" },
+            { "start": "13.179","text": "Christmas" },
 ]
 
 
