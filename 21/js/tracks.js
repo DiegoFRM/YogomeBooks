@@ -281,7 +281,6 @@ var pistaES5 = [
             { "start": "15.550","text": "algo"},
             { "start": "15.838","text": "la"},
             { "start": "15.985","text": "jalaba" },
-            { "start": "16.710","text": "..."},
             { "start": "17.813","text": "era"},
             { "start": "18.151","text": "la"},
             { "start": "18.267","text": "mano"},
