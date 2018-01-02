@@ -183,7 +183,7 @@ var pistaEN1 = [
 ]
 
 var pistaEN2 = [
-             {"start": "0.711","text": "HO-HO HO!" },
+             {"start": "0.711","text": "HO-HO-HO!" },
              {"start": "2.876","text": "Eagle" },
              {"start": "3.301","text": "turned" },
              {"start": "3.549","text": "to find" },
