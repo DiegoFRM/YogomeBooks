@@ -423,9 +423,18 @@ body{
 .userName{
   
   color: black;
-  font-size: 1.2em;
+  font-size: 16.5px;
   position: absolute;
-  top: 44%;
+  top: 41.3%;
+  left: 43%;
+  transform: translate(-50%, -50%);
+}
+.zoomUserName{
+  
+  color: black;
+  font-size: 40px;
+  position: absolute;
+  top: 41.3%;
   left: 43%;
   transform: translate(-50%, -50%);
 }
