@@ -52,7 +52,7 @@ var pistaEN2 = [
             {"start": "0.951","text": "down" },
             {"start": "1.326","text": "Oona." },
             {"start": "2.311","text": "First" },
-            {"start": "3,203","text": "tell" },
+            {"start": "3.203","text": "tell" },
             {"start": "3.436","text": "us" },
             {"start": "3.610","text": "how" },
             {"start": "3.815","text": "you" },

@@ -173,6 +173,10 @@ function goBack() {
     <div class="idiomas">
         <div id="ButtonLanEs" class="overLanguage">Español</div>
         <div id="ButtonLanEn" class="overLanguage">English</div>
+        <div id="ButtonLanZh" class="overLanguage">中國</div>
+        <div id="ButtonLanJa" class="overLanguage">日本語</div>
+        <div id="ButtonLanKo" class="overLanguage">한국어</div>
+        <div id="ButtonLanPt" class="overLanguage">PORTUGUES</div>
     </div>
     <div id="audiosGroup"></div>
 	<div class="bottom">
@@ -221,6 +225,34 @@ function goBack() {
 
         var str = window.location.search
         str = replaceQueryParam('language', "EN", str)
+        window.location = window.location.pathname + str + "#page/" + audioNumber;
+    });
+    
+    $("#ButtonLanZh").click(function(){
+
+        var str = window.location.search
+        str = replaceQueryParam('language', "ZH", str)
+        window.location = window.location.pathname + str + "#page/" + audioNumber;
+    });
+    
+    $("#ButtonLanJa").click(function(){
+
+        var str = window.location.search
+        str = replaceQueryParam('language', "JA", str)
+        window.location = window.location.pathname + str + "#page/" + audioNumber;
+    });
+    
+    $("#ButtonLanKo").click(function(){
+
+        var str = window.location.search
+        str = replaceQueryParam('language', "KO", str)
+        window.location = window.location.pathname + str + "#page/" + audioNumber;
+    });
+    
+    $("#ButtonLanPt").click(function(){
+
+        var str = window.location.search
+        str = replaceQueryParam('language', "PT", str)
         window.location = window.location.pathname + str + "#page/" + audioNumber;
     });
     
