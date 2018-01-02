@@ -417,16 +417,25 @@ body{
     height: 100%;
     width: 100%;
     position:relative;
+    background-repeat: no-repeat;
+    background-size: 100%;
 }
 .userName{
   
-  white-space: nowrap;
   color: black;
-  font-size: 20px;
+  font-size: 16.5px;
   position: absolute;
-  overflow: hidden;
-  top: 43%;
-  left: 48%;
+  top: 39.3%;
+  left: 42%;
+  transform: translate(-50%, -50%);
+}
+.zoomUserName{
+  
+  color: black;
+  font-size: 40px;
+  position: absolute;
+  top: 39.3%;
+  left: 42%;
   transform: translate(-50%, -50%);
 }
 
@@ -599,7 +608,7 @@ body{
 
 
 .magazine .p2{
-    	background-image:url(../bookpages/2.png) !important;
+    	/*background-image:url(../bookpages/2.png) !important;*/
 
 }
 

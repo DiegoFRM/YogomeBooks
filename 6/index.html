@@ -407,7 +407,8 @@ function loadApp() {
 			},
 
 			zoomIn: function () {
-
+                
+                $(".userName").addClass("zoomUserName")
 				$('#slider-bar').hide();
 				$('.made').hide();
 				$('.magazine').removeClass('animated').addClass('zoom-in');
@@ -427,7 +428,8 @@ function loadApp() {
 			},
 
 			zoomOut: function () {
-
+                
+                $(".userName").removeClass("zoomUserName")
 				$('#slider-bar').fadeIn();
 				$('.exit-message').hide();
 				$('.made').fadeIn();
