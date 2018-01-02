@@ -18,11 +18,33 @@ var pistaES1 = [
             {"start": "2.707","text": "tareas" },
             {"start": "3.177","text": "para" },
             {"start": "3.320","text": "su" },
+            {"start": "3.528","text": "examen" },
+            {"start": "0.630","text": "tiene" },
+            {"start": "0.802","text": "que" },
+            {"start": "0.995","text": "estudiar" },
+            {"start": "1.795","text": "y" },
+            {"start": "1.871","text": "hacer" },
+            {"start": "2.080","text": "un" },
+            {"start": "2.389","text": "par" },
+            {"start": "2.539","text": "de" },
+            {"start": "2.707","text": "tareas" },
+            {"start": "3.177","text": "para" },
+            {"start": "3.320","text": "su" },
             {"start": "3.528","text": "examen" }
 ];
 
 var pistaEN1 = [
             { "start": "0.578","text": "Thefannie" },
+            {"start": "0.872","text": "has" },
+            {"start": "1.216","text": "to" },
+            {"start": "1.308","text": "do" },
+            {"start": "1.543","text": "homework" },
+            {"start": "2.052","text": "and" },
+            {"start": "2.307","text": "study" },
+            {"start": "2.562","text": "for" },
+            {"start": "2.667","text": "her" },
+            {"start": "2.933","text": "exam" },
+            {"start": "0.578","text": "Thefannie" },
             {"start": "0.872","text": "has" },
             {"start": "1.216","text": "to" },
             {"start": "1.308","text": "do" },
@@ -52,7 +74,17 @@ var pistaES2 = [
             {"start": "5.961","text": "no" },
             {"start": "6.323","text": "paran" },
             {"start": "6.666","text": "de" },
-            {"start": "6.816","text": "reir" }
+            {"start": "6.816","text": "reir" },
+            {"start": "0.578","text": "Thefannie" },
+            {"start": "0.872","text": "has" },
+            {"start": "1.216","text": "to" },
+            {"start": "1.308","text": "do" },
+            {"start": "1.543","text": "homework" },
+            {"start": "2.052","text": "and" },
+            {"start": "2.307","text": "study" },
+            {"start": "2.562","text": "for" },
+            {"start": "2.667","text": "her" },
+            {"start": "2.933","text": "exam" }
 ];
 
 var pistaEN2 = [
@@ -70,7 +102,17 @@ var pistaEN2 = [
             {"start": "4.000","text": "friends" },
             {"start": "4.335","text": "won´t" },
             {"start": "4.706","text": "stop" },
-            {"start": "4.910","text": "laughing" }
+            {"start": "4.910","text": "laughing" },
+            {"start": "0.578","text": "Thefannie" },
+            {"start": "0.872","text": "has" },
+            {"start": "1.216","text": "to" },
+            {"start": "1.308","text": "do" },
+            {"start": "1.543","text": "homework" },
+            {"start": "2.052","text": "and" },
+            {"start": "2.307","text": "study" },
+            {"start": "2.562","text": "for" },
+            {"start": "2.667","text": "her" },
+            {"start": "2.933","text": "exam" }
 ];
 
 
@@ -157,7 +199,17 @@ var pistaEN4 = [
             { "start": "3.779","text": "is"},
             { "start": "4.043","text": "mad"},
             { "start": "4.554","text": "and"},
-            { "start": "4.756","text": "tired"}
+            { "start": "4.756","text": "tired"},
+            { "start": "0.578","text": "Thefannie" },
+            {"start": "0.872","text": "has" },
+            {"start": "1.216","text": "to" },
+            {"start": "1.308","text": "do" },
+            {"start": "1.543","text": "homework" },
+            {"start": "2.052","text": "and" },
+            {"start": "2.307","text": "study" },
+            {"start": "2.562","text": "for" },
+            {"start": "2.667","text": "her" },
+            {"start": "2.933","text": "exam" }
             
 ]
 
@@ -180,7 +232,17 @@ var pistaES5 = [
             { "start": "0.629","text": "que" },
             { "start": "0.629","text": "estaban" },
             { "start": "0.629","text": "sobre" },
-            { "start": "0.629","text": "él" }
+            { "start": "0.629","text": "él" },
+            { "start": "0.578","text": "Thefannie" },
+            {"start": "0.872","text": "has" },
+            {"start": "1.216","text": "to" },
+            {"start": "1.308","text": "do" },
+            {"start": "1.543","text": "homework" },
+            {"start": "2.052","text": "and" },
+            {"start": "2.307","text": "study" },
+            {"start": "2.562","text": "for" },
+            {"start": "2.667","text": "her" },
+            {"start": "2.933","text": "exam" }
             
 ]
 
@@ -203,7 +265,17 @@ var pistaEN5 = [
             { "start": "4.508","text": "the" },
             { "start": "4.639","text": "objects" },
             { "start": "5.157","text": "on" },
-            { "start": "5.388","text": "it" }
+            { "start": "5.388","text": "it" },
+            { "start": "0.578","text": "Thefannie" },
+            {"start": "0.872","text": "has" },
+            {"start": "1.216","text": "to" },
+            {"start": "1.308","text": "do" },
+            {"start": "1.543","text": "homework" },
+            {"start": "2.052","text": "and" },
+            {"start": "2.307","text": "study" },
+            {"start": "2.562","text": "for" },
+            {"start": "2.667","text": "her" },
+            {"start": "2.933","text": "exam" }
             
 ]
 
@@ -228,7 +300,17 @@ var pistaES6 = [
             { "start": "0.629","text": "las" },
             { "start": "0.629","text": "distracciones" },
             { "start": "0.629","text": "del" },
-            { "start": "0.629","text": "exterior" }
+            { "start": "0.629","text": "exterior" },
+            { "start": "0.578","text": "Thefannie" },
+            {"start": "0.872","text": "has" },
+            {"start": "1.216","text": "to" },
+            {"start": "1.308","text": "do" },
+            {"start": "1.543","text": "homework" },
+            {"start": "2.052","text": "and" },
+            {"start": "2.307","text": "study" },
+            {"start": "2.562","text": "for" },
+            {"start": "2.667","text": "her" },
+            {"start": "2.933","text": "exam" }
 ]
 
 
@@ -248,7 +330,17 @@ var pistaEN6 = [
             { "start": "0.629","text": "peacefully" },
             { "start": "0.629","text": "without" },
             { "start": "0.629","text": "any" },
-            { "start": "0.629","text": "distraction" }
+            { "start": "0.629","text": "distraction" },
+            { "start": "0.578","text": "Thefannie" },
+            {"start": "0.872","text": "has" },
+            {"start": "1.216","text": "to" },
+            {"start": "1.308","text": "do" },
+            {"start": "1.543","text": "homework" },
+            {"start": "2.052","text": "and" },
+            {"start": "2.307","text": "study" },
+            {"start": "2.562","text": "for" },
+            {"start": "2.667","text": "her" },
+            {"start": "2.933","text": "exam" }
 ]
 
 /*--------------------------------Corean--------------------------------*/
