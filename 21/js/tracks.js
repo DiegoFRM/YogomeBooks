@@ -456,7 +456,7 @@ var pistaEN6 = [
 /*--------------------------------Corean--------------------------------*/
 
 var pistaKO1 = [
-            { "start": "0.000","text": "나오와" },
+            { "start": "0.100","text": "나오와" },
             { "start": "1.028","text": "토미코," },
             { "start": "2.431","text": "두" },
             { "start": "2.906","text": "요고타는" },
@@ -491,7 +491,7 @@ var pistaKO1 = [
 ] 
 
 var pistaKO2 = [
-            { "start": "0.000","text": "나오는" },
+            { "start": "0.100","text": "나오는" },
             { "start": "0.900","text": "멈춰서서" },
             { "start": "2.558","text": "강을" },
             { "start": "3.575","text": "바라보았어요." },
@@ -524,7 +524,7 @@ var pistaKO2 = [
 ] 
 
 var pistaKO3 = [
-            { "start": "0.000","text": "나오는" },
+            { "start": "0.100","text": "나오는" },
             { "start": "0.877","text": "대답하지" },
             { "start": "1.851","text": "않고" },
             { "start": "3.032","text": "대신" },
@@ -543,7 +543,7 @@ var pistaKO3 = [
 ] 
 
 var pistaKO4 = [
-            { "start": "0.005","text": "나는" },
+            { "start": "0.100","text": "나는" },
             { "start": "0.663","text": "지금" },
             { "start": "1.134","text": "갈거야." },
             { "start": "2.784","text": "토미코가" },
@@ -564,7 +564,7 @@ var pistaKO4 = [
 ] 
 
 var pistaKO5 = [
-            { "start": "0.001","text": "토미코는" },
+            { "start": "0.100","text": "토미코는" },
             { "start": "1.157","text": "너무" },
             { "start": "1.789","text": "지쳤고" },
             { "start": "3.300","text": "강물을" },
@@ -595,7 +595,7 @@ var pistaKO5 = [
 ] 
 
 var pistaKO6 = [
-            { "start": "0.000","text": "우리가" },
+            { "start": "0.100","text": "우리가" },
             { "start": "0.500","text": "이겼어!" },
             { "start": "1.941","text": "어떻게" },
             { "start": "2.574","text": "나를" },

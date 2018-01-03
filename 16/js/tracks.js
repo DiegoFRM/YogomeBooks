@@ -498,7 +498,8 @@ var pistaKO5 = [
 ] 
 
 var pistaKO6 = [
-            { "start": "0.007","text": "... 그리고" },
+            { "start": "0.007","text": "..." },
+            { "start": "0.007","text": "그리고" },
             { "start": "0.961","text": "우프는" },
             { "start": "2.343","text": "저스티스에게" },
             { "start": "4.432","text": "즐러크들이" },
