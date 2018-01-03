@@ -425,18 +425,24 @@ body{
   color: black;
   font-size: 16.5px;
   position: absolute;
-  top: 41.3%;
+  top: 41%;
   left: 43%;
   transform: translate(-50%, -50%);
+  -webkit-margin-before: -.2em;
+  -webkit-margin-after: 5em;
+  -webkit-margin-start: -10px
 }
 .zoomUserName{
   
   color: black;
   font-size: 40px;
   position: absolute;
-  top: 41.3%;
+  top: 41.1%;
   left: 43%;
   transform: translate(-50%, -50%);
+  -webkit-margin-before: -.2em;
+  -webkit-margin-after: 5em;
+  -webkit-margin-start: -10px
 }
 
 #userContainer{

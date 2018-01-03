@@ -428,6 +428,9 @@ body{
   top: 39.3%;
   left: 42%;
   transform: translate(-50%, -50%);
+  -webkit-margin-before: -.2em;
+  -webkit-margin-after: 5em;
+  -webkit-margin-start: -10px
 }
 .zoomUserName{
   
