@@ -28,17 +28,19 @@
             }
         ]
     
-    var language = "EN"
-    if(parent.window.location.search){
-        var params = parent.window.location.search.trim(1)
-        var regex = /language=(..)/i
-        var result = regex.exec(params)
-        if(result){
-            language = result[result.index].toUpperCase()    
-        }else{
-            language = "ES"
-        } 
-    }    
+    //AQUI VA PARA SABER EL LENGUAGE
+        function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+        var language;
+        language = getParameterByName("language");
     
     function changeTitle(){
         if(language == "ES"){
@@ -124,7 +126,6 @@ var languagePages = [
 
 <div id="canvas">
 
-<div class="zoom-icon zoom-icon-in"></div>
 
 <div class="magazine-viewport">
 	<div class="container">
@@ -480,10 +481,10 @@ function loadApp() {
 
 	// Zoom event
 
-	if ($.isTouch)
-		$('.magazine-viewport').bind('zoom.doubleTap', zoomTo);
-	else
-		$('.magazine-viewport').bind('zoom.tap', zoomTo);
+//	if ($.isTouch)
+//		$('.magazine-viewport').bind('zoom.doubleTap', zoomTo);
+//	else
+//		$('.magazine-viewport').bind('zoom.tap', zoomTo);
 
 
 	// Using arrow keys to turn the page

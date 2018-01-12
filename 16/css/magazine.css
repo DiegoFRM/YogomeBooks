@@ -19,7 +19,7 @@ body{
 
 #homeButton img{
     width: 80%;
-    max-width: 100px;
+    max-width: 150px;
 }
 
 .magazine-viewport .container{
@@ -169,10 +169,13 @@ body{
 	bottom:0px;
     z-index: 123;
     text-align: center;
+    width: 200px;
+    
 }
 
 .next-button{
     height: auto;
+    width: 200px;
 	position:absolute;
 	bottom:0px;
     z-index: 123;

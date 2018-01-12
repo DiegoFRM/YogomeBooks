@@ -21,21 +21,25 @@ function updateDepth(book, newPage) {
 		depthWidth = 16*Math.min(1, (pages-page)*2/pages);
 
 	if (newPage<pages-3)
-		$('.magazine .p15 .depth').css({
+		$('.magazine .p17 .depth').css({
 			width: depthWidth,
 			right: 20 - depthWidth
 		});
 	else
-		$('.magazine .p15 .depth').css({width: 0});
+		$('.magazine .p17 .depth').css({width: 0});
 
 }
 
 function addPage(page, book) {
-
 	var id, pages = book.turn('pages');
 
 	// Create a new element for this page
-	var element = $('<div />', {});
+	var element = $('<div />', {
+        'class': 'own-size',
+				css: {ancho:20,height:570},
+        
+    });
+    
 
 	// Add the page to the flipbook
 	if (book.turn('addPage', element, page)) {
@@ -50,6 +54,8 @@ function addPage(page, book) {
 
 }
 
+
+
 function loadPage(page, pageElement) {
 
 	// Create an image element
@@ -63,7 +69,7 @@ function loadPage(page, pageElement) {
 	img.load(function() {
 		
 		// Set the size
-		$(this).css({width: '100%', height: '100%'});
+		$(this).css({width: '90%', height: '90%'});
 
 		// Add the image to the page after loaded
 
@@ -86,7 +92,7 @@ function loadPage(page, pageElement) {
 function loadHTML(page,pageElement) {
 
 	// Create an image element
-    pageElement.find('.loader').remove();
+    //pageElement.find('.loader').remove();
 	pageElement.load("bookpages/"+ page +".html")
     
 

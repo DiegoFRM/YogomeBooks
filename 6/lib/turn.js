@@ -503,8 +503,8 @@ turnMethods = {
         pageHeight = this.height();
 
       if (data.pageObjs[page].hasClass('own-size')) {
-        prop.width = data.pageObjs[page].width();
-        prop.height = data.pageObjs[page].height();
+        prop.width = pageWidth - 20;
+        prop.height = pageHeight - 20;
       } else {
         prop.width = pageWidth;
         prop.height = pageHeight;
