@@ -1,4 +1,4 @@
-
+<div class="buttonSound"><img src="images/sound.png"></div>
 <div class="odd gradient"></div>
 
 <div class="textPage">
@@ -18,5 +18,13 @@
         $(this).attr('id', 'c_' + i);
          });       
         } 
+    $(this).click(function(){
+        AudioPlay();
+    })
 
+$(this).on({ 'touchstart' : function(){ 
+            
+        AudioPlay();
+}
+    })   
 </script>

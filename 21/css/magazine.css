@@ -164,23 +164,22 @@ body{
 
 
 .previous-button{
-    height: auto;
 	position:absolute;
-	bottom:0px;
     z-index: 123;
-    text-align: center;
-    width: 200px;    
+    left: 0%;
+    top:80%;
+    width: 10%;
 }
 
 .next-button{
-    width: 200px;    
-    height: auto;
 	position:absolute;
-	bottom:0px;
     z-index: 123;
-    right: 0;
-    text-align: center;
+    left: 91%;
+    top:80%;
+    width: 10%;
+    transform: scale(-1,1)
 }
+
 
 
 .next-button img,
@@ -656,8 +655,35 @@ body{
 }
 
 .magazine .own-size{
-	width:460px;
-	height:582px;
-	background-color:white;
 	overflow:hidden;
+    width: 442px;
+    height: 580px;    
 }
+
+
+.buttonSound{
+    position: absolute;
+    width: 20%;
+    left: 50%;
+    transform: translate(-50%,0%);
+    bottom: 0;
+}
+.buttonSound img{
+    width: 60%;
+}
+
+.animation1 {
+          width: 115px;
+          height: 111px;
+          margin: 0% auto;
+          background: url('../images/115x11_27f_24fps.png') left center;
+          animation: play .8s steps(23) infinite;
+        }
+
+        @keyframes play {
+        100% {
+		  background-position: -2645px;
+	   }
+	
+    
+        }

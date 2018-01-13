@@ -97,8 +97,8 @@ var has3d,
   flipOptions = {
 
     // Size of the active zone of each corner
-
-    cornerSize: 100
+      //disabled corners
+    cornerSize: 0
 
   },
 
@@ -498,7 +498,7 @@ turnMethods = {
       }
 
     } else {
-
+        //CHANGES1
       var pageWidth = this.width()/2,
         pageHeight = this.height();
 

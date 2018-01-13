@@ -131,10 +131,22 @@ var languagePages = [
 	<div class="container">
         
 		<div class="magazine">
+<!--  BOTON SIGUIENTE      -->
+                <div ignore="1" class="next-button">
+                    <div id="activeNext" >
+                        <div class="animation1"> 
+                        </div>
+                    </div>
+                    <img src="images/nextButton.png">
+                </div>
+            <!-- Previous button -->
+			<div ignore="1" class="previous-button">
+    <img src="images/nextButton.png">
+            </div>             
             <div id="p1" depth="5" class="hard"> <div class="side"></div> </div>
 			<div depth="5" class="hard front-side"> <div class="depth"></div> </div>
-			<div class="hard fixed back-side p17"> </div>
-			<div class="hard p18"></div>
+			<div class="hard fixed back-side p17"><div class="depth"></div> </div>
+			<div class="hard p18"> </div>
 
             </div>
             <script>
@@ -180,22 +192,11 @@ function goBack() {
         <div id="ButtonLanPt" class="overLanguage">PORTUGUES</div>
     </div>
     <div id="audiosGroup"></div>
-	<div class="bottom">
-        <div ignore="1" class="next-button">
-            <div id="activeNext">
-                <img src="images/nextButtonActive.png">
-            </div>
-            <img src="images/nextButton.png">
-            </div>
-			<!-- Previous button -->
-			<div ignore="1" class="previous-button">
-    <img src="images/prevButton.png">
-            </div>        
+	<div class="bottom">    
 		<div id="slider-bar" class="turnjs-slider timeline-style">
 			<div id="slider">
             </div>
 		</div>
-         <div id="sectionPlayButton" ><img id="buttonPlay" src="images/Play.png"></div>
 	</div>
     
 </div>
@@ -278,14 +279,16 @@ function goBack() {
         
     });
     
-    TweenMax.fromTo($("#activeNext"),1,{alpha:0.5},{alpha:1,yoyo:true,repeat:-1});
+    //TweenMax.fromTo($("#activeNext"),1,{alpha:0.5},{alpha:1,yoyo:true,repeat:-1});
+    
+
     
     $("#audiosGroup").append('<audio id="audio0" preload="true" src="audios/' +  0 + '.mp3"></audio>') 
     for(var i = 1;i<=6;i++){
        $("#audiosGroup").append('<audio id="audio'+i+'" preload="true" src="audios/' +[language] + "/" +  i + '.mp3"></audio>')  
     }
     
-
+    
 function loadApp() {
 
  	$('#canvas').fadeIn(1000);
@@ -382,7 +385,7 @@ function loadApp() {
 				},
                 
 				turned: function(event, page, view) {
-
+                    
 					disableControls(page);
                     var object = $(this);
 
@@ -502,7 +505,6 @@ function loadApp() {
 				// left arrow
 				$('.magazine').turn('previous');
                 stopAllSounds();
-                
 				e.preventDefault();
 
 			break;
@@ -512,6 +514,7 @@ function loadApp() {
 				$('.magazine').turn('next');
                 stopAllSounds();
 				e.preventDefault();
+                
 
 			break;
 			case esc:
@@ -617,23 +620,22 @@ function loadApp() {
 	$( "#slider" ).slider({
 		min: 1,
 		max: numberOfViews(flipbook),
-/*
-		start: function(event, ui) {
 
+		start: function(event, ui) {
 			if (!window._thumbPreview) {
 				_thumbPreview = $('<div />', {'class': 'thumbnail'}).html('<div></div>');
-				setPreview(ui.value);
-				_thumbPreview.appendTo($(ui.handle));
+				//setPreview(ui.value);
+				//_thumbPreview.appendTo($(ui.handle));
 			} else
-				setPreview(ui.value);
+				//setPreview(ui.value);
 
 			moveBar(false);
 
 		},
-*/
+
 		slide: function(event, ui) {
 
-			setPreview(ui.value);
+			//setPreview(ui.value);
 
 		},
 
@@ -641,9 +643,9 @@ function loadApp() {
 
 			if (window._thumbPreview)
 				_thumbPreview.removeClass('show');
-			
+			     
 			$('.magazine').turn('page', Math.max(1, $(this).slider('value')*2 - 2));
-
+            stopAllSounds();
 		}
 	});
 
@@ -683,15 +685,29 @@ function loadApp() {
     
 function visibleNext(){
     $("#activeNext").css("display","block")
+    
 }    
     
     
     function stopAllSounds(){
+        
+        if(audioNumber >= [allPages-2]){
+                mixpanel.track("OnBookFinished",{
+                        "user_id": credentials.educationID,
+                        "app": "web",
+                        "bookID" : "6",
+                        "bookName" : "Estoy enojada"
+                    });      
+        }
+        
+        
         $("#activeNext").css("display","none");
+        $(".buttonSound").css("opacity",1);
         playing = false;
         audiosNumbers();
-       audioPlayer = document.getElementById("audio" +  audioReady);
-        $("#buttonPlay").attr("src","images/Play.png");
+        audioPlayer = document.getElementById("audio" +  audioReady);
+        audioPlayer.currentTime = 0;
+        
           for(i= 0; i<=6;i++){
                     var audio = document.getElementById("audio" + i);
                         audio.pause();
@@ -699,7 +715,9 @@ function visibleNext(){
                     
                 } 
         
-    }
+        AudioPlay();
+        
+    }    
 
     
 function audiosNumbers(){
@@ -750,27 +768,32 @@ function audiosNumbers(){
                 case 15:
                     audioReady = 6
                    break;
-                case 16:
+                 case 16:    
                     audioReady = 0
-                   break;
-            
+                    break;
+                 case 17:    
+                    audioReady = 0
+                    break;
+                 case 18:    
+                    audioReady = 0
+                    break;
             }
 }    
 
     
-$("#buttonPlay").click(function(){
+function AudioPlay(){
    if(!playing) {
-        $("#buttonPlay").attr("src","images/Pause.png");
        autoPlay();
        audioPlayer.currentTime = 0;
+      
    }else{
        
             if (audioPlayer.paused) {
                 audioPlayer.play();
-                    $("#buttonPlay").attr("src","images/Pause.png");
+                $(".buttonSound").css("opacity",1);
                 } else {
                     audioPlayer.pause();
-                    $("#buttonPlay").attr("src","images/Play.png");
+                                $(".buttonSound").css("opacity",0.5);    
                 }
        if(language == "ES"){
             audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaES" + audioReady)); 
@@ -783,16 +806,13 @@ $("#buttonPlay").click(function(){
        
    }    
     
-});
+};
 
 function autoPlay(){
     audiosNumbers();
+
     console.log("audioReady: " + audioReady);
     audioPlayer = document.getElementById("audio" +  audioReady); 
-      
-    if(audioNumber == 16){
-        $("#buttonPlay").attr("src","images/Play.png");
-    }else{
         audioPlayer.play();
         if(language == "ES"){
             audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaES" + audioReady)); 
@@ -800,20 +820,19 @@ function autoPlay(){
             audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaEN" + audioReady));
         }else if(language == "KO"){
             audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaKO" + audioReady));
-        }      
+        }        
         audioPlayer.addEventListener("timeupdate", function(e){
             playing = true;
         });
 
-    }
-}       
+}          
     
  $('#canvas').hide();
 
 
 yepnope({
 	test : Modernizr.csstransforms,
-	yep: ['lib/turn.min.js'],
+	yep: ['lib/turn.js'],
 	nope: ['lib/turn.html4.min.js', 'css/jquery.ui.html4.css'],
 	both: ['lib/zoom.min.js', 'css/jquery.ui.css', 'js/magazine.js', 'css/magazine.css','css/custom_fonts.css'],
 	complete: loadApp

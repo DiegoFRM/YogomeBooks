@@ -130,9 +130,25 @@ var languagePages = [
 
 
 <div class="magazine-viewport">
+    
 	<div class="container">
+
         
 		<div class="magazine">
+                <!--  BOTON SIGUIENTE      -->
+                <div ignore="1" class="next-button">
+                    <div id="activeNext" >
+                        <div class="animation1"> 
+                        </div>
+                    </div>
+                    <img src="images/nextButton.png">
+                </div>
+            <!-- Previous button -->
+			<div ignore="1" class="previous-button">
+    <img src="images/nextButton.png">
+            </div> 
+            
+            
             <div id="p1" depth="5" class="hard"> <div class="side"></div> </div>
 			<div depth="5" class="hard front-side"> <div class="depth"></div> </div>
 			<div class="hard fixed back-side p17"><div class="depth"></div> </div>
@@ -178,16 +194,8 @@ function goBack() {
     </div>
     <div id="audiosGroup"></div>
 	<div class="bottom">
-        <div ignore="1" class="next-button">
-            <div id="activeNext">
-                <img src="images/nextButtonActive.png">
-            </div>
-            <img src="images/nextButton.png">
-            </div>
-			<!-- Previous button -->
-			<div ignore="1" class="previous-button">
-    <img src="images/prevButton.png">
-            </div>        
+        
+			       
 		<div id="slider-bar" class="turnjs-slider timeline-style">
 			<div id="slider">
             </div>
@@ -236,7 +244,7 @@ function goBack() {
         
     });
     
-    TweenMax.fromTo($("#activeNext"),1,{alpha:0.5},{alpha:1,yoyo:true,repeat:-1});
+    //TweenMax.fromTo($("#activeNext"),1,{alpha:0.5},{alpha:1,yoyo:true,repeat:-1});
     
     $("#audiosGroup").append('<audio id="audio0" preload="true" src="audios/' +  0 + '.mp3"></audio>') 
     for(var i = 1;i<=6;i++){
@@ -284,7 +292,8 @@ function loadApp() {
 			// Elevation from the edge of the flipbook when turning a page
 
 			elevation: 50,
-
+            
+            
 			// The number of pages
 
 			pages: 18,
@@ -341,7 +350,7 @@ function loadApp() {
 				},
                 
 				turned: function(event, page, view) {
-
+                    
 					disableControls(page);
                     var object = $(this);
 
@@ -375,6 +384,8 @@ function loadApp() {
 
     
     
+    
+    
 	$('.magazine-viewport').zoom({
 		flipbook: $('.magazine'),
 
@@ -388,7 +399,6 @@ function loadApp() {
 			swipeLeft: function() {
 
 				$(this).zoom('flipbook').turn('next');
-                
                 stopAllSounds();
 
 			},
@@ -397,6 +407,7 @@ function loadApp() {
 				
 				$(this).zoom('flipbook').turn('previous');
                 stopAllSounds();
+                alert("ok");
 
 			},
 
@@ -461,7 +472,6 @@ function loadApp() {
 				// left arrow
 				$('.magazine').turn('previous');
                 stopAllSounds();
-                
 				e.preventDefault();
 
 			break;
@@ -579,7 +589,6 @@ function loadApp() {
 		max: numberOfViews(flipbook),
 
 		start: function(event, ui) {
-
 			if (!window._thumbPreview) {
 				_thumbPreview = $('<div />', {'class': 'thumbnail'}).html('<div></div>');
 				//setPreview(ui.value);
@@ -601,9 +610,9 @@ function loadApp() {
 
 			if (window._thumbPreview)
 				_thumbPreview.removeClass('show');
-			
+			     
 			$('.magazine').turn('page', Math.max(1, $(this).slider('value')*2 - 2));
-
+            stopAllSounds();
 		}
 	});
 
@@ -716,12 +725,15 @@ function AudioPlay(){
    if(!playing) {
        autoPlay();
        audioPlayer.currentTime = 0;
+      
    }else{
        
             if (audioPlayer.paused) {
                 audioPlayer.play();
+                $(".buttonSound").css("opacity",1);
                 } else {
                     audioPlayer.pause();
+                                $(".buttonSound").css("opacity",0.5);    
                 }
        if(language == "ES"){
             audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaES" + audioReady)); 
@@ -808,6 +820,9 @@ function mixPanelClose(){
     
 
     function stopAllSounds(){
+        
+        
+        //setTimeout(function(){ AudioPlay(); }, 1000);
         console.log("currentPage: " + audioNumber);
         if(audioNumber >= [allPages-2]){
                 mixpanel.track("OnBookFinished",{
@@ -820,9 +835,10 @@ function mixPanelClose(){
         
         
         $("#activeNext").css("display","none");
+        $(".buttonSound").css("opacity",1);
         playing = false;
         audiosNumbers();
-       audioPlayer = document.getElementById("audio" +  audioReady);
+        audioPlayer = document.getElementById("audio" +  audioReady);
         audioPlayer.currentTime = 0;
           for(i= 0; i<=6;i++){
                     var audio = document.getElementById("audio" + i);
@@ -831,7 +847,7 @@ function mixPanelClose(){
                     
                 } 
         
-        setTimeout(function(){ AudioPlay(); }, 1000);
+        AudioPlay();
         
     }    
     

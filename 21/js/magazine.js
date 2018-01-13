@@ -21,21 +21,25 @@ function updateDepth(book, newPage) {
 		depthWidth = 16*Math.min(1, (pages-page)*2/pages);
 
 	if (newPage<pages-3)
-		$('.magazine .p15 .depth').css({
+		$('.magazine .p17 .depth').css({
 			width: depthWidth,
 			right: 20 - depthWidth
 		});
 	else
-		$('.magazine .p15 .depth').css({width: 0});
+		$('.magazine .p17 .depth').css({width: 0});
 
 }
 
 function addPage(page, book) {
-
 	var id, pages = book.turn('pages');
 
 	// Create a new element for this page
-	var element = $('<div />', {});
+	var element = $('<div />', {
+        'class': 'own-size',
+				css: {ancho:20,height:570},
+        
+    });
+    
 
 	// Add the page to the flipbook
 	if (book.turn('addPage', element, page)) {

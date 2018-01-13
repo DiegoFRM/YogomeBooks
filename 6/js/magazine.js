@@ -93,9 +93,7 @@ function loadHTML(page,pageElement) {
 
 	// Create an image element
     //pageElement.find('.loader').remove();
-	pageElement.load("bookpages/"+ page +".html")
-    
-
+	pageElement.load("bookpages/"+ page +".html");
 }
 
 // Zoom in / Zoom out

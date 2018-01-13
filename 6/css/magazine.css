@@ -163,21 +163,22 @@ body{
 
 
 .previous-button{
-    height: auto;
 	position:absolute;
-	bottom:0px;
     z-index: 123;
-    text-align: center;
+    left: 0%;
+    top:80%;
+    width: 10%;
 }
 
 .next-button{
-    height: auto;
 	position:absolute;
-	bottom:0px;
     z-index: 123;
-    right: 0;
-    text-align: center;
+    left: 91%;
+    top:80%;
+    width: 10%;
+    transform: scale(-1,1)
 }
+
 
 
 .next-button img,
@@ -392,7 +393,7 @@ body{
 .bottom{
 	position:fixed;
 	left:0;
-	bottom:0px;
+	bottom:5%;
 	width:100%;
     z-index: 35;
 }
@@ -544,6 +545,7 @@ body{
 #activeNext{
     display: none;
     position: absolute;
+    left:50%;
 }
 
 /*PASTAS TIPO LIBRO*/
@@ -644,3 +646,31 @@ body{
     width: 442px;
     height: 580px;    
 }
+
+
+.buttonSound{
+    position: absolute;
+    width: 20%;
+    left: 50%;
+    transform: translate(-50%,0%);
+    bottom: 0;
+}
+.buttonSound img{
+    width: 60%;
+}
+
+.animation1 {
+          width: 115px;
+          height: 111px;
+          margin: 0% auto;
+          background: url('../images/115x11_27f_24fps.png') left center;
+          animation: play .8s steps(23) infinite;
+        }
+
+        @keyframes play {
+        100% {
+		  background-position: -2645px;
+	   }
+	
+    
+        }
