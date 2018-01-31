@@ -1,0 +1,958 @@
+<!doctype html>
+<html>
+<head>
+<title class="languageTitle">El hogar de Arthurius</title>
+ <meta charset="UTF-8">    
+<meta name="viewport" content="width = 1050, user-scalable = no" />
+<link rel="icon" type="image/png" href="../../pics/favicon.png" />
+<script type="text/javascript" src="extras/jquery.min.1.7.js"></script>
+<script type="text/javascript" src="extras/jquery-ui-1.8.20.custom.min.js"></script>
+<script type="text/javascript" src="extras/modernizr.2.5.3.min.js"></script>
+<script type="text/javascript" src="lib/hash.js"></script>
+<script type="text/javascript" src="js/jquery.blast.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+    <script type="text/javascript" src="js/tracks.js"></script>
+<script type="text/javascript" src="js/audioSync.js"></script> 
+    <!--ESta de manera absoluta la direccion de epic model, por la profundidad que tiene dentro del server-->
+<script type="text/javascript" src="http://play.yogome.com/js/epic/models/epicModel.js"></script>    
+<script type="text/javascript" src="../../js/mixpanel/mixpanel.js"></script>        
+<script>
+    var languageTitles = [
+            {
+                ES:"El hogar de Arthurius",
+                EN:"Arthurius is Homesick",
+                PT:"Arthurius está com saudade de casa",
+                ZH:"亚瑟鲁想家了",
+                JA:"いえにかえりたいアーサリウス",
+                KO:"알투리우스는 집이 그리워요"
+            }
+        ]
+    
+    //AQUI VA PARA SABER EL LENGUAGE
+        function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+        var language;
+        language = getParameterByName("language");
+    
+    function changeTitle(){
+        if(language == "ES"){
+            $(".languageTitle").text(languageTitles[0][language])
+        }else if(language == "EN"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "PT"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "ZH"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "JA"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "KO"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else{
+            $(".languageTitle").text(languageTitles[0].EN)    
+        }
+    }    
+    
+    changeTitle()
+
+var languagePages = [
+                {
+                    page:1,
+                    ES:"-¿Qué es lo que más les gusta de la galaxia Ignós? <br> -preguntó el general Sharp a los Yogotars.",
+                    EN:"“What do you like the most in the Ignos Galaxy?” <br> Asked General Sharp to the Yogotars.",
+                    PT:"“Do que você mais gosta na Galáxia Ignos?”, <br> perguntou o General Sharp aos Yogotars.",
+                    ZH:"“你最喜欢Ignos星系的什么？” <br> 夏普将军向各位Yogotar问道。",
+                    JA:"「イグノス・ギャラクシーでいちばんすきなものはなんだい？」<br> シャープしょうぐんがヨゴターたちにたずねました。",
+                    KO:"“너희들은 이그노스 은하에서 무엇을 제일 좋아하니?” <br>샤프 대장이 요고타들에게 물었어요."
+                },
+                {
+                    page:2,
+                    ES:"-La comida -dijo Dinamita. <br> -Los libros -dijo Oona. <br> -¿Y a ti, Arthurius? -preguntó Sharp.",
+                    EN:"“Food.” Said Dinamita <br> “Books.” Said Oona. <br> “What about you Arthurius?” Sharp asked. ",
+                    PT:"“Da comida”, disse Dinamita. <br> “Dos livros”, disse Oona. <br> “E você, Arthurius?”, perguntou Sharp.",
+                    ZH:"“美食。”迪纳米特说。<br> “书籍。” 奥娜说。<br> “那你呢，亚瑟鲁？”夏普问。",
+                    JA:"「たべもの」ディナミタが言いました。<br>「本」オーナが言いました。<br>「アーサリウス、きみは？」シャープがたずねました。",
+                    KO:"“음식이요.” 다이나미타가 말했어요. <br> “책이요.” 우나가 말했어요. <br> “알투리우스야, 너는 뭐를 제일 좋아하니?” 대장이 물었어요."
+                },
+                {
+                    page:3,
+                    ES:"Arthurius se quedó en silencio, parecía distraído. Theffanie se dio cuenta de ello y utilizó el poder de su gema para ver los pensamientos de Arthurius.",
+                    EN:"Arthurius kept silent, he seemed to be distracted. Theffanie realized this, and used her gem's power to read his mind.",
+                    PT:"Arthurius ficou quieto; ele parecia distraído. Theffanie percebeu e usou o poder de sua joia para ler a mente dele.",
+                    ZH:"亚瑟鲁没有说话，他好像心不在焉。范妮发现了这一点，用宝石的力量读懂了他的心思。",
+                    JA:"アーサリウスはだまったままでぼーっとしているようです。ティファニーがそれにきづいてほうせきの力をつかってかれの心をのぞいてみました。",
+                    KO:"알투리우스는 대답 없이 조용히 있었어요. 듣지 못했나 봐요. 티파니는 알투리우스에게 문제가 있다고 생각했어요. 그래서 보석 파워를 써서 알투리우스의 마음을 들여다봤어요."
+                },
+                {
+                    page:4,
+                    ES:"-Yo también extraño nuestro hogar Arthurius; extrañar es bueno -dijo Theffanie. <br> -Pero eso me hace sentir triste <br> -dijo Arthurius. <br> -Yo te voy a ayudar.",
+                    EN:"She realized that he was homesick! “I miss home too, Arthurius. It's ok to feel this way,” said Theffanie. <br> “But it makes me sad” replied Arthurius. <br> “I'm going to help you.”",
+                    PT:"Ela percebeu que ele estava com saudade de casa! “Eu também sinto falta de casa, Arthurius. Não tem problema se sentir assim”, disse Theffanie. <br> “Mas isso me deixa triste”, respondeu Arthurius. <br> “Vou ajudar você.”",
+                    ZH:"她意识到他想家了！“我也想家，亚瑟鲁。这种感觉很正常。”范妮说。<br> “但这让我很难过。”亚瑟鲁回答。<br> “我来帮你。”",
+                    JA:"アーサリウスはホームシックなのです！「わたしもいえにかえりたいわ、アーサリウス。そうおもうのはとうぜんよ」ティファニーがいいました。<br>「でもかなしくなるんだ」アーサリウスがこたえました。<br>「たすけてあげるわ。」",
+                    KO:"이런, 알투리우스는 집을 그리워하고 있었어요. “알투리우스야, 나도 집이 그리워. 그렇게 느끼는 건 당연한 거야.” 티파니가 말했어요. <br> “하지만 집이 그리워서 아주 슬픈걸.” 알투리우스가 대답했어요. <br> “내가 도와줄게.”"
+                },
+                {
+                    page:5,
+                    ES:"Theffanie usó el poder de su gema e hizo que Arthurius recordara todos los momentos divertidos con los Yogotars. <br> -Es importante disfrutar todos los momentos que vives <br> -dijo Theffanie.",
+                    EN:"Theffanie used her gem again to help Arthurius remember all the special moments he had spent with the Yogotars. <br> “It's important to enjoy every moment you live” said Theffanie.",
+                    PT:"Theffanie usou sua joia de novo para ajudar Arthurius a se lembrar de todos os momentos especiais que ele havia passado com os Yogotars. <br> “É importante aproveitar cada momento da vida”, disse Theffanie.",
+                    ZH:"范妮再次用她的宝石来帮助亚瑟鲁回忆他和各位Yogotar度过的所有美好时光。<br> “我们要享受生活中的每个时刻，这很重要。”范妮说。",
+                    JA:"ティファニーはほうせきをもういちどつかって、アーサリウスがヨゴターたちとどんなにたのしいじかんをすごしてきたかおもいだせるようにしました。<br>「どんなときもたのしむことがたいじよ」ティファニーが言いました。",
+                    KO:"티파니는 다시 보석을 써서 알투리우스가 요고타들과 함께 한 특별한 시간을 기억할 수 있게 도와줬어요. <br> “우리는 살아 있는 모든 순간을 즐겨보자.” <br> 티파니가 말했어요."
+                },
+                {
+                    page:6,
+                    ES:"-¡Mis amigos! Eso es lo que más he disfrutado de la galaxia Ignós <br> -dijo Arthurius. <br> Al final, Arthurius entendió que también es importante valorar a las personas que lo rodean.",
+                    EN:"“My friends! That's what I've enjoyed the most of Ignos Galaxy.” Said Arthurius. <br> In the end, Arthurius understood that it is important to appreciate the people that surround you, even when you are sad.",
+                    PT:"“Meus amigos! Isso é o que eu mais gostei na Galáxia Ignos”, disse Arthurius. <br> No final, Arthurius entendeu que é importante valorizar as pessoas ao seu redor, mesmo quando está triste.",
+                    ZH:"“我的朋友们！这就是我最喜欢Ignos星系的东西。” 亚瑟鲁说。<br> 最后，亚瑟鲁明白了，我们要感激自己周围的人，这对我们很重要，即使在悲伤的时候，也要如此。",
+                    JA:"「ぼくのなかまたち！イグノス・ギャラクシーでいちばんすきなのはなかまたちだ。」アーサリウスが言いました。<br> アーサリウスはかなしいときでもまわりになかまたちがいることにかんしゃすることがだいじだとわかりました。",
+                    KO:"“친구들아, 내가 이그노스 은하에서 가장 좋아하는 건 바로 너희와 함께 하는 모든 시간이야.” <br> 알투리우스가 말했어요. 마침내, 알투리우스는 슬프더라도 옆에 있는 사람들을 감사하게 생각해야 한다고 배웠어요."
+                }
+                ]    
+    
+    
+    </script>   
+</head>
+<body>
+
+<div id="canvas">
+
+
+<div class="magazine-viewport">
+	<div class="container">
+        
+		<div class="magazine">
+<!--  BOTON SIGUIENTE      -->
+                <div ignore="1" class="next-button">
+                    <div id="activeNext" >
+                        <div class="animation1"> 
+                        </div>
+                    </div>
+                    <img src="images/nextButton.png">
+                </div>
+            <!-- Previous button -->
+			<div ignore="1" class="previous-button">
+    <img src="images/nextButton.png">
+            </div>             
+            <div id="p1" depth="5" class="hard"> <div class="side"></div> </div>
+			<div depth="5" class="hard front-side"> <div class="depth"></div> </div>
+			<div class="hard fixed back-side p17"><div class="depth"></div> </div>
+			<div class="hard p18"> </div>
+
+            </div>
+            <script>
+                //console.log(languagePages[0][language]);
+                if(language == "ES"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1ES.png')");
+                }else if(language == "EN"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1EN.png')");
+                }else if(language == "ZH"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1ZH.png')");
+                }else if(language == "KO"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1KO.png')");
+                }else if(language == "JA"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1JA.png')");
+                }else if(language == "PT"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1PT.png')");
+                }else{
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1EN.png')");
+                }
+                
+                
+                
+            </script>
+        
+        
+			<!-- Next button -->
+		</div>
+	</div>
+   <a onclick="goBack()"><div id="homeButton"><img src="images/homeButton.png" /></div></a>
+
+<script>
+function goBack() {
+    window.location.href="../../yogobooks.html";
+}
+</script>
+    <div class="languageButton"><img src="images/icon-languages.png"></div>
+    <div class="idiomas">
+        <div id="ButtonLanEs" class="overLanguage">Español</div>
+        <div id="ButtonLanEn" class="overLanguage">English</div>
+        <div id="ButtonLanZh" class="overLanguage">中國</div>
+        <div id="ButtonLanJa" class="overLanguage">日本語</div>
+        <div id="ButtonLanKo" class="overLanguage">한국어</div>
+        <div id="ButtonLanPt" class="overLanguage">PORTUGUES</div>
+    </div>
+    <div id="audiosGroup"></div>
+	<div class="bottom">    
+		<div id="slider-bar" class="turnjs-slider timeline-style">
+			<div id="slider">
+            </div>
+		</div>
+	</div>
+    
+</div>
+
+<script type="text/javascript">
+    var audioNumber;
+    var clearTimeOut;
+    var audioReady;
+    var playing = false;
+    var audioPlayer; 
+    //cambio de regex
+    function replaceQueryParam(param, newval, search) {
+        var regex = new RegExp("([?;&])" + param + "[^&;]*[;&]?");
+        var query = search.replace(regex, "$1").replace(/&$/, '');
+
+        return (query.length > 2 ? query + "&" : "?") + (newval ? param + "=" + newval : '');
+    }    
+    
+        function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}    
+    
+    
+    $("#ButtonLanEs").click(function(){
+
+        var str = window.location.search
+        str = replaceQueryParam('language', "ES", str)
+        window.location = str + "#page/" + audioNumber;
+    });
+    
+    $("#ButtonLanEn").click(function(){
+
+        var str = window.location.search
+        str = replaceQueryParam('language', "EN", str)
+        window.location = str + "#page/" + audioNumber;
+    });
+    
+    $("#ButtonLanZh").click(function(){
+
+        var str = window.location.search
+        str = replaceQueryParam('language', "ZH", str)
+        window.location = str + "#page/" + audioNumber;
+    });
+    
+    $("#ButtonLanJa").click(function(){
+
+        var str = window.location.search
+        str = replaceQueryParam('language', "JA", str)
+        window.location = str + "#page/" + audioNumber;
+    });
+    
+    $("#ButtonLanKo").click(function(){
+
+        var str = window.location.search
+        str = replaceQueryParam('language', "KO", str)
+        window.location = str + "#page/" + audioNumber;
+    });
+    
+    $("#ButtonLanPt").click(function(){
+
+        var str = window.location.search
+        str = replaceQueryParam('language', "PT", str)
+        window.location = str + "#page/" + audioNumber;
+    });
+    
+    $(".languageButton").click(function(){
+        var idioma = $(".idiomas");
+        if (idioma.css("display") === "block") {
+            idioma.css("display","none");
+        } else {
+            idioma.css("display","block");
+        }
+    
+        
+    });
+    
+    //TweenMax.fromTo($("#activeNext"),1,{alpha:0.5},{alpha:1,yoyo:true,repeat:-1});
+    
+
+    
+    $("#audiosGroup").append('<audio id="audio0" preload="true" src="audios/' +  0 + '.mp3"></audio>') 
+    for(var i = 1;i<=6;i++){
+       $("#audiosGroup").append('<audio id="audio'+i+'" preload="true" src="audios/' +[language] + "/" +  i + '.mp3"></audio>')  
+    }
+    
+    
+function loadApp() {
+
+ 	$('#canvas').fadeIn(1000);
+
+ 	var flipbook = $('.magazine');
+
+ 	// Check if the CSS was already loaded
+	
+	if (flipbook.width()==0 || flipbook.height()==0) {
+		setTimeout(loadApp, 10);
+		return;
+	}
+	
+	// Create the flipbook
+
+	flipbook.turn({
+			
+			// Magazine width
+
+			width: 922,
+
+			// Magazine height
+
+			height: 600,
+
+			// Duration in millisecond
+
+			duration: 1000,
+
+			// Enables gradients
+
+			gradients: true,
+			
+			// Auto center this flipbook
+
+			autoCenter: true,
+
+			// Elevation from the edge of the flipbook when turning a page
+
+			elevation: 50,
+
+			// The number of pages
+
+			pages: 18,
+
+			// Events
+
+			when: {
+                
+                
+                
+				turning: function(event, page, view) {
+					
+					var book = $(this),
+					currentPage = book.turn('page'),
+					pages = book.turn('pages');
+                    
+		
+
+				updateDepth(book, page);
+				
+				if (page>=2)
+					$('.magazine .p2').addClass('fixed');
+				else
+					$('.magazine .p2').removeClass('fixed');
+
+				if (page<book.turn('pages'))
+					$('.magazine .p17').addClass('fixed');
+				else
+					$('.magazine .p17').removeClass('fixed');
+
+                    if(language == "ES"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ES.png')");
+                }else if(language == "EN"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2EN.png')");
+                }else if(language == "ZH"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ZH.png')");
+                }else if(language == "KO"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2KO.png')");
+                }else if(language == "JA"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2JA.png')");
+                }else if(language == "PT"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2PT.png')");
+                }else{
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2EN.png')");
+                }
+                    
+					Hash.go('page/' + page).update();
+
+					// Show and hide navigation buttons
+                    audioNumber = page;
+					disableControls(page);
+
+				},
+                
+				turned: function(event, page, view) {
+                    
+					disableControls(page);
+                    var object = $(this);
+
+					$(this).turn('center');
+                   
+
+					$('#slider').slider('value', getViewNumber(object, page));
+                    audioNumber = page;
+            
+					if (page==1) { 
+						$(this).turn('peel', 'br');
+					}
+
+				},
+
+				missing: function (event, pages) {
+
+					// Add pages that aren't in the magazine
+
+					for (var i = 0; i < pages.length; i++)
+						addPage(pages[i], $(this));
+
+				}
+			}
+
+        
+	});
+
+	// Zoom.js
+
+    
+    
+	$('.magazine-viewport').zoom({
+		flipbook: $('.magazine'),
+
+		max: function() { 
+			
+			return largeMagazineWidth()/$('.magazine').width();
+
+		}, 
+
+		when: {
+			swipeLeft: function() {
+
+				$(this).zoom('flipbook').turn('next');
+                
+                stopAllSounds();
+
+			},
+
+			swipeRight: function() {
+				
+				$(this).zoom('flipbook').turn('previous');
+                stopAllSounds();
+
+			},
+
+			resize: function(event, scale, page, pageElement) {
+
+//				if (scale==1)
+//					loadSmallPage(page, pageElement);
+//				else
+//					loadLargePage(page, pageElement);
+
+			},
+
+			zoomIn: function () {
+                
+                $(".userName").addClass("zoomUserName")
+				$('#slider-bar').hide();
+				$('.made').hide();
+				$('.magazine').removeClass('animated').addClass('zoom-in');
+				$('.zoom-icon').removeClass('zoom-icon-in').addClass('zoom-icon-out');
+				
+				if (!window.escTip && !$.isTouch) {
+					escTip = true;
+
+					$('<div />', {'class': 'exit-message'}).
+						html('<div>Press ESC to exit</div>').
+							appendTo($('body')).
+							delay(2000).
+							animate({opacity:0}, 500, function() {
+								$(this).remove();
+							});
+				}
+			},
+
+			zoomOut: function () {
+                
+                $(".userName").removeClass("zoomUserName")
+				$('#slider-bar').fadeIn();
+				$('.exit-message').hide();
+				$('.made').fadeIn();
+				$('.zoom-icon').removeClass('zoom-icon-out').addClass('zoom-icon-in');
+
+				setTimeout(function(){
+					$('.magazine').addClass('animated').removeClass('zoom-in');
+					resizeViewport();
+				}, 0);
+
+			}
+		}
+	});
+
+
+
+
+	// Using arrow keys to turn the page
+
+	$(document).keydown(function(e){
+
+		var previous = 37, next = 39, esc = 27;
+
+		switch (e.keyCode) {
+			case previous:
+
+				// left arrow
+				$('.magazine').turn('previous');
+                stopAllSounds();
+				e.preventDefault();
+
+			break;
+			case next:
+
+				//right arrow
+				$('.magazine').turn('next');
+                stopAllSounds();
+				e.preventDefault();
+                
+
+			break;
+			case esc:
+				
+				$('.magazine-viewport').zoom('zoomOut');	
+				e.preventDefault();
+
+			break;
+		}
+	});
+
+	// URIs - Format #/page/1 
+
+    
+    
+	Hash.on('^page\/([0-9]*)$', {
+		yep: function(path, parts) {
+			var page = parts[1];
+
+			if (page!==undefined) {
+				if ($('.magazine').turn('is'))
+					$('.magazine').turn('page', page);
+                audioReady = page;
+                
+			}
+
+		},
+		nop: function(path) {
+
+			if ($('.magazine').turn('is'))
+				$('.magazine').turn('page', 1);
+		}
+	});
+
+
+	$(window).resize(function() {
+		resizeViewport();
+	}).bind('orientationchange', function() {
+		resizeViewport();
+	});
+
+	// Regions
+
+	if ($.isTouch) {
+		$('.magazine').bind('touchstart', regionClick);
+	} else {
+		$('.magazine').click(regionClick);
+	}
+
+	// Events for the next button
+
+	$('.next-button').bind($.mouseEvents.over, function() {
+		
+		$(this).addClass('next-button-hover');
+
+	}).bind($.mouseEvents.out, function() {
+		
+		$(this).removeClass('next-button-hover');
+
+	}).bind($.mouseEvents.down, function() {
+		
+		$(this).addClass('next-button-down');
+
+	}).bind($.mouseEvents.up, function() {
+		
+		$(this).removeClass('next-button-down');
+
+	}).click(function() {
+		
+		$('.magazine').turn('next');
+        stopAllSounds();
+        
+	});
+
+	// Events for the next button
+	
+	$('.previous-button').bind($.mouseEvents.over, function() {
+		
+		$(this).addClass('previous-button-hover');
+
+	}).bind($.mouseEvents.out, function() {
+		
+		$(this).removeClass('previous-button-hover');
+
+	}).bind($.mouseEvents.down, function() {
+		
+		$(this).addClass('previous-button-down');
+
+	}).bind($.mouseEvents.up, function() {
+		
+		$(this).removeClass('previous-button-down');
+
+	}).click(function() {
+		
+		$('.magazine').turn('previous');
+            stopAllSounds();
+
+	});
+
+
+	// Slider
+
+	$( "#slider" ).slider({
+		min: 1,
+		max: numberOfViews(flipbook),
+
+		start: function(event, ui) {
+			if (!window._thumbPreview) {
+				_thumbPreview = $('<div />', {'class': 'thumbnail'}).html('<div></div>');
+				//setPreview(ui.value);
+				//_thumbPreview.appendTo($(ui.handle));
+			} else
+				//setPreview(ui.value);
+
+			moveBar(false);
+
+		},
+
+		slide: function(event, ui) {
+
+			//setPreview(ui.value);
+
+		},
+
+		stop: function() {
+
+			if (window._thumbPreview)
+				_thumbPreview.removeClass('show');
+			     
+			$('.magazine').turn('page', Math.max(1, $(this).slider('value')*2 - 2));
+            stopAllSounds();
+		}
+	});
+
+	resizeViewport();
+
+	$('.magazine').addClass('animated');
+
+}
+
+// Zoom icon
+
+ $('.zoom-icon').bind('mouseover', function() { 
+ 	
+ 	if ($(this).hasClass('zoom-icon-in'))
+ 		$(this).addClass('zoom-icon-in-hover');
+
+ 	if ($(this).hasClass('zoom-icon-out'))
+ 		$(this).addClass('zoom-icon-out-hover');
+ 
+ }).bind('mouseout', function() { 
+ 	
+ 	 if ($(this).hasClass('zoom-icon-in'))
+ 		$(this).removeClass('zoom-icon-in-hover');
+ 	
+ 	if ($(this).hasClass('zoom-icon-out'))
+ 		$(this).removeClass('zoom-icon-out-hover');
+
+ }).bind('click', function() {
+
+ 	if ($(this).hasClass('zoom-icon-in'))
+ 		$('.magazine-viewport').zoom('zoomIn');
+ 	else if ($(this).hasClass('zoom-icon-out'))	
+		$('.magazine-viewport').zoom('zoomOut');
+
+ });
+      
+    
+function visibleNext(){
+    $("#activeNext").css("display","block")
+    
+}    
+    
+    
+    function stopAllSounds(){
+        
+        if(audioNumber >= [allPages-2]){
+                mixpanel.track("OnBookFinished",{
+                        "user_id": credentials.educationID,
+                        "app": "web",
+                        "bookID" : "6",
+                        "bookName" : "Estoy enojada"
+                    });      
+        }
+        
+        
+        $("#activeNext").css("display","none");
+        $(".buttonSound").css("opacity",1);
+        playing = false;
+        audiosNumbers();
+        audioPlayer = document.getElementById("audio" +  audioReady);
+        audioPlayer.currentTime = 0;
+        
+          for(i= 0; i<=6;i++){
+                    var audio = document.getElementById("audio" + i);
+                        audio.pause();
+                        audio.currentTime = 0;
+                    
+                } 
+        
+        AudioPlay();
+        
+    }    
+
+    
+function audiosNumbers(){
+               
+            switch(audioNumber){
+                case 1:
+                    audioReady = 0
+                   break;
+                case 2:
+                    audioReady = 0
+                   break;
+                case 3:
+                    audioReady = 0
+                   break;
+                case 4:
+                    audioReady = 1
+                   break;
+                case 5:
+                    audioReady = 1
+                   break;
+                case 6:
+                    audioReady = 2
+                   break;
+                case 7:
+                    audioReady = 2
+                   break;
+                case 8:
+                    audioReady = 3
+                   break;
+                case 9:
+                    audioReady = 3
+                   break;
+                case 10:
+                    audioReady = 4
+                   break;
+                case 11:
+                    audioReady = 4
+                   break;
+                case 12:
+                    audioReady = 5
+                   break;
+                case 13:
+                    audioReady = 5
+                   break;
+                case 14:
+                    audioReady = 6
+                   break;
+                case 15:
+                    audioReady = 6
+                   break;
+                 case 16:    
+                    audioReady = 0
+                    break;
+                 case 17:    
+                    audioReady = 0
+                    break;
+                 case 18:    
+                    audioReady = 0
+                    break;
+            }
+}    
+
+    
+function AudioPlay(){
+   if(!playing) {
+       autoPlay();
+       audioPlayer.currentTime = 0;
+      
+   }else{
+       
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                $(".buttonSound").css("opacity",1);
+                } else {
+                    audioPlayer.pause();
+                                $(".buttonSound").css("opacity",0.5);    
+                }
+       if(language == "ES"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaES" + audioReady)); 
+        }else if(language == "EN"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaEN" + audioReady));
+        }else if(language == "KO"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaKO" + audioReady));
+        }   
+       
+       
+   }    
+    
+};
+
+function autoPlay(){
+    audiosNumbers();
+
+    console.log("audioReady: " + audioReady);
+    audioPlayer = document.getElementById("audio" +  audioReady); 
+        audioPlayer.play();
+        if(language == "ES"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaES" + audioReady)); 
+        }else if(language == "EN"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaEN" + audioReady));
+        }else if(language == "KO"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaKO" + audioReady));
+        }        
+        audioPlayer.addEventListener("timeupdate", function(e){
+            playing = true;
+        });
+
+}          
+    
+ $('#canvas').hide();
+
+
+yepnope({
+	test : Modernizr.csstransforms,
+	yep: ['lib/turn.js'],
+	nope: ['lib/turn.html4.min.js', 'css/jquery.ui.html4.css'],
+	both: ['lib/zoom.min.js', 'css/jquery.ui.css', 'js/magazine.js', 'css/magazine.css','css/custom_fonts.css'],
+	complete: loadApp
+});
+
+var credentials = epicModel.getCredentials();    
+    
+$(document).ready(function () {
+    /**
+     * * Metodo implementado en mixpanel.js
+     */
+    var credentials1 = epicModel.getCredentials();   
+
+    mixpanel.track(
+        "OnBookOpen",
+        {
+            "user_id": credentials1.educationID,
+            "app": "web",
+            "bookID" : "13",
+            "bookName" : "El espacio ideal"
+        }
+    );
+    
+    
+
+    
+});    
+    
+    
+var allPages =  18    
+
+
+function mixPanelClose(){
+        mixpanel.track(
+            "OnBookClose", 
+            {
+                "user_id": credentials.educationID,
+                "app": "web",
+                "bookID" : "13",
+                "bookName" : "El espacio ideal",
+                "lastPage" : audioNumber    
+            }
+        );
+}   
+    
+
+    function stopAllSounds(){
+        if(audioNumber >= [allPages-2]){
+                mixpanel.track("OnBookFinished",{
+                        "user_id": credentials.educationID,
+                        "app": "web",
+                        "bookID" : "13",
+                        "bookName" : "El espacio ideal"
+                    });      
+        }
+        
+        
+        $("#activeNext").css("display","none");
+        playing = false;
+        audiosNumbers();
+       audioPlayer = document.getElementById("audio" +  audioReady);
+        $("#buttonPlay").attr("src","images/Play.png");
+          for(i= 0; i<=6;i++){
+                    var audio = document.getElementById("audio" + i);
+                        audio.pause();
+                        audio.currentTime = 0;
+                    
+                } 
+        
+    }    
+    
+    var leaving = true;
+    var isClose = false;
+
+    function EndChatSession() {
+        var request = GetRequest();
+        request.open("GET", "../Chat.aspx", true);
+        request.send();
+    }
+    document.onkeydown = checkKeycode
+    function checkKeycode(e) {
+        var keycode;
+        if (window.event)
+            keycode = window.event.keyCode;
+        else if (e)
+            keycode = e.which;
+        if (keycode == 116) {
+            isClose = true;
+        }
+    }
+    function somefunction() {
+        isClose = true;
+    }
+    
+    window.onbeforeunload = function (e) {
+       if (!e) e = event;
+        if (leaving) {
+             EndChatSession();
+             mixPanelClose();
+             //e.returnValue = "Are You Sure";
+
+        }
+    }
+    function GetRequest() {
+        var xmlHttp = null;
+        try {
+            // Firefox, Opera 8.0+, Safari
+            xmlHttp = new XMLHttpRequest();
+        }
+        catch (e) {
+            //Internet Explorer
+            try {
+                xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+            }
+            catch (e) {
+                xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+        }
+        return xmlHttp;
+    }       
+</script>
+</body>
+</html>
