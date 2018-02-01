@@ -1,5 +1,5 @@
 body{
-	overflow:hidden;
+/*	overflow:hidden;*/
 	background-color:#fcfcfc;
 	margin:0;
 	padding:0;
@@ -13,7 +13,7 @@ body{
 #homeButton{
     margin-left: 10px;
     position: absolute;
-    z-index: 20000;
+    z-index: 2000;
     top: 2%;
 }
 
@@ -26,21 +26,18 @@ body{
 	position:absolute;
 	top:50%;
 	left:50%;
-	width:922px;
-	height:600px;
 	margin:auto;
 }
 
 .magazine-viewport .magazine{
-	width:922px;
-	height:600px;
+	width:522px;
+	height:60px;
 	left:-461px;
 	top:-30px;
 }
 
 .magazine-viewport .page{
-	width:400px;
-	height:550px;
+
 	background-color:white;
 	background-repeat:no-repeat;
 	background-size:100% 100%;
@@ -90,6 +87,7 @@ body{
 	-o-box-shadow:0 0 20px rgba(0,0,0,0.2);
 	box-shadow:0 0 20px rgba(0,0,0,0.2);
     background-color: #FFF;
+
 }
 
 .magazine-viewport .page img{
@@ -100,6 +98,7 @@ body{
 	-ms-user-select: none;
 	user-select: none;
 	margin:0;
+    
     
 }
 
@@ -164,23 +163,22 @@ body{
 
 
 .previous-button{
-    height: auto;
 	position:absolute;
-	bottom:0px;
     z-index: 123;
-    text-align: center;
-    width: 200px;   
+    left: 0%;
+    top:80%;
+    width: 10%;
 }
 
 .next-button{
-    height: auto;
 	position:absolute;
-	bottom:0px;
     z-index: 123;
-    right: 0;
-    text-align: center;
-    width: 200px;    
+    left: 91%;
+    top:80%;
+    width: 10%;
+    transform: scale(-1,1)
 }
+
 
 
 .next-button img,
@@ -395,7 +393,7 @@ body{
 .bottom{
 	position:fixed;
 	left:0;
-	bottom:0px;
+	bottom:5%;
 	width:100%;
     z-index: 35;
 }
@@ -427,8 +425,8 @@ body{
   color: black;
   font-size: 16.5px;
   position: absolute;
-  top: 41%;
-  left: 43%;
+  top: 39.3%;
+  left: 42%;
   transform: translate(-50%, -50%);
   -webkit-margin-before: -.2em;
   -webkit-margin-after: 5em;
@@ -439,17 +437,14 @@ body{
   color: black;
   font-size: 40px;
   position: absolute;
-  top: 41.1%;
-  left: 43%;
+  top: 39.3%;
+  left: 42%;
   transform: translate(-50%, -50%);
-  -webkit-margin-before: -.2em;
-  -webkit-margin-after: 5em;
-  -webkit-margin-start: -10px
 }
 
 #userContainer{
     
-    transform: rotate(-4deg);
+    transform: rotate(-6deg);
     
     
 }
@@ -525,7 +520,6 @@ body{
     color: #FFF;
     font-size: 3vw;
     border-radius: 2vh;
-     z-index: 1000;
 }
 
 .overLanguage:hover {
@@ -551,6 +545,7 @@ body{
 #activeNext{
     display: none;
     position: absolute;
+    left:50%;
 }
 
 /*PASTAS TIPO LIBRO*/
@@ -565,11 +560,6 @@ body{
 }
 
 .magazine .p1 .side{
-	width:5px;
-	height:600px;
-	position:absolute;
-	top:0;
-	left:475px;
 
 	background:-webkit-gradient(linear, left top, left bottom, color-stop(0, #bbb), color-stop(0.5,  #ddd), color-stop(1,  #bbb));
 	background-image:-webkit-linear-gradient(left, #bbb, #ddd, #bbb);
@@ -602,8 +592,7 @@ body{
 	position:absolute;
 	top:7px;
 	width:16px;
-	height:590px;
-    display: none;
+	height:96%;
 }
 
 .magazine .front-side .depth{
@@ -631,15 +620,12 @@ body{
     	background-image:url(../bookpages/17.png) !important;
 
 }
-
 .magazine .p18{
     	background-image:url(../bookpages/18.png) !important;
 
 }
 
 .magazine .hard{
-	width:480px;
-	height:600px;
 	background-color:transparent;
 	-webkit-box-shadow:none;
 	-moz-box-shadow:none;
@@ -654,9 +640,37 @@ body{
 	perspective: 2000px;
 }
 
+
 .magazine .own-size{
-	width:460px;
-	height:582px;
-	background-color:white;
 	overflow:hidden;
+    width: 442px;
+    height: 580px;    
 }
+
+
+.buttonSound{
+    position: absolute;
+    width: 20%;
+    left: 50%;
+    transform: translate(-50%,0%);
+    bottom: 0;
+}
+.buttonSound img{
+    width: 60%;
+}
+
+.animation1 {
+          width: 115px;
+          height: 111px;
+          margin: 0% auto;
+          background: url('../images/115x11_27f_24fps.png') left center;
+          animation: play .8s steps(23) infinite;
+        }
+
+        @keyframes play {
+        100% {
+		  background-position: -2645px;
+	   }
+	
+    
+        }

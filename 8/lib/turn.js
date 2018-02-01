@@ -97,8 +97,8 @@ var has3d,
   flipOptions = {
 
     // Size of the active zone of each corner
-
-    cornerSize: 100
+      //disabled corners
+    cornerSize: 0
 
   },
 
@@ -498,13 +498,13 @@ turnMethods = {
       }
 
     } else {
-
+        //CHANGES1
       var pageWidth = this.width()/2,
         pageHeight = this.height();
 
       if (data.pageObjs[page].hasClass('own-size')) {
-        prop.width = data.pageObjs[page].width();
-        prop.height = data.pageObjs[page].height();
+        prop.width = pageWidth - 20;
+        prop.height = pageHeight - 20;
       } else {
         prop.width = pageWidth;
         prop.height = pageHeight;

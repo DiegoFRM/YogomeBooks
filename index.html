@@ -1,0 +1,909 @@
+<!doctype html>
+<html>
+<head>
+<title class="languageTitle">Pelea en la region de hielo y fuego</title>
+ <meta charset="UTF-8">    
+<meta name="viewport" content="width = 1050, user-scalable = no" />
+<link rel="icon" type="image/png" href="../../pics/favicon.png" />
+<script type="text/javascript" src="extras/jquery.min.1.7.js"></script>
+<script type="text/javascript" src="extras/jquery-ui-1.8.20.custom.min.js"></script>
+<script type="text/javascript" src="extras/modernizr.2.5.3.min.js"></script>
+<script type="text/javascript" src="lib/hash.js"></script>
+<script type="text/javascript" src="js/jquery.blast.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+    <script type="text/javascript" src="js/tracks.js"></script>
+<script type="text/javascript" src="js/audioSync.js"></script>   
+    <!--ESta de manera absoluta la direccion de epic model, por la profundidad que tiene dentro del server-->
+<script type="text/javascript" src="http://play.yogome.com/js/epic/models/epicModel.js"></script>    
+<script type="text/javascript" src="../../js/mixpanel/mixpanel.js"></script>    
+<script>
+    var languageTitles = [
+            {
+                ES:"Pelea en la region de hielo y fuego",
+                EN:"The Fight Between Ice and Fire",
+                PT:"A luta entre o gelo e o fogo",
+                ZH:"冰与火之战",
+                JA:"アイスとファイヤーのけんか",
+                KO:"얼음과 불의 전투"
+            }
+        ]
+    
+
+    //AQUI VA PARA SABER EL LENGUAGE
+        function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+        var language;
+        language = getParameterByName("language");    
+    
+    
+    function changeTitle(){
+        if(language == "ES"){
+            $(".languageTitle").text(languageTitles[0][language])
+        }else if(language == "EN"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "PT"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "ZH"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "JA"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "KO"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else{
+            $(".languageTitle").text(languageTitles[0].EN)    
+        }
+    }    
+    
+    changeTitle()
+    
+var languagePages = [
+                  {
+                    page:1,
+                    ES:"En Nova Cali hay dos regiones lejos de Yogópolis: la región de hielo y la de fuego: sus habitantes no parecen llevarse nada bien.",
+                    EN:"Far from Yogopolis there are two regions in Nova Cali: The Land of Ice and The Land of Fire. Their inhabitants do not get along. ",
+                    PT:"Longe de Yogópolis, há duas regiões em Nova Cali: A Terra do Gelo e a Terra do Fogo. Seus habitantes não se dão bem. ",
+                    ZH:"Nova Cali距离Yogopolis很远很远，这里共有两个地区：冰之地与火之地。这两个地区的居民水火不容， ",
+                    JA:"ヨゴポリスから とおくはなれた ノヴァカリには ２つの町があります。こおりの町と ほのおの町です。そこにすむ人びとは なかがよくありません。",
+                    KO:"요고폴리스에서 멀리 떨어진 노바칼리에는 얼음의 땅과 불의 땅이라는 두 지역이 있어요. 두 지역은 사이가 좋지 않아요."
+                },
+                {
+                    page:2,
+                    ES:"Viven en una eterna batalla. Todo es motivo para iniciar una pelea.</br><br>-No me vuelvas a decir eso -dijo Icebro.</br><br>-¿Por qué? ¿Qué piensas hacer? -dijo Firebro",
+                    EN:"They live an endless battle. Everything is an excuse to start a fight.</br><br> &#34;Don't call me that again!&#34; Exclaimed Icebro.</br><br> &#34;Why? What are you going to do?&#34; Asked Firebro.",
+                    PT:'Eles vivem em uma guerra sem fim. Qualquer coisa é uma desculpa para começar uma briga. “Não me chame assim de novo!”, exclamou Icebro. “Por quê? O que você vai fazer?”, perguntou Firebro.',
+                    ZH:"生活在无休止的斗争中。一切都能成为引发争斗的借口。“别再那样叫我了！”冰洛惊叫道。“为什么？你要怎么样？”火流星问。",
+                    JA:"いつも けんかばかり していました。どんなことでも けんかになってしまいます。「そんなふうに よばないでよ！」アイスがさけびました。「どうして？どうするつもりだい？」ファイヤーがたずねました。",
+                    KO:"두 지역은 끊임없이 싸움을 이어가요. 아주 사소한 것으로 트집을 잡아서 싸움을 시작해요. &#34;나를 다시는 그렇게 부르지마!&#34; 아이스브로가 소리쳤어요. &#34;왜? 내가 그렇게 부르면 어찌할 건데?&#34; 파이어브로가 물었어요."
+                },
+                {
+                    page:3,
+                    ES:"Oof y Oona visitaban el lugar tranquilamente, hasta que encontraron peleando a Icebro y Firebro.</br><br>-¡Calmados! -dijeron al mismo tiempo Oof y Oona.</br><br>-Él empezó, me insultó. -dijo Icebro.</br><br>-Él se enoja de todo, yo no le dije nada malo -dijo Firebro.",
+                    EN:"Oof and Oona were having a quiet visit until they found Icebro and Firebro arguing. </br><br>&#34;Easy!&#34; Said Oof and Oona at the same time. </br><br>&#34;He started it! He insulted me&#34; Said Icebro </br><br>&#34;I didn't say anything bad. He gets mad at everything.&#34; Exclaimed Firebro.",
+                    PT:"Oof e Oona estavam fazendo uma visita tranquila até que se depararam com Icebro e Firebro discutindo. “Calma!”, disseram Oof e Oona ao mesmo tempo. “Foi ele que começou! Ele me insultou”, disse Icebro. “Eu não falei nada de mais. Ele fica bravo com qualquer coisa”, exclamou Firebro.  ",
+                    ZH:"奥夫和奥娜出游来到这里，一路上都很安静，然而冰洛和火流星的争吵却打破了这种宁静。“别吵了！”奥夫和奥娜同时喊道。“他先开始的！“他侮辱了我。”冰洛说。“我什么坏话都没说。是他自己什么都看不惯。”火流星叫道。",
+                    JA:"ウーフとオーナは しずかな時間を すごしていましたが アイスとファイヤーのけんかに 気づきました。「けんかはやめて！」ウーフとオーナは そろって 言いました。「はじめたのは ぼくじゃないよ！ひどいことを 言われたんだ」アイスは言いました。「わるぐちなんて 言ってないさ。何を言っても おこるんだから。」ファイヤーが 大声で 言いました。  ",
+                    KO:"우프와 우나는 평화로운 시간을 보내고 있었어요. 아이스브로와 파이어브로가 싸우는 걸 보기 전까지는요. &#34;진정해!&#34; 우프와 우나가 동시에 말했어요. &#34;쟤가 먼저 시작했어! 쟤가 나를 놀렸단 말이야.&#34; 아이스브로가 말했어요. &#34;나는 나쁜 짓을 하지 않았어. 쟤는 그냥 모든 것에 화를 내.&#34; 파이어브로가 소리쳤어요."
+                },
+                {
+                    page:4,
+                    ES:"-Respiren hondo -dijo Oona.</br><br>-Luego saquen toooodo el aire -dijo Oof.",
+                    EN:"&#34;Take a deep breath.&#34; Said Oona. &#34;Now exhale&#34; Said Oof. ",
+                    PT:"“Respire fundo”, disse Oona. “Agora expire”, disse Oof. ",
+                    ZH:"“深吸一口气。”奥娜说。“现在呼气。”奥夫说。",
+                    JA:"「大きく　いきをすって。」オーナが 言いました。「こんどは 大きく いきをはいて。」ウーフが 言いました。 ",
+                    KO:"&#34;자, 숨을 크게 들이쉬어.&#34; 우나가 말했어요. &#34;이제 내쉬어.&#34; 우프가 말했어요."
+                },
+                {
+                    page:5,
+                    ES:"-¿Cuál es el problema? -dijo Oof.</br><br>-El me dijo una mala palabra, me dijo: ¡Hola camarada! -dijo Icebro</br><br>-Eso no es una mala palabra -dijo Firebro.</br><br>-¿Por qué se ríe tu amiga? -dijo Icebro.",
+                    EN:"&#34;What's the matter?&#34; Asked Oof.</br><br> &#34;He said a bad word, he called me a fellow.&#34; Icebro replied.</br><br> &#34;That's not a bad word.&#34; Insisted Firebro.</br><br>  &#34;Why is your friend laughing?&#34; Asked Icebro, confused. ",
+                    PT:'“Qual é o problema?”, perguntou Oof. “Ele disse uma palavra feia, ele me chamou de camarada”, respondeu Icebro. “Essa palavra não é feia”, insistiu Firebro.  “Por que seu amigo está rindo?”, perguntou Icebro, confuso.',
+                    ZH:"“怎么了？”奥夫问道。“他骂了我，他叫我小家伙。”冰洛回答。“那不是骂人的话。”火流星争辩道。“那你的朋友为什么笑？”冰洛疑惑地问。",
+                    JA:"「なにが もんだいなんだい？」ウーフが たずねました。「わるいことばをつかったんだ。ぼくのこと あいぼう ってよんだんだ。」アイスが こたえました。「わるいことばじゃ　ないだろ。」ファイヤーは むきになって言いました。「どうして わらっているんだい？」アイスには よくわかりません。",
+                    KO:"&#34;도대체 무슨 일이야?&#34; 우프가 물었어요. &#34;쟤가 나쁜 말을 했어. 나를 '이 녀석'이라고 불렀어.&#34; 아이스브로가 대답했어요. &#34;그건 나쁜 말이 아니야.&#34; 파이어브로가 주장했어요. &#34;네 친구는 왜 웃고 있는 거야?&#34; 아이스브로가 혼란스러워서 물었어요."
+                },
+                {
+                    page:6,
+                    ES:"Oona le explica a Icebro que camarada no es una mala palabra sino un sinónimo de amigo o compañero. Todos ríen con ella y deciden hacer las paces.",
+                    EN:"Oona explained to Icebro that fellow is not a bad word, but another term for friend or peer. Everyone laughed with Oona, and they decided to make peace.",
+                    PT:"Oona explicou para Icebro que “camarada” não é uma palavra feia, mas só outro jeito de dizer “amigo” ou “colega”. Todos riram com Oona, e eles decidiram fazer as pazes. ",
+                    ZH:"奥娜向冰洛解释说，小家伙不是脏话，而是朋友或同伴的别称。所有人都和奥娜一起笑了起来，他们决定和平相处。",
+                    JA:"オーナは それは わるいことばではなくて なかま という いみであることを せつめいしました。みんなでいっしょにわらって なかなおりをすることにしました。",
+                    KO:"우나는 '녀석'이 나쁜 말이 아니고, '친구' 아니면 '또래'라는 말과 비슷한 단어라고 설명했어요. 모두 우나와 같이 웃었고, 사이좋게 지내기로 했어요."
+                }
+                ]   
+    
+    </script>   
+</head>
+<body>
+
+<div id="canvas">
+
+
+<div class="magazine-viewport">
+    
+	<div class="container">
+
+        
+		<div class="magazine">
+                <!--  BOTON SIGUIENTE      -->
+                <div ignore="1" class="next-button">
+                    <div id="activeNext" >
+                        <div class="animation1"> 
+                        </div>
+                    </div>
+                    <img src="images/nextButton.png">
+                </div>
+            <!-- Previous button -->
+			<div ignore="1" class="previous-button">
+    <img src="images/nextButton.png">
+            </div> 
+            
+            
+            <div id="p1" depth="5" class="hard"> <div class="side"></div> </div>
+			<div depth="5" class="hard front-side"> <div class="depth"></div> </div>
+			<div class="hard fixed back-side p17"><div class="depth"></div> </div>
+			<div class="hard p18"> </div>
+
+            </div>
+            <script>
+                //console.log(languagePages[0][language]);
+                if(language == "ES"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1ES.png')");
+                }else if(language == "EN"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1EN.png')");
+                }else if(language == "ZH"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1ZH.png')");
+                }else if(language == "KO"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1KO.png')");
+                }else if(language == "JA"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1JA.png')");
+                }else if(language == "PT"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1PT.png')");
+                }else{
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1EN.png')");
+                }
+            
+            </script>
+        
+        
+			<!-- Next button -->
+		</div>
+	</div>
+   <a onclick="goBack()"><div id="homeButton"><img src="images/homeButton.png" /></div></a>
+
+<script>
+function goBack() {
+    window.location.href="../../yogobooks.html";
+}
+</script>
+    
+    <div class="languageButton"><img src="images/icon-languages.png"></div>
+    <div class="idiomas">
+        <div id="ButtonLanEs" class="overLanguage">Español</div>
+        <div id="ButtonLanEn" class="overLanguage">English</div>
+        <div id="ButtonLanZh" class="overLanguage">中國</div>
+        <div id="ButtonLanJa" class="overLanguage">日本語</div>
+        <div id="ButtonLanKo" class="overLanguage">한국어</div>
+        <div id="ButtonLanPt" class="overLanguage">PORTUGUES</div>
+    </div>
+    <div id="audiosGroup"></div>
+	<div class="bottom">
+        
+			       
+		<div id="slider-bar" class="turnjs-slider timeline-style">
+			<div id="slider">
+            </div>
+		</div>
+	</div>
+    
+</div>
+
+<script type="text/javascript">
+    var audioNumber;
+    var clearTimeOut;
+    var audioReady;
+    var playing = false;
+    var audioPlayer; 
+    //cambio de regex
+    function replaceQueryParam(param, newval, search) {
+        var regex = new RegExp("([?;&])" + param + "[^&;]*[;&]?");
+        var query = search.replace(regex, "$1").replace(/&$/, '');
+
+        return (query.length > 2 ? query + "&" : "?") + (newval ? param + "=" + newval : '');
+    }    
+    
+    
+    $("#ButtonLanEs").click(function(){
+
+        var str = window.location.search
+        str = replaceQueryParam('language', "ES", str)
+        window.location = window.location.pathname + str + "#page/" + audioNumber;
+    });
+    
+    $("#ButtonLanEn").click(function(){
+
+        var str = window.location.search
+        str = replaceQueryParam('language', "EN", str)
+        window.location = window.location.pathname + str + "#page/" + audioNumber;
+    });
+    
+    $(".languageButton").click(function(){
+        var idioma = $(".idiomas");
+        if (idioma.css("display") === "block") {
+            idioma.css("display","none");
+        } else {
+            idioma.css("display","block");
+        }
+    
+        
+    });
+    
+    //TweenMax.fromTo($("#activeNext"),1,{alpha:0.5},{alpha:1,yoyo:true,repeat:-1});
+    
+    $("#audiosGroup").append('<audio id="audio0" preload="true" src="audios/' +  0 + '.mp3"></audio>') 
+    for(var i = 1;i<=6;i++){
+       $("#audiosGroup").append('<audio id="audio'+i+'" preload="true" src="audios/' +[language] + "/" +  i + '.mp3"></audio>')  
+    }
+    
+
+function loadApp() {
+
+ 	$('#canvas').fadeIn(1000);
+
+ 	var flipbook = $('.magazine');
+
+ 	// Check if the CSS was already loaded
+	
+	if (flipbook.width()==0 || flipbook.height()==0) {
+		setTimeout(loadApp, 10);
+		return;
+	}
+	
+	// Create the flipbook
+
+	flipbook.turn({
+			
+			// Magazine width
+
+			width: 922,
+
+			// Magazine height
+
+			height: 600,
+
+			// Duration in millisecond
+
+			duration: 1000,
+
+			// Enables gradients
+
+			gradients: true,
+			
+			// Auto center this flipbook
+
+			autoCenter: true,
+
+			// Elevation from the edge of the flipbook when turning a page
+
+			elevation: 50,
+            
+            
+			// The number of pages
+
+			pages: 18,
+
+			// Events
+
+			when: {
+                
+                
+                
+				turning: function(event, page, view) {
+					
+					var book = $(this),
+					currentPage = book.turn('page'),
+					pages = book.turn('pages');
+                    
+		
+
+				updateDepth(book, page);
+				
+				if (page>=2)
+					$('.magazine .p2').addClass('fixed');
+				else
+					$('.magazine .p2').removeClass('fixed');
+
+				if (page<book.turn('pages'))
+					$('.magazine .p17').addClass('fixed');
+				else
+					$('.magazine .p17').removeClass('fixed');
+                    
+                if(language == "ES"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ES.png')");
+                }else if(language == "EN"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2EN.png')");
+                }else if(language == "ZH"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ZH.png')");
+                }else if(language == "KO"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2KO.png')");
+                }else if(language == "JA"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2JA.png')");
+                }else if(language == "PT"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2PT.png')");
+                }else{
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2EN.png')");
+                }
+
+
+					Hash.go('page/' + page).update();
+
+					// Show and hide navigation buttons
+                    audioNumber = page;
+					disableControls(page);
+
+				},
+                
+				turned: function(event, page, view) {
+                    
+					disableControls(page);
+                    var object = $(this);
+
+					$(this).turn('center');
+                   
+
+					$('#slider').slider('value', getViewNumber(object, page));
+                    audioNumber = page;
+            
+					if (page==1) { 
+						$(this).turn('peel', 'br');
+					}
+
+				},
+
+				missing: function (event, pages) {
+
+					// Add pages that aren't in the magazine
+
+					for (var i = 0; i < pages.length; i++)
+						addPage(pages[i], $(this));
+                    
+
+				}
+			}
+
+        
+	});
+
+	// Zoom.js
+
+    
+    
+    
+    
+	$('.magazine-viewport').zoom({
+		flipbook: $('.magazine'),
+
+		max: function() { 
+			
+			return largeMagazineWidth()/$('.magazine').width();
+
+		}, 
+
+		when: {
+			swipeLeft: function() {
+
+				$(this).zoom('flipbook').turn('next');
+                stopAllSounds();
+
+			},
+
+			swipeRight: function() {
+				
+				$(this).zoom('flipbook').turn('previous');
+                stopAllSounds();
+                alert("ok");
+
+			},
+
+			resize: function(event, scale, page, pageElement) {
+
+//				if (scale==1)
+//					loadSmallPage(page, pageElement);
+//				else
+//					loadLargePage(page, pageElement);
+
+			},
+
+			zoomIn: function () {
+                
+                $(".userName").addClass("zoomUserName")
+				$('#slider-bar').hide();
+				$('.made').hide();
+				$('.magazine').removeClass('animated').addClass('zoom-in');
+				$('.zoom-icon').removeClass('zoom-icon-in').addClass('zoom-icon-out');
+				
+				if (!window.escTip && !$.isTouch) {
+					escTip = true;
+
+					$('<div />', {'class': 'exit-message'}).
+						html('<div>Press ESC to exit</div>').
+							appendTo($('body')).
+							delay(2000).
+							animate({opacity:0}, 500, function() {
+								$(this).remove();
+							});
+				}
+			},
+
+			zoomOut: function () {
+                
+                $(".userName").removeClass("zoomUserName")
+				$('#slider-bar').fadeIn();
+				$('.exit-message').hide();
+				$('.made').fadeIn();
+				$('.zoom-icon').removeClass('zoom-icon-out').addClass('zoom-icon-in');
+
+				setTimeout(function(){
+					$('.magazine').addClass('animated').removeClass('zoom-in');
+					resizeViewport();
+				}, 0);
+
+			}
+		}
+	});
+
+
+
+	// Using arrow keys to turn the page
+
+	$(document).keydown(function(e){
+
+		var previous = 37, next = 39, esc = 27;
+
+		switch (e.keyCode) {
+			case previous:
+
+				// left arrow
+				$('.magazine').turn('previous');
+                stopAllSounds();
+				e.preventDefault();
+
+			break;
+			case next:
+
+				//right arrow
+				$('.magazine').turn('next');
+                stopAllSounds();
+				e.preventDefault();
+                
+
+			break;
+			case esc:
+				
+				$('.magazine-viewport').zoom('zoomOut');	
+				e.preventDefault();
+
+			break;
+		}
+	});
+
+	// URIs - Format #/page/1 
+
+    
+    
+	Hash.on('^page\/([0-9]*)$', {
+		yep: function(path, parts) {
+			var page = parts[1];
+
+			if (page!==undefined) {
+				if ($('.magazine').turn('is'))
+					$('.magazine').turn('page', page);
+                audioReady = page;
+                
+			}
+
+		},
+		nop: function(path) {
+
+			if ($('.magazine').turn('is'))
+				$('.magazine').turn('page', 1);
+		}
+	});
+
+
+	$(window).resize(function() {
+		resizeViewport();
+	}).bind('orientationchange', function() {
+		resizeViewport();
+	});
+
+	// Regions
+
+	if ($.isTouch) {
+		$('.magazine').bind('touchstart', regionClick);
+	} else {
+		$('.magazine').click(regionClick);
+	}
+
+	// Events for the next button
+
+	$('.next-button').bind($.mouseEvents.over, function() {
+		
+		$(this).addClass('next-button-hover');
+
+	}).bind($.mouseEvents.out, function() {
+		
+		$(this).removeClass('next-button-hover');
+
+	}).bind($.mouseEvents.down, function() {
+		
+		$(this).addClass('next-button-down');
+
+	}).bind($.mouseEvents.up, function() {
+		
+		$(this).removeClass('next-button-down');
+
+	}).click(function() {
+		
+		$('.magazine').turn('next');
+        stopAllSounds();
+        
+	});
+
+	// Events for the next button
+	
+	$('.previous-button').bind($.mouseEvents.over, function() {
+		
+		$(this).addClass('previous-button-hover');
+
+	}).bind($.mouseEvents.out, function() {
+		
+		$(this).removeClass('previous-button-hover');
+
+	}).bind($.mouseEvents.down, function() {
+		
+		$(this).addClass('previous-button-down');
+
+	}).bind($.mouseEvents.up, function() {
+		
+		$(this).removeClass('previous-button-down');
+
+	}).click(function() {
+		
+		$('.magazine').turn('previous');
+            stopAllSounds();
+
+	});
+
+
+	// Slider
+
+	$( "#slider" ).slider({
+		min: 1,
+		max: numberOfViews(flipbook),
+
+		start: function(event, ui) {
+			if (!window._thumbPreview) {
+				_thumbPreview = $('<div />', {'class': 'thumbnail'}).html('<div></div>');
+				//setPreview(ui.value);
+				//_thumbPreview.appendTo($(ui.handle));
+			} else
+				//setPreview(ui.value);
+
+			moveBar(false);
+
+		},
+
+		slide: function(event, ui) {
+
+			//setPreview(ui.value);
+
+		},
+
+		stop: function() {
+
+			if (window._thumbPreview)
+				_thumbPreview.removeClass('show');
+			     
+			$('.magazine').turn('page', Math.max(1, $(this).slider('value')*2 - 2));
+            stopAllSounds();
+		}
+	});
+
+	resizeViewport();
+
+	$('.magazine').addClass('animated');
+
+}
+
+// Zoom icon
+
+ $('.zoom-icon').bind('mouseover', function() { 
+ 	
+ 	if ($(this).hasClass('zoom-icon-in'))
+ 		$(this).addClass('zoom-icon-in-hover');
+
+ 	if ($(this).hasClass('zoom-icon-out'))
+ 		$(this).addClass('zoom-icon-out-hover');
+ 
+ }).bind('mouseout', function() { 
+ 	
+ 	 if ($(this).hasClass('zoom-icon-in'))
+ 		$(this).removeClass('zoom-icon-in-hover');
+ 	
+ 	if ($(this).hasClass('zoom-icon-out'))
+ 		$(this).removeClass('zoom-icon-out-hover');
+
+ }).bind('click', function() {
+
+ 	if ($(this).hasClass('zoom-icon-in'))
+ 		$('.magazine-viewport').zoom('zoomIn');
+ 	else if ($(this).hasClass('zoom-icon-out'))	
+		$('.magazine-viewport').zoom('zoomOut');
+
+ });
+      
+    
+function visibleNext(){
+    $("#activeNext").css("display","block")
+}    
+    
+
+
+    
+function audiosNumbers(){
+               
+            switch(audioNumber){
+                case 1:
+                    audioReady = 0
+                   break;
+                case 2:
+                    audioReady = 0
+                   break;
+                case 3:
+                    audioReady = 0
+                   break;
+                case 4:
+                    audioReady = 1
+                   break;
+                case 5:
+                    audioReady = 1
+                   break;
+                case 6:
+                    audioReady = 2
+                   break;
+                case 7:
+                    audioReady = 2
+                   break;
+                case 8:
+                    audioReady = 3
+                   break;
+                case 9:
+                    audioReady = 3
+                   break;
+                case 10:
+                    audioReady = 4
+                   break;
+                case 11:
+                    audioReady = 4
+                   break;
+                case 12:
+                    audioReady = 5
+                   break;
+                case 13:
+                    audioReady = 5
+                   break;
+                case 14:
+                    audioReady = 6
+                   break;
+                case 15:
+                    audioReady = 6
+                   break;
+                 case 16:    
+                    audioReady = 0
+                    break;
+                 case 17:    
+                    audioReady = 0
+                    break;
+                 case 18:    
+                    audioReady = 0
+                    break;
+            }
+}    
+
+    
+
+    
+    
+function AudioPlay(){
+   if(!playing) {
+       autoPlay();
+       audioPlayer.currentTime = 0;
+      
+   }else{
+       
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                $(".buttonSound").css("opacity",1);
+                } else {
+                    audioPlayer.pause();
+                                $(".buttonSound").css("opacity",0.5);    
+                }
+       if(language == "ES"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaES" + audioReady)); 
+        }else if(language == "EN"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaEN" + audioReady));
+        }else if(language == "KO"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaKO" + audioReady));
+        }   
+       
+       
+   }    
+    
+};
+
+function autoPlay(){
+    audiosNumbers();
+
+    console.log("audioReady: " + audioReady);
+    audioPlayer = document.getElementById("audio" +  audioReady); 
+        audioPlayer.play();
+        if(language == "ES"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaES" + audioReady)); 
+        }else if(language == "EN"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaEN" + audioReady));
+        }else if(language == "KO"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaKO" + audioReady));
+        }        
+        audioPlayer.addEventListener("timeupdate", function(e){
+            playing = true;
+        });
+
+}       
+    
+ $('#canvas').hide();
+
+
+yepnope({
+	test : Modernizr.csstransforms,
+	yep: ['lib/turn.js'],
+	nope: ['lib/turn.html4.min.js', 'css/jquery.ui.html4.css'],
+	both: ['lib/zoom.min.js', 'css/jquery.ui.css', 'js/magazine.js', 'css/magazine.css','css/custom_fonts.css'],
+	complete: loadApp
+});
+
+var credentials = epicModel.getCredentials();    
+    
+$(document).ready(function () {
+    /**
+     * * Metodo implementado en mixpanel.js
+     */
+    var credentials1 = epicModel.getCredentials();   
+
+    mixpanel.track(
+        "OnBookOpen",
+        {
+            "user_id": credentials1.educationID,
+            "app": "web",
+            "bookID" : "6",
+            "bookName" : "Estoy enojada"
+        }
+    );
+ 
+});    
+    
+    
+var allPages =  18    
+
+
+
+
+
+function mixPanelClose(){
+        mixpanel.track(
+            "OnBookClose", 
+            {
+                "user_id": credentials.educationID,
+                "app": "web",
+                "bookID" : "6",
+                "bookName" : "Estoy enojada",
+                "lastPage" : audioNumber    
+            }
+        );
+}   
+    
+
+    function stopAllSounds(){
+        
+        
+        //setTimeout(function(){ AudioPlay(); }, 1000);
+        console.log("currentPage: " + audioNumber);
+        if(audioNumber >= [allPages-2]){
+                mixpanel.track("OnBookFinished",{
+                        "user_id": credentials.educationID,
+                        "app": "web",
+                        "bookID" : "6",
+                        "bookName" : "Estoy enojada"
+                    });      
+        }
+        
+        
+        $("#activeNext").css("display","none");
+        $(".buttonSound").css("opacity",1);
+        playing = false;
+        audiosNumbers();
+        audioPlayer = document.getElementById("audio" +  audioReady);
+        audioPlayer.currentTime = 0;
+          for(i= 0; i<=6;i++){
+                    var audio = document.getElementById("audio" + i);
+                        audio.pause();
+                        audio.currentTime = 0;
+                    
+                } 
+        
+        AudioPlay();
+        
+    }    
+    
+    var leaving = true;
+    var isClose = false;
+
+    function EndChatSession() {
+        var request = GetRequest();
+        request.open("GET", "../Chat.aspx", true);
+        request.send();
+    }
+    document.onkeydown = checkKeycode
+    function checkKeycode(e) {
+        var keycode;
+        if (window.event)
+            keycode = window.event.keyCode;
+        else if (e)
+            keycode = e.which;
+        if (keycode == 116) {
+            isClose = true;
+        }
+    }
+    function somefunction() {
+        isClose = true;
+    }
+    
+    window.onbeforeunload = function (e) {
+       if (!e) e = event;
+        if (leaving) {
+             EndChatSession();
+             mixPanelClose();
+             //e.returnValue = "Are You Sure";
+
+        }
+    }
+    function GetRequest() {
+        var xmlHttp = null;
+        try {
+            // Firefox, Opera 8.0+, Safari
+            xmlHttp = new XMLHttpRequest();
+        }
+        catch (e) {
+            //Internet Explorer
+            try {
+                xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+            }
+            catch (e) {
+                xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+        }
+        return xmlHttp;
+    }    
+    
+</script>
+</body>
+</html>

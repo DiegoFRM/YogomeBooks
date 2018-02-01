@@ -12,10 +12,10 @@
 <script type="text/javascript" src="js/jquery.blast.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
     <script type="text/javascript" src="js/tracks.js"></script>
-<script type="text/javascript" src="js/audioSync.js"></script> 
+<script type="text/javascript" src="js/audioSync.js"></script>   
     <!--ESta de manera absoluta la direccion de epic model, por la profundidad que tiene dentro del server-->
 <script type="text/javascript" src="http://play.yogome.com/js/epic/models/epicModel.js"></script>    
-<script type="text/javascript" src="../../js/mixpanel/mixpanel.js"></script>           
+<script type="text/javascript" src="../../js/mixpanel/mixpanel.js"></script>    
 <script>
     var languageTitles = [
             {
@@ -28,6 +28,7 @@
             }
         ]
     
+
     //AQUI VA PARA SABER EL LENGUAGE
         function getParameterByName(name, url) {
     if (!url) url = window.location.href;
@@ -40,9 +41,10 @@
 }
 
         var language;
-        language = getParameterByName("language");
+        language = getParameterByName("language");    
     
-     function changeTitle(){
+    
+    function changeTitle(){
         if(language == "ES"){
             $(".languageTitle").text(languageTitles[0][language])
         }else if(language == "EN"){
@@ -63,7 +65,7 @@
     changeTitle()
     
 var languagePages = [
-                {
+                  {
                     page:1,
                     ES:"Después de una exitosa misión, los Yogotars llegaron a la academia. Oof sólo pensaba en comida, Estrella y Dinamita sólo querían ver el fútbol. Mientras Luna sólo tenía cabeza para encontrar la cura de una enfermedad desconocida.",
                     EN:"After a successful mission, the Yogotars went back to the academy. Oof could only think about food, Estrella and Dinamita just wanted to watch football, and Luna was focused on finding the cure for a rare disease.",
@@ -118,6 +120,7 @@ var languagePages = [
                     KO:"&#34;누구든 영웅이 될 수 있다고?&#34; 토미코가 물었어요.</br></br>&#34;바로 그거야 토미코야! 의심할 것도 없이, 넌 최고의 영웅이야.&#34; 이글이가 말했어요.</br></br>&#34;넌 정말 좋은 친구야 이글아!&#34; 토미코가 활짝 웃으면서 말했어요."
                 }
                 ]    
+    
     </script>   
 </head>
 <body>
@@ -126,13 +129,29 @@ var languagePages = [
 
 
 <div class="magazine-viewport">
+    
 	<div class="container">
+
         
 		<div class="magazine">
+                <!--  BOTON SIGUIENTE      -->
+                <div ignore="1" class="next-button">
+                    <div id="activeNext" >
+                        <div class="animation1"> 
+                        </div>
+                    </div>
+                    <img src="images/nextButton.png">
+                </div>
+            <!-- Previous button -->
+			<div ignore="1" class="previous-button">
+    <img src="images/nextButton.png">
+            </div> 
+            
+            
             <div id="p1" depth="5" class="hard"> <div class="side"></div> </div>
 			<div depth="5" class="hard front-side"> <div class="depth"></div> </div>
-			<div class="hard fixed back-side p17"></div>
-			<div class="hard p18"></div>
+			<div class="hard fixed back-side p17"><div class="depth"></div> </div>
+			<div class="hard p18"> </div>
 
             </div>
             <script>
@@ -166,6 +185,7 @@ function goBack() {
     window.location.href="../../yogobooks.html";
 }
 </script>
+    
     <div class="languageButton"><img src="images/icon-languages.png"></div>
     <div class="idiomas">
         <div id="ButtonLanEs" class="overLanguage">Español</div>
@@ -177,27 +197,17 @@ function goBack() {
     </div>
     <div id="audiosGroup"></div>
 	<div class="bottom">
-        <div ignore="1" class="next-button">
-            <div id="activeNext">
-                <img src="images/nextButtonActive.png">
-            </div>
-            <img src="images/nextButton.png">
-            </div>
-			<!-- Previous button -->
-			<div ignore="1" class="previous-button">
-    <img src="images/prevButton.png">
-            </div>        
+        
+			       
 		<div id="slider-bar" class="turnjs-slider timeline-style">
 			<div id="slider">
             </div>
 		</div>
-         <div id="sectionPlayButton" ><img id="buttonPlay" src="images/Play.png"></div>
 	</div>
     
 </div>
 
 <script type="text/javascript">
-    //$("#sectionPlayButton").hide();
     var audioNumber;
     var clearTimeOut;
     var audioReady;
@@ -226,34 +236,6 @@ function goBack() {
         window.location = window.location.pathname + str + "#page/" + audioNumber;
     });
     
-    $("#ButtonLanZh").click(function(){
-
-        var str = window.location.search
-        str = replaceQueryParam('language', "ZH", str)
-        window.location = window.location.pathname + str + "#page/" + audioNumber;
-    });
-    
-    $("#ButtonLanJa").click(function(){
-
-        var str = window.location.search
-        str = replaceQueryParam('language', "JA", str)
-        window.location = window.location.pathname + str + "#page/" + audioNumber;
-    });
-    
-    $("#ButtonLanKo").click(function(){
-
-        var str = window.location.search
-        str = replaceQueryParam('language', "KO", str)
-        window.location = window.location.pathname + str + "#page/" + audioNumber;
-    });
-    
-    $("#ButtonLanPt").click(function(){
-
-        var str = window.location.search
-        str = replaceQueryParam('language', "PT", str)
-        window.location = window.location.pathname + str + "#page/" + audioNumber;
-    });
-    
     $(".languageButton").click(function(){
         var idioma = $(".idiomas");
         if (idioma.css("display") === "block") {
@@ -265,7 +247,7 @@ function goBack() {
         
     });
     
-    TweenMax.fromTo($("#activeNext"),1,{alpha:0.5},{alpha:1,yoyo:true,repeat:-1});
+    //TweenMax.fromTo($("#activeNext"),1,{alpha:0.5},{alpha:1,yoyo:true,repeat:-1});
     
     $("#audiosGroup").append('<audio id="audio0" preload="true" src="audios/' +  0 + '.mp3"></audio>') 
     for(var i = 1;i<=6;i++){
@@ -313,7 +295,8 @@ function loadApp() {
 			// Elevation from the edge of the flipbook when turning a page
 
 			elevation: 50,
-
+            
+            
 			// The number of pages
 
 			pages: 18,
@@ -370,7 +353,7 @@ function loadApp() {
 				},
                 
 				turned: function(event, page, view) {
-
+                    
 					disableControls(page);
                     var object = $(this);
 
@@ -392,6 +375,7 @@ function loadApp() {
 
 					for (var i = 0; i < pages.length; i++)
 						addPage(pages[i], $(this));
+                    
 
 				}
 			}
@@ -401,6 +385,8 @@ function loadApp() {
 
 	// Zoom.js
 
+    
+    
     
     
 	$('.magazine-viewport').zoom({
@@ -416,7 +402,6 @@ function loadApp() {
 			swipeLeft: function() {
 
 				$(this).zoom('flipbook').turn('next');
-                
                 stopAllSounds();
 
 			},
@@ -425,6 +410,7 @@ function loadApp() {
 				
 				$(this).zoom('flipbook').turn('previous');
                 stopAllSounds();
+                alert("ok");
 
 			},
 
@@ -489,7 +475,6 @@ function loadApp() {
 				// left arrow
 				$('.magazine').turn('previous');
                 stopAllSounds();
-                
 				e.preventDefault();
 
 			break;
@@ -499,6 +484,7 @@ function loadApp() {
 				$('.magazine').turn('next');
                 stopAllSounds();
 				e.preventDefault();
+                
 
 			break;
 			case esc:
@@ -604,23 +590,22 @@ function loadApp() {
 	$( "#slider" ).slider({
 		min: 1,
 		max: numberOfViews(flipbook),
-/*
-		start: function(event, ui) {
 
+		start: function(event, ui) {
 			if (!window._thumbPreview) {
 				_thumbPreview = $('<div />', {'class': 'thumbnail'}).html('<div></div>');
-				setPreview(ui.value);
-				_thumbPreview.appendTo($(ui.handle));
+				//setPreview(ui.value);
+				//_thumbPreview.appendTo($(ui.handle));
 			} else
-				setPreview(ui.value);
+				//setPreview(ui.value);
 
 			moveBar(false);
 
 		},
-*/
+
 		slide: function(event, ui) {
 
-			setPreview(ui.value);
+			//setPreview(ui.value);
 
 		},
 
@@ -628,9 +613,9 @@ function loadApp() {
 
 			if (window._thumbPreview)
 				_thumbPreview.removeClass('show');
-			
+			     
 			$('.magazine').turn('page', Math.max(1, $(this).slider('value')*2 - 2));
-
+            stopAllSounds();
 		}
 	});
 
@@ -672,21 +657,7 @@ function visibleNext(){
     $("#activeNext").css("display","block")
 }    
     
-    
-    function stopAllSounds(){
-        $("#activeNext").css("display","none");
-        playing = false;
-        audiosNumbers();
-       audioPlayer = document.getElementById("audio" +  audioReady);
-        $("#buttonPlay").attr("src","images/Play.png");
-          for(i= 0; i<=6;i++){
-                    var audio = document.getElementById("audio" + i);
-                        audio.pause();
-                        audio.currentTime = 0;
-                    
-                } 
-        
-    }
+
 
     
 function audiosNumbers(){
@@ -737,27 +708,35 @@ function audiosNumbers(){
                 case 15:
                     audioReady = 6
                    break;
-                case 16:
+                 case 16:    
                     audioReady = 0
-                   break;
-            
+                    break;
+                 case 17:    
+                    audioReady = 0
+                    break;
+                 case 18:    
+                    audioReady = 0
+                    break;
             }
 }    
 
     
-$("#buttonPlay").click(function(){
+
+    
+    
+function AudioPlay(){
    if(!playing) {
-        $("#buttonPlay").attr("src","images/Pause.png");
        autoPlay();
        audioPlayer.currentTime = 0;
+      
    }else{
        
             if (audioPlayer.paused) {
                 audioPlayer.play();
-                    $("#buttonPlay").attr("src","images/Pause.png");
+                $(".buttonSound").css("opacity",1);
                 } else {
                     audioPlayer.pause();
-                    $("#buttonPlay").attr("src","images/Play.png");
+                                $(".buttonSound").css("opacity",0.5);    
                 }
        if(language == "ES"){
             audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaES" + audioReady)); 
@@ -765,21 +744,18 @@ $("#buttonPlay").click(function(){
             audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaEN" + audioReady));
         }else if(language == "KO"){
             audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaKO" + audioReady));
-        }
+        }   
        
        
    }    
     
-});
+};
 
 function autoPlay(){
     audiosNumbers();
+
     console.log("audioReady: " + audioReady);
     audioPlayer = document.getElementById("audio" +  audioReady); 
-      
-    if(audioNumber == 16){
-        $("#buttonPlay").attr("src","images/Play.png");
-    }else{
         audioPlayer.play();
         if(language == "ES"){
             audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaES" + audioReady)); 
@@ -792,7 +768,6 @@ function autoPlay(){
             playing = true;
         });
 
-    }
 }       
     
  $('#canvas').hide();
@@ -800,15 +775,13 @@ function autoPlay(){
 
 yepnope({
 	test : Modernizr.csstransforms,
-	yep: ['lib/turn.min.js'],
+	yep: ['lib/turn.js'],
 	nope: ['lib/turn.html4.min.js', 'css/jquery.ui.html4.css'],
 	both: ['lib/zoom.min.js', 'css/jquery.ui.css', 'js/magazine.js', 'css/magazine.css','css/custom_fonts.css'],
 	complete: loadApp
 });
-/*MIX PANEL*/
+
 var credentials = epicModel.getCredentials();    
-var allPages =  18    
-    
     
 $(document).ready(function () {
     /**
@@ -821,15 +794,19 @@ $(document).ready(function () {
         {
             "user_id": credentials1.educationID,
             "app": "web",
-            "bookID" : "27",
-            "bookName" : "Eagle entiende la navidad"
+            "bookID" : "6",
+            "bookName" : "Estoy enojada"
         }
     );
-    
-    
-
-    
+ 
 });    
+    
+    
+var allPages =  18    
+
+
+
+
 
 function mixPanelClose(){
         mixpanel.track(
@@ -837,36 +814,43 @@ function mixPanelClose(){
             {
                 "user_id": credentials.educationID,
                 "app": "web",
-                "bookID" : "27",
-                "bookName" : "Eagle entiende la navidad",
-                "lastPage" : audioNumber
+                "bookID" : "6",
+                "bookName" : "Estoy enojada",
+                "lastPage" : audioNumber    
             }
         );
 }   
     
 
     function stopAllSounds(){
+        
+        
+        //setTimeout(function(){ AudioPlay(); }, 1000);
+        console.log("currentPage: " + audioNumber);
         if(audioNumber >= [allPages-2]){
                 mixpanel.track("OnBookFinished",{
                         "user_id": credentials.educationID,
                         "app": "web",
-                        "bookID" : "27",
-                        "bookName" : "Eagle entiende la navidad"
+                        "bookID" : "6",
+                        "bookName" : "Estoy enojada"
                     });      
         }
         
         
         $("#activeNext").css("display","none");
+        $(".buttonSound").css("opacity",1);
         playing = false;
         audiosNumbers();
-       audioPlayer = document.getElementById("audio" +  audioReady);
-        $("#buttonPlay").attr("src","images/Play.png");
+        audioPlayer = document.getElementById("audio" +  audioReady);
+        audioPlayer.currentTime = 0;
           for(i= 0; i<=6;i++){
                     var audio = document.getElementById("audio" + i);
                         audio.pause();
                         audio.currentTime = 0;
                     
                 } 
+        
+        AudioPlay();
         
     }    
     
@@ -918,7 +902,8 @@ function mixPanelClose(){
             }
         }
         return xmlHttp;
-    }  
+    }    
+    
 </script>
 </body>
 </html>
