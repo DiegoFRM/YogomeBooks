@@ -1,0 +1,22 @@
+<div class="buttonSound"><img src="images/sound.png"></div>
+<div class="odd gradient"></div>
+
+<div class="textPage">
+<div id="texto4">
+
+    </div>
+</div>
+<script>
+    $("#texto4").append(languagePages[3][language])
+
+    if(!$("#texto4").find("br")){
+            
+        }else{
+          $("#texto4").blast({ delimiter: "word" });
+
+        $("#texto4").find('span').each(function(i){
+        $(this).attr('id', 'c_' + i);
+         });       
+        } 
+
+</script>

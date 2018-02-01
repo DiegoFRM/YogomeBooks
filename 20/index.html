@@ -1,0 +1,958 @@
+<!doctype html>
+<html>
+<head>
+<title class="languageTitle">¡Por favor!</title>
+ <meta charset="UTF-8">    
+<meta name="viewport" content="width = 1050, user-scalable = no" />
+<link rel="icon" type="image/png" href="../../pics/favicon.png" />
+<script type="text/javascript" src="extras/jquery.min.1.7.js"></script>
+<script type="text/javascript" src="extras/jquery-ui-1.8.20.custom.min.js"></script>
+<script type="text/javascript" src="extras/modernizr.2.5.3.min.js"></script>
+<script type="text/javascript" src="lib/hash.js"></script>
+<script type="text/javascript" src="js/jquery.blast.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+    <script type="text/javascript" src="js/tracks.js"></script>
+<script type="text/javascript" src="js/audioSync.js"></script> 
+    <!--ESta de manera absoluta la direccion de epic model, por la profundidad que tiene dentro del server-->
+<script type="text/javascript" src="http://play.yogome.com/js/epic/models/epicModel.js"></script>    
+<script type="text/javascript" src="../../js/mixpanel/mixpanel.js"></script>        
+<script>
+    var languageTitles = [
+            {
+                ES:"¡Por favor!",
+                EN:"Eagle Doesn't Say Please",
+                PT:"Eagle não diz “por favor",
+                ZH:"老鹰不说请字",
+                JA:"「おねがい」を言わないイーグル",
+                KO:"부탁해!"
+            }
+        ]
+    
+    //AQUI VA PARA SABER EL LENGUAGE
+        function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+        var language;
+        language = getParameterByName("language");
+    
+    function changeTitle(){
+        if(language == "ES"){
+            $(".languageTitle").text(languageTitles[0][language])
+        }else if(language == "EN"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "PT"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "ZH"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "JA"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "KO"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else{
+            $(".languageTitle").text(languageTitles[0].EN)    
+        }
+    }    
+    
+    changeTitle()
+
+var languagePages = [
+                {
+                    page:1,
+                    ES:"En Yogópolis no todo es paz y tranquilidad. Algunas veces hay problemas mayores que nuestros héroes deben atender.",
+                    EN:"Yogopolis is not always at peace. Sometimes, big problems arise and our heroes have to save the day.",
+                    PT:"Yogópolis nem sempre está em paz. Às vezes, surgem grandes problemas, e os nossos heróis precisam salvar a situação.",
+                    ZH:"Yogopolis并不总是风平浪静。有时也会出现大问题，必须由我们的英雄们来拯救。",
+                    JA:"ヨゴポリスはいつもおだやかとはかぎりません。大きなもんだいがおこってヒーローにたすけてもらうこともあります。",
+                    KO:"요고폴리스는 항상 평화롭지는 않아요. 가끔 큰 문제가 생기고 우리의 히어로들은 그 문제를 해결해야만 해요."
+                },
+                {
+                    page:2,
+                    ES:"El día de la invasión, los Yogotars actuaron rápidamente. <br> -¡Luna! Activa tu campo de defensa- gritó Eagle. <br>-Oye, ya lo hice, no tienes que gritarme <br>-dijo Luna molesta.",
+                    EN:"On the invasion day, the Yogotars had to act quickly. <br> “Luna! Turn on your force field!” Shouted Eagle. <br> “Hey! I already did that, you don't have to yell at me” answered Luna, mad.",
+                    PT:"No dia da invasão, os Yogotars tiveram de agir rapidamente. <br>“Luna! Ligue o campo de força!”, gritou Eagle. <br>“Ei! Eu já fiz isso. Você não precisa gritar comigo!”, respondeu Luna, bem chateada.",
+                    ZH:"遭到入侵的那天，各位Yogotar必须迅速行动起来。<br>“鲁娜！打开你的力场！”伊戈喊道。<br>“嘿！我已经打开了，你用不着对我大喊大叫。” 鲁娜生气地回答。",
+                    JA:"しんりゃくしゃがやってきた日ヨゴターたちはすばやくこうどうしなければなりませんでした。「ルナ！きみのフォースフィールドをオンにしろ！」イーグルがさけびました。「ちょっと！もうやったわよ。どならなくてもいいじゃない」ルナはおこってこたえました。",
+                    KO:"공격을 받은 어느 날, 요고타들은 재빠르게 행동해야 했어요. “루나야! 네 방어막을 얼른 켜!” 이글이가 소리쳤어요. “야! 이미 켜 놨어. 나한테 소리를 지를 필요는 없어.” 루나가 화난 목소리로 대답했어요."
+                },
+                {
+                    page:3,
+                    ES:"-¡Oof, salta y derriba su rayo paralizador! -gritó Eagle. <br> Oof no dijo nada, pero algo en la actitud de su compañero le molestó.",
+                    EN:"“Oof, jump and take down their paralyzing beam!” Eagle shouted. <br> Oof did not say anything, but there was something about his peer's attitude that made him mad.",
+                    PT:"“Oof, pule e desative o raio paralisante deles!”, gritou Eagle. <br>Oof não disse nada, mas tinha alguma coisa na atitude de seu colega que o irritava.",
+                    ZH:"“奥夫，跳下去把他们使人麻痹的光束拿下来！”伊戈喊道。<br>奥夫什么也没说，但这位同伴的态度让他有些生气。",
+                    JA:"「ウーフ、ジャンプしてやつらのビームを止めるんだ！」イーグルはさけびました。<br> ウーフはなにも言いませんでしたがイーグルのたいどにおこっていました。",
+                    KO:"“우프, 점프해 가서 적들의 마비 광선을 치워!” 이글이가 소리쳤어요. <br> 우프는 아무 말도 하지 않았지만, 우프를 화나게 한 친구의 태도에는 문제가 있어 보였어요."
+                },
+                {
+                    page:4,
+                    ES:"-Eres muy lento Dinamita, déjame eso a mí. <br> Eagle le arrebató el cañón de patos de hule a Dinamita, <br> él no dijo nada, pero los modales de Eagle no le parecieron los correctos.",
+                    EN:"“You are too slow Dinamita, give me that” <br> Eagle snarled as he snatched the rubber-duck shooter from Dinamita's hands. <br>Dinamita kept quiet, but he thought Eagle's manners could be better.",
+                    PT:"“Você é lerdo demais, Dinamita, me dê isso aqui”, disse Eagle aos berros enquanto arrancava o lançador de patos de borracha das mãos de Dinamita. <br> Dinamita não disse nada, mas pensou que Eagle poderia tratá-lo melhor.",
+                    ZH:"“你太慢了，迪纳米特，把那个给我。” <br>伊戈从迪纳米特手中抢走了一个橡皮鸭射手，咆哮道。迪纳米特什么也没说，但他认为伊戈的举止应该表现得更好一些。",
+                    JA:"「ディナミタきみはおそすぎる、それをぼくにくれ」イーグルはどなりつけながらディナミタの手からあひるのシューターをとりあげました。<br>ディナミタはじっとだまっていましたがイーグルのマナーにはもんだいがあるとおもいました。",
+                    KO:"“다이나미타, 너는 너무 느려. 그거 이리 내.” <br> 이글이가 으르렁거리면서 다이나미타의 손에서 고무 오리 대포를 뺏어왔어요. <br> 다이나미타는 조용히 있었지만, 이글이가 좀 더 좋은 태도를 보였으면 좋겠다고 생각했어요."
+                },
+                {
+                    page:5,
+                    ES:"Al final, los Yogotars lograron detener la invasión a Yogópolis. Eagle parecía muy contento, pero el resto de sus compañeros no lo estaban. <br> -¡Lo logramos! ¿Qué les parece si celebramos? -dijo Eagle muy emocionado. <br> Sus compañeros no le hicieron caso.",
+                    EN:"In the end, the Yogotars were able to stop the invasion of Yogopolis. Eagle seemed to be very happy but the rest of the team wasn't. <br> “We did it!  Why don't we go out to celebrate?” <br> said Eagle excitedly, but his friends didn't follow him.",
+                    PT:"No final, os Yogotars conseguiram impedir a invasão de Yogópolis. Eagle parecia bem feliz, mas o resto da equipe, não. <br>“Conseguimos! Por que a gente não sai pra comemorar?”, disse Eagle todo empolgado, <br> mas seus amigos não o seguiram.",
+                    ZH:"最终，大家成功地阻止了对Yogopolis的入侵。伊戈似乎很高兴，但其他队员却不高兴。<br>“我们胜利了！为什么不出去庆祝一下呢？”伊戈兴奋地说，<br> 但他的朋友们却没有人跟他一起。",
+                    JA:"ついにヨゴターたちはヨゴポリスのしんりゃくをふせぐことができました。イーグルはとてもうれしそうでしたが、チームのみんなはそうではありませんでした。「ぼくたちやったよ！外にでておいわいしようよ。」イーグルがウキウキして言いましたが、だれもその声にしたがいませんでした。",
+                    KO:"결국, 요고타들은 요고폴리스를 침략하는 적들을 성공적으로 막았어요. 이글이는 굉장히 신나 보였지만, 다른 친구들은 그렇지 않아 보였어요. <br>“우리가 해냈어! 우리의 승리를 기념하러 가자.” <br>이글이가 들뜬 목소리로 말했지만, 친구들은 이글이를 따르지 않았어요."
+                },
+                {
+                    page:6,
+                    ES:"-¿Amigos? -dijo Eagle. <br> El resto de Yogotars lo dejaron solo. Eagle estaba desconcertado, no sabía qué había hecho mal. <br>-Lo siento Eagle, el equipo no está muy contento contigo -dijo Luna. <br> -¿Qué fue lo que hice? <br>-Son tus modales, no hubo un “por favor” ni un “gracias” -respondió Luna algo molesta. <br> -Pero… yo -dijo Eagle. <br> CONTINUARÁ",
+                    EN:"“Team?” asked Eagle. <br>The rest of the Yogotars left him by himself. Eagle was confused, he didn't know what he did wrong. “Sorry Eagle, the team is not quite happy with you” said Luna. <br> “What did I do?” “It's because of your manners, Eagle. You never said “please” or “thank you”,” answered Luna, a little angry. <br>“But... I... ” said Eagle, embarrassed. <br>TO BE CONTINUED",
+                    PT:"“Equipe?”, perguntou Eagle. O resto dos Yogotars o deixaram sozinho. Eagle ficou confuso; ele não sabia o que tinha feito de errado. <br> “Desculpe, Eagle, mas a equipe não está muito contente com você”, disse Luna. <br>“O que foi que eu fiz?” “É por causa do seu jeito de tratar a gente, Eagle. Você nunca diz ‘por favor’ ou ‘obrigado’”, respondeu Luna, um pouco nervosa. <br>“Mas... eu... ” disse Eagle, envergonhado. <br> CONTINUA",
+                    ZH:"“不一起吗？” <br>伊戈问道。其余的Yogotar都走了，留下他一个人。伊戈被弄糊涂了，他不知道自己做错了什么。<br>“对不起，伊戈，大家对你不太满意，”鲁娜说。“我做了什么？”<br>“这是因为你的举止，伊戈。你从来都不说‘请’或‘谢谢’”，鲁娜有点生气地回答。<br>“可是...我...”伊戈尴尬地说。<br>未完待续",
+                    JA:"「みんな？」イーグルはたずねました。<br>ヨゴターたちはイーグルをひとりにしました。イーグルはじぶんがいったい何をしたのかわかっていませんでした。<br>「イーグルわるいけどチームのみんなはきみのことをあまりよくおもっていないわよ」ルナが言いました。<br>「ぼくが何をしたっていうの？」<br>「イーグル、きみのマナーのことよ。いちどもおねがいとかありがとうとか言わなかったじゃない」ルナは少しおこってこたえました。<br>「でも...ぼくは…」イーグルははずかしそうに言いました。<br>つづく",
+                    KO:"“친구들아?” 이글이가 물었어요. <br> 다른 요고타들은 이글이를 혼자 두고 떠났어요. 이글이는 자기가 뭘 잘못했는지 몰라서 그 상황을 이해할 수 없었어요. <br> “이글아 미안하지만, 친구들이 너와 있고 싶지 않아 해.” 루나가 말했어요. <br> “내가 뭘 했길래?” <br> “너의 태도 때문이야 이글아. 너는 '부탁해' 아니면 '고마워'라고 한 번도 말하지 않았잖아.” 루나가 화난 목소리로 대답했어요. <br>“그렇지만…난” 이글이는 당황한 목소리로 말했어요. <br> 이야기는 계속됩니다."
+                }
+                ]    
+    
+    
+    </script>   
+</head>
+<body>
+
+<div id="canvas">
+
+
+<div class="magazine-viewport">
+	<div class="container">
+        
+		<div class="magazine">
+<!--  BOTON SIGUIENTE      -->
+                <div ignore="1" class="next-button">
+                    <div id="activeNext" >
+                        <div class="animation1"> 
+                        </div>
+                    </div>
+                    <img src="images/nextButton.png">
+                </div>
+            <!-- Previous button -->
+			<div ignore="1" class="previous-button">
+    <img src="images/nextButton.png">
+            </div>             
+            <div id="p1" depth="5" class="hard"> <div class="side"></div> </div>
+			<div depth="5" class="hard front-side"> <div class="depth"></div> </div>
+			<div class="hard fixed back-side p17"><div class="depth"></div> </div>
+			<div class="hard p18"> </div>
+
+            </div>
+            <script>
+                //console.log(languagePages[0][language]);
+                if(language == "ES"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1ES.png')");
+                }else if(language == "EN"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1EN.png')");
+                }else if(language == "ZH"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1ZH.png')");
+                }else if(language == "KO"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1KO.png')");
+                }else if(language == "JA"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1JA.png')");
+                }else if(language == "PT"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1PT.png')");
+                }else{
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1EN.png')");
+                }
+                
+                
+                
+            </script>
+        
+        
+			<!-- Next button -->
+		</div>
+	</div>
+   <a onclick="goBack()"><div id="homeButton"><img src="images/homeButton.png" /></div></a>
+
+<script>
+function goBack() {
+    window.location.href="../../yogobooks.html";
+}
+</script>
+    <div class="languageButton"><img src="images/icon-languages.png"></div>
+    <div class="idiomas">
+        <div id="ButtonLanEs" class="overLanguage">Español</div>
+        <div id="ButtonLanEn" class="overLanguage">English</div>
+        <div id="ButtonLanZh" class="overLanguage">中國</div>
+        <div id="ButtonLanJa" class="overLanguage">日本語</div>
+        <div id="ButtonLanKo" class="overLanguage">한국어</div>
+        <div id="ButtonLanPt" class="overLanguage">PORTUGUES</div>
+    </div>
+    <div id="audiosGroup"></div>
+	<div class="bottom">    
+		<div id="slider-bar" class="turnjs-slider timeline-style">
+			<div id="slider">
+            </div>
+		</div>
+	</div>
+    
+</div>
+
+<script type="text/javascript">
+    var audioNumber;
+    var clearTimeOut;
+    var audioReady;
+    var playing = false;
+    var audioPlayer; 
+    //cambio de regex
+    function replaceQueryParam(param, newval, search) {
+        var regex = new RegExp("([?;&])" + param + "[^&;]*[;&]?");
+        var query = search.replace(regex, "$1").replace(/&$/, '');
+
+        return (query.length > 2 ? query + "&" : "?") + (newval ? param + "=" + newval : '');
+    }    
+    
+        function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}    
+    
+    
+    $("#ButtonLanEs").click(function(){
+
+        var str = window.location.search
+        str = replaceQueryParam('language', "ES", str)
+        window.location = str + "#page/" + audioNumber;
+    });
+    
+    $("#ButtonLanEn").click(function(){
+
+        var str = window.location.search
+        str = replaceQueryParam('language', "EN", str)
+        window.location = str + "#page/" + audioNumber;
+    });
+    
+    $("#ButtonLanZh").click(function(){
+
+        var str = window.location.search
+        str = replaceQueryParam('language', "ZH", str)
+        window.location = str + "#page/" + audioNumber;
+    });
+    
+    $("#ButtonLanJa").click(function(){
+
+        var str = window.location.search
+        str = replaceQueryParam('language', "JA", str)
+        window.location = str + "#page/" + audioNumber;
+    });
+    
+    $("#ButtonLanKo").click(function(){
+
+        var str = window.location.search
+        str = replaceQueryParam('language', "KO", str)
+        window.location = str + "#page/" + audioNumber;
+    });
+    
+    $("#ButtonLanPt").click(function(){
+
+        var str = window.location.search
+        str = replaceQueryParam('language', "PT", str)
+        window.location = str + "#page/" + audioNumber;
+    });
+    
+    $(".languageButton").click(function(){
+        var idioma = $(".idiomas");
+        if (idioma.css("display") === "block") {
+            idioma.css("display","none");
+        } else {
+            idioma.css("display","block");
+        }
+    
+        
+    });
+    
+    //TweenMax.fromTo($("#activeNext"),1,{alpha:0.5},{alpha:1,yoyo:true,repeat:-1});
+    
+
+    
+    $("#audiosGroup").append('<audio id="audio0" preload="true" src="audios/' +  0 + '.mp3"></audio>') 
+    for(var i = 1;i<=6;i++){
+       $("#audiosGroup").append('<audio id="audio'+i+'" preload="true" src="audios/' +[language] + "/" +  i + '.mp3"></audio>')  
+    }
+    
+    
+function loadApp() {
+
+ 	$('#canvas').fadeIn(1000);
+
+ 	var flipbook = $('.magazine');
+
+ 	// Check if the CSS was already loaded
+	
+	if (flipbook.width()==0 || flipbook.height()==0) {
+		setTimeout(loadApp, 10);
+		return;
+	}
+	
+	// Create the flipbook
+
+	flipbook.turn({
+			
+			// Magazine width
+
+			width: 922,
+
+			// Magazine height
+
+			height: 600,
+
+			// Duration in millisecond
+
+			duration: 1000,
+
+			// Enables gradients
+
+			gradients: true,
+			
+			// Auto center this flipbook
+
+			autoCenter: true,
+
+			// Elevation from the edge of the flipbook when turning a page
+
+			elevation: 50,
+
+			// The number of pages
+
+			pages: 18,
+
+			// Events
+
+			when: {
+                
+                
+                
+				turning: function(event, page, view) {
+					
+					var book = $(this),
+					currentPage = book.turn('page'),
+					pages = book.turn('pages');
+                    
+		
+
+				updateDepth(book, page);
+				
+				if (page>=2)
+					$('.magazine .p2').addClass('fixed');
+				else
+					$('.magazine .p2').removeClass('fixed');
+
+				if (page<book.turn('pages'))
+					$('.magazine .p17').addClass('fixed');
+				else
+					$('.magazine .p17').removeClass('fixed');
+
+                    if(language == "ES"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ES.png')");
+                }else if(language == "EN"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2EN.png')");
+                }else if(language == "ZH"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ZH.png')");
+                }else if(language == "KO"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2KO.png')");
+                }else if(language == "JA"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2JA.png')");
+                }else if(language == "PT"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2PT.png')");
+                }else{
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2EN.png')");
+                }
+                    
+					Hash.go('page/' + page).update();
+
+					// Show and hide navigation buttons
+                    audioNumber = page;
+					disableControls(page);
+
+				},
+                
+				turned: function(event, page, view) {
+                    
+					disableControls(page);
+                    var object = $(this);
+
+					$(this).turn('center');
+                   
+
+					$('#slider').slider('value', getViewNumber(object, page));
+                    audioNumber = page;
+            
+					if (page==1) { 
+						$(this).turn('peel', 'br');
+					}
+
+				},
+
+				missing: function (event, pages) {
+
+					// Add pages that aren't in the magazine
+
+					for (var i = 0; i < pages.length; i++)
+						addPage(pages[i], $(this));
+
+				}
+			}
+
+        
+	});
+
+	// Zoom.js
+
+    
+    
+	$('.magazine-viewport').zoom({
+		flipbook: $('.magazine'),
+
+		max: function() { 
+			
+			return largeMagazineWidth()/$('.magazine').width();
+
+		}, 
+
+		when: {
+			swipeLeft: function() {
+
+				$(this).zoom('flipbook').turn('next');
+                
+                stopAllSounds();
+
+			},
+
+			swipeRight: function() {
+				
+				$(this).zoom('flipbook').turn('previous');
+                stopAllSounds();
+
+			},
+
+			resize: function(event, scale, page, pageElement) {
+
+//				if (scale==1)
+//					loadSmallPage(page, pageElement);
+//				else
+//					loadLargePage(page, pageElement);
+
+			},
+
+			zoomIn: function () {
+                
+                $(".userName").addClass("zoomUserName")
+				$('#slider-bar').hide();
+				$('.made').hide();
+				$('.magazine').removeClass('animated').addClass('zoom-in');
+				$('.zoom-icon').removeClass('zoom-icon-in').addClass('zoom-icon-out');
+				
+				if (!window.escTip && !$.isTouch) {
+					escTip = true;
+
+					$('<div />', {'class': 'exit-message'}).
+						html('<div>Press ESC to exit</div>').
+							appendTo($('body')).
+							delay(2000).
+							animate({opacity:0}, 500, function() {
+								$(this).remove();
+							});
+				}
+			},
+
+			zoomOut: function () {
+                
+                $(".userName").removeClass("zoomUserName")
+				$('#slider-bar').fadeIn();
+				$('.exit-message').hide();
+				$('.made').fadeIn();
+				$('.zoom-icon').removeClass('zoom-icon-out').addClass('zoom-icon-in');
+
+				setTimeout(function(){
+					$('.magazine').addClass('animated').removeClass('zoom-in');
+					resizeViewport();
+				}, 0);
+
+			}
+		}
+	});
+
+
+
+
+	// Using arrow keys to turn the page
+
+	$(document).keydown(function(e){
+
+		var previous = 37, next = 39, esc = 27;
+
+		switch (e.keyCode) {
+			case previous:
+
+				// left arrow
+				$('.magazine').turn('previous');
+                stopAllSounds();
+				e.preventDefault();
+
+			break;
+			case next:
+
+				//right arrow
+				$('.magazine').turn('next');
+                stopAllSounds();
+				e.preventDefault();
+                
+
+			break;
+			case esc:
+				
+				$('.magazine-viewport').zoom('zoomOut');	
+				e.preventDefault();
+
+			break;
+		}
+	});
+
+	// URIs - Format #/page/1 
+
+    
+    
+	Hash.on('^page\/([0-9]*)$', {
+		yep: function(path, parts) {
+			var page = parts[1];
+
+			if (page!==undefined) {
+				if ($('.magazine').turn('is'))
+					$('.magazine').turn('page', page);
+                audioReady = page;
+                
+			}
+
+		},
+		nop: function(path) {
+
+			if ($('.magazine').turn('is'))
+				$('.magazine').turn('page', 1);
+		}
+	});
+
+
+	$(window).resize(function() {
+		resizeViewport();
+	}).bind('orientationchange', function() {
+		resizeViewport();
+	});
+
+	// Regions
+
+	if ($.isTouch) {
+		$('.magazine').bind('touchstart', regionClick);
+	} else {
+		$('.magazine').click(regionClick);
+	}
+
+	// Events for the next button
+
+	$('.next-button').bind($.mouseEvents.over, function() {
+		
+		$(this).addClass('next-button-hover');
+
+	}).bind($.mouseEvents.out, function() {
+		
+		$(this).removeClass('next-button-hover');
+
+	}).bind($.mouseEvents.down, function() {
+		
+		$(this).addClass('next-button-down');
+
+	}).bind($.mouseEvents.up, function() {
+		
+		$(this).removeClass('next-button-down');
+
+	}).click(function() {
+		
+		$('.magazine').turn('next');
+        stopAllSounds();
+        
+	});
+
+	// Events for the next button
+	
+	$('.previous-button').bind($.mouseEvents.over, function() {
+		
+		$(this).addClass('previous-button-hover');
+
+	}).bind($.mouseEvents.out, function() {
+		
+		$(this).removeClass('previous-button-hover');
+
+	}).bind($.mouseEvents.down, function() {
+		
+		$(this).addClass('previous-button-down');
+
+	}).bind($.mouseEvents.up, function() {
+		
+		$(this).removeClass('previous-button-down');
+
+	}).click(function() {
+		
+		$('.magazine').turn('previous');
+            stopAllSounds();
+
+	});
+
+
+	// Slider
+
+	$( "#slider" ).slider({
+		min: 1,
+		max: numberOfViews(flipbook),
+
+		start: function(event, ui) {
+			if (!window._thumbPreview) {
+				_thumbPreview = $('<div />', {'class': 'thumbnail'}).html('<div></div>');
+				//setPreview(ui.value);
+				//_thumbPreview.appendTo($(ui.handle));
+			} else
+				//setPreview(ui.value);
+
+			moveBar(false);
+
+		},
+
+		slide: function(event, ui) {
+
+			//setPreview(ui.value);
+
+		},
+
+		stop: function() {
+
+			if (window._thumbPreview)
+				_thumbPreview.removeClass('show');
+			     
+			$('.magazine').turn('page', Math.max(1, $(this).slider('value')*2 - 2));
+            stopAllSounds();
+		}
+	});
+
+	resizeViewport();
+
+	$('.magazine').addClass('animated');
+
+}
+
+// Zoom icon
+
+ $('.zoom-icon').bind('mouseover', function() { 
+ 	
+ 	if ($(this).hasClass('zoom-icon-in'))
+ 		$(this).addClass('zoom-icon-in-hover');
+
+ 	if ($(this).hasClass('zoom-icon-out'))
+ 		$(this).addClass('zoom-icon-out-hover');
+ 
+ }).bind('mouseout', function() { 
+ 	
+ 	 if ($(this).hasClass('zoom-icon-in'))
+ 		$(this).removeClass('zoom-icon-in-hover');
+ 	
+ 	if ($(this).hasClass('zoom-icon-out'))
+ 		$(this).removeClass('zoom-icon-out-hover');
+
+ }).bind('click', function() {
+
+ 	if ($(this).hasClass('zoom-icon-in'))
+ 		$('.magazine-viewport').zoom('zoomIn');
+ 	else if ($(this).hasClass('zoom-icon-out'))	
+		$('.magazine-viewport').zoom('zoomOut');
+
+ });
+      
+    
+function visibleNext(){
+    $("#activeNext").css("display","block")
+    
+}    
+    
+    
+    function stopAllSounds(){
+        
+        if(audioNumber >= [allPages-2]){
+                mixpanel.track("OnBookFinished",{
+                        "user_id": credentials.educationID,
+                        "app": "web",
+                        "bookID" : "6",
+                        "bookName" : "Estoy enojada"
+                    });      
+        }
+        
+        
+        $("#activeNext").css("display","none");
+        $(".buttonSound").css("opacity",1);
+        playing = false;
+        audiosNumbers();
+        audioPlayer = document.getElementById("audio" +  audioReady);
+        audioPlayer.currentTime = 0;
+        
+          for(i= 0; i<=6;i++){
+                    var audio = document.getElementById("audio" + i);
+                        audio.pause();
+                        audio.currentTime = 0;
+                    
+                } 
+        
+        AudioPlay();
+        
+    }    
+
+    
+function audiosNumbers(){
+               
+            switch(audioNumber){
+                case 1:
+                    audioReady = 0
+                   break;
+                case 2:
+                    audioReady = 0
+                   break;
+                case 3:
+                    audioReady = 0
+                   break;
+                case 4:
+                    audioReady = 1
+                   break;
+                case 5:
+                    audioReady = 1
+                   break;
+                case 6:
+                    audioReady = 2
+                   break;
+                case 7:
+                    audioReady = 2
+                   break;
+                case 8:
+                    audioReady = 3
+                   break;
+                case 9:
+                    audioReady = 3
+                   break;
+                case 10:
+                    audioReady = 4
+                   break;
+                case 11:
+                    audioReady = 4
+                   break;
+                case 12:
+                    audioReady = 5
+                   break;
+                case 13:
+                    audioReady = 5
+                   break;
+                case 14:
+                    audioReady = 6
+                   break;
+                case 15:
+                    audioReady = 6
+                   break;
+                 case 16:    
+                    audioReady = 0
+                    break;
+                 case 17:    
+                    audioReady = 0
+                    break;
+                 case 18:    
+                    audioReady = 0
+                    break;
+            }
+}    
+
+    
+function AudioPlay(){
+   if(!playing) {
+       autoPlay();
+       audioPlayer.currentTime = 0;
+      
+   }else{
+       
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                $(".buttonSound").css("opacity",1);
+                } else {
+                    audioPlayer.pause();
+                                $(".buttonSound").css("opacity",0.5);    
+                }
+       if(language == "ES"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaES" + audioReady)); 
+        }else if(language == "EN"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaEN" + audioReady));
+        }else if(language == "KO"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaKO" + audioReady));
+        }   
+       
+       
+   }    
+    
+};
+
+function autoPlay(){
+    audiosNumbers();
+
+    console.log("audioReady: " + audioReady);
+    audioPlayer = document.getElementById("audio" +  audioReady); 
+        audioPlayer.play();
+        if(language == "ES"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaES" + audioReady)); 
+        }else if(language == "EN"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaEN" + audioReady));
+        }else if(language == "KO"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaKO" + audioReady));
+        }        
+        audioPlayer.addEventListener("timeupdate", function(e){
+            playing = true;
+        });
+
+}          
+    
+ $('#canvas').hide();
+
+
+yepnope({
+	test : Modernizr.csstransforms,
+	yep: ['lib/turn.js'],
+	nope: ['lib/turn.html4.min.js', 'css/jquery.ui.html4.css'],
+	both: ['lib/zoom.min.js', 'css/jquery.ui.css', 'js/magazine.js', 'css/magazine.css','css/custom_fonts.css'],
+	complete: loadApp
+});
+
+var credentials = epicModel.getCredentials();    
+    
+$(document).ready(function () {
+    /**
+     * * Metodo implementado en mixpanel.js
+     */
+    var credentials1 = epicModel.getCredentials();   
+
+    mixpanel.track(
+        "OnBookOpen",
+        {
+            "user_id": credentials1.educationID,
+            "app": "web",
+            "bookID" : "13",
+            "bookName" : "El espacio ideal"
+        }
+    );
+    
+    
+
+    
+});    
+    
+    
+var allPages =  18    
+
+
+function mixPanelClose(){
+        mixpanel.track(
+            "OnBookClose", 
+            {
+                "user_id": credentials.educationID,
+                "app": "web",
+                "bookID" : "13",
+                "bookName" : "El espacio ideal",
+                "lastPage" : audioNumber    
+            }
+        );
+}   
+    
+
+    function stopAllSounds(){
+        if(audioNumber >= [allPages-2]){
+                mixpanel.track("OnBookFinished",{
+                        "user_id": credentials.educationID,
+                        "app": "web",
+                        "bookID" : "13",
+                        "bookName" : "El espacio ideal"
+                    });      
+        }
+        
+        
+        $("#activeNext").css("display","none");
+        playing = false;
+        audiosNumbers();
+       audioPlayer = document.getElementById("audio" +  audioReady);
+        $("#buttonPlay").attr("src","images/Play.png");
+          for(i= 0; i<=6;i++){
+                    var audio = document.getElementById("audio" + i);
+                        audio.pause();
+                        audio.currentTime = 0;
+                    
+                } 
+        
+    }    
+    
+    var leaving = true;
+    var isClose = false;
+
+    function EndChatSession() {
+        var request = GetRequest();
+        request.open("GET", "../Chat.aspx", true);
+        request.send();
+    }
+    document.onkeydown = checkKeycode
+    function checkKeycode(e) {
+        var keycode;
+        if (window.event)
+            keycode = window.event.keyCode;
+        else if (e)
+            keycode = e.which;
+        if (keycode == 116) {
+            isClose = true;
+        }
+    }
+    function somefunction() {
+        isClose = true;
+    }
+    
+    window.onbeforeunload = function (e) {
+       if (!e) e = event;
+        if (leaving) {
+             EndChatSession();
+             mixPanelClose();
+             //e.returnValue = "Are You Sure";
+
+        }
+    }
+    function GetRequest() {
+        var xmlHttp = null;
+        try {
+            // Firefox, Opera 8.0+, Safari
+            xmlHttp = new XMLHttpRequest();
+        }
+        catch (e) {
+            //Internet Explorer
+            try {
+                xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+            }
+            catch (e) {
+                xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+        }
+        return xmlHttp;
+    }       
+</script>
+</body>
+</html>
