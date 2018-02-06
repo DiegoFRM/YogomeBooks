@@ -1,365 +1,398 @@
 var pistaES0 = [{ "start": "0.000","text": "empty" }]
 var pistaEN0 = [{ "start": "0.000","text": "empty" }]
+var pistaPT0 = [{ "start": "0.000","text": "empty" }]
+var pistaZH0 = [{ "start": "0.000","text": "empty" }]
+var pistaJA0 = [{ "start": "0.000","text": "empty" }]
+var pistaKO0 = [{ "start": "0.000","text": "empty" }]
+
+
+/*--------------------------------Spanish--------------------------------*/
 
 var pistaES1 = [
-            { "start": "0.075","text": "Thefannie" },
-            {"start": "0.630","text": "tiene" },
-            {"start": "0.802","text": "que" },
-            {"start": "0.995","text": "estudiar" },
-            {"start": "1.795","text": "y" },
-            {"start": "1.871","text": "hacer" },
-            {"start": "2.080","text": "un" },
-            {"start": "2.389","text": "par" },
-            {"start": "2.539","text": "de" },
-            {"start": "2.707","text": "tareas" },
-            {"start": "3.177","text": "para" },
-            {"start": "3.320","text": "su" },
-            {"start": "3.528","text": "examen" }
-];
-
-var pistaEN1 = [
-            { "start": "0.578","text": "Thefannie" },
-            {"start": "0.872","text": "has" },
-            {"start": "1.216","text": "to" },
-            {"start": "1.308","text": "do" },
-            {"start": "1.543","text": "homework" },
-            {"start": "2.052","text": "and" },
-            {"start": "2.307","text": "study" },
-            {"start": "2.562","text": "for" },
-            {"start": "2.667","text": "her" },
-            {"start": "2.933","text": "exam" }
-];
-
-
+        {"start": "0.324","text": "La" },
+        {"start": "0.600","text": "Reina" },
+        {"start": "0.944","text": "Ignorantia" },
+        {"start": "2.336","text": "lanza" },
+        {"start": "2.900","text": "una" },
+        {"start": "3.240","text": "semilla" },
+        {"start": "3.768","text": "de" },
+        {"start": "3.936","text": "dulce" },
+        {"start": "4.730","text": "en" },
+        {"start": "4.836","text": "el" },
+        {"start": "5.080","text": "planeta" },
+        {"start": "5.600","text": "Healthery" },
+        {"start": "7.895","text": "Como" },
+        {"start": "8.187","text": "es" },
+        {"start": "8.480","text": "costumbre" },
+        {"start": "9.074","text": "en" },
+        {"start": "9.189","text": "ella" },
+        {"start": "10.182","text": "nada" },
+        {"start": "10.900","text": "bueno" },
+        {"start": "11.396","text": "resultará" },
+        {"start": "12.203","text": "de" },
+        {"start": "12.389","text": "eso" },
+]
+  
 var pistaES2 = [
-            { "start": "0.263","text": "Thfannie" },
-            {"start": "0.742","text": "no" },
-            {"start": "0.948","text": "puede" },
-            {"start": "1.308","text": "leer," },
-            {"start": "2.339","text": "en" },
-            {"start": "2.444","text": "el" },
-            {"start": "2.636","text": "comedor" },
-            {"start": "2.982","text": "hay" },
-            {"start": "3.205","text": "mucho" },
-            {"start": "3.900","text": "ruido" },
-            {"start": "4.845","text": "y" },
-            {"start": "5.026","text": "sus" },
-            {"start": "5.167","text": "compañeros" },
-            {"start": "5.961","text": "no" },
-            {"start": "6.323","text": "paran" },
-            {"start": "6.666","text": "de" },
-            {"start": "6.816","text": "reir" }
+        {"start": "0.123","text": "Los" },
+        {"start": "0.400","text": "habitantes" },
+        {"start": "1.100","text": "de" },
+        {"start": "1.274","text": "Healthery" },
+        {"start": "2.156","text": "se" },
+        {"start": "2.412","text": "ven" },
+        {"start": "2.605","text": "atraídos" },
+        {"start": "3.409","text": "hacia" },
+        {"start": "3.700","text": "los" },
+        {"start": "3.950","text": "árboles" },
+        {"start": "4.391","text": "de" },
+        {"start": "4.600","text": "caramelo" },
+        {"start": "5.960","text": "producto" },
+        {"start": "6.625","text": "de" },
+        {"start": "6.689","text": "la" },
+        {"start": "6.869","text": "semilla" },
+        {"start": "7.610","text": "de" },
+        {"start": "7.815","text": "la" },
+        {"start": "7.938","text": "Reina" },
+        {"start": "8.390","text": "Ignorantia" }
 ];
-
-var pistaEN2 = [
-            { "start": "0.600","text": "Thefannie" },
-            {"start": "1.004","text": "can´t" },
-            {"start": "1.282","text": "read" },
-            {"start": "1.910","text": "The" },
-            {"start": "2.019","text": "dining" },
-            {"start": "2.315","text": "room" },
-            {"start": "2.510","text": "is" },
-            {"start": "2.699","text": "very" },
-            {"start": "3.082","text": "noisy" },
-            {"start": "3.669","text": "and" },
-            {"start": "3.780","text": "her" },
-            {"start": "4.000","text": "friends" },
-            {"start": "4.335","text": "won´t" },
-            {"start": "4.706","text": "stop" },
-            {"start": "4.910","text": "laughing" }
-];
-
-
-
+ 
 var pistaES3 = [
-            { "start": "0.209","text": "Thefannie" },
-            {"start": "0.731","text": "no" },
-            {"start": "0.996","text": "puede" },
-            {"start": "1.340","text": "hacer" },
-            {"start": "1.605","text": "la" },
-            {"start": "1.808","text": "tarea" },
-            {"start": "2.843","text": "el" },
-            {"start": "3.108","text": "parque" },
-            {"start": "3.601","text": "no" },
-            {"start": "3.869","text": "parece" },
-            {"start": "4.359","text": "ser" },
-            {"start": "4.680","text": "una" },
-            {"start": "4.930","text": "buena" },
-            {"start": "5.203","text": "idea" },
-            {"start": "6.164","text": "al" },
-            {"start": "6.429","text": "menos" },
-            {"start": "7.140","text": "no" },
-            {"start": "7.372","text": "donde" },
-            {"start": "7.651","text": "sus" },
-            {"start": "7.784","text": "amigas" },
-            {"start": "8.415","text": "juegan" },
-            {"start": "8.786","text": "a" },
-            {"start": "8.834","text": "la" },
-            {"start": "8.998","text": "pelota" }
+        {"start": "0.074","text": "Esos" },
+        {"start": "0.550","text": "árboles" },
+        {"start": "1.200","text": "no" },
+        {"start": "1.272","text": "son" },
+        {"start": "1.500","text": "normales" },
+        {"start": "2.474","text": "y" },
+        {"start": "2.589","text": "les" },
+        {"start": "2.740","text": "están" },
+        {"start": "3.138","text": "haciendo" },
+        {"start": "3.741","text": "daño" },
+        {"start": "5.048","text": "dijo" },
+        {"start": "5.698","text": "oona" },
+        {"start": "7.779","text": "Tendremos" },
+        {"start": "8.467","text": "que" },
+        {"start": "8.627","text": "destruirlos" },
+        {"start": "10.900","text": "dijo" },
+        {"start": "11.450","text": "Oof" },
+        {"start": "12.950","text": "No" },
+        {"start": "13.960","text": "son" },
+        {"start": "14.400","text": "deliciosos" },
+        {"start": "16.710","text": "dijo" },
+        {"start": "17.227","text": "Colverbun" }
 ]
 
-var pistaEN3 = [
-            { "start": "0.601","text": "Thefannie" },
-            {"start": "1.024","text": "can´t" },
-            {"start": "1.325","text": "do" },
-            {"start": "1.500","text": "her" },
-            {"start": "1.751","text": "homework" },
-            {"start": "2.448","text": "The" },
-            {"start": "2.593","text": "park" },
-            {"start": "3.007","text": "doesn´t" },
-            {"start": "3.411","text": "seem" },
-            {"start": "3.614","text": "to" },
-            {"start": "3.773","text": "be" },
-            {"start": "3.896","text": "a" },
-            {"start": "4.015","text": "good" },
-            {"start": "4.377","text": "idea" },
-            {"start": "4.903","text": "At" },
-            {"start": "5.090","text": "least" },
-            {"start": "5.326","text": "not" },
-            {"start": "5.600","text": "where" },
-            {"start": "5.744","text": "her" },
-            {"start": "5.953","text": "friends" },
-            {"start": "6.164","text": "are" },
-            {"start": "6.410","text": "playing" }
-];
-
-
-
 var pistaES4 = [
-            { "start": "0.109","text": "Thefannie" },
-            { "start": "0.629","text": "respira" },
-            { "start": "1.190","text": "profundamente"},
-            { "start": "2.283","text": "para"},
-            { "start": "2.447","text": "tranquilizarse"},
-            { "start": "4.158","text": "Está"},
-            { "start": "4.479","text": "molesta"},
-            { "start": "5.115","text": "y"},
-            { "start": "5.313","text": "cansada"}
-            
+        {"start": "0.277","text": "Oona" },
+        {"start": "0.900","text": "y" },
+        {"start": "1.164","text": "Oof" },
+        {"start": "1.830","text": "utilizan" },
+        {"start": "2.471","text": "sus" },
+        {"start": "2.674","text": "herramientas" },
+        {"start": "3.552","text": "para" },
+        {"start": "3.733","text": "despojar" },
+        {"start": "4.420","text": "de" },
+        {"start": "5.279","text": "maldad" },
+        {"start": "5.277","text": "a" },
+        {"start": "5.384","text": "los" },
+        {"start": "5.675","text": "árboles" },
+        {"start": "6.117","text": "de" },
+        {"start": "6.272","text": "caramelo" }
+]
+ 
+var pistaES5 = [
+        {"start": "0.200","text": "Deben" },
+        {"start": "0.800","text": "tener" },
+        {"start": "1.250","text": "cuidado" },
+        {"start": "1.820","text": "con" },
+        {"start": "1.950","text": "esa" },
+        {"start": "2.326","text": "clase" },
+        {"start": "2.734","text": "de" },
+        {"start": "2.962","text": "tretas" },
+        {"start": "3.480","text": "de" },
+        {"start": "3.680","text": "la" },
+        {"start": "3.823","text": "Reina" },
+        {"start": "4.100","text": "Ignorantia" },
+        {"start": "5.770","text": "No" },
+        {"start": "6.050","text": "es" },
+        {"start": "6.270","text": "malo" },
+        {"start": "6.627","text": "comer" },
+        {"start": "7.070","text": "dulces" },
+        {"start": "8.324","text": "pero" },
+        {"start": "8.581","text": "recuerden" },
+        {"start": "9.258","text": "tener" },
+        {"start": "9.788","text": "una" },
+        {"start": "10.050","text": "dieta" },
+        {"start": "10.440","text": "balanceada" }
+]
+    
+var pistaES6 = [
+        {"start": "0.154","text": "Los" },
+        {"start": "0.434","text": "habitantes" },
+        {"start": "1.088","text": "del" },
+        {"start": "1.292","text": "planeta" },
+        {"start": "1.743","text": "Healthery" },
+        {"start": "2.581","text": "se" },
+        {"start": "2.852","text": "despiden" },
+        {"start": "3.367","text": "de" },
+        {"start": "3.500","text": "los" },
+        {"start": "3.777","text": "Yogotars" },
+        {"start": "5.127","text": "prometiendo" },
+        {"start": "5.849","text": "tener" },
+        {"start": "6.210","text": "cuidado" },
+        {"start": "6.885","text": "con" },
+        {"start": "7.202","text": "todos" },
+        {"start": "7.531","text": "sus" },
+        {"start": "7.778","text": "alimentos" }
+]
+
+/*--------------------------------English--------------------------------*/
+ 
+var pistaEN1 = [
+        {"start": "0.660","text": "As" },
+        {"start": "0.875","text": "usual" },
+        {"start": "1.956","text": "Queen" },
+        {"start": "2.271","text": "Ignorantia" },
+        {"start": "3.127","text": "was" },
+        {"start": "3.303","text": "up" },
+        {"start": "3.515","text": "to" },
+        {"start": "3.734","text": "no" },
+        {"start": "4.059","text": "good" },
+        {"start": "4.984","text": "This" },
+        {"start": "5.350","text": "time" },
+        {"start": "6.0100","text": "she" },
+        {"start": "6.350","text": "tossed" },
+        {"start": "6.692","text": "an" },
+        {"start": "6.984","text": "evil" },
+        {"start": "7.421","text": "candy" },
+        {"start": "7.816","text": "seed" },
+        {"start": "8.200","text": "onto" },
+        {"start": "8.500","text": "the" },
+        {"start": "8.700","text": "Healthery" },
+        {"start": "9.278","text": "Planet" }
+]
+
+var pistaEN2 = [
+        {"start": "0.641","text": "Healthery" },
+        {"start": "1.271","text": "inhabitants" },
+        {"start": "2.080","text": "are" },
+        {"start": "2.317","text": "attracted" },
+        {"start": "2.860","text": "to" },
+        {"start": "3.107","text": "candy" },
+        {"start": "3.512","text": "trees" },
+        {"start": "4.240","text": "and" },
+        {"start": "4.532","text": "several" },
+        {"start": "5.020","text": "grew" },
+        {"start": "5.393","text": "from" },
+        {"start": "5.695","text": "Queen" },
+        {"start": "6.018","text": "Ignorantia's" },
+        {"start": "6.767","text": "seed" }
+]
+  
+var pistaEN3 = [
+        {"start": "0.643","text": "Those" },
+        {"start": "0.974","text": "trees" },
+        {"start": "1.538","text": "aren" },
+        {"start": "1.950","text": "normal" },
+        {"start": "2.874","text": "They" },
+        {"start": "3.116","text": "hurting" },
+        {"start": "3.583","text": "people" },
+        {"start": "4.328","text": "said" },
+        {"start": "4.637","text": "Oona" },
+        {"start": "5.818","text": "We'll" },
+        {"start": "6.082","text": "have" },
+        {"start": "6.333","text": "to" },
+        {"start": "6.466","text": "destroy" },
+        {"start": "6.942","text": "them" },
+        {"start": "7.792","text": "replied" },
+        {"start": "8.127","text": "Oof" },
+        {"start": "8.956","text": "No" },
+        {"start": "10.137","text": "they're" },
+        {"start": "10.370","text": "delicious" },
+        {"start": "11.552","text": "exclaimed" },
+        {"start": "12.200","text": "Colverbun" }
 ]
 
 var pistaEN4 = [
-            { "start": "0.633","text": "Thefannie" },
-            { "start": "1.008","text": "takes" },
-            { "start": "1.280","text": "a"},
-            { "start": "1.470","text": "deep"},
-            { "start": "1.733","text": "breath"},
-            { "start": "2.093","text": "to"},
-            { "start": "2.236","text": "help"},
-            { "start": "2.429","text": "her"},
-            { "start": "2.601","text": "calm"},
-            { "start": "2.856","text": "down"},
-            { "start": "3.582","text": "She"},
-            { "start": "3.779","text": "is"},
-            { "start": "4.043","text": "mad"},
-            { "start": "4.554","text": "and"},
-            { "start": "4.756","text": "tired"}
-            
+        {"start": "0.720","text": "Oona" },
+        {"start": "1.000","text": "and" },
+        {"start": "1.265","text": "Oof" },
+        {"start": "1.748","text": "worked" },
+        {"start": "2.189","text": "together" },
+        {"start": "2.833","text": "to" },
+        {"start": "3.032","text": "use" },
+        {"start": "3.326","text": "their" },
+        {"start": "3.605","text": "tools" },
+        {"start": "4.112","text": "to" },
+        {"start": "4.325","text": "remove" },
+        {"start": "4.680","text": "the" },
+        {"start": "4.827","text": "magic" },
+        {"start": "5.363","text": "from" },
+        {"start": "5.514","text": "the" },
+        {"start": "5.666","text": "candy" },
+        {"start": "6.092","text": "trees" }
 ]
-
-
-var pistaES5 = [
-            { "start": "0.109","text": "Ella" },
-            { "start": "0.590","text": "Comienza" },
-            { "start": "1.112","text": "a" },
-            { "start": "1.176","text": "limpiar" },
-            { "start": "1.657","text": "su" },
-            { "start": "1.929","text": "viejo" },
-            { "start": "2.204","text": "escritorio" },
-            { "start": "3.574","text": "Retira" },
-            { "start": "3.938","text": "el" },
-            { "start": "4.191","text": "polvo" },
-            { "start": "4.616","text": "y" },
-            { "start": "4.823","text": "todos" },
-            { "start": "5.014","text": "los" },
-            { "start": "5.210","text": "objetos" },
-            { "start": "5.808","text": "que" },
-            { "start": "5.873","text": "estaban" },
-            { "start": "6.322","text": "sobre" },
-            { "start": "6.619","text": "él" }
-            
-]
-
-
 
 var pistaEN5 = [
-            { "start": "0.627","text": "She" },
-            { "start": "0.791","text": "starts" },
-            { "start": "1.269","text": "cleaning" },
-            { "start": "1.678","text": "her" },
-            { "start": "1.745","text": "old" },
-            { "start": "1.988","text": "desk" },
-            { "start": "2.774","text": "She" },
-            { "start": "3.043","text": "removes" },
-            { "start": "3.369","text": "the" },
-            { "start": "3.535","text": "dust" },
-            { "start": "4.036","text": "and" },
-            { "start": "4.221","text": "all" },
-            { "start": "4.455","text": "of" },
-            { "start": "4.508","text": "the" },
-            { "start": "4.639","text": "objects" },
-            { "start": "5.157","text": "on" },
-            { "start": "5.388","text": "it" }
-            
+        {"start": "0.685","text": "You" },
+        {"start": "0.840","text": "must" },
+        {"start": "1.262","text": "be" },
+        {"start": "1.448","text": "careful" },
+        {"start": "1.887","text": "with" },
+        {"start": "2.153","text": "Queen" },
+        {"start": "2.457","text": "Ignorantia" },
+        {"start": "3.352","text": "tricks" },
+        {"start": "4.465","text": "It's" },
+        {"start": "4.700","text": "not" },
+        {"start": "5.000","text": "bad" },
+        {"start": "5.292","text": "to" },
+        {"start": "5.471","text": "have" },
+        {"start": "5.647","text": "candies" },
+        {"start": "6.177","text": "every" },
+        {"start": "6.555","text": "now" },
+        {"start": "6.808","text": "and" },
+        {"start": "6.953","text": "then" },
+        {"start": "7.554","text": "but" },
+        {"start": "7.709","text": "remember" },
+        {"start": "8.246","text": "to" },
+        {"start": "8.472","text": "keep" },
+        {"start": "8.641","text": "a" },
+        {"start": "8.800","text": "balanced" },
+        {"start": "9.353","text": "diet" }
+]
+
+var pistaEN6 = [
+        {"start": "0.693","text": "Healthery" },
+        {"start": "1.311","text": "inhabitants" },
+        {"start": "2.126","text": "say" },
+        {"start": "2.382","text": "goodbye" },
+        {"start": "2.830","text": "to" },
+        {"start": "2.982","text": "the" },
+        {"start": "3.102","text": "Yogotars" },
+        {"start": "4.125","text": "after" },
+        {"start": "4.482","text": "they" },
+        {"start": "4.724","text": "promise" },
+        {"start": "5.185","text": "to" },
+        {"start": "5.295","text": "be" },
+        {"start": "5.492","text": "careful" },
+        {"start": "5.964","text": "to" },
+        {"start": "6.217","text": "focus" },
+        {"start": "6.608","text": "on" },
+        {"start": "6.779","text": "their" },
+        {"start": "6.950","text": "nutrition" }
 ]
 
 
-var pistaES6 = [
-            { "start": "0.132","text": "Thefannie" },
-            { "start": "0.704","text": "ha" },
-            { "start": "0.768","text": "encontrado" },
-            { "start": "1.367","text": "un" },
-            { "start": "1.521","text": "espacio" },
-            { "start": "2.186","text": "tranquilo" },
-            { "start": "3.535","text": "Un" },
-            { "start": "3.684","text": "lugar" },
-            { "start": "4.289","text": "donde" },
-            { "start": "4.644","text": "puede" },
-            { "start": "4.956","text": "pensar" },
-            { "start": "5.406","text": "con" },
-            { "start": "5.595","text": "claridad" },
-            { "start": "6.521","text": "y" },
-            { "start": "6.626","text": "libre" },
-            { "start": "6.959","text": "de" },
-            { "start": "7.070","text": "las" },
-            { "start": "7.246","text": "distracciones" },
-            { "start": "8.019","text": "del" },
-            { "start": "8.140","text": "exterior" }
-    ]
+/*--------------------------------Korean--------------------------------*/
 
-
-var pistaEN6 = [
-            { "start": "0.596","text": "Thefannie" },
-            { "start": "1.029","text": "has" },
-            { "start": "1.215","text": "found" },
-            { "start": "1.449","text": "her" },
-            { "start": "1.612","text": "quiet" },
-            { "start": "1.947","text": "space!" },
-            { "start": "2.848","text": "A" },
-            { "start": "2.980","text": "place" },
-            { "start": "3.352","text": "where" },
-            { "start": "3.479","text": "she" },
-            { "start": "3.713","text": "can" },
-            { "start": "3.895","text": "think" },
-            { "start": "4.168","text": "peacefully" },
-            { "start": "5.094","text": "without" },
-            { "start": "5.369","text": "any" },
-            { "start": "5.611","text": "distraction" }
-    ]
-
-/*----------------------------------------------------*/
-/*Koreano*/
 
 var pistaKO1 = [
-
-    { "start": "0.100","text": "티파니는" },
-    { "start": "1.352","text": "해야" },
-    { "start": "1.767","text": "할" },
-    { "start": "1.876","text": "일이" },
-    { "start": "2.522","text": "아주" },
-    { "start": "2.922","text": "많아요" },
-    { "start": "4.248","text": "숙제도" },
-    { "start": "4.946","text": "있고" },
-    { "start": "5.906","text": "시험공부도" },
-    { "start": "6.868","text": "해야" },
-    { "start": "7.200","text": "해요" } 
-    
+        { "start": "0.000","text": "언제나처럼," },
+        { "start": "1.865","text": "이그노란티아" },
+        { "start": "3.225","text": "여왕은" },
+        { "start": "4.665","text": "나쁜" },
+        { "start": "5.400","text": "일을" },
+        { "start": "6.391","text": "꾸미고" },
+        { "start": "7.261","text": "있었어요." },
+        { "start": "9.521","text": "이번에는," },
+        { "start": "11.057","text": "사악한" },
+        { "start": "12.143","text": "사탕" },
+        { "start": "12.881","text": "씨앗을" },
+        { "start": "14.351","text": "헬스어리" },
+        { "start": "15.389","text": "행성에" },
+        { "start": "16.743","text": "던졌어요." }
 ]
 
 var pistaKO2 = [
-    
-    { "start": "0.100","text": "티파니는" },
-    { "start": "0.909","text": "집중하기가" },
-    { "start": "2.100","text": "너무" },
-    { "start": "2.488","text": "힘들어요" },
-    { "start": "4.052","text": "거실은" },
-    { "start": "4.916","text": "너무" },
-    { "start": "5.300","text": "시끄럽고" },
-    { "start": "6.800","text": "친구들은" },
-    { "start": "7.909","text": "깔깔깔" },
-    { "start": "9.306","text": "계속" },
-    { "start": "9.700","text": "웃고" },
-    { "start": "10.143","text": "있어요" }
+        { "start": "0.000","text": "헬스어리" },
+        { "start": "1.181","text": "행성의" },
+        { "start": "2.044","text": "주민들은" },
+        { "start": "3.634","text": "사탕" },
+        { "start": "4.511","text": "나무에" },
+        { "start": "5.757","text": "마음이" },
+        { "start": "6.657","text": "끌렸고," },
+        { "start": "8.144","text": "그중" },
+        { "start": "9.247","text": "몇" },
+        { "start": "9.692","text": "그루는" },
+        { "start": "11.139","text": "이그노란티아" },
+        { "start": "12.600","text": "여왕이" },
+        { "start": "13.715","text": "던진" },
+        { "start": "14.533","text": "씨앗에서" },
+        { "start": "16.172","text": "자라났어요." }
 ]
 
 var pistaKO3 = [
-    
-    { "start": "0.100","text": "티파니는" },
-    { "start": "1.132","text": "도저히" },
-    { "start": "1.823","text": "숙제를" },
-    { "start": "2.460","text": "할" },
-    { "start": "2.705","text": "수" },
-    { "start": "2.907","text": "없어서" },
-    { "start": "4.268","text": "공원에" },
-    { "start": "4.820","text": "왔어요" },
-    { "start": "6.255","text": "하지만" },
-    { "start": "7.483","text": "공원에서도" },
-    { "start": "8.492","text": "숙제를" },
-    { "start": "9.100","text": "하긴" },
-    { "start": "9.420","text": "어려워요" },
-    { "start": "11.466","text": "친구들이" },
-    { "start": "12.818","text": "공원에서" },
-    { "start": "13.750","text": "재미있게" },
-    { "start": "14.631","text": "놀고" },
-    { "start": "15.097","text": "있거든요" }
-
-    
+        { "start": "0.000","text": "저" },
+        { "start": "0.404","text": "나무들은" },
+        { "start": "1.763","text": "평범하지" },
+        { "start": "2.769","text": "않아." },
+        { "start": "3.882","text": "나무들이" },
+        { "start": "5.158","text": "사람들을" },
+        { "start": "6.639","text": "해치고" },
+        { "start": "7.431","text": "있어." },
+        { "start": "9.184","text": "우나가" },
+        { "start": "10.359","text": "말했어요." },
+        { "start": "12.532","text": "우리는" },
+        { "start": "13.761","text": "저" },
+        { "start": "14.086","text": "나무들을" },
+        { "start": "15.409","text": "파괴해야" },
+        { "start": "16.231","text": "해." },
+        { "start": "17.852","text": "우프가" },
+        { "start": "18.873","text": "대답했어요." },
+        { "start": "21.145","text": "안돼!" },
+        { "start": "22.418","text": "저" },
+        { "start": "22.687","text": "나무들은" },
+        { "start": "23.818","text": "맛있어." },
+        { "start": "25.957","text": "콜버번이" },
+        { "start": "27.358","text": "소리쳤어요." },
 ]
 
 var pistaKO4 = [
-    
-    { "start": "0.100","text": "티파니는" },
-    { "start": "0.970","text": "화도" },
-    { "start": "1.310","text": "나" },
-    { "start": "1.534","text": "있고" },
-    { "start": "2.047","text": "지쳐있어요" },
-    { "start": "4.042","text": "그래서" },
-    { "start": "5.163","text": "마음을" },
-    { "start": "5.931","text": "진정시키려고" },
-    { "start": "7.737","text": "숨을" },
-    { "start": "8.834","text": "깊게" },
-    { "start": "9.890","text": "쉬어요" } 
+        { "start": "0.028","text": "우나와" },
+        { "start": "0.976","text": "우프는" },
+        { "start": "2.329","text": "도구를" },
+        { "start": "3.238","text": "사용해서" },
+        { "start": "5.053","text": "사탕" },
+        { "start": "5.977","text": "나무에" },
+        { "start": "7.034","text": "씌어있는" },
+        { "start": "8.663","text": "마법을" },
+        { "start": "9.663","text": "풀려고" },
+        { "start": "10.860","text": "함께" },
+        { "start": "11.744","text": "노력했어요." },
 ]
 
 var pistaKO5 = [
-    
-    { "start": "0.100","text": "티파니는" },
-    { "start": "1.521","text": "예전에" },
-    { "start": "2.260","text": "쓰던" },
-    { "start": "3.040","text": "책상을" },
-    { "start": "4.475","text": "치우기" },
-    { "start": "5.336","text": "시작해요" },
-    { "start": "7.256","text": "책상" },
-    { "start": "8.109","text": "위에" },
-    { "start": "8.631","text": "있는" },
-    { "start": "9.243","text": "물건들을" },
-    { "start": "10.208","text": "정리하고" },
-    { "start": "11.912","text": "먼지도" },
-    { "start": "13.437","text": "깨끗이" },
-    { "start": "14.380","text": "닦아요" }
-    
+        { "start": "0.084","text": "이그노란티아" },
+        { "start": "1.375","text": "여왕의" },
+        { "start": "2.291","text": "마법을" },
+        { "start": "3.221","text": "조심해." },
+        { "start": "5.140","text": "가끔" },
+        { "start": "5.995","text": "사탕을" },
+        { "start": "6.968","text": "먹는" },
+        { "start": "7.465","text": "건" },
+        { "start": "8.492","text": "나쁘지" },
+        { "start": "9.254","text": "않지만," },
+        { "start": "10.789","text": "균형" },
+        { "start": "11.321","text": "잡힌" },
+        { "start": "12.322","text": "식사를" },
+        { "start": "13.247","text": "해야" },
+        { "start": "14.121","text": "한다는" },
+        { "start": "14.740","text": "걸" },
+        { "start": "15.599","text": "기억해." },
 ]
 
 var pistaKO6 = [
-    
-    { "start": "0.100","text": "티파니가" },
-    { "start": "0.891","text": "드디어" },
-    { "start": "1.854","text": "조용한" },
-    { "start": "2.555","text": "공간을" },
-    { "start": "3.240","text": "찾았어요" },
-    { "start": "5.213","text": "티파니는" },
-    { "start": "5.992","text": "이제" },
-    { "start": "7.042","text": "아무런" },
-    { "start": "7.757","text": "방해를" },
-    { "start": "8.530","text": "받지" },
-    { "start": "9.068","text": "않으면서" },
-    { "start": "10.412","text": "집중할" },
-    { "start": "11.080","text": "수" },
-    { "start": "11.422","text": "있어요" }
+        { "start": "0.000","text": "행성의" },
+        { "start": "0.908","text": "주민들은" },
+        { "start": "2.453","text": "요고타들에게" },
+        { "start": "4.389","text": "작별인사를" },
+        { "start": "6.065","text": "했어요." },
+        { "start": "8.060","text": "물론" },
+        { "start": "8.972","text": "그들은" },
+        { "start": "10.379","text": "영양에" },
+        { "start": "11.258","text": "대해" },
+        { "start": "12.262","text": "신경" },
+        { "start": "12.919","text": "쓰기로" },
+        { "start": "14.168","text": "약속했답니다." }
 ]
-
-
-
-
 
 
