@@ -236,6 +236,34 @@ function goBack() {
         window.location = window.location.pathname + str + "#page/" + audioNumber;
     });
     
+    $("#ButtonLanZh").click(function(){
+
+        var str = window.location.search
+        str = replaceQueryParam('language', "ZH", str)
+        window.location = window.location.pathname + str + "#page/" + audioNumber;
+    });
+    
+    $("#ButtonLanJa").click(function(){
+
+        var str = window.location.search
+        str = replaceQueryParam('language', "JA", str)
+        window.location = window.location.pathname + str + "#page/" + audioNumber;
+    });
+    
+    $("#ButtonLanKo").click(function(){
+
+        var str = window.location.search
+        str = replaceQueryParam('language', "KO", str)
+        window.location = window.location.pathname + str + "#page/" + audioNumber;
+    });
+    
+    $("#ButtonLanPt").click(function(){
+
+        var str = window.location.search
+        str = replaceQueryParam('language', "PT", str)
+        window.location = window.location.pathname + str + "#page/" + audioNumber;
+    });
+    
     $(".languageButton").click(function(){
         var idioma = $(".idiomas");
         if (idioma.css("display") === "block") {
