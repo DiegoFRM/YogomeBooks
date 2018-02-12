@@ -12,10 +12,22 @@
 <script type="text/javascript" src="js/jquery.blast.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
     <script type="text/javascript" src="js/tracks.js"></script>
-<script type="text/javascript" src="js/audioSync.js"></script>   
+<script type="text/javascript" src="js/audioSync.js"></script> 
     <!--ESta de manera absoluta la direccion de epic model, por la profundidad que tiene dentro del server-->
 <script type="text/javascript" src="http://play.yogome.com/js/epic/models/epicModel.js"></script>    
 <script type="text/javascript" src="../../js/mixpanel/mixpanel.js"></script>    
+    
+    <script>
+        var meta = document.createElement('meta');
+        meta.setAttribute("property","og:description");
+        
+    </script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta property="og:url"				content="https://play.yogome.com/yogomebooks/23/?language=EN"/>
+    <meta property="og:type"			content="article" />
+    <meta property="og:title"			content="Interactive Book: Thank You" />
+    <meta property="og:image"			content="https://play.yogome.com/yogomebooks/posts/fbpost_23.png" />
 <script>
     var languageTitles = [
             {
@@ -28,7 +40,6 @@
             }
         ]
     
-
     //AQUI VA PARA SABER EL LENGUAGE
         function getParameterByName(name, url) {
     if (!url) url = window.location.href;
@@ -40,9 +51,12 @@
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-        var language;
-        language = getParameterByName("language");    
-    
+        var language
+
+      var  str =window.location.hash;
+        var array=str.split("/")
+        language=array[0].substr(1)
+        console.log(language) 
     
     function changeTitle(){
         if(language == "ES"){
@@ -63,7 +77,7 @@
     }    
     
     changeTitle()
-    
+
 var languagePages = [
                  {
                     page:1,
@@ -119,7 +133,8 @@ var languagePages = [
                     JA:"「ありがとう、ルナ！」イーグルは言いました。「どういたしまして」ルナがこたえました。「みんななかよくやっていかなくちゃ。だからおたがいにやさしくすることがだいじなの。わたしたちはながいあいだいっしょにいるけれど、いつもれいぎをわすれてはだめ。おねがいやありがとうはかんたんなことば。でもともだちのことを気にかけているということがわかることばなのよ。」",
                     KO:"&#34;고마워 루나야.&#34; 이글이가 말했어요. &#34;천만에.&#34; 루나가 대답했어요. &#34;우리는 모두 친하게 지내려고 노력하고 있어. 그래서 모두를 잘 대하는 게 중요해. 우리가 오랜 시간 동안 친구였지만, 그래도 우리는 항상 서로를 존중해 줘야 해. 네가 '부탁해' 나 '고마워' 같은 단순한 말만 더해도 네 친구들은 네가 자기들을 어마나 아끼고 배려하는지 느낄 수 있어.&#34;"
                 }
-                ]    
+                ]
+    
     
     </script>   
 </head>
@@ -129,12 +144,10 @@ var languagePages = [
 
 
 <div class="magazine-viewport">
-    
 	<div class="container">
-
         
 		<div class="magazine">
-                <!--  BOTON SIGUIENTE      -->
+<!--  BOTON SIGUIENTE      -->
                 <div ignore="1" class="next-button">
                     <div id="activeNext" >
                         <div class="animation1"> 
@@ -145,13 +158,11 @@ var languagePages = [
             <!-- Previous button -->
 			<div ignore="1" class="previous-button">
     <img src="images/nextButton.png">
-            </div> 
-            
-            
+            </div>             
             <div id="p1" depth="5" class="hard"> <div class="side"></div> </div>
 			<div depth="5" class="hard front-side"> <div class="depth"></div> </div>
-			<div class="hard fixed back-side p17"><div class="depth"></div> </div>
-			<div class="hard p18"> </div>
+			<div class="hard fixed back-side p19"><div class="depth"></div> </div>
+			<div class="hard p20"> </div>
 
             </div>
             <script>
@@ -171,7 +182,9 @@ var languagePages = [
                 }else{
                     $(".magazine").find("#p1").css("background-image","url('bookpages/1EN.png')");
                 }
-            
+                
+                
+                
             </script>
         
         
@@ -185,7 +198,6 @@ function goBack() {
     window.location.href="../../yogobooks.html";
 }
 </script>
-    
     <div class="languageButton"><img src="images/icon-languages.png"></div>
     <div class="idiomas">
         <div id="ButtonLanEs" class="overLanguage">Español</div>
@@ -196,9 +208,7 @@ function goBack() {
         <div id="ButtonLanPt" class="overLanguage">PORTUGUES</div>
     </div>
     <div id="audiosGroup"></div>
-	<div class="bottom">
-        
-			       
+	<div class="bottom">    
 		<div id="slider-bar" class="turnjs-slider timeline-style">
 			<div id="slider">
             </div>
@@ -221,47 +231,69 @@ function goBack() {
         return (query.length > 2 ? query + "&" : "?") + (newval ? param + "=" + newval : '');
     }    
     
+        function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}    
+    
     
     $("#ButtonLanEs").click(function(){
 
         var str = window.location.search
-        str = replaceQueryParam('language', "ES", str)
-        window.location = window.location.pathname + str + "#page/" + audioNumber;
+        str =  window.location.hash.substr(1)
+        language="ES"
+        window.location = "#"+language+"/page/" + audioNumber + "/&name=Yogome";
+        location.reload();
     });
     
     $("#ButtonLanEn").click(function(){
 
         var str = window.location.search
-        str = replaceQueryParam('language', "EN", str)
-        window.location = window.location.pathname + str + "#page/" + audioNumber;
+        str =  window.location.hash.substr(1)
+        language="EN"
+        window.location = "#"+language+"/page/" + audioNumber + "/&name=Yogome";
+        location.reload();
     });
     
     $("#ButtonLanZh").click(function(){
 
         var str = window.location.search
-        str = replaceQueryParam('language', "ZH", str)
-        window.location = window.location.pathname + str + "#page/" + audioNumber;
+        str =  window.location.hash.substr(1)
+        language="ZH"
+        window.location = "#"+language+"/page/" + audioNumber + "/&name=Yogome";
+        location.reload();
     });
     
     $("#ButtonLanJa").click(function(){
 
         var str = window.location.search
-        str = replaceQueryParam('language', "JA", str)
-        window.location = window.location.pathname + str + "#page/" + audioNumber;
+        str =  window.location.hash.substr(1)
+        language="JA"
+        window.location = "#"+language+"/page/" + audioNumber + "/&name=Yogome";
+        location.reload();
     });
     
     $("#ButtonLanKo").click(function(){
 
         var str = window.location.search
-        str = replaceQueryParam('language', "KO", str)
-        window.location = window.location.pathname + str + "#page/" + audioNumber;
+        str =  window.location.hash.substr(1)
+        language="KO"
+        window.location = "#"+language+"/page/" + audioNumber + "/&name=Yogome";
+        location.reload();
     });
     
     $("#ButtonLanPt").click(function(){
 
         var str = window.location.search
-        str = replaceQueryParam('language', "PT", str)
-        window.location = window.location.pathname + str + "#page/" + audioNumber;
+        str =  window.location.hash.substr(1)
+        language="PT"
+        window.location = "#"+language+"/page/" + audioNumber + "/&name=Yogome";
+        location.reload();
     });
     
     $(".languageButton").click(function(){
@@ -277,12 +309,14 @@ function goBack() {
     
     //TweenMax.fromTo($("#activeNext"),1,{alpha:0.5},{alpha:1,yoyo:true,repeat:-1});
     
+
+    
     $("#audiosGroup").append('<audio id="audio0" preload="true" src="audios/' +  0 + '.mp3"></audio>') 
     for(var i = 1;i<=6;i++){
        $("#audiosGroup").append('<audio id="audio'+i+'" preload="true" src="audios/' +[language] + "/" +  i + '.mp3"></audio>')  
     }
     
-
+    
 function loadApp() {
 
  	$('#canvas').fadeIn(1000);
@@ -323,11 +357,10 @@ function loadApp() {
 			// Elevation from the edge of the flipbook when turning a page
 
 			elevation: 50,
-            
-            
+
 			// The number of pages
 
-			pages: 18,
+			pages: 20,
 
 			// Events
 
@@ -351,10 +384,10 @@ function loadApp() {
 					$('.magazine .p2').removeClass('fixed');
 
 				if (page<book.turn('pages'))
-					$('.magazine .p17').addClass('fixed');
+					$('.magazine .p19').addClass('fixed');
 				else
-					$('.magazine .p17').removeClass('fixed');
-                    
+					$('.magazine .p19').removeClass('fixed');
+
                     if(language == "ES"){
                     $(".magazine").find(".p2").css("background-image","url('bookpages/2ES.png')");
                 }else if(language == "EN"){
@@ -370,9 +403,24 @@ function loadApp() {
                 }else{
                     $(".magazine").find(".p2").css("background-image","url('bookpages/2EN.png')");
                 }
-
-
-					Hash.go('page/' + page).update();
+                    
+                    if(language == "ES"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5ES.png')");
+                }else if(language == "EN"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5EN.png')");
+                }else if(language == "ZH"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5ZH.png')");
+                }else if(language == "KO"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5KO.png')");
+                }else if(language == "JA"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5JA.png')");
+                }else if(language == "PT"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5PT.png')");
+                }else{
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5EN.png')");
+                }
+                    
+					Hash.go(language +'/page/' + page).update();
 
 					// Show and hide navigation buttons
                     audioNumber = page;
@@ -403,7 +451,6 @@ function loadApp() {
 
 					for (var i = 0; i < pages.length; i++)
 						addPage(pages[i], $(this));
-                    
 
 				}
 			}
@@ -413,8 +460,6 @@ function loadApp() {
 
 	// Zoom.js
 
-    
-    
     
     
 	$('.magazine-viewport').zoom({
@@ -430,6 +475,7 @@ function loadApp() {
 			swipeLeft: function() {
 
 				$(this).zoom('flipbook').turn('next');
+                
                 stopAllSounds();
 
 			},
@@ -438,7 +484,6 @@ function loadApp() {
 				
 				$(this).zoom('flipbook').turn('previous');
                 stopAllSounds();
-                alert("ok");
 
 			},
 
@@ -488,6 +533,7 @@ function loadApp() {
 			}
 		}
 	});
+
 
 
 
@@ -683,9 +729,39 @@ function loadApp() {
     
 function visibleNext(){
     $("#activeNext").css("display","block")
+    
 }    
     
-
+    
+    function stopAllSounds(){
+        
+        if(audioNumber >= [allPages-2]){
+                mixpanel.track("OnBookFinished",{
+                        "user_id": credentials.educationID,
+                        "app": "web",
+                        "bookID" : "6",
+                        "bookName" : "Estoy enojada"
+                    });      
+        }
+        
+        
+        $("#activeNext").css("display","none");
+        $(".buttonSound").css("opacity",1);
+        playing = false;
+        audiosNumbers();
+        audioPlayer = document.getElementById("audio" +  audioReady);
+        audioPlayer.currentTime = 0;
+        
+          for(i= 0; i<=6;i++){
+                    var audio = document.getElementById("audio" + i);
+                        audio.pause();
+                        audio.currentTime = 0;
+                    
+                } 
+        
+        AudioPlay();
+        
+    }    
 
     
 function audiosNumbers(){
@@ -701,56 +777,59 @@ function audiosNumbers(){
                     audioReady = 0
                    break;
                 case 4:
-                    audioReady = 1
+                    audioReady = 0
                    break;
                 case 5:
-                    audioReady = 1
+                    audioReady = 0
                    break;
                 case 6:
-                    audioReady = 2
+                    audioReady = 1
                    break;
                 case 7:
-                    audioReady = 2
+                    audioReady = 1
                    break;
                 case 8:
-                    audioReady = 3
+                    audioReady = 2
                    break;
                 case 9:
-                    audioReady = 3
+                    audioReady = 2
                    break;
                 case 10:
-                    audioReady = 4
+                    audioReady = 3
                    break;
                 case 11:
-                    audioReady = 4
+                    audioReady = 3
                    break;
                 case 12:
-                    audioReady = 5
+                    audioReady = 4
                    break;
                 case 13:
-                    audioReady = 5
+                    audioReady = 4
                    break;
                 case 14:
-                    audioReady = 6
+                    audioReady = 5
                    break;
                 case 15:
-                    audioReady = 6
+                    audioReady = 5
                    break;
                  case 16:    
-                    audioReady = 0
+                    audioReady = 6
                     break;
                  case 17:    
-                    audioReady = 0
+                    audioReady = 6
                     break;
                  case 18:    
+                    audioReady = 0
+                    break;
+                case 19:    
+                    audioReady = 0
+                    break;
+                case 20:    
                     audioReady = 0
                     break;
             }
 }    
 
-    
-
-    
     
 function AudioPlay(){
    if(!playing) {
@@ -796,7 +875,7 @@ function autoPlay(){
             playing = true;
         });
 
-}       
+}          
     
  $('#canvas').hide();
 
@@ -822,18 +901,18 @@ $(document).ready(function () {
         {
             "user_id": credentials1.educationID,
             "app": "web",
-            "bookID" : "6",
-            "bookName" : "Estoy enojada"
+            "bookID" : "13",
+            "bookName" : "El espacio ideal"
         }
     );
- 
+    
+    
+
+    
 });    
     
     
-var allPages =  18    
-
-
-
+var allPages =  20    
 
 
 function mixPanelClose(){
@@ -842,8 +921,8 @@ function mixPanelClose(){
             {
                 "user_id": credentials.educationID,
                 "app": "web",
-                "bookID" : "6",
-                "bookName" : "Estoy enojada",
+                "bookID" : "13",
+                "bookName" : "El espacio ideal",
                 "lastPage" : audioNumber    
             }
         );
@@ -851,34 +930,27 @@ function mixPanelClose(){
     
 
     function stopAllSounds(){
-        
-        
-        //setTimeout(function(){ AudioPlay(); }, 1000);
-        console.log("currentPage: " + audioNumber);
         if(audioNumber >= [allPages-2]){
                 mixpanel.track("OnBookFinished",{
                         "user_id": credentials.educationID,
                         "app": "web",
-                        "bookID" : "6",
-                        "bookName" : "Estoy enojada"
+                        "bookID" : "13",
+                        "bookName" : "El espacio ideal"
                     });      
         }
         
         
         $("#activeNext").css("display","none");
-        $(".buttonSound").css("opacity",1);
         playing = false;
         audiosNumbers();
-        audioPlayer = document.getElementById("audio" +  audioReady);
-        audioPlayer.currentTime = 0;
+       audioPlayer = document.getElementById("audio" +  audioReady);
+        $("#buttonPlay").attr("src","images/Play.png");
           for(i= 0; i<=6;i++){
                     var audio = document.getElementById("audio" + i);
                         audio.pause();
                         audio.currentTime = 0;
                     
                 } 
-        
-        AudioPlay();
         
     }    
     
@@ -930,8 +1002,7 @@ function mixPanelClose(){
             }
         }
         return xmlHttp;
-    }    
-    
+    }       
 </script>
 </body>
 </html>

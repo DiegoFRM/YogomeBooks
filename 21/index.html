@@ -16,6 +16,18 @@
     <!--ESta de manera absoluta la direccion de epic model, por la profundidad que tiene dentro del server-->
 <script type="text/javascript" src="http://play.yogome.com/js/epic/models/epicModel.js"></script>    
 <script type="text/javascript" src="../../js/mixpanel/mixpanel.js"></script>        
+    <script>
+        var meta = document.createElement('meta');
+        meta.setAttribute("property","og:description");
+        
+    </script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta property="og:url"				content="https://play.yogome.com/yogomebooks/21/#EN"/>
+    <meta property="og:type"			content="article" />
+    <meta property="og:title"			content="Interactive Book: The River " />
+    <meta property="og:image"			content="https://play.yogome.com/yogomebooks/posts/fbpost_21.png" />
+    
 <script>
     var languageTitles = [
             {
@@ -39,8 +51,12 @@
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-        var language;
-        language = getParameterByName("language");
+        var language
+
+      var  str =window.location.hash;
+        var array=str.split("/")
+        language=array[0].substr(1)
+        console.log(language)
     
     function changeTitle(){
         if(language == "ES"){
@@ -219,43 +235,55 @@ function goBack() {
     $("#ButtonLanEs").click(function(){
 
         var str = window.location.search
-        str = replaceQueryParam('language', "ES", str)
-        window.location = window.location.pathname + str + "#page/" + audioNumber;
+        str =  window.location.hash.substr(1)
+        language="ES"
+        window.location = "#"+language+"/page/" + audioNumber + "/&name=Yogome";
+        location.reload();
     });
     
     $("#ButtonLanEn").click(function(){
 
         var str = window.location.search
-        str = replaceQueryParam('language', "EN", str)
-        window.location = window.location.pathname + str + "#page/" + audioNumber;
+        str =  window.location.hash.substr(1)
+        language="EN"
+        window.location = "#"+language+"/page/" + audioNumber + "/&name=Yogome";
+        location.reload();
     });
     
     $("#ButtonLanZh").click(function(){
 
         var str = window.location.search
-        str = replaceQueryParam('language', "ZH", str)
-        window.location = window.location.pathname + str + "#page/" + audioNumber;
+        str =  window.location.hash.substr(1)
+        language="ZH"
+        window.location = "#"+language+"/page/" + audioNumber + "/&name=Yogome";
+        location.reload();
     });
     
     $("#ButtonLanJa").click(function(){
 
         var str = window.location.search
-        str = replaceQueryParam('language', "JA", str)
-        window.location = window.location.pathname + str + "#page/" + audioNumber;
+        str =  window.location.hash.substr(1)
+        language="JA"
+        window.location = "#"+language+"/page/" + audioNumber + "/&name=Yogome";
+        location.reload();
     });
     
     $("#ButtonLanKo").click(function(){
 
         var str = window.location.search
-        str = replaceQueryParam('language', "KO", str)
-        window.location = window.location.pathname + str + "#page/" + audioNumber;
+        str =  window.location.hash.substr(1)
+        language="KO"
+        window.location = "#"+language+"/page/" + audioNumber + "/&name=Yogome";
+        location.reload();
     });
     
     $("#ButtonLanPt").click(function(){
 
         var str = window.location.search
-        str = replaceQueryParam('language', "PT", str)
-        window.location = window.location.pathname + str + "#page/" + audioNumber;
+        str =  window.location.hash.substr(1)
+        language="PT"
+        window.location = "#"+language+"/page/" + audioNumber + "/&name=Yogome";
+        location.reload();
     });
     
     $(".languageButton").click(function(){
@@ -366,7 +394,7 @@ function loadApp() {
                 }
 
 
-					Hash.go('page/' + page).update();
+					Hash.go(language +'/page/' + page).update();
 
 					// Show and hide navigation buttons
                     audioNumber = page;

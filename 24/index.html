@@ -15,7 +15,20 @@
 <script type="text/javascript" src="js/audioSync.js"></script> 
     <!--ESta de manera absoluta la direccion de epic model, por la profundidad que tiene dentro del server-->
 <script type="text/javascript" src="http://play.yogome.com/js/epic/models/epicModel.js"></script>    
-<script type="text/javascript" src="../../js/mixpanel/mixpanel.js"></script>        
+<script type="text/javascript" src="../../js/mixpanel/mixpanel.js"></script>       
+    
+     <script>
+        var meta = document.createElement('meta');
+        meta.setAttribute("property","og:description");
+        
+    </script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta property="og:url"				content="https://play.yogome.com/yogomebooks/24/?language=EN"/>
+    <meta property="og:type"			content="article" />
+    <meta property="og:title"			content="Interactive Book: Justice's Belongings" />
+    <meta property="og:image"			content="https://play.yogome.com/yogomebooks/posts/fbpost_24.png" />
+    
 <script>
     var languageTitles = [
             {
@@ -39,8 +52,12 @@
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-        var language;
-        language = getParameterByName("language");
+        var language
+
+      var  str =window.location.hash;
+        var array=str.split("/")
+        language=array[0].substr(1)
+        console.log(language) 
     
     function changeTitle(){
         if(language == "ES"){
@@ -145,8 +162,8 @@ var languagePages = [
             </div>             
             <div id="p1" depth="5" class="hard"> <div class="side"></div> </div>
 			<div depth="5" class="hard front-side"> <div class="depth"></div> </div>
-			<div class="hard fixed back-side p17"><div class="depth"></div> </div>
-			<div class="hard p18"> </div>
+			<div class="hard fixed back-side p19"><div class="depth"></div> </div>
+			<div class="hard p20"> </div>
 
             </div>
             <script>
@@ -229,43 +246,55 @@ function goBack() {
     $("#ButtonLanEs").click(function(){
 
         var str = window.location.search
-        str = replaceQueryParam('language', "ES", str)
-        window.location = str + "#page/" + audioNumber;
+        str =  window.location.hash.substr(1)
+        language="ES"
+        window.location = "#"+language+"/page/" + audioNumber + "/&name=Yogome";
+        location.reload();
     });
     
     $("#ButtonLanEn").click(function(){
 
         var str = window.location.search
-        str = replaceQueryParam('language', "EN", str)
-        window.location = str + "#page/" + audioNumber;
+        str =  window.location.hash.substr(1)
+        language="EN"
+        window.location = "#"+language+"/page/" + audioNumber + "/&name=Yogome";
+        location.reload();
     });
     
     $("#ButtonLanZh").click(function(){
 
         var str = window.location.search
-        str = replaceQueryParam('language', "ZH", str)
-        window.location = str + "#page/" + audioNumber;
+        str =  window.location.hash.substr(1)
+        language="ZH"
+        window.location = "#"+language+"/page/" + audioNumber + "/&name=Yogome";
+        location.reload();
     });
     
     $("#ButtonLanJa").click(function(){
 
         var str = window.location.search
-        str = replaceQueryParam('language', "JA", str)
-        window.location = str + "#page/" + audioNumber;
+        str =  window.location.hash.substr(1)
+        language="JA"
+        window.location = "#"+language+"/page/" + audioNumber + "/&name=Yogome";
+        location.reload();
     });
     
     $("#ButtonLanKo").click(function(){
 
         var str = window.location.search
-        str = replaceQueryParam('language', "KO", str)
-        window.location = str + "#page/" + audioNumber;
+        str =  window.location.hash.substr(1)
+        language="KO"
+        window.location = "#"+language+"/page/" + audioNumber + "/&name=Yogome";
+        location.reload();
     });
     
     $("#ButtonLanPt").click(function(){
 
         var str = window.location.search
-        str = replaceQueryParam('language', "PT", str)
-        window.location = str + "#page/" + audioNumber;
+        str =  window.location.hash.substr(1)
+        language="PT"
+        window.location = "#"+language+"/page/" + audioNumber + "/&name=Yogome";
+        location.reload();
     });
     
     $(".languageButton").click(function(){
@@ -332,7 +361,7 @@ function loadApp() {
 
 			// The number of pages
 
-			pages: 18,
+			pages: 20,
 
 			// Events
 
@@ -356,9 +385,9 @@ function loadApp() {
 					$('.magazine .p2').removeClass('fixed');
 
 				if (page<book.turn('pages'))
-					$('.magazine .p17').addClass('fixed');
+					$('.magazine .p19').addClass('fixed');
 				else
-					$('.magazine .p17').removeClass('fixed');
+					$('.magazine .p19').removeClass('fixed');
 
                     if(language == "ES"){
                     $(".magazine").find(".p2").css("background-image","url('bookpages/2ES.png')");
@@ -376,7 +405,23 @@ function loadApp() {
                     $(".magazine").find(".p2").css("background-image","url('bookpages/2EN.png')");
                 }
                     
-					Hash.go('page/' + page).update();
+                    if(language == "ES"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5ES.png')");
+                }else if(language == "EN"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5EN.png')");
+                }else if(language == "ZH"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5ZH.png')");
+                }else if(language == "KO"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5KO.png')");
+                }else if(language == "JA"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5JA.png')");
+                }else if(language == "PT"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5PT.png')");
+                }else{
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5EN.png')");
+                }
+                    
+					Hash.go(language +'/page/' + page).update();
 
 					// Show and hide navigation buttons
                     audioNumber = page;
@@ -733,48 +778,54 @@ function audiosNumbers(){
                     audioReady = 0
                    break;
                 case 4:
-                    audioReady = 1
+                    audioReady = 0
                    break;
                 case 5:
-                    audioReady = 1
+                    audioReady = 0
                    break;
                 case 6:
-                    audioReady = 2
+                    audioReady = 1
                    break;
                 case 7:
-                    audioReady = 2
+                    audioReady = 1
                    break;
                 case 8:
-                    audioReady = 3
+                    audioReady = 2
                    break;
                 case 9:
-                    audioReady = 3
+                    audioReady = 2
                    break;
                 case 10:
-                    audioReady = 4
+                    audioReady = 3
                    break;
                 case 11:
-                    audioReady = 4
+                    audioReady = 3
                    break;
                 case 12:
-                    audioReady = 5
+                    audioReady = 4
                    break;
                 case 13:
-                    audioReady = 5
+                    audioReady = 4
                    break;
                 case 14:
-                    audioReady = 6
+                    audioReady = 5
                    break;
                 case 15:
-                    audioReady = 6
+                    audioReady = 5
                    break;
                  case 16:    
-                    audioReady = 0
+                    audioReady = 6
                     break;
                  case 17:    
-                    audioReady = 0
+                    audioReady = 6
                     break;
                  case 18:    
+                    audioReady = 0
+                    break;
+                case 19:    
+                    audioReady = 0
+                    break;
+                case 20:    
                     audioReady = 0
                     break;
             }
@@ -862,7 +913,7 @@ $(document).ready(function () {
 });    
     
     
-var allPages =  18    
+var allPages =  20    
 
 
 function mixPanelClose(){
