@@ -206,7 +206,7 @@ var booksArray = [
               $("#book" + i).attr("number",i);
               
               if(language == "ES"){
-                   $("#container-books").find("#book" + i).append('<img src="'+booksArray[i].url + '/bookpages/1ES.png" height="320" width="320" alt="" class="responsivGallery-pic">');
+                   $("#container-books").find("#book" + i).append('<img src="'+booksArray[i].url + '/bookpages/1ESV.png" height="320" width="320" alt="" class="responsivGallery-pic">');
                     console.log(i +  ": " + booksArray[i].lock);
                   
                     if(booksArray[i].lock){
@@ -224,7 +224,7 @@ var booksArray = [
                   });
                   
               }else if(language == "EN"){
-                  $("#container-books").find("#book" + i).append('<img src="'+booksArray[i].url + '/bookpages/1EN.png" height="320" width="320" alt="" class="responsivGallery-pic">');
+                  $("#container-books").find("#book" + i).append('<img src="'+booksArray[i].url + '/bookpages/1ENV.png" height="320" width="320" alt="" class="responsivGallery-pic">');
                    if(booksArray[i].lock){
                         $("#container-books").find("#book" + i).find("img").addClass("locked");
                     }
@@ -238,7 +238,7 @@ var booksArray = [
                       }
                   });
               }else{
-                  $("#container-books").find("#book" + i).append('<img src="'+booksArray[i].url + '/bookpages/1EN.png" height="320" width="320" alt="" class="responsivGallery-pic">');
+                  $("#container-books").find("#book" + i).append('<img src="'+booksArray[i].url + '/bookpages/1ENV.png" height="320" width="320" alt="" class="responsivGallery-pic">');
                    if(booksArray[i].lock){
                         $("#container-books").find("#book" + i).find("img").addClass("locked");
                     }
