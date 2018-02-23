@@ -1,0 +1,30 @@
+<div class="buttonSound"><img src="images/sound.png"></div>
+<div class="odd gradient"></div>
+
+<div class="textPage">
+<div id="texto1">
+
+    </div>
+</div>
+<script>
+    $("#texto1").append(languagePages[0][language])
+
+    if(!$("#texto1").find("br")){
+            
+        }else{
+          $("#texto1").blast({ delimiter: "word" });
+
+        $("#texto1").find('span').each(function(i){
+        $(this).attr('id', 'c_' + i);
+         });       
+        } 
+    $(this).click(function(){
+        AudioPlay();
+    })
+
+$(this).on({ 'touchstart' : function(){ 
+            
+        AudioPlay();
+}
+    })   
+</script>

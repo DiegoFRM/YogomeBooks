@@ -34,6 +34,15 @@ $("#devicelogInButton").click(function(){
 var booksArray = [
     //NEW
                 { 
+                    id:46,
+                    EN:"The<br>Wallet",
+                    ES:"La<br> Cartera",
+                    url:"http://play.yogome.com/yogomebooks/46",
+                    new:true,
+                    lock:false
+                    
+                },
+                { 
                     id:40,
                     EN:"Eagle<br>Doesn't Give Up",
                     ES:"Eagle y el<br> árbol de los cometas",
@@ -141,6 +150,33 @@ var booksArray = [
                     lock:false
                     
                 },
+                { 
+                    id:3,
+                    EN:"Don't be<br> Afraid...",
+                    ES:"No tengas<br> miedo de...",
+                    url:"http://play.yogome.com/yogomebooks/3",
+                    new:true,
+                    lock:false
+                    
+                },
+                { 
+                    id:35,
+                    EN:"Here Comes<br> Ignorantia",
+                    ES:"¡Ahí viene <br>Ignorantia!",
+                    url:"http://play.yogome.com/yogomebooks/35",
+                    new:true,
+                    lock:false
+                    
+                },
+                { 
+                    id:37,
+                    EN:"Theffanie is<br> Kind",
+                    ES:"La bondad <br>de Theffanie",
+                    url:"http://play.yogome.com/yogomebooks/37",
+                    new:true,
+                    lock:false
+                    
+                },
     //OLD
                 { 
                     id:22,
@@ -232,7 +268,7 @@ var booksArray = [
                   $("#book" + i).click(function(){
                         flipcard.play();
                         if(email){
-                          window.open(booksArray[$(this).attr("number")].url + "#" + language  +  + epicModel.getCredentials().name, "_self"); 
+                          window.open(booksArray[$(this).attr("number")].url + "#" + language  + epicModel.getCredentials().name, "_self"); 
                       }else{
                           window.open(booksArray[$(this).attr("number")].url + "#" + language  + "/&name=Yogome", "_self"); 
                       }

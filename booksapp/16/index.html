@@ -1,0 +1,1015 @@
+<!doctype html>
+<html>
+<head>
+<title class="languageTitle">El regalo de navidad</title>
+ <meta charset="UTF-8">    
+<meta name="viewport" content="width = 1050, user-scalable = no" />
+<link rel="icon" type="image/png" href="../../pics/favicon.png" />
+<script type="text/javascript" src="extras/jquery.min.1.7.js"></script>
+<script type="text/javascript" src="extras/jquery-ui-1.8.20.custom.min.js"></script>
+<script type="text/javascript" src="extras/modernizr.2.5.3.min.js"></script>
+<script type="text/javascript" src="lib/hash.js"></script>
+<script type="text/javascript" src="js/jquery.blast.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+    <script type="text/javascript" src="js/tracks.js"></script>
+<script type="text/javascript" src="js/audioSync.js"></script> 
+    <!--ESta de manera absoluta la direccion de epic model, por la profundidad que tiene dentro del server-->
+<script type="text/javascript" src="http://play.yogome.com/js/epic/models/epicModel.js"></script>    
+<script type="text/javascript" src="../../js/mixpanel/mixpanel.js"></script>  
+    
+        <script>
+        var meta = document.createElement('meta');
+        meta.setAttribute("property","og:description");
+        
+    </script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta property="og:url"				content="https://play.yogome.com/yogomebooks/16/#EN"/>
+    <meta property="og:type"			content="article" />
+    <meta property="og:title"			content="Interactive Book: The Christmas Present" />
+    <meta property="og:image"			content="https://play.yogome.com/yogomebooks/posts/fbpost_16.png" />
+    
+<script>
+    var languageTitles = [
+            {
+                 ES:"El regalo de navidad",
+                EN:"The Christmas Present",
+                PT:"O presente de Natal",
+                ZH:"圣诞礼物 (The Christmas Present)",
+                JA:"クリスマスプレゼント (The Christmas Present)",
+                KO:"크리스마스 선물"
+            }
+        ]
+    
+    //AQUI VA PARA SABER EL LENGUAGE
+        function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+        var language
+
+        var  str =window.location.hash;
+        var array=str.split("/")
+        language=array[0].substr(1)
+        console.log(language)   
+    
+    function changeTitle(){
+        if(language == "ES"){
+            $(".languageTitle").text(languageTitles[0][language])
+        }else if(language == "EN"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "PT"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "ZH"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "JA"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "KO"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else{
+            $(".languageTitle").text(languageTitles[0].EN)    
+        }
+    }    
+    
+    changeTitle()
+
+var languagePages = [
+                  {
+                    page:1,
+                    ES:"Es Navidad y Oof quiere impresionar a Oona con un hermoso regalo; desgraciadamente no tiene dinero para comprarlo.",
+                    EN:"It's Christmas and Oof wants to surprise Oona with a beautiful present. Unfortunately he has no money.",
+                    KO:"이제 크리스마스가 다가왔고 우프는 우나에게 선물을 주어서 깜짝 놀래키고 싶어요. 그렇지만 안타깝게도 우프는 돈이 없어요.",
+                    ZH:"今天是圣诞节，奥夫想送给奥娜一件漂亮的礼物，给她一个惊喜。不幸的是，他没有钱。",
+                    PT:"É Natal, e Oof quer fazer uma surpresa para Oona com um belo presente. Infelizmente, ele não tem dinheiro.",
+                    JA:"クリスマスです。ウーフはうつくしいプレゼントでオーナをおどろかそうとかんがえました。でもおかねがありません。"
+                },
+                {
+                    page:2,
+                    ES:"Dos Zuhlurk se percatan de la preocupación de Oof y deciden ofrecerle ayuda al Yogotar. Emocionado acepta, sin darse cuenta de los verdaderos planes de sus nuevos amigos.",
+                    EN:"Two Zuhlurks realize Oof's problem and decide to help him. Oof accepts their help and is happy. But Oof is unaware of their true intentions.",
+                    KO:"두 즐러크가 걱정하는 우프를 보게 되고 도와주기로 결심해요. 우프는 도움을 받게 되어서 행복해요. 하지만 우프는 두 즐러크가 도와주려는 이유을 아직 몰라요.",
+                    ZH:"两个Zuhlurk得知了奥夫的难题，决定帮助他。奥夫接受了他们的帮助，心里很高兴。但是奥夫并不知道他们的真实意图。",
+                    PT:"Dois Zuhlurks percebem o problema de Oof e decidem ajudá-lo. Oof aceita a ajuda deles e fica contente. Mas Oof não sabe das verdadeiras intenções deles.",
+                    JA:"ふたりのズーラークはウーフがこまっていることにきづきたすけてあげることにしました。ウーフはよろびました。でもウーフはズーラークたちのほんとうのもくてきにきづいていませんでした。"
+                },
+                {
+                    page:3,
+                    ES:"-Pero… ¿Qué están haciendo? -dijo Oof.-Tomando nuestros regalos -dijo el Zuhlurk. -Si no pagas por ellos, estás robando -dijo Oof. -Nadie se va a dar cuenta, no te preocupes -dijo el otro Zuhlurk.",
+                    EN:"“But... What are you doing? Oof said.” “We are taking our presents,” said one of the Zuhlurks. “If you don't pay for them, you are stealing,” said Oof. “Don't worry! No one will notice,” said the Zuhlurk.",
+                    KO:'그렇지만… 뭐 하고 계세요?" 우프가 물었어요. "우리는 우리 선물을 챙겨가는거야." 한 즐러크가 말했어요. "돈을 내지 않고 가져가는 건 훔치는 거잖아요." 우프가 말했어요. "걱정마! 아무도 모를거야" 다른 즐러크가 대답했어요.',
+                    ZH:"“可是...你们在做什么？”奥夫说。“我们正在拿礼物，”其中一个Zuhlurk说。“如果你不付钱，你就是在偷东西。”奥夫说。“别担心！反正没人注意。”Zuhlurk说。",
+                    PT:"“Mas... O que vocês estão fazendo?”, disse Oof. “Estamos pegando nossos presentes”, disse um dos Zuhlurks. “Se não pagarem por eles, vai ser roubo”, disse Oof. “Não se preocupe! Ninguém vai perceber”, disse o Zuhlurk.",
+                    JA:"「でも...なにをしているんだい？」ウーフはたずねました。「プレゼントをもっていくのさ」ズーラークのひとりがいいました。「おかねをはらわないなんてどろぼうだよ」ウーフがいいました。「しんぱいしないで！だれもきづきやしないよ」ズーラークがいいました。"
+                },
+                {
+                    page:4,
+                    ES:"Oof observa a Justice, una voz interior le dice que debe hacer lo correcto, pero el Zuhlurk le dice lo contrario: -Ni lo intentes, si nadie se entera, no pasa nada. Sólo toma tu regalo y vete.",
+                    EN:"Oof sees Justice, a voice within tells him to do the right thing but the Zuhlurks says the opposite. “Don't even try it. If nobody notices, nothing will happen. Just take you present and go”",
+                    KO:'우프는 바른 일을 해야 한다고 말하는 저스티스를 바라보아요. 그렇지만 즐러크들은 전혀 다른 이야기를 해요. "다른 생각은 하지도 마. 아무도 모르면, 아무 일도 일어나지 않는거야. 얼른 선물을 챙겨서 나가자!"',
+                    ZH:"奥夫看到了正义，内心有一个声音告诉他要做对的事情，但Zuhlurk说的正好相反。“想都不用想。如果没人注意到，什么事也没有。拿上你的礼物走吧——”",
+                    PT:"Oof vê a Justiça, a voz dentro dele que lhe diz para fazer a coisa certa, mas os Zuhlurks falam o contrário. “Nem tente fazer isso. Se ninguém perceber, não vai acontecer nada. Só pegue seu presente e saia...”",
+                    JA:"ウーフにはただしいことをしなくてはいけないという心のこえがきこえましたが、ズーラークはわるいことをいいます。「とめてもむだだよ。だれにもきづかれなければなにもおこらないよ。ただプレゼントをもっていくだけさ」"
+                },
+                {
+                    page:5,
+                    ES:"Oof lo pensó bien y decidió hacer lo correcto: Le hizo un regalo a Oona con sus propias manos…",
+                    EN:"Oof thinks it through and decides to do the right thing. Instead he makes Oona a present with his own hands.",
+                    KO:'우프는 곰곰히 생각하고 올바른 일을 하기로 결정해요. 대신 우나를 위한 선물을 직접 만들기로 했어요.',
+                    ZH:"奥夫经过仔细思考后，决定做对的事情。他亲手为奥娜做了一件礼物。",
+                    PT:"Oof pensa bem e decide fazer a coisa certa. Ele prefere fazer um presente para Oona com as próprias mãos.",
+                    JA:"ウーフはよくかんがえてただしいことをするときめました。かわりにオーナにてづくりのプレゼントをよういすることにしました。"
+                },
+                {
+                    page:6,
+                    ES:"…y le contó a Justice sobre los planes de los Zuhlurks. Esperemos que ellos también entiendan que siempre es mejor hacer lo correcto.",
+                    EN:"... and tells Justice about the Zuhlurk's plans. Let's hope they understand that it's important to always do the right thing.",
+                    KO:'… 그리고 우프는 저스티스에게 즐러크들이 선물을 훔치고 있다고 알려주어요. 항상 올바른 일을 하는 게 중요하다는걸 즐러크들이 깨달았으면 해요.',
+                    ZH:"...并向正义讲述了Zuhlurk的计划。我们希望他们明白，始终都要做对的事情。",
+                    PT:"... e conta à Justiça sobre os planos dos Zuhlurks. Esperamos que eles entendam que é importante sempre fazer a coisa certa.",
+                    JA:"...そしてズーラークのたくらみをうちあけます。ズーラークたちもいつもただしいことをするのがだいじだってことをわかってくれるとねがって。"
+                }
+                ]     
+    
+    
+    </script>   
+</head>
+<body>
+
+<div id="canvas">
+
+
+<div class="magazine-viewport">
+	<div class="container">
+        
+		<div class="magazine">
+<!--  BOTON SIGUIENTE      -->
+                <div ignore="1" class="next-button">
+                    <div id="activeNext" >
+                        <div class="animation1"> 
+                        </div>
+                    </div>
+                    <img src="images/nextButton.png">
+                </div>
+            <!-- Previous button -->
+			<div ignore="1" class="previous-button">
+    <img src="images/nextButton.png">
+            </div>             
+            <div id="p1" depth="5" class="hard"> <div class="side"></div> </div>
+			<div depth="5" class="hard front-side"> <div class="depth"></div> </div>
+			<div class="hard fixed back-side p17"><div class="depth"></div> </div>
+			<div class="hard p18"> </div>
+
+            </div>
+            <script>
+                //console.log(languagePages[0][language]);
+                if(language == "ES"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1ES.png')");
+                }else if(language == "EN"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1EN.png')");
+                }else if(language == "ZH"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1ZH.png')");
+                }else if(language == "KO"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1KO.png')");
+                }else if(language == "JA"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1JA.png')");
+                }else if(language == "PT"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1PT.png')");
+                }else{
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1EN.png')");
+                }
+                
+                
+                
+            </script>
+        
+        
+			<!-- Next button -->
+		</div>
+	</div>
+   <a onclick="goBack()"><div id="homeButton"><img src="images/homeButton.png" /></div></a>
+
+<script>
+function goBack() {
+    window.location.href="../../books.html?cachebust=“..randomNumber..“&language=“..localization.getLanguage()..“&email=“..email..“&name="+name+"&remoteid=“..remoteID..“&educationid=“..educationID..“&age=“..age..“&app=true”";
+}
+</script>
+    <div class="languageButton"><img src="images/icon-languages.png"></div>
+    <div class="idiomas">
+        <div id="ButtonLanEs" class="overLanguage">Español</div>
+        <div id="ButtonLanEn" class="overLanguage">English</div>
+        <div id="ButtonLanZh" class="overLanguage">中國</div>
+        <div id="ButtonLanJa" class="overLanguage">日本語</div>
+        <div id="ButtonLanKo" class="overLanguage">한국어</div>
+        <div id="ButtonLanPt" class="overLanguage">PORTUGUES</div>
+    </div>
+    <div id="audiosGroup"></div>
+	<div class="bottom">    
+		<div id="slider-bar" class="turnjs-slider timeline-style">
+			<div id="slider">
+            </div>
+		</div>
+	</div>
+    
+</div>
+
+<script type="text/javascript">
+    var audioNumber;
+    var clearTimeOut;
+    var audioReady;
+    var playing = false;
+    var audioPlayer; 
+    //cambio de regex
+    function replaceQueryParam(param, newval, search) {
+        var regex = new RegExp("([?;&])" + param + "[^&;]*[;&]?");
+        var query = search.replace(regex, "$1").replace(/&$/, '');
+
+        return (query.length > 2 ? query + "&" : "?") + (newval ? param + "=" + newval : '');
+    }    
+    
+        function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}    
+    
+    
+    $("#ButtonLanEs").click(function(){
+
+        var str = window.location.search
+        str =  window.location.hash.substr(0)
+        //alert(str)
+        language="ES"
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name="+name;
+        //window.location = window.location.pathname + "#"+language+"/#page/" + audioNumber;
+        location.reload();
+    });
+    
+    $("#ButtonLanEn").click(function(){
+
+        var str = window.location.search
+        str =  window.location.hash.substr(0)
+        //alert(str)
+        language="EN"
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name="+name;
+        //window.location = window.location.pathname + "#"+language+"/#page/" + audioNumber;
+        location.reload();
+    });
+    
+    $("#ButtonLanZh").click(function(){
+
+       var str = window.location.search
+        str =  window.location.hash.substr(0)
+        //alert(str)
+        language="ZH"
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name="+name;
+        //window.location = window.location.pathname + "#"+language+"/#page/" + audioNumber;
+        location.reload();
+    });
+    
+    $("#ButtonLanJa").click(function(){
+
+        var str = window.location.search
+        str =  window.location.hash.substr(0)
+        //alert(str)
+        language="JA"
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name="+name;
+        //window.location = window.location.pathname + "#"+language+"/#page/" + audioNumber;
+        location.reload();
+    });
+    
+    $("#ButtonLanKo").click(function(){
+
+        var str = window.location.search
+        str =  window.location.hash.substr(0)
+        //alert(str)
+        language="KO"
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name="+name;
+        //window.location = window.location.pathname + "#"+language+"/#page/" + audioNumber;
+        location.reload();
+    });
+    
+    $("#ButtonLanPt").click(function(){
+
+        var str = window.location.search
+        str =  window.location.hash.substr(0)
+        //alert(str)
+        language="PT"
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name="+name;
+        //window.location = window.location.pathname + "#"+language+"/#page/" + audioNumber;
+        location.reload();
+    });
+    
+    $(".languageButton").click(function(){
+        var idioma = $(".idiomas");
+        if (idioma.css("display") === "block") {
+            idioma.css("display","none");
+        } else {
+            idioma.css("display","block");
+        }
+    
+        
+    });
+    
+    //TweenMax.fromTo($("#activeNext"),1,{alpha:0.5},{alpha:1,yoyo:true,repeat:-1});
+    
+
+    
+    $("#audiosGroup").append('<audio id="audio0" preload="true" src="audios/' +  0 + '.mp3"></audio>') 
+    for(var i = 1;i<=6;i++){
+       $("#audiosGroup").append('<audio id="audio'+i+'" preload="true" src="audios/' +[language] + "/" +  i + '.mp3"></audio>')  
+    }
+    
+    
+function loadApp() {
+
+ 	$('#canvas').fadeIn(1000);
+
+ 	var flipbook = $('.magazine');
+
+ 	// Check if the CSS was already loaded
+	
+	if (flipbook.width()==0 || flipbook.height()==0) {
+		setTimeout(loadApp, 10);
+		return;
+	}
+	
+	// Create the flipbook
+
+	flipbook.turn({
+			
+			// Magazine width
+
+			width: 922,
+
+			// Magazine height
+
+			height: 600,
+
+			// Duration in millisecond
+
+			duration: 1000,
+
+			// Enables gradients
+
+			gradients: true,
+			
+			// Auto center this flipbook
+
+			autoCenter: true,
+
+			// Elevation from the edge of the flipbook when turning a page
+
+			elevation: 50,
+
+			// The number of pages
+
+			pages: 18,
+
+			// Events
+
+			when: {
+                
+                
+                
+				turning: function(event, page, view) {
+					
+					var book = $(this),
+					currentPage = book.turn('page'),
+					pages = book.turn('pages');
+                    
+		
+
+				updateDepth(book, page);
+				
+				if (page>=2)
+					$('.magazine .p2').addClass('fixed');
+				else
+					$('.magazine .p2').removeClass('fixed');
+
+				if (page<book.turn('pages'))
+					$('.magazine .p17').addClass('fixed');
+				else
+					$('.magazine .p17').removeClass('fixed');
+
+                    if(language == "ES"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ES.png')");
+                }else if(language == "EN"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2EN.png')");
+                }else if(language == "ZH"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ZH.png')");
+                }else if(language == "KO"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2KO.png')");
+                }else if(language == "JA"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2JA.png')");
+                }else if(language == "PT"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2PT.png')");
+                }else{
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2EN.png')");
+                }
+                    
+                    if(language == "ES"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5ES.png')");
+                }else if(language == "EN"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5EN.png')");
+                }else if(language == "ZH"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5ZH.png')");
+                }else if(language == "KO"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5KO.png')");
+                }else if(language == "JA"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5JA.png')");
+                }else if(language == "PT"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5PT.png')");
+                }else{
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5EN.png')");
+                }
+                    
+					Hash.go(language +'/page/' + page).update();
+
+					// Show and hide navigation buttons
+                    audioNumber = page;
+					disableControls(page);
+
+				},
+                
+				turned: function(event, page, view) {
+                    
+					disableControls(page);
+                    var object = $(this);
+
+					$(this).turn('center');
+                   
+
+					$('#slider').slider('value', getViewNumber(object, page));
+                    audioNumber = page;
+            
+					if (page==1) { 
+						$(this).turn('peel', 'br');
+					}
+
+				},
+
+				missing: function (event, pages) {
+
+					// Add pages that aren't in the magazine
+
+					for (var i = 0; i < pages.length; i++)
+						addPage(pages[i], $(this));
+
+				}
+			}
+
+        
+	});
+
+	// Zoom.js
+
+    
+    
+	$('.magazine-viewport').zoom({
+		flipbook: $('.magazine'),
+
+		max: function() { 
+			
+			return largeMagazineWidth()/$('.magazine').width();
+
+		}, 
+
+		when: {
+			swipeLeft: function() {
+
+				$(this).zoom('flipbook').turn('next');
+                
+                stopAllSounds();
+
+			},
+
+			swipeRight: function() {
+				
+				$(this).zoom('flipbook').turn('previous');
+                stopAllSounds();
+
+			},
+
+			resize: function(event, scale, page, pageElement) {
+
+//				if (scale==1)
+//					loadSmallPage(page, pageElement);
+//				else
+//					loadLargePage(page, pageElement);
+
+			},
+
+			zoomIn: function () {
+                
+                $(".userName").addClass("zoomUserName")
+				$('#slider-bar').hide();
+				$('.made').hide();
+				$('.magazine').removeClass('animated').addClass('zoom-in');
+				$('.zoom-icon').removeClass('zoom-icon-in').addClass('zoom-icon-out');
+				
+				if (!window.escTip && !$.isTouch) {
+					escTip = true;
+
+					$('<div />', {'class': 'exit-message'}).
+						html('<div>Press ESC to exit</div>').
+							appendTo($('body')).
+							delay(2000).
+							animate({opacity:0}, 500, function() {
+								$(this).remove();
+							});
+				}
+			},
+
+			zoomOut: function () {
+                
+                $(".userName").removeClass("zoomUserName")
+				$('#slider-bar').fadeIn();
+				$('.exit-message').hide();
+				$('.made').fadeIn();
+				$('.zoom-icon').removeClass('zoom-icon-out').addClass('zoom-icon-in');
+
+				setTimeout(function(){
+					$('.magazine').addClass('animated').removeClass('zoom-in');
+					resizeViewport();
+				}, 0);
+
+			}
+		}
+	});
+
+
+
+
+	// Using arrow keys to turn the page
+
+	$(document).keydown(function(e){
+
+		var previous = 37, next = 39, esc = 27;
+
+		switch (e.keyCode) {
+			case previous:
+
+				// left arrow
+				$('.magazine').turn('previous');
+                stopAllSounds();
+				e.preventDefault();
+
+			break;
+			case next:
+
+				//right arrow
+				$('.magazine').turn('next');
+                stopAllSounds();
+				e.preventDefault();
+                
+
+			break;
+			case esc:
+				
+				$('.magazine-viewport').zoom('zoomOut');	
+				e.preventDefault();
+
+			break;
+		}
+	});
+
+	// URIs - Format #/page/1 
+
+    
+    
+	Hash.on('^page\/([0-9]*)$', {
+		yep: function(path, parts) {
+			var page = parts[1];
+
+			if (page!==undefined) {
+				if ($('.magazine').turn('is'))
+					$('.magazine').turn('page', page);
+                audioReady = page;
+                
+			}
+
+		},
+		nop: function(path) {
+
+			if ($('.magazine').turn('is'))
+				$('.magazine').turn('page', 1);
+		}
+	});
+
+
+	$(window).resize(function() {
+		resizeViewport();
+	}).bind('orientationchange', function() {
+		resizeViewport();
+	});
+
+	// Regions
+
+	if ($.isTouch) {
+		$('.magazine').bind('touchstart', regionClick);
+	} else {
+		$('.magazine').click(regionClick);
+	}
+
+	// Events for the next button
+
+	$('.next-button').bind($.mouseEvents.over, function() {
+		
+		$(this).addClass('next-button-hover');
+
+	}).bind($.mouseEvents.out, function() {
+		
+		$(this).removeClass('next-button-hover');
+
+	}).bind($.mouseEvents.down, function() {
+		
+		$(this).addClass('next-button-down');
+
+	}).bind($.mouseEvents.up, function() {
+		
+		$(this).removeClass('next-button-down');
+
+	}).click(function() {
+		
+		$('.magazine').turn('next');
+        stopAllSounds();
+        
+	});
+
+	// Events for the next button
+	
+	$('.previous-button').bind($.mouseEvents.over, function() {
+		
+		$(this).addClass('previous-button-hover');
+
+	}).bind($.mouseEvents.out, function() {
+		
+		$(this).removeClass('previous-button-hover');
+
+	}).bind($.mouseEvents.down, function() {
+		
+		$(this).addClass('previous-button-down');
+
+	}).bind($.mouseEvents.up, function() {
+		
+		$(this).removeClass('previous-button-down');
+
+	}).click(function() {
+		
+		$('.magazine').turn('previous');
+            stopAllSounds();
+
+	});
+
+
+	// Slider
+
+	$( "#slider" ).slider({
+		min: 1,
+		max: numberOfViews(flipbook),
+
+		start: function(event, ui) {
+			if (!window._thumbPreview) {
+				_thumbPreview = $('<div />', {'class': 'thumbnail'}).html('<div></div>');
+				//setPreview(ui.value);
+				//_thumbPreview.appendTo($(ui.handle));
+			} else
+				//setPreview(ui.value);
+
+			moveBar(false);
+
+		},
+
+		slide: function(event, ui) {
+
+			//setPreview(ui.value);
+
+		},
+
+		stop: function() {
+
+			if (window._thumbPreview)
+				_thumbPreview.removeClass('show');
+			     
+			$('.magazine').turn('page', Math.max(1, $(this).slider('value')*2 - 2));
+            stopAllSounds();
+		}
+	});
+
+	resizeViewport();
+
+	$('.magazine').addClass('animated');
+
+}
+
+// Zoom icon
+
+ $('.zoom-icon').bind('mouseover', function() { 
+ 	
+ 	if ($(this).hasClass('zoom-icon-in'))
+ 		$(this).addClass('zoom-icon-in-hover');
+
+ 	if ($(this).hasClass('zoom-icon-out'))
+ 		$(this).addClass('zoom-icon-out-hover');
+ 
+ }).bind('mouseout', function() { 
+ 	
+ 	 if ($(this).hasClass('zoom-icon-in'))
+ 		$(this).removeClass('zoom-icon-in-hover');
+ 	
+ 	if ($(this).hasClass('zoom-icon-out'))
+ 		$(this).removeClass('zoom-icon-out-hover');
+
+ }).bind('click', function() {
+
+ 	if ($(this).hasClass('zoom-icon-in'))
+ 		$('.magazine-viewport').zoom('zoomIn');
+ 	else if ($(this).hasClass('zoom-icon-out'))	
+		$('.magazine-viewport').zoom('zoomOut');
+
+ });
+      
+    
+function visibleNext(){
+    $("#activeNext").css("display","block")
+    
+}    
+    
+    
+    function stopAllSounds(){
+        
+        if(audioNumber >= [allPages-2]){
+                mixpanel.track("OnBookFinished",{
+                        "user_id": credentials.educationID,
+                        "app": "web",
+                        "bookID" : "40",
+                        "bookName" : "Eagle y el árbol de las cometas"
+                    });      
+        }
+        
+        
+        $("#activeNext").css("display","none");
+        $(".buttonSound").css("opacity",1);
+        playing = false;
+        audiosNumbers();
+        audioPlayer = document.getElementById("audio" +  audioReady);
+        audioPlayer.currentTime = 0;
+        
+          for(i= 0; i<=6;i++){
+                    var audio = document.getElementById("audio" + i);
+                        audio.pause();
+                        audio.currentTime = 0;
+                    
+                } 
+        
+        AudioPlay();
+        
+    }    
+
+    
+function audiosNumbers(){
+               
+            switch(audioNumber){
+                case 1:
+                    audioReady = 0
+                   break;
+                case 2:
+                    audioReady = 0
+                   break;
+                case 3:
+                    audioReady = 0
+                   break;
+                case 4:
+                    audioReady = 1
+                   break;
+                case 5:
+                    audioReady = 1
+                   break;
+                case 6:
+                    audioReady = 2
+                   break;
+                case 7:
+                    audioReady = 2
+                   break;
+                case 8:
+                    audioReady = 3
+                   break;
+                case 9:
+                    audioReady = 3
+                   break;
+                case 10:
+                    audioReady = 4
+                   break;
+                case 11:
+                    audioReady = 4
+                   break;
+                case 12:
+                    audioReady = 5
+                   break;
+                case 13:
+                    audioReady = 5
+                   break;
+                case 14:
+                    audioReady = 6
+                   break;
+                case 15:
+                    audioReady = 6
+                   break;
+                 case 16:    
+                    audioReady = 0
+                    break;
+                 case 17:    
+                    audioReady = 0
+                    break;
+                 case 18:    
+                    audioReady = 0
+                    break;
+            }
+}    
+
+    
+function AudioPlay(){
+   if(!playing) {
+       autoPlay();
+       audioPlayer.currentTime = 0;
+      
+   }else{
+       
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                $(".buttonSound").css("opacity",1);
+                } else {
+                    audioPlayer.pause();
+                                $(".buttonSound").css("opacity",0.5);    
+                }
+       if(language == "ES"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaES" + audioReady)); 
+        }else if(language == "EN"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaEN" + audioReady));
+        }else if(language == "KO"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaKO" + audioReady));
+        }   
+       
+       
+   }    
+    
+};
+
+function autoPlay(){
+    audiosNumbers();
+
+    console.log("audioReady: " + audioReady);
+    audioPlayer = document.getElementById("audio" +  audioReady); 
+        audioPlayer.play();
+        if(language == "ES"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaES" + audioReady)); 
+        }else if(language == "EN"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaEN" + audioReady));
+        }else if(language == "KO"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaKO" + audioReady));
+        }        
+        audioPlayer.addEventListener("timeupdate", function(e){
+            playing = true;
+        });
+
+}          
+    
+ $('#canvas').hide();
+
+
+yepnope({
+	test : Modernizr.csstransforms,
+	yep: ['lib/turn.js'],
+	nope: ['lib/turn.html4.min.js', 'css/jquery.ui.html4.css'],
+	both: ['lib/zoom.min.js', 'css/jquery.ui.css', 'js/magazine.js', 'css/magazine.css','css/custom_fonts.css'],
+	complete: loadApp
+});
+
+var credentials = epicModel.getCredentials();    
+    
+$(document).ready(function () {
+    /**
+     * * Metodo implementado en mixpanel.js
+     */
+    var credentials1 = epicModel.getCredentials();   
+
+    mixpanel.track(
+        "OnBookOpen",
+        {
+            "user_id": credentials1.educationID,
+            "app": "web",
+            "bookID" : "16",
+            "bookName" : "El regalo de navidad"
+        }
+    );
+    
+    
+
+    
+});    
+    
+    
+var allPages =  18    
+
+
+function mixPanelClose(){
+        mixpanel.track(
+            "OnBookClose", 
+            {
+                "user_id": credentials.educationID,
+                "app": "web",
+                "bookID" : "16",
+                "bookName" : "El regalo de navidad",
+                "lastPage" : audioNumber    
+            }
+        );
+}   
+    
+
+    function stopAllSounds(){
+        if(audioNumber >= [allPages-2]){
+                mixpanel.track("OnBookFinished",{
+                        "user_id": credentials.educationID,
+                        "app": "web",
+                        "bookID" : "16",
+                        "bookName" : "El regalo de navidad"
+                    });      
+        }
+        
+        
+        $("#activeNext").css("display","none");
+        playing = false;
+        audiosNumbers();
+       audioPlayer = document.getElementById("audio" +  audioReady);
+        $("#buttonPlay").attr("src","images/Play.png");
+          for(i= 0; i<=6;i++){
+                    var audio = document.getElementById("audio" + i);
+                        audio.pause();
+                        audio.currentTime = 0;
+                    
+                } 
+        
+    }    
+    
+    var leaving = true;
+    var isClose = false;
+
+    function EndChatSession() {
+        var request = GetRequest();
+        request.open("GET", "../Chat.aspx", true);
+        request.send();
+    }
+    document.onkeydown = checkKeycode
+    function checkKeycode(e) {
+        var keycode;
+        if (window.event)
+            keycode = window.event.keyCode;
+        else if (e)
+            keycode = e.which;
+        if (keycode == 116) {
+            isClose = true;
+        }
+    }
+    function somefunction() {
+        isClose = true;
+    }
+    
+    window.onbeforeunload = function (e) {
+       if (!e) e = event;
+        if (leaving) {
+             EndChatSession();
+             mixPanelClose();
+             //e.returnValue = "Are You Sure";
+
+        }
+    }
+    function GetRequest() {
+        var xmlHttp = null;
+        try {
+            // Firefox, Opera 8.0+, Safari
+            xmlHttp = new XMLHttpRequest();
+        }
+        catch (e) {
+            //Internet Explorer
+            try {
+                xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+            }
+            catch (e) {
+                xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+        }
+        return xmlHttp;
+    }       
+</script>
+</body>
+</html>

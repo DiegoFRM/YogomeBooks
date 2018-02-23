@@ -1,0 +1,1036 @@
+<!doctype html>
+<html>
+<head>
+<title class="languageTitle">¡Ahí viene Ignorantia!</title>
+ <meta charset="UTF-8">    
+<meta name="viewport" content="width = 1050, user-scalable = no" />
+<link rel="icon" type="image/png" href="../../pics/favicon.png" />
+<script type="text/javascript" src="extras/jquery.min.1.7.js"></script>
+<script type="text/javascript" src="extras/jquery-ui-1.8.20.custom.min.js"></script>
+<script type="text/javascript" src="extras/modernizr.2.5.3.min.js"></script>
+<script type="text/javascript" src="lib/hash.js"></script>
+<script type="text/javascript" src="js/jquery.blast.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+    <script type="text/javascript" src="js/tracks.js"></script>
+<script type="text/javascript" src="js/audioSync.js"></script> 
+    <!--ESta de manera absoluta la direccion de epic model, por la profundidad que tiene dentro del server-->
+<script type="text/javascript" src="http://play.yogome.com/js/epic/models/epicModel.js"></script>    
+<script type="text/javascript" src="../../js/mixpanel/mixpanel.js"></script>        
+    
+    <script>
+        var meta = document.createElement('meta');
+        meta.setAttribute("property","og:description");
+        
+    </script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta property="og:url"				content="https://play.yogome.com/yogomebooks/35/#EN"/>
+    <meta property="og:type"			content="article" />
+    <meta property="og:title"			content="Interactive Book: Here Comes Ignorantia" />
+    <meta property="og:image"			content="https://play.yogome.com/yogomebooks/posts/fbpost_35.png" />
+    
+<script>
+    var languageTitles = [
+            {
+                ES:"¡Ahí viene Ignorantia!",
+                EN:"Here Comes Ignorantia",
+                PT:"Lá vem a Ignorantia",
+                ZH:"Ignorantia来了",
+                JA:"イグノランティアがきた！",
+                KO:"이그노란티아가나타났다! "
+            }
+        ]
+    
+    //AQUI VA PARA SABER EL LENGUAGE
+        function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+        var language
+
+        var  str =window.location.hash;
+        var array=str.split("/")
+        language=array[0].substr(1)
+        console.log(language)  
+    
+    function changeTitle(){
+        if(language == "ES"){
+            $(".languageTitle").text(languageTitles[0][language])
+        }else if(language == "EN"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "PT"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "ZH"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "JA"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "KO"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else{
+            $(".languageTitle").text(languageTitles[0].EN)    
+        }
+    }    
+    
+    changeTitle()
+
+var languagePages = [
+                  {
+                    page:1,
+                    ES:"Todas las noches, los Yogotars, seleccionan a una persona para cuidar la Yogomansión. Una noche le tocó a Oof quién con poco gusto aceptó.",
+                    EN:"Every night, the Yogotars choose someone to guard the Yogomansion.</br></br>One day, it was Oof's turn. He wasn't very happy about it, but he accepted. ",
+                    PT:"Toda noite, os Yogotars escolhiam alguém para ficar de guarda na Yogomansão.</br></br<>Certo dia, chegou a vez de Oof. Ele não gostou muito, mas aceitou. ",
+                    ZH:"每天晚上，Yogotar都会选择一个人来守护Yogomansion。</br></br>这一天，轮到奥夫了。他虽然不太高兴，但还是接受了。 ",
+                    JA:"ヨゴターたちは まいばん、ヨゴマンションを まもる人を えらびます。</br></br>ある日、ウーフが まもるばん でした。ウーフは あまり のりきでは ありませんでしたが ひきうけました。",
+                    KO:"요고타들은 매일 밤마다 요고맨션을 경비하는 요고타를 뽑아요. 그 날은 우프의 순서였어요. 우프는 요고맨션을 경비하는 일이 즐겁지는 않았지만 하겠다고 했어요."
+                },
+                {
+                    page:2,
+                    ES:"Oof, aburrido, tuvo una idea que consideró buena. Activó la alarma de peligro para que todos los Yogotars se despertaran.",
+                    EN:"It was a boring task, so Oof thought of an idea to stay entertained.</br></br>He thought it might be funny to push the panic button to wake up the rest of the Yogotars.",
+                    PT:'Como era uma tarefa chata, Oof teve uma ideia para se entreter.</br></br>Ele achou que seria divertido apertar o botão de pânico para acordar os outros Yogotars.',
+                    ZH:"这是一项无聊的任务，所以奥夫想到了一个找乐子的主意。</br></br>他觉得按下紧急按钮来叫醒其他Yogotar肯定很好玩。 ",
+                    JA:"そのしごとは つまらないもの だったので、ウーフは おもしろくする ほうほうを かんがえました。</br></br>ウーフは パニックボタンをおして ヨゴターのみんなを おこしたら おもしろい かもしれないと おもいました。」",
+                    KO:"요고맨션을 경비하는 일은 지루했어요. 그래서 우프는 재미있는 일을 하면서 시간을 보내기로 했어요. 우프는 비상 단추를 눌러서 모두를 깨우면 재미있을 거라고 생각했어요."
+                },
+                {
+                    page:3,
+                    ES:"La alarma se activó y de inmediato, Justice y Dinamita llegaron.</br></br>–Falsa alarma, es sólo una broma –dijo Oof mientras se carcajeaba.",
+                    EN:"The powerful alarm went off, scaring Justice and Dinamita out of bed. </br></br>When they arrived to the control tower, Oof couldn't stop laughing. </br></br>&#34;False alarm&#34;, he said &#34;it was just a joke!&#34; ",
+                    PT:"O alarme potente disparou, assustando Justice e Dinamita, que levantaram na mesma hora. </br></br>Quando eles chegaram à torre de controle, Oof não conseguia parar de rir. </br></br>“Alarme falso”, disse ele. “Foi só uma brincadeira!” ",
+                    ZH:"尖锐的警报声响起，把贾斯蒂斯和迪纳米特吓得掉下床去。</br></br>当他们到达指挥塔时，奥夫忍不住笑了起来。</br></br>“虚惊一场，”他说，“这只是个玩笑！” ",
+                    JA:"おおきなおとで けいほうが なりました。ジャスティスと ディナミタは ベッドから とびあがりました。</br></br>みんなが コントロールタワーに やってくると、ウーフは ケラケラ わらって いいました。</br></br>「うそだよ！じょうだんさ！」 ",
+                    KO:"비상 단추를 누르자 알람이 아주 크게 울렸어요. 저스티스와 다이나미타는 깜짝 놀라서 침대 밖으로 뛰쳐나왔어요. 두 요고타가 관제탑에 도착했을 때 우프는 자지러지게 웃고 있었어요. </br></br>&#34;이건 가짜 알람이었어. &#34;우프가 말했어요. &#34;내가 장난을 친 거야.&#34;"
+                },
+                {
+                    page:4,
+                    ES:"La noche siguió y Oof continuó con la broma. Hasta que el resto de los Yogotars dejaron de caer en la trampa.",
+                    EN:"The night went on and Oof kept pushing the panic button. </br></br>Eventually the other Yogotars stopped noticing the alarm.",
+                    PT:"Oof continuou apertando o botão de pânico naquela noite. </br></br>Com o tempo, os outros Yogotars pararam de dar atenção ao alarme.",
+                    ZH:"夜深了，奥夫不停地按下紧急按钮。</br></br>最终，其他Yogotar再也不理会警报了。",
+                    JA:"よるのあいだ ウーフは パニックボタンを なんども おしました。</br></br>やがて ほかのヨゴターたちは けいほうが なっても おきあがるのを やめました。",
+                    KO:"우프는 밤새도록 비상 단추를 누르는 장난을 계속했어요. </br></br>마침내 다른 요고타들은 알람을 신경 쓰지 않았어요."
+                },
+                {
+                    page:5,
+                    ES:"La noche estaba por terminar, cuando de pronto Ignorantia apareció en la pantalla.</br></br>Oof de inmediato activó la alarma, pero nadie llegó. ",
+                    EN:"The sun was almost out, when suddenly Ignorantia appeared on the screen.</br></br>Oof started pushing the panic button frantically. This time nobody showed up. ",
+                    PT:'O sol já estava quase nascendo quando, de repente, Ignorantia apareceu na tela.</br></br>Oof começou a apertar o botão de pânico freneticamente. Dessa vez, ninguém apareceu. ',
+                    ZH:"太阳快要出来了，突然屏幕上出现了Ignorantia的画面。</br></br>奥夫开始疯狂地按下紧急按钮。这次没人来。 ",
+                    JA:"もうすぐ あさになるところで とつぜん、イグノランティアが がめんにあらわれました。</br></br>ウーフは ひっし でパニックボタンを おしましたが、だれも たすけに きませんでした。 ",
+                    KO:"해가 거의 떴을 때, 이그노란티아 여왕이 갑자기 화면에 나타났어요. </br></br>우프는 비상 단추를 급하게 눌렀어요. 이번에는 아무도 달려오지 않았어요."
+                },
+                {   
+                    page:6,
+                    ES:"Por la mañana, Justice encontró a Oof, se veía triste y afligido.</br></br>–¿Qué pasa Oof? –preguntó Justice. </br></br>–Ignorantia robó el banco de power cubes. Es mi culpa, activé la alarma y nadie acudió porque pensaron que era otra de mis bromas –dijo Oof.",
+                    EN:"The next morning, Justice found Oof looking sad and troubled. </br></br>&#34;What's wrong, Oof?&#34; asked Justice.</br></br> &#34;Ignorantia took the power cube bank, and it's all my fault,&#34; answered Oof. &#34;I set the alarm off and no one came to help me. They thought it was just another one of my pranks.&#34; ",
+                    PT:'Na manhã seguinte, Justice encontrou Oof triste e preocupado. </br>“Qual é o problema, Oof?”, perguntou Justice. </br>“Ignorantia invadiu o cofre de Powercubes, e é tudo culpa minha”, respondeu Oof. </br>“Eu disparei o alarme, mas ninguém veio me ajudar. Eles acharam que era só mais uma das minhas brincadeiras.” ',
+                    ZH:"第二天早上，贾斯蒂斯发现奥夫看起来很伤心，也很苦恼。</br>“怎么了，奥夫？”贾斯蒂斯问道。</br>“Ignorantia拿走了能量块组，这都是我的错。”奥夫回答。</br>“我拉响警报，但没有人来帮助我。他们以为那只是我的又一个恶作剧。” ",
+                    JA:"つぎのあさ、ウーフが かなしいかおを しているのを ジャスティスが みつけました。</br>「ウーフ、どうしたの？」ジャスティスが たずねました。</br>「イグノランティアが パワーキューブを ぎんこうから ぬすんだんだ。ぜんぶ ぼくのせいだ」ウーフは こたえました。</br>「けいほうを ならしたけど だれも たすけにこなかった。みんな また じょうだんだと おもったんだ。」 ",
+                    KO:"다음 날 아침, 저스티스는 슬프고 불안해하는 우프를 보았어요. </br>&#34;무슨 일이야 우프야?&#34; 저스티스가 물었어요. </br>&#34;이그노란티아가 파워 큐브를 가져갔어. 모두 내 잘못이야. &#34;우프가 대답했어요. </br>&#34;내가 알람을 울렸지만 아무도 나를 도와주러 오지 않았어. 다들 내가 또 장난을 친다고 생각했어.&#34;"
+                },
+                {
+                    page:7,
+                    ES:"Justice comenzó a carcajearse. </br></br>–¿Por qué te ríes? –preguntó Oof con sorpresa.</br></br>–Esos eran power cubes falsos. Espera a que Ignorantia se dé cuenta. Lo bueno de todo esto es que has aprendido tu lección, Oof –dijo Justice. </br></br>–Prometo no mentir nunca más –dijo Oof.",
+                    EN:"Justice started cackling uncontrollably.</br></br>&#34;What's so funny, Justice?&#34; asked Oof, confused.</br></br>&#34;Those were fake power cubes! Wait until Ignorantia finds out,&#34; said Justice, still laughing, &#34;the important thing here is that you learned your lesson, Oof.&#34;I promise never to lie again!&#34; exclaimed Oof, relieved. ",
+                    PT:"Justice começou a gargalhar incontrolavelmente.</br>“O que é tão engraçado, Justice?”, perguntou Oof, confuso.</br>“Aqueles Powercubes eram falsos! Espere até Ignorantia descobrir”, disse Justice, ainda rindo, “o importante é que você aprendeu a lição, Oof”. </br>“Eu prometo que nunca mais vou mentir!”, exclamou Oof, aliviado. ",
+                    ZH:"贾斯蒂斯开始忍不住咯咯笑起来。</br>有什么好笑的，贾斯蒂斯？”奥夫疑惑地问道。</br>“那些都是假的能量块！Ignorantia还没发现，”贾斯蒂斯仍然笑着说，“但重要的是你吸取了教训，奥夫。”</br>“我保证再也不说谎了！”奥夫说道，松了口气。 ",
+                    JA:"ジャスティスは こらえきれずに わらいだしました。</br>「なにが そんなに おかしいのさ？」ウーフは わけがわからずに たずねました。</br>「ぬすまれたのは にせのパワーキューブだよ！イグノランティアは いつ きがつくかな」ジャスティスは まだわらっています。「たいせつなのは うそは いけないって ウーフが まなんだことだよ」</br>「もうぜったい うそは つかないって やくそくするよ！」ウーフは ほっとして いいました。",
+                    KO:"저스티스는 몸을 가눌 수 없을 정도로 낄낄대며 웃었어요. </br>&#34;너는 왜 그렇게 웃는 거야 저스티스?&#34; 우프가 당황해서 물었어요. </br>&#34;이그노란티아가 가져간 파워 큐브는 전부 가짜야. 여왕이 알아챌 때까지 기다리자.&#34; 저스티스가 계속 웃으면서 말했어요. &#34;중요한 건 네가 이번 일로 교훈을 얻었다는 거지. 그렇지 우프야?&#34; </br>&#34;나는 다시는 거짓말을 하지 않을게.&#34; 우프가 걱정 없는 목소리로 말했어요."
+                }
+                ]     
+    
+    
+    </script>   
+</head>
+<body>
+
+<div id="canvas">
+
+
+<div class="magazine-viewport">
+	<div class="container">
+        
+		<div class="magazine">
+<!--  BOTON SIGUIENTE      -->
+                <div ignore="1" class="next-button">
+                    <div id="activeNext" >
+                        <div class="animation1"> 
+                        </div>
+                    </div>
+                    <img src="images/nextButton.png">
+                </div>
+            <!-- Previous button -->
+			<div ignore="1" class="previous-button">
+    <img src="images/nextButton.png">
+            </div>             
+            <div id="p1" depth="5" class="hard"> <div class="side"></div> </div>
+			<div depth="5" class="hard front-side"> <div class="depth"></div> </div>
+			<div class="hard fixed back-side p21"><div class="depth"></div> </div>
+			<div class="hard p22"> </div>
+
+            </div>
+            <script>
+                //console.log(languagePages[0][language]);
+                if(language == "ES"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1ES.png')");
+                }else if(language == "EN"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1EN.png')");
+                }else if(language == "ZH"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1ZH.png')");
+                }else if(language == "KO"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1KO.png')");
+                }else if(language == "JA"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1JA.png')");
+                }else if(language == "PT"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1PT.png')");
+                }else{
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1EN.png')");
+                }
+                
+                
+                
+            </script>
+        
+        
+			<!-- Next button -->
+		</div>
+	</div>
+   <a onclick="goBack()"><div id="homeButton"><img src="images/homeButton.png" /></div></a>
+
+<script>
+function goBack() {
+    window.location.href="../../yogobooks.html";
+}
+</script>
+    <div class="languageButton"><img src="images/icon-languages.png"></div>
+    <div class="idiomas">
+        <div id="ButtonLanEs" class="overLanguage">Español</div>
+        <div id="ButtonLanEn" class="overLanguage">English</div>
+        <div id="ButtonLanZh" class="overLanguage">中國</div>
+        <div id="ButtonLanJa" class="overLanguage">日本語</div>
+        <div id="ButtonLanKo" class="overLanguage">한국어</div>
+        <div id="ButtonLanPt" class="overLanguage">PORTUGUES</div>
+    </div>
+    <div id="audiosGroup"></div>
+	<div class="bottom">    
+		<div id="slider-bar" class="turnjs-slider timeline-style">
+			<div id="slider">
+            </div>
+		</div>
+	</div>
+    
+</div>
+
+<script type="text/javascript">
+    var audioNumber;
+    var clearTimeOut;
+    var audioReady;
+    var playing = false;
+    var audioPlayer; 
+    //cambio de regex
+    function replaceQueryParam(param, newval, search) {
+        var regex = new RegExp("([?;&])" + param + "[^&;]*[;&]?");
+        var query = search.replace(regex, "$1").replace(/&$/, '');
+
+        return (query.length > 2 ? query + "&" : "?") + (newval ? param + "=" + newval : '');
+    }    
+    
+        function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}    
+    
+    
+    $("#ButtonLanEs").click(function(){
+
+        var str = window.location.search
+        str =  window.location.hash.substr(0)
+        //alert(str)
+        language="ES"
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name=Yogome";
+        //window.location = window.location.pathname + "#"+language+"/#page/" + audioNumber;
+        location.reload();
+    });
+    
+    $("#ButtonLanEn").click(function(){
+
+        var str = window.location.search
+        str =  window.location.hash.substr(0)
+        //alert(str)
+        language="EN"
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name=Yogome";
+        //window.location = window.location.pathname + "#"+language+"/#page/" + audioNumber;
+        location.reload();
+    });
+    
+    $("#ButtonLanZh").click(function(){
+
+       var str = window.location.search
+        str =  window.location.hash.substr(0)
+        //alert(str)
+        language="ZH"
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name=Yogome";
+        //window.location = window.location.pathname + "#"+language+"/#page/" + audioNumber;
+        location.reload();
+    });
+    
+    $("#ButtonLanJa").click(function(){
+
+        var str = window.location.search
+        str =  window.location.hash.substr(0)
+        //alert(str)
+        language="JA"
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name=Yogome";
+        //window.location = window.location.pathname + "#"+language+"/#page/" + audioNumber;
+        location.reload();
+    });
+    
+    $("#ButtonLanKo").click(function(){
+
+        var str = window.location.search
+        str =  window.location.hash.substr(0)
+        //alert(str)
+        language="KO"
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name=Yogome";
+        //window.location = window.location.pathname + "#"+language+"/#page/" + audioNumber;
+        location.reload();
+    });
+    
+    $("#ButtonLanPt").click(function(){
+
+        var str = window.location.search
+        str =  window.location.hash.substr(0)
+        //alert(str)
+        language="PT"
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name=Yogome";
+        //window.location = window.location.pathname + "#"+language+"/#page/" + audioNumber;
+        location.reload();
+    });
+    
+    $(".languageButton").click(function(){
+        var idioma = $(".idiomas");
+        if (idioma.css("display") === "block") {
+            idioma.css("display","none");
+        } else {
+            idioma.css("display","block");
+        }
+    
+        
+    });
+    
+    //TweenMax.fromTo($("#activeNext"),1,{alpha:0.5},{alpha:1,yoyo:true,repeat:-1});
+    
+
+    
+    $("#audiosGroup").append('<audio id="audio0" preload="true" src="audios/' +  0 + '.mp3"></audio>') 
+    for(var i = 1;i<=7;i++){
+       $("#audiosGroup").append('<audio id="audio'+i+'" preload="true" src="audios/' +[language] + "/" +  i + '.mp3"></audio>')  
+    }
+    
+    
+function loadApp() {
+
+ 	$('#canvas').fadeIn(1000);
+
+ 	var flipbook = $('.magazine');
+
+ 	// Check if the CSS was already loaded
+	
+	if (flipbook.width()==0 || flipbook.height()==0) {
+		setTimeout(loadApp, 10);
+		return;
+	}
+	
+	// Create the flipbook
+
+	flipbook.turn({
+			
+			// Magazine width
+
+			width: 922,
+
+			// Magazine height
+
+			height: 600,
+
+			// Duration in millisecond
+
+			duration: 1000,
+
+			// Enables gradients
+
+			gradients: true,
+			
+			// Auto center this flipbook
+
+			autoCenter: true,
+
+			// Elevation from the edge of the flipbook when turning a page
+
+			elevation: 50,
+
+			// The number of pages
+
+			pages: 22,
+
+			// Events
+
+			when: {
+                
+                
+                
+				turning: function(event, page, view) {
+					
+					var book = $(this),
+					currentPage = book.turn('page'),
+					pages = book.turn('pages');
+                    
+		
+
+				updateDepth(book, page);
+				
+				if (page>=2)
+					$('.magazine .p2').addClass('fixed');
+				else
+					$('.magazine .p2').removeClass('fixed');
+
+				if (page<book.turn('pages'))
+					$('.magazine .p21').addClass('fixed');
+				else
+					$('.magazine .p21').removeClass('fixed');
+
+                    if(language == "ES"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ES.png')");
+                }else if(language == "EN"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2EN.png')");
+                }else if(language == "ZH"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ZH.png')");
+                }else if(language == "KO"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2KO.png')");
+                }else if(language == "JA"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2JA.png')");
+                }else if(language == "PT"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2PT.png')");
+                }else{
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2EN.png')");
+                }
+                    
+                    if(language == "ES"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5ES.png')");
+                }else if(language == "EN"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5EN.png')");
+                }else if(language == "ZH"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5ZH.png')");
+                }else if(language == "KO"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5KO.png')");
+                }else if(language == "JA"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5JA.png')");
+                }else if(language == "PT"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5PT.png')");
+                }else{
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5EN.png')");
+                }
+                    
+					Hash.go(language +'/#page/' + page).update();
+
+					// Show and hide navigation buttons
+                    audioNumber = page;
+					disableControls(page);
+
+				},
+                
+				turned: function(event, page, view) {
+                    
+					disableControls(page);
+                    var object = $(this);
+
+					$(this).turn('center');
+                   
+
+					$('#slider').slider('value', getViewNumber(object, page));
+                    audioNumber = page;
+            
+					if (page==1) { 
+						$(this).turn('peel', 'br');
+					}
+
+				},
+
+				missing: function (event, pages) {
+
+					// Add pages that aren't in the magazine
+
+					for (var i = 0; i < pages.length; i++)
+						addPage(pages[i], $(this));
+
+				}
+			}
+
+        
+	});
+
+	// Zoom.js
+
+    
+    
+	$('.magazine-viewport').zoom({
+		flipbook: $('.magazine'),
+
+		max: function() { 
+			
+			return largeMagazineWidth()/$('.magazine').width();
+
+		}, 
+
+		when: {
+			swipeLeft: function() {
+
+				$(this).zoom('flipbook').turn('next');
+                
+                stopAllSounds();
+
+			},
+
+			swipeRight: function() {
+				
+				$(this).zoom('flipbook').turn('previous');
+                stopAllSounds();
+
+			},
+
+			resize: function(event, scale, page, pageElement) {
+
+//				if (scale==1)
+//					loadSmallPage(page, pageElement);
+//				else
+//					loadLargePage(page, pageElement);
+
+			},
+
+			zoomIn: function () {
+                
+                $(".userName").addClass("zoomUserName")
+				$('#slider-bar').hide();
+				$('.made').hide();
+				$('.magazine').removeClass('animated').addClass('zoom-in');
+				$('.zoom-icon').removeClass('zoom-icon-in').addClass('zoom-icon-out');
+				
+				if (!window.escTip && !$.isTouch) {
+					escTip = true;
+
+					$('<div />', {'class': 'exit-message'}).
+						html('<div>Press ESC to exit</div>').
+							appendTo($('body')).
+							delay(2000).
+							animate({opacity:0}, 500, function() {
+								$(this).remove();
+							});
+				}
+			},
+
+			zoomOut: function () {
+                
+                $(".userName").removeClass("zoomUserName")
+				$('#slider-bar').fadeIn();
+				$('.exit-message').hide();
+				$('.made').fadeIn();
+				$('.zoom-icon').removeClass('zoom-icon-out').addClass('zoom-icon-in');
+
+				setTimeout(function(){
+					$('.magazine').addClass('animated').removeClass('zoom-in');
+					resizeViewport();
+				}, 0);
+
+			}
+		}
+	});
+
+
+
+
+	// Using arrow keys to turn the page
+
+	$(document).keydown(function(e){
+
+		var previous = 37, next = 39, esc = 27;
+
+		switch (e.keyCode) {
+			case previous:
+
+				// left arrow
+				$('.magazine').turn('previous');
+                stopAllSounds();
+				e.preventDefault();
+
+			break;
+			case next:
+
+				//right arrow
+				$('.magazine').turn('next');
+                stopAllSounds();
+				e.preventDefault();
+                
+
+			break;
+			case esc:
+				
+				$('.magazine-viewport').zoom('zoomOut');	
+				e.preventDefault();
+
+			break;
+		}
+	});
+
+	// URIs - Format #/page/1 
+
+    
+    
+	Hash.on('^page\/([0-9]*)$', {
+		yep: function(path, parts) {
+			var page = parts[1];
+
+			if (page!==undefined) {
+				if ($('.magazine').turn('is'))
+					$('.magazine').turn('page', page);
+                audioReady = page;
+                
+			}
+
+		},
+		nop: function(path) {
+
+			if ($('.magazine').turn('is'))
+				$('.magazine').turn('page', 1);
+		}
+	});
+
+
+	$(window).resize(function() {
+		resizeViewport();
+	}).bind('orientationchange', function() {
+		resizeViewport();
+	});
+
+	// Regions
+
+	if ($.isTouch) {
+		$('.magazine').bind('touchstart', regionClick);
+	} else {
+		$('.magazine').click(regionClick);
+	}
+
+	// Events for the next button
+
+	$('.next-button').bind($.mouseEvents.over, function() {
+		
+		$(this).addClass('next-button-hover');
+
+	}).bind($.mouseEvents.out, function() {
+		
+		$(this).removeClass('next-button-hover');
+
+	}).bind($.mouseEvents.down, function() {
+		
+		$(this).addClass('next-button-down');
+
+	}).bind($.mouseEvents.up, function() {
+		
+		$(this).removeClass('next-button-down');
+
+	}).click(function() {
+		
+		$('.magazine').turn('next');
+        stopAllSounds();
+        
+	});
+
+	// Events for the next button
+	
+	$('.previous-button').bind($.mouseEvents.over, function() {
+		
+		$(this).addClass('previous-button-hover');
+
+	}).bind($.mouseEvents.out, function() {
+		
+		$(this).removeClass('previous-button-hover');
+
+	}).bind($.mouseEvents.down, function() {
+		
+		$(this).addClass('previous-button-down');
+
+	}).bind($.mouseEvents.up, function() {
+		
+		$(this).removeClass('previous-button-down');
+
+	}).click(function() {
+		
+		$('.magazine').turn('previous');
+            stopAllSounds();
+
+	});
+
+
+	// Slider
+
+	$( "#slider" ).slider({
+		min: 1,
+		max: numberOfViews(flipbook),
+
+		start: function(event, ui) {
+			if (!window._thumbPreview) {
+				_thumbPreview = $('<div />', {'class': 'thumbnail'}).html('<div></div>');
+				//setPreview(ui.value);
+				//_thumbPreview.appendTo($(ui.handle));
+			} else
+				//setPreview(ui.value);
+
+			moveBar(false);
+
+		},
+
+		slide: function(event, ui) {
+
+			//setPreview(ui.value);
+
+		},
+
+		stop: function() {
+
+			if (window._thumbPreview)
+				_thumbPreview.removeClass('show');
+			     
+			$('.magazine').turn('page', Math.max(1, $(this).slider('value')*2 - 2));
+            stopAllSounds();
+		}
+	});
+
+	resizeViewport();
+
+	$('.magazine').addClass('animated');
+
+}
+
+// Zoom icon
+
+ $('.zoom-icon').bind('mouseover', function() { 
+ 	
+ 	if ($(this).hasClass('zoom-icon-in'))
+ 		$(this).addClass('zoom-icon-in-hover');
+
+ 	if ($(this).hasClass('zoom-icon-out'))
+ 		$(this).addClass('zoom-icon-out-hover');
+ 
+ }).bind('mouseout', function() { 
+ 	
+ 	 if ($(this).hasClass('zoom-icon-in'))
+ 		$(this).removeClass('zoom-icon-in-hover');
+ 	
+ 	if ($(this).hasClass('zoom-icon-out'))
+ 		$(this).removeClass('zoom-icon-out-hover');
+
+ }).bind('click', function() {
+
+ 	if ($(this).hasClass('zoom-icon-in'))
+ 		$('.magazine-viewport').zoom('zoomIn');
+ 	else if ($(this).hasClass('zoom-icon-out'))	
+		$('.magazine-viewport').zoom('zoomOut');
+
+ });
+      
+    
+function visibleNext(){
+    $("#activeNext").css("display","block")
+    
+}    
+    
+    
+    function stopAllSounds(){
+        
+        if(audioNumber >= [allPages-2]){
+                mixpanel.track("OnBookFinished",{
+                        "user_id": credentials.educationID,
+                        "app": "web",
+                        "bookID" : "3",
+                        "bookName" : "No tengas miedo de..."
+                    });      
+        }
+        
+        
+        $("#activeNext").css("display","none");
+        $(".buttonSound").css("opacity",1);
+        playing = false;
+        audiosNumbers();
+        audioPlayer = document.getElementById("audio" +  audioReady);
+        audioPlayer.currentTime = 0;
+        
+          for(i= 0; i<=7;i++){
+                    var audio = document.getElementById("audio" + i);
+                        audio.pause();
+                        audio.currentTime = 0;
+                    
+                } 
+        
+        AudioPlay();
+        
+    }    
+
+    
+function audiosNumbers(){
+               
+            switch(audioNumber){
+                case 1:
+                    audioReady = 0
+                   break;
+                case 2:
+                    audioReady = 0
+                   break;
+                case 3:
+                    audioReady = 0
+                   break;
+                case 4:
+                    audioReady = 0
+                   break;
+                case 5:
+                    audioReady = 0
+                   break;
+                case 6:
+                    audioReady = 1
+                   break;
+                case 7:
+                    audioReady = 1
+                   break;
+                case 8:
+                    audioReady = 2
+                   break;
+                case 9:
+                    audioReady = 2
+                   break;
+                case 10:
+                    audioReady = 3
+                   break;
+                case 11:
+                    audioReady = 3
+                   break;
+                case 12:
+                    audioReady = 4
+                   break;
+                case 13:
+                    audioReady = 4
+                   break;
+                case 14:
+                    audioReady = 5
+                   break;
+                case 15:
+                    audioReady = 5
+                   break;
+                 case 16:    
+                    audioReady = 6
+                    break;
+                 case 17:    
+                    audioReady = 6
+                    break;
+                 case 18:    
+                    audioReady = 7
+                    break;
+                case 19:    
+                    audioReady = 7
+                    break;
+                case 20:    
+                    audioReady = 0
+                    break;
+                case 21:    
+                    audioReady = 0
+                    break;
+                case 22:    
+                    audioReady = 0
+                    break;
+            }
+}    
+
+    
+function AudioPlay(){
+   if(!playing) {
+       autoPlay();
+       audioPlayer.currentTime = 0;
+      
+   }else{
+       
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                $(".buttonSound").css("opacity",1);
+                } else {
+                    audioPlayer.pause();
+                                $(".buttonSound").css("opacity",0.5);    
+                }
+       if(language == "ES"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaES" + audioReady)); 
+        }else if(language == "EN"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaEN" + audioReady));
+        }else if(language == "KO"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaKO" + audioReady));
+        }   
+       
+       
+   }    
+    
+};
+
+function autoPlay(){
+    audiosNumbers();
+
+    console.log("audioReady: " + audioReady);
+    audioPlayer = document.getElementById("audio" +  audioReady); 
+        audioPlayer.play();
+        if(language == "ES"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaES" + audioReady)); 
+        }else if(language == "EN"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaEN" + audioReady));
+        }else if(language == "KO"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaKO" + audioReady));
+        }        
+        audioPlayer.addEventListener("timeupdate", function(e){
+            playing = true;
+        });
+
+}          
+    
+ $('#canvas').hide();
+
+
+yepnope({
+	test : Modernizr.csstransforms,
+	yep: ['lib/turn.js'],
+	nope: ['lib/turn.html4.min.js', 'css/jquery.ui.html4.css'],
+	both: ['lib/zoom.min.js', 'css/jquery.ui.css', 'js/magazine.js', 'css/magazine.css','css/custom_fonts.css'],
+	complete: loadApp
+});
+
+var credentials = epicModel.getCredentials();    
+    
+$(document).ready(function () {
+    /**
+     * * Metodo implementado en mixpanel.js
+     */
+    var credentials1 = epicModel.getCredentials();   
+
+    mixpanel.track(
+        "OnBookOpen",
+        {
+            "user_id": credentials1.educationID,
+            "app": "web",
+            "bookID" : "3",
+            "bookName" : "No tengas miedo de..."
+        }
+    );
+    
+    
+
+    
+});    
+    
+    
+var allPages =  22    
+
+
+function mixPanelClose(){
+        mixpanel.track(
+            "OnBookClose", 
+            {
+                "user_id": credentials.educationID,
+                "app": "web",
+                "bookID" : "3",
+                "bookName" : "No tengas miedo de...",
+                "lastPage" : audioNumber    
+            }
+        );
+}   
+    
+
+    function stopAllSounds(){
+        if(audioNumber >= [allPages-2]){
+                mixpanel.track("OnBookFinished",{
+                        "user_id": credentials.educationID,
+                        "app": "web",
+                        "bookID" : "3",
+                        "bookName" : "No tengas miedo de..."
+                    });      
+        }
+        
+        
+        $("#activeNext").css("display","none");
+        playing = false;
+        audiosNumbers();
+       audioPlayer = document.getElementById("audio" +  audioReady);
+        $("#buttonPlay").attr("src","images/Play.png");
+          for(i= 0; i<=7;i++){
+                    var audio = document.getElementById("audio" + i);
+                        audio.pause();
+                        audio.currentTime = 0;
+                    
+                } 
+        
+    }    
+    
+    var leaving = true;
+    var isClose = false;
+
+    function EndChatSession() {
+        var request = GetRequest();
+        request.open("GET", "../Chat.aspx", true);
+        request.send();
+    }
+    document.onkeydown = checkKeycode
+    function checkKeycode(e) {
+        var keycode;
+        if (window.event)
+            keycode = window.event.keyCode;
+        else if (e)
+            keycode = e.which;
+        if (keycode == 116) {
+            isClose = true;
+        }
+    }
+    function somefunction() {
+        isClose = true;
+    }
+    
+    window.onbeforeunload = function (e) {
+       if (!e) e = event;
+        if (leaving) {
+             EndChatSession();
+             mixPanelClose();
+             //e.returnValue = "Are You Sure";
+
+        }
+    }
+    function GetRequest() {
+        var xmlHttp = null;
+        try {
+            // Firefox, Opera 8.0+, Safari
+            xmlHttp = new XMLHttpRequest();
+        }
+        catch (e) {
+            //Internet Explorer
+            try {
+                xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+            }
+            catch (e) {
+                xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+        }
+        return xmlHttp;
+    }       
+</script>
+</body>
+</html>

@@ -1,0 +1,1036 @@
+<!doctype html>
+<html>
+<head>
+<title class="languageTitle">La bondad de Theffanie</title>
+ <meta charset="UTF-8">    
+<meta name="viewport" content="width = 1050, user-scalable = no" />
+<link rel="icon" type="image/png" href="../../pics/favicon.png" />
+<script type="text/javascript" src="extras/jquery.min.1.7.js"></script>
+<script type="text/javascript" src="extras/jquery-ui-1.8.20.custom.min.js"></script>
+<script type="text/javascript" src="extras/modernizr.2.5.3.min.js"></script>
+<script type="text/javascript" src="lib/hash.js"></script>
+<script type="text/javascript" src="js/jquery.blast.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+    <script type="text/javascript" src="js/tracks.js"></script>
+<script type="text/javascript" src="js/audioSync.js"></script> 
+    <!--ESta de manera absoluta la direccion de epic model, por la profundidad que tiene dentro del server-->
+<script type="text/javascript" src="http://play.yogome.com/js/epic/models/epicModel.js"></script>    
+<script type="text/javascript" src="../../js/mixpanel/mixpanel.js"></script>        
+    
+    <script>
+        var meta = document.createElement('meta');
+        meta.setAttribute("property","og:description");
+        
+    </script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta property="og:url"				content="https://play.yogome.com/yogomebooks/37/#EN"/>
+    <meta property="og:type"			content="article" />
+    <meta property="og:title"			content="Interactive Book: Theffanie is Kind" />
+    <meta property="og:image"			content="https://play.yogome.com/yogomebooks/posts/fbpost_37.png" />
+    
+<script>
+    var languageTitles = [
+            {
+                ES:"La bondad de Theffanie",
+                EN:"Theffanie is Kind",
+                PT:"Theffanie mostra bondade",
+                ZH:"善良的范妮",
+                JA:"やさしいティファニー",
+                KO:"친절한티파니 "
+            }
+        ]
+    
+    //AQUI VA PARA SABER EL LENGUAGE
+        function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+        var language
+
+        var  str =window.location.hash;
+        var array=str.split("/")
+        language=array[0].substr(1)
+        console.log(language)  
+    
+    function changeTitle(){
+        if(language == "ES"){
+            $(".languageTitle").text(languageTitles[0][language])
+        }else if(language == "EN"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "PT"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "ZH"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "JA"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "KO"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else{
+            $(".languageTitle").text(languageTitles[0].EN)    
+        }
+    }    
+    
+    changeTitle()
+
+var languagePages = [
+                  {
+                    page:1,
+                    ES:"El aire soplaba con fuerza en Yogópolis y la nieve cubría las casas. Los Yogotars que descansaban en la Yogomansión, tenían antojo de chocolate caliente y pan, pero nada de eso había en la mansión.",
+                    EN:"It was a cold and windy winter afternoon in Yogopolis, and all the houses were covered in snow. </br></br>Our dear Yogotars were resting in the Yogomansion and they were craving hot chocolate and donuts. But, there were no donuts in the mansion.",
+                    PT:"Era uma tarde de inverno fria e com muito vento em Yogópolis, e todas as casas estavam cobertas de neve. </br></br>Nossos queridos Yogotars estavam descansando na Yogomansão e queriam muito tomar chocolate quente com rosquinhas. Mas não tinha nenhuma rosquinha na mansão.",
+                    ZH:"在一个寒风凛冽的冬日午后，Yogopolis所有的房子都覆盖着一层厚厚的白雪。</br></br>我们亲爱的Yogotar们正在Yogomansion里休息，他们渴望热巧克力和甜甜圈。但是，房子里没有甜甜圈。    ",
+                    JA:"さむくて かぜのつよい ある日、ヨゴポリスの いえは みんな ゆきで おおわれていました。</br></br>ヨゴターたちは ヨゴマンションで やすんでいましたが、ホットココアと ドーナツが ほしくなりました。でも、マンションには ドーナツは ありません。",
+                    KO:"요고폴리스에 바람이 많이 불고 추운 어느 오후였어요. 모든 집은 눈으로 덮여 있었어요. </br></br>우리의 요고타들은 요고맨션에서 쉬고 있었어요. 모두 핫초코와 도넛이 먹고 싶었어요. 하지만 요고맨션에는 도넛이 없었어요."
+                },
+                {
+                    page:2,
+                    ES:"Theffanie, al ver el antojo de sus amigos, decidió salir a la panadería. Se abrigó con chamarra, suéter, bufanda, orejeras, guantes y un hermoso gorro de lana.",
+                    EN:"Theffanie decided to go to the bakery to satisfy her friends' craving. She put on her winter clothes: jacket, sweater, scarf, mittens, and a beautiful wool hat.   ",
+                    PT:'Theffanie resolveu ir à padaria para matar a vontade de seus amigos. Ela colocou suas roupas de inverno: casaco, blusa, cachecol, luvas e um belo gorro de lã.   ',
+                    ZH:"范妮决定去面包店满足朋友们的渴望。她穿上冬装：夹克、毛衣、围巾、连指手套和一顶漂亮的羊毛帽子。",
+                    JA:"ティファニーは みんなのために パンやへ 行くことにしました。うわぎ、セーター、マフラー、てぶくろ、そして きれいな けいとの ぼうしを かぶって。   ",
+                    KO:"티파니는 배가 고픈 친구들을 위해서 빵집에 가기로 했어요. 재킷, 스웨터, 목도리, 장갑, 모자까지 티파니는 겨울옷을 단단히 챙겨 입었어요."
+                },
+                {
+                    page:3,
+                    ES:"Todos en la ciudad tenían frío, pero no todos estaban abrigados. Frente a Theffanie una niña tiritaba, parecía no tener ninguna clase de abrigo.",
+                    EN:"Everybody in the city was cold, unfortunately not everyone had warm clothes.</br></br>Theffanie saw a little girl who was shivering, she didn't have any jacket. ",
+                    PT:"Todos na cidade estavam com frio, mas infelizmente nem todos tinham roupas quentes.</br></br>Theffanie viu uma garotinha tremendo de frio, pois não tinha casaco. ",
+                    ZH:"城里的每个人都感觉非常寒冷，不幸的是，并非所有人都穿着暖和的衣服。</br></br>范妮看见一个小女孩冻得瑟瑟发抖，她没有穿夹克。",
+                    JA:"まちじゅうの みんなが さむがっていましたが、だれもが あたたかい ふくを もっているわけでは ありません。</br></br>ティファニーは さむくて ふるえている ちいさな女の子を みつけました。女の子は うわぎを きていません。 ",
+                    KO:"도시에 있는 모든 사람은 추위로 고생하고 있었어요. 안타깝게도 따뜻한 옷이 없는 사람들도 있었어요. </br></br>티파니는 재킷도 없이 추위에 떨고 있는 작은 소녀를 보게 되었어요."
+                },
+                {
+                    page:4,
+                    ES:"–Pequeña, toma mi chamarra –dijo Theffanie, mientras arropaba a la niña. Theffanie siguió caminando y encontró más personas sufriendo de frío.",
+                    EN:"&#34;Hey, little one! Take this,&#34; said Theffanie, while she covered the girl with her jacket. </br></br>Theffanie kept walking and ran into more people suffering from the cold weather. ",
+                    PT:"“Olá, pequenina! Pegue isso aqui”, disse Theffanie, enquanto cobria a garotinha com seu casaco. </br></br>Theffanie continuou andando e encontrou outras pessoas sofrendo com o frio. ",
+                    ZH:"“嘿，小家伙！穿上这个。”范妮一边说，一边将自己的夹克盖在小女孩身上。</br></br>范妮继续往前走，遇到了更多受冻的人。 ",
+                    JA:"「こんにちは。はい、これをきて」ティファニーはじぶんのうわぎを女の子にかけてあげました。</br></br>ティファニーが あるいていくと、さむさに こごえている人が もっといました。 ",
+                    KO:"&#34;얘, 꼬마야! 이거 입어. &#34;티파니가 자기 재킷을 소녀에게 입혀주면서 말했어요. </br></br>티파니는 계속 빵집을 향해서 걸어갔고 추위에 떨고 있는 사람들을 더 많이 보게 되었어요."
+                },
+                {
+                    page:5,
+                    ES:"Theffanie regaló todas sus prendas, el suéter, el gorro y los guantes hasta quedarse sin abrigo alguno. Siguió su camino temblando de frío hasta llegar a la panadería.",
+                    EN:"Little by little, Theffanie gave away all of her winter clothes: her sweater, her scarf, her hat, and her mittens. </br></br>She continued her way towards the bakery, but now she was really cold.",
+                    PT:'Pouco a pouco, Theffanie foi dando todas as suas roupas de frio: sua blusa, seu cachecol, seu gorro e suas luvas. </br></br>Ela continuou andando até a padaria, mas agora ela estava com muito frio.',
+                    ZH:"范妮一点一点地把她所有的冬装都给了别人：毛衣、围巾、帽子和手套。</br></br>她继续朝面包店走去，但现在她真的很冷。",
+                    JA:"セーター、マフラー、てぶくろ、ぼうし・・・ひとつずつ、ティファニーは じぶんの あたたかいふくを ぜんぶ あげてしまいました。</br></br>ティファニーは パンやに たどりつきましたが、こんどは じぶんが とても さむくなってしまいました。",
+                    KO:"티파니는 서서히 입고 있던 겨울옷을 모두 벗어주었어요. 스웨터, 목도리, 모자, 장갑까지 전부 다 말이에요."
+                },
+                {   
+                    page:6,
+                    ES:"–¡Niña! Entra y bebe algo –dijo el panadero antes de ofrecerle un chocolate caliente.",
+                    EN:"&#34;Come inside, girl!&#34; cried the baker, offering her a hot chocolate.",
+                    PT:'“Entre aqui, mocinha!”, disse o padeiro, oferecendo um chocolate quente para ela.',
+                    ZH:"“进来，姑娘！”面包师喊道，给了她一块热巧克力。",
+                    JA:"「中においで！」パンやの おじさんが ホットココアを さしだしました。",
+                    KO:"&#34;얼른 안으로 들어오렴. &#34;빵집 아저씨가 티파니에게 말했어요. 아저씨는 티파니에게 핫초코를 주었어요."
+                },
+                {
+                    page:7,
+                    ES:"Theffanie le contó al panadero lo que había sucedido y él, sorprendido, exclamó:</br></br>–Eres muy bondadosa, necesitamos más gente como tú. Pero debes tener más cuidado y ayudar sin ponerte en riesgo.</br></br>Al final el panadero le regaló una enorme canasta de pan para ella y sus amigos.",
+                    EN:"Theffanie told the baker what had happened. He looked at her in surprise.</br></br>&#34;You are a very kind girl, we need more people like you in the world. But... you must take care of yourself before </br>helping others.&#34;</br></br>&#34;Here,&#34; said the baker, &#34;take this box of donuts to share with your friends. You've earned it!&#34;",
+                    PT:"Theffanie contou ao padeiro o que havia acontecido. Ele ficou surpreso.</br></br>“Você é uma garota muito bondosa; precisamos de mais pessoas como você no mundo. Mas... você precisa cuidar de si mesma antes de cuidar dos outros.”</br></br>“Tome aqui”, disse o padeiro, “leve esta caixa de rosquinhas para dividir com seus amigos. Você merece!”",
+                    ZH:"范妮把发生的事告诉了面包师。他吃惊地看着她。</br></br>“你是一个非常善良的女孩，我们的世界需要更多像你这样的人。但是...你在帮助别人之前必须先照顾好自己。”</br></br>“拿着，”面包师说：“拿这盒甜甜圈和你的朋友们分享。这是你应得的！”",
+                    JA:"ティファニーは なにがあったのか せつめいしました。パンやのおじさんは おどろいて言いました。</br></br>「きみは とってもやさしいね。きみみたいな人が もっとたくさんいたらいいのに。でも・・・ほかの人を たすけるまえに、じぶんのことも かんがえなきゃいけないよ」</br></br>「ほら、このドーナツを ともだちと いっしょに たべなさい。みんなに やさしくしてくれた おれいだよ！」",
+                    KO:"티파니는 아저씨에게 무슨 일이 있었는지 말씀드렸어요. 아저씨는 놀란 눈으로 티파니를 바라보았어요. &#34;너는 정말 친절하구나. 이 세상은 너같이 친절한 사람들이 필요해. 하지만, 다음부터는 다른 사람들을 챙기기 전에 너 자신부터 먼저 챙기렴.&#34; &#34;자, 여기 있다. 도넛을 한 상자 줄 테니 가서 친구들과 나누어 먹으렴. 너는 그럴 자격이 있단다!&#34;"
+                }
+                ]     
+    
+    
+    </script>   
+</head>
+<body>
+
+<div id="canvas">
+
+
+<div class="magazine-viewport">
+	<div class="container">
+        
+		<div class="magazine">
+<!--  BOTON SIGUIENTE      -->
+                <div ignore="1" class="next-button">
+                    <div id="activeNext" >
+                        <div class="animation1"> 
+                        </div>
+                    </div>
+                    <img src="images/nextButton.png">
+                </div>
+            <!-- Previous button -->
+			<div ignore="1" class="previous-button">
+    <img src="images/nextButton.png">
+            </div>             
+            <div id="p1" depth="5" class="hard"> <div class="side"></div> </div>
+			<div depth="5" class="hard front-side"> <div class="depth"></div> </div>
+			<div class="hard fixed back-side p21"><div class="depth"></div> </div>
+			<div class="hard p22"> </div>
+
+            </div>
+            <script>
+                //console.log(languagePages[0][language]);
+                if(language == "ES"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1ES.png')");
+                }else if(language == "EN"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1EN.png')");
+                }else if(language == "ZH"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1ZH.png')");
+                }else if(language == "KO"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1KO.png')");
+                }else if(language == "JA"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1JA.png')");
+                }else if(language == "PT"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1PT.png')");
+                }else{
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1EN.png')");
+                }
+                
+                
+                
+            </script>
+        
+        
+			<!-- Next button -->
+		</div>
+	</div>
+   <a onclick="goBack()"><div id="homeButton"><img src="images/homeButton.png" /></div></a>
+
+<script>
+function goBack() {
+    window.location.href="../../yogobooks.html";
+}
+</script>
+    <div class="languageButton"><img src="images/icon-languages.png"></div>
+    <div class="idiomas">
+        <div id="ButtonLanEs" class="overLanguage">Español</div>
+        <div id="ButtonLanEn" class="overLanguage">English</div>
+        <div id="ButtonLanZh" class="overLanguage">中國</div>
+        <div id="ButtonLanJa" class="overLanguage">日本語</div>
+        <div id="ButtonLanKo" class="overLanguage">한국어</div>
+        <div id="ButtonLanPt" class="overLanguage">PORTUGUES</div>
+    </div>
+    <div id="audiosGroup"></div>
+	<div class="bottom">    
+		<div id="slider-bar" class="turnjs-slider timeline-style">
+			<div id="slider">
+            </div>
+		</div>
+	</div>
+    
+</div>
+
+<script type="text/javascript">
+    var audioNumber;
+    var clearTimeOut;
+    var audioReady;
+    var playing = false;
+    var audioPlayer; 
+    //cambio de regex
+    function replaceQueryParam(param, newval, search) {
+        var regex = new RegExp("([?;&])" + param + "[^&;]*[;&]?");
+        var query = search.replace(regex, "$1").replace(/&$/, '');
+
+        return (query.length > 2 ? query + "&" : "?") + (newval ? param + "=" + newval : '');
+    }    
+    
+        function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}    
+    
+    
+    $("#ButtonLanEs").click(function(){
+
+        var str = window.location.search
+        str =  window.location.hash.substr(0)
+        //alert(str)
+        language="ES"
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name=Yogome";
+        //window.location = window.location.pathname + "#"+language+"/#page/" + audioNumber;
+        location.reload();
+    });
+    
+    $("#ButtonLanEn").click(function(){
+
+        var str = window.location.search
+        str =  window.location.hash.substr(0)
+        //alert(str)
+        language="EN"
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name=Yogome";
+        //window.location = window.location.pathname + "#"+language+"/#page/" + audioNumber;
+        location.reload();
+    });
+    
+    $("#ButtonLanZh").click(function(){
+
+       var str = window.location.search
+        str =  window.location.hash.substr(0)
+        //alert(str)
+        language="ZH"
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name=Yogome";
+        //window.location = window.location.pathname + "#"+language+"/#page/" + audioNumber;
+        location.reload();
+    });
+    
+    $("#ButtonLanJa").click(function(){
+
+        var str = window.location.search
+        str =  window.location.hash.substr(0)
+        //alert(str)
+        language="JA"
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name=Yogome";
+        //window.location = window.location.pathname + "#"+language+"/#page/" + audioNumber;
+        location.reload();
+    });
+    
+    $("#ButtonLanKo").click(function(){
+
+        var str = window.location.search
+        str =  window.location.hash.substr(0)
+        //alert(str)
+        language="KO"
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name=Yogome";
+        //window.location = window.location.pathname + "#"+language+"/#page/" + audioNumber;
+        location.reload();
+    });
+    
+    $("#ButtonLanPt").click(function(){
+
+        var str = window.location.search
+        str =  window.location.hash.substr(0)
+        //alert(str)
+        language="PT"
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name=Yogome";
+        //window.location = window.location.pathname + "#"+language+"/#page/" + audioNumber;
+        location.reload();
+    });
+    
+    $(".languageButton").click(function(){
+        var idioma = $(".idiomas");
+        if (idioma.css("display") === "block") {
+            idioma.css("display","none");
+        } else {
+            idioma.css("display","block");
+        }
+    
+        
+    });
+    
+    //TweenMax.fromTo($("#activeNext"),1,{alpha:0.5},{alpha:1,yoyo:true,repeat:-1});
+    
+
+    
+    $("#audiosGroup").append('<audio id="audio0" preload="true" src="audios/' +  0 + '.mp3"></audio>') 
+    for(var i = 1;i<=7;i++){
+       $("#audiosGroup").append('<audio id="audio'+i+'" preload="true" src="audios/' +[language] + "/" +  i + '.mp3"></audio>')  
+    }
+    
+    
+function loadApp() {
+
+ 	$('#canvas').fadeIn(1000);
+
+ 	var flipbook = $('.magazine');
+
+ 	// Check if the CSS was already loaded
+	
+	if (flipbook.width()==0 || flipbook.height()==0) {
+		setTimeout(loadApp, 10);
+		return;
+	}
+	
+	// Create the flipbook
+
+	flipbook.turn({
+			
+			// Magazine width
+
+			width: 922,
+
+			// Magazine height
+
+			height: 600,
+
+			// Duration in millisecond
+
+			duration: 1000,
+
+			// Enables gradients
+
+			gradients: true,
+			
+			// Auto center this flipbook
+
+			autoCenter: true,
+
+			// Elevation from the edge of the flipbook when turning a page
+
+			elevation: 50,
+
+			// The number of pages
+
+			pages: 22,
+
+			// Events
+
+			when: {
+                
+                
+                
+				turning: function(event, page, view) {
+					
+					var book = $(this),
+					currentPage = book.turn('page'),
+					pages = book.turn('pages');
+                    
+		
+
+				updateDepth(book, page);
+				
+				if (page>=2)
+					$('.magazine .p2').addClass('fixed');
+				else
+					$('.magazine .p2').removeClass('fixed');
+
+				if (page<book.turn('pages'))
+					$('.magazine .p21').addClass('fixed');
+				else
+					$('.magazine .p21').removeClass('fixed');
+
+                    if(language == "ES"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ES.png')");
+                }else if(language == "EN"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2EN.png')");
+                }else if(language == "ZH"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ZH.png')");
+                }else if(language == "KO"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2KO.png')");
+                }else if(language == "JA"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2JA.png')");
+                }else if(language == "PT"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2PT.png')");
+                }else{
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2EN.png')");
+                }
+                    
+                    if(language == "ES"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5ES.png')");
+                }else if(language == "EN"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5EN.png')");
+                }else if(language == "ZH"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5ZH.png')");
+                }else if(language == "KO"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5KO.png')");
+                }else if(language == "JA"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5JA.png')");
+                }else if(language == "PT"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5PT.png')");
+                }else{
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5EN.png')");
+                }
+                    
+					Hash.go(language +'/#page/' + page).update();
+
+					// Show and hide navigation buttons
+                    audioNumber = page;
+					disableControls(page);
+
+				},
+                
+				turned: function(event, page, view) {
+                    
+					disableControls(page);
+                    var object = $(this);
+
+					$(this).turn('center');
+                   
+
+					$('#slider').slider('value', getViewNumber(object, page));
+                    audioNumber = page;
+            
+					if (page==1) { 
+						$(this).turn('peel', 'br');
+					}
+
+				},
+
+				missing: function (event, pages) {
+
+					// Add pages that aren't in the magazine
+
+					for (var i = 0; i < pages.length; i++)
+						addPage(pages[i], $(this));
+
+				}
+			}
+
+        
+	});
+
+	// Zoom.js
+
+    
+    
+	$('.magazine-viewport').zoom({
+		flipbook: $('.magazine'),
+
+		max: function() { 
+			
+			return largeMagazineWidth()/$('.magazine').width();
+
+		}, 
+
+		when: {
+			swipeLeft: function() {
+
+				$(this).zoom('flipbook').turn('next');
+                
+                stopAllSounds();
+
+			},
+
+			swipeRight: function() {
+				
+				$(this).zoom('flipbook').turn('previous');
+                stopAllSounds();
+
+			},
+
+			resize: function(event, scale, page, pageElement) {
+
+//				if (scale==1)
+//					loadSmallPage(page, pageElement);
+//				else
+//					loadLargePage(page, pageElement);
+
+			},
+
+			zoomIn: function () {
+                
+                $(".userName").addClass("zoomUserName")
+				$('#slider-bar').hide();
+				$('.made').hide();
+				$('.magazine').removeClass('animated').addClass('zoom-in');
+				$('.zoom-icon').removeClass('zoom-icon-in').addClass('zoom-icon-out');
+				
+				if (!window.escTip && !$.isTouch) {
+					escTip = true;
+
+					$('<div />', {'class': 'exit-message'}).
+						html('<div>Press ESC to exit</div>').
+							appendTo($('body')).
+							delay(2000).
+							animate({opacity:0}, 500, function() {
+								$(this).remove();
+							});
+				}
+			},
+
+			zoomOut: function () {
+                
+                $(".userName").removeClass("zoomUserName")
+				$('#slider-bar').fadeIn();
+				$('.exit-message').hide();
+				$('.made').fadeIn();
+				$('.zoom-icon').removeClass('zoom-icon-out').addClass('zoom-icon-in');
+
+				setTimeout(function(){
+					$('.magazine').addClass('animated').removeClass('zoom-in');
+					resizeViewport();
+				}, 0);
+
+			}
+		}
+	});
+
+
+
+
+	// Using arrow keys to turn the page
+
+	$(document).keydown(function(e){
+
+		var previous = 37, next = 39, esc = 27;
+
+		switch (e.keyCode) {
+			case previous:
+
+				// left arrow
+				$('.magazine').turn('previous');
+                stopAllSounds();
+				e.preventDefault();
+
+			break;
+			case next:
+
+				//right arrow
+				$('.magazine').turn('next');
+                stopAllSounds();
+				e.preventDefault();
+                
+
+			break;
+			case esc:
+				
+				$('.magazine-viewport').zoom('zoomOut');	
+				e.preventDefault();
+
+			break;
+		}
+	});
+
+	// URIs - Format #/page/1 
+
+    
+    
+	Hash.on('^page\/([0-9]*)$', {
+		yep: function(path, parts) {
+			var page = parts[1];
+
+			if (page!==undefined) {
+				if ($('.magazine').turn('is'))
+					$('.magazine').turn('page', page);
+                audioReady = page;
+                
+			}
+
+		},
+		nop: function(path) {
+
+			if ($('.magazine').turn('is'))
+				$('.magazine').turn('page', 1);
+		}
+	});
+
+
+	$(window).resize(function() {
+		resizeViewport();
+	}).bind('orientationchange', function() {
+		resizeViewport();
+	});
+
+	// Regions
+
+	if ($.isTouch) {
+		$('.magazine').bind('touchstart', regionClick);
+	} else {
+		$('.magazine').click(regionClick);
+	}
+
+	// Events for the next button
+
+	$('.next-button').bind($.mouseEvents.over, function() {
+		
+		$(this).addClass('next-button-hover');
+
+	}).bind($.mouseEvents.out, function() {
+		
+		$(this).removeClass('next-button-hover');
+
+	}).bind($.mouseEvents.down, function() {
+		
+		$(this).addClass('next-button-down');
+
+	}).bind($.mouseEvents.up, function() {
+		
+		$(this).removeClass('next-button-down');
+
+	}).click(function() {
+		
+		$('.magazine').turn('next');
+        stopAllSounds();
+        
+	});
+
+	// Events for the next button
+	
+	$('.previous-button').bind($.mouseEvents.over, function() {
+		
+		$(this).addClass('previous-button-hover');
+
+	}).bind($.mouseEvents.out, function() {
+		
+		$(this).removeClass('previous-button-hover');
+
+	}).bind($.mouseEvents.down, function() {
+		
+		$(this).addClass('previous-button-down');
+
+	}).bind($.mouseEvents.up, function() {
+		
+		$(this).removeClass('previous-button-down');
+
+	}).click(function() {
+		
+		$('.magazine').turn('previous');
+            stopAllSounds();
+
+	});
+
+
+	// Slider
+
+	$( "#slider" ).slider({
+		min: 1,
+		max: numberOfViews(flipbook),
+
+		start: function(event, ui) {
+			if (!window._thumbPreview) {
+				_thumbPreview = $('<div />', {'class': 'thumbnail'}).html('<div></div>');
+				//setPreview(ui.value);
+				//_thumbPreview.appendTo($(ui.handle));
+			} else
+				//setPreview(ui.value);
+
+			moveBar(false);
+
+		},
+
+		slide: function(event, ui) {
+
+			//setPreview(ui.value);
+
+		},
+
+		stop: function() {
+
+			if (window._thumbPreview)
+				_thumbPreview.removeClass('show');
+			     
+			$('.magazine').turn('page', Math.max(1, $(this).slider('value')*2 - 2));
+            stopAllSounds();
+		}
+	});
+
+	resizeViewport();
+
+	$('.magazine').addClass('animated');
+
+}
+
+// Zoom icon
+
+ $('.zoom-icon').bind('mouseover', function() { 
+ 	
+ 	if ($(this).hasClass('zoom-icon-in'))
+ 		$(this).addClass('zoom-icon-in-hover');
+
+ 	if ($(this).hasClass('zoom-icon-out'))
+ 		$(this).addClass('zoom-icon-out-hover');
+ 
+ }).bind('mouseout', function() { 
+ 	
+ 	 if ($(this).hasClass('zoom-icon-in'))
+ 		$(this).removeClass('zoom-icon-in-hover');
+ 	
+ 	if ($(this).hasClass('zoom-icon-out'))
+ 		$(this).removeClass('zoom-icon-out-hover');
+
+ }).bind('click', function() {
+
+ 	if ($(this).hasClass('zoom-icon-in'))
+ 		$('.magazine-viewport').zoom('zoomIn');
+ 	else if ($(this).hasClass('zoom-icon-out'))	
+		$('.magazine-viewport').zoom('zoomOut');
+
+ });
+      
+    
+function visibleNext(){
+    $("#activeNext").css("display","block")
+    
+}    
+    
+    
+    function stopAllSounds(){
+        
+        if(audioNumber >= [allPages-2]){
+                mixpanel.track("OnBookFinished",{
+                        "user_id": credentials.educationID,
+                        "app": "web",
+                        "bookID" : "37",
+                        "bookName" : "La bondad de Theffanie"
+                    });      
+        }
+        
+        
+        $("#activeNext").css("display","none");
+        $(".buttonSound").css("opacity",1);
+        playing = false;
+        audiosNumbers();
+        audioPlayer = document.getElementById("audio" +  audioReady);
+        audioPlayer.currentTime = 0;
+        
+          for(i= 0; i<=7;i++){
+                    var audio = document.getElementById("audio" + i);
+                        audio.pause();
+                        audio.currentTime = 0;
+                    
+                } 
+        
+        AudioPlay();
+        
+    }    
+
+    
+function audiosNumbers(){
+               
+            switch(audioNumber){
+                case 1:
+                    audioReady = 0
+                   break;
+                case 2:
+                    audioReady = 0
+                   break;
+                case 3:
+                    audioReady = 0
+                   break;
+                case 4:
+                    audioReady = 0
+                   break;
+                case 5:
+                    audioReady = 0
+                   break;
+                case 6:
+                    audioReady = 1
+                   break;
+                case 7:
+                    audioReady = 1
+                   break;
+                case 8:
+                    audioReady = 2
+                   break;
+                case 9:
+                    audioReady = 2
+                   break;
+                case 10:
+                    audioReady = 3
+                   break;
+                case 11:
+                    audioReady = 3
+                   break;
+                case 12:
+                    audioReady = 4
+                   break;
+                case 13:
+                    audioReady = 4
+                   break;
+                case 14:
+                    audioReady = 5
+                   break;
+                case 15:
+                    audioReady = 5
+                   break;
+                 case 16:    
+                    audioReady = 6
+                    break;
+                 case 17:    
+                    audioReady = 6
+                    break;
+                 case 18:    
+                    audioReady = 7
+                    break;
+                case 19:    
+                    audioReady = 7
+                    break;
+                case 20:    
+                    audioReady = 0
+                    break;
+                case 21:    
+                    audioReady = 0
+                    break;
+                case 22:    
+                    audioReady = 0
+                    break;
+            }
+}    
+
+    
+function AudioPlay(){
+   if(!playing) {
+       autoPlay();
+       audioPlayer.currentTime = 0;
+      
+   }else{
+       
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                $(".buttonSound").css("opacity",1);
+                } else {
+                    audioPlayer.pause();
+                                $(".buttonSound").css("opacity",0.5);    
+                }
+       if(language == "ES"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaES" + audioReady)); 
+        }else if(language == "EN"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaEN" + audioReady));
+        }else if(language == "KO"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaKO" + audioReady));
+        }   
+       
+       
+   }    
+    
+};
+
+function autoPlay(){
+    audiosNumbers();
+
+    console.log("audioReady: " + audioReady);
+    audioPlayer = document.getElementById("audio" +  audioReady); 
+        audioPlayer.play();
+        if(language == "ES"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaES" + audioReady)); 
+        }else if(language == "EN"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaEN" + audioReady));
+        }else if(language == "KO"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaKO" + audioReady));
+        }        
+        audioPlayer.addEventListener("timeupdate", function(e){
+            playing = true;
+        });
+
+}          
+    
+ $('#canvas').hide();
+
+
+yepnope({
+	test : Modernizr.csstransforms,
+	yep: ['lib/turn.js'],
+	nope: ['lib/turn.html4.min.js', 'css/jquery.ui.html4.css'],
+	both: ['lib/zoom.min.js', 'css/jquery.ui.css', 'js/magazine.js', 'css/magazine.css','css/custom_fonts.css'],
+	complete: loadApp
+});
+
+var credentials = epicModel.getCredentials();    
+    
+$(document).ready(function () {
+    /**
+     * * Metodo implementado en mixpanel.js
+     */
+    var credentials1 = epicModel.getCredentials();   
+
+    mixpanel.track(
+        "OnBookOpen",
+        {
+            "user_id": credentials1.educationID,
+            "app": "web",
+            "bookID" : "37",
+            "bookName" : "La bondad de Theffanie"
+        }
+    );
+    
+    
+
+    
+});    
+    
+    
+var allPages =  22    
+
+
+function mixPanelClose(){
+        mixpanel.track(
+            "OnBookClose", 
+            {
+                "user_id": credentials.educationID,
+                "app": "web",
+                "bookID" : "37",
+                "bookName" : "La bondad de Theffanie",
+                "lastPage" : audioNumber    
+            }
+        );
+}   
+    
+
+    function stopAllSounds(){
+        if(audioNumber >= [allPages-2]){
+                mixpanel.track("OnBookFinished",{
+                        "user_id": credentials.educationID,
+                        "app": "web",
+                        "bookID" : "37",
+                        "bookName" : "La bondad de Theffanie"
+                    });      
+        }
+        
+        
+        $("#activeNext").css("display","none");
+        playing = false;
+        audiosNumbers();
+       audioPlayer = document.getElementById("audio" +  audioReady);
+        $("#buttonPlay").attr("src","images/Play.png");
+          for(i= 0; i<=7;i++){
+                    var audio = document.getElementById("audio" + i);
+                        audio.pause();
+                        audio.currentTime = 0;
+                    
+                } 
+        
+    }    
+    
+    var leaving = true;
+    var isClose = false;
+
+    function EndChatSession() {
+        var request = GetRequest();
+        request.open("GET", "../Chat.aspx", true);
+        request.send();
+    }
+    document.onkeydown = checkKeycode
+    function checkKeycode(e) {
+        var keycode;
+        if (window.event)
+            keycode = window.event.keyCode;
+        else if (e)
+            keycode = e.which;
+        if (keycode == 116) {
+            isClose = true;
+        }
+    }
+    function somefunction() {
+        isClose = true;
+    }
+    
+    window.onbeforeunload = function (e) {
+       if (!e) e = event;
+        if (leaving) {
+             EndChatSession();
+             mixPanelClose();
+             //e.returnValue = "Are You Sure";
+
+        }
+    }
+    function GetRequest() {
+        var xmlHttp = null;
+        try {
+            // Firefox, Opera 8.0+, Safari
+            xmlHttp = new XMLHttpRequest();
+        }
+        catch (e) {
+            //Internet Explorer
+            try {
+                xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+            }
+            catch (e) {
+                xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+        }
+        return xmlHttp;
+    }       
+</script>
+</body>
+</html>

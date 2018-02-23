@@ -2,21 +2,31 @@
 <div class="odd gradient"></div>
 
 <div class="textPage">
-<div id="texto2">
+<div id="texto1">
 
     </div>
 </div>
 <script>
-    $("#texto2").append(languagePages[1][language])
+    $("#texto1").append(languagePages[0][language])
 
-    if(!$("#texto2").find("br")){
+    if(!$("#texto1").find("br")){
             
         }else{
-          $("#texto2").blast({ delimiter: "word" });
+          $("#texto1").blast({ delimiter: "word" });
 
-        $("#texto2").find('span').each(function(i){
+        $("#texto1").find('span').each(function(i){
         $(this).attr('id', 'c_' + i);
          });       
         } 
 
+    $(this).click(function(){
+        AudioPlay();
+    })
+
+$(this).on({ 'touchstart' : function(){ 
+            
+        AudioPlay();
+}
+    })    
+    
 </script>

@@ -1,0 +1,1021 @@
+<!doctype html>
+<html>
+<head>
+<title class="languageTitle">La cartera</title>
+ <meta charset="UTF-8">    
+<meta name="viewport" content="width = 1050, user-scalable = no" />
+<link rel="icon" type="image/png" href="../../pics/favicon.png" />
+<script type="text/javascript" src="extras/jquery.min.1.7.js"></script>
+<script type="text/javascript" src="extras/jquery-ui-1.8.20.custom.min.js"></script>
+<script type="text/javascript" src="extras/modernizr.2.5.3.min.js"></script>
+<script type="text/javascript" src="lib/hash.js"></script>
+<script type="text/javascript" src="js/jquery.blast.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+    <script type="text/javascript" src="js/tracks.js"></script>
+<script type="text/javascript" src="js/audioSync.js"></script> 
+    <!--ESta de manera absoluta la direccion de epic model, por la profundidad que tiene dentro del server-->
+<script type="text/javascript" src="http://play.yogome.com/js/epic/models/epicModel.js"></script>    
+<script type="text/javascript" src="../../js/mixpanel/mixpanel.js"></script>        
+    
+    <script>
+        var meta = document.createElement('meta');
+        meta.setAttribute("property","og:description");
+        
+    </script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta property="og:url"				content="https://play.yogome.com/yogomebooks/46/#EN"/>
+    <meta property="og:type"			content="article" />
+    <meta property="og:title"			content="Interactive Book: The Wallet" />
+    <meta property="og:image"			content="https://play.yogome.com/yogomebooks/posts/fbpost_46.png" />
+    
+<script>
+    var languageTitles = [
+            {
+                ES:"La cartera",
+                EN:"The Wallet",
+                PT:"A carteira",
+                ZH:"钱包",
+                JA:"おさいふ",
+                KO:"지갑을 주웠어요"
+            }
+        ]
+    
+    //AQUI VA PARA SABER EL LENGUAGE
+        function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+        var language
+
+        var  str =window.location.hash;
+        var array=str.split("/")
+        language=array[0].substr(1)
+        console.log(language)  
+    
+    function changeTitle(){
+        if(language == "ES"){
+            $(".languageTitle").text(languageTitles[0][language])
+        }else if(language == "EN"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "PT"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "ZH"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "JA"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "KO"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else{
+            $(".languageTitle").text(languageTitles[0].EN)    
+        }
+    }    
+    
+    changeTitle()
+
+var languagePages = [
+                  {
+                    page:1,
+                    ES:"Arthurius caminaba muy tranquilo por la calle. Se detuvo un momento y esperó a que un auto pasara para poder seguir su camino.",
+                    EN:"One day, Arthurius was walking down the street. He stopped a moment to let a car pass and then continued on his way. ",
+                    PT:"Certo dia, Arthurius estava descendo a rua a pé. Ele parou por um momento para deixar um carro passar e, depois, continuou seu caminho. ",
+                    ZH:"一天，亚瑟鲁在街上走路。这时来了一辆汽车，他停了下来，让汽车先走，然后他又继续赶路。 ",
+                    JA:"あるひ、アーサリウスが みちを あるいていました。くるまが やってきたので いちど とまって、とおりすぎてから また あるきはじめました。 ",
+                    KO:"어느 날, 알투리우스는 길을 걷고 있었어요. 자동차가 지나가길 잠깐 기다렸다가 다시 걸어갔어요."
+                },
+                {
+                    page:2,
+                    ES:"De pronto, se percató que algo brillaba a un lado de sus pies, ¡era una cartera! Se agachó para tomarla y se dio cuenta que dentro de ella había dinero.",
+                    EN:"Suddenly he saw something shiny next to his shoes; it was a wallet! He picked it up and realized it was full of money. ",
+                    PT:'De repente, ele viu uma coisa brilhando perto de seu sapato; era uma carteira! Ele a pegou e percebeu que ela estava cheia de dinheiro. ',
+                    ZH:"突然，他看见鞋子旁边有东西闪闪发光；那是一个钱包！他捡起来，发现里面塞满了钱。",
+                    JA:"すると とつぜん、アーサリウスの すぐ よこに なにか ひかっているものが みえました。おさいふです！おさいふを ひろってみると、おかねが たくさん はいっていました。 ",
+                    KO:"그런데 갑자기 신발 옆에서 무언가 반짝이고 있었어요. 그건 바로 지갑이었어요. 지갑을 주워서 보았더니 돈이 가득 들어 있었어요."
+                },
+                {
+                    page:3,
+                    ES:"Arthurius se puso contento, imaginando todo lo que podía comprar. Pensó en juguetes y en videojuegos, dulces y caramelos. ",
+                    EN:"Arthurius started thinking about everything he could buy with that money. Toys, videogames, candy, and lollipops danced through his head.",
+                    PT:"Arthurius começou a pensar em todas as coisas que poderia comprar com aquele dinheiro. Brinquedos, videogames, doces e pirulitos passaram flutuando em sua mente.",
+                    ZH:"亚瑟鲁开始遐想了，这些钱可以买些什么东西。玩具、电子游戏、糖果和棒棒糖在他的脑海里飞舞。",
+                    JA:"アーサリウスは そのおかねで なにを かえるか かんがえはじめました。おもちゃ、ゲーム、おかし、キャンディが あたまに うかびました。",
+                    KO:"알투리우스는 그 많은 돈으로 살 수 있는 물건을 생각했어요. 장난감, 비디오게임, 과자, 사탕까지 알투리우스의 머릿속은 갖고 싶은 물건이 한가득 들어있었어요."
+                },
+                {
+                    page:4,
+                    ES:"Dejó de imaginar las posibilidades y siguió revisando la cartera para ver qué más contenía.",
+                    EN:"As he dreamed of all the possibilities, he kept exploring the wallet to see what else he could find.",
+                    PT:"Enquanto sonhava com todas as possibilidades, ele continuou mexendo na carteira para ver o que mais encontraria. ",
+                    ZH:"他一边遐想，一边不断翻找钱包，看看还能找到什么。",
+                    JA:"わくわくしながら、ほかには なにが はいっているか おさいふのなかを みてみました。 ",
+                    KO:"갖고 싶은 물건을 모두 사는 생각을 하면서 알투리우스는 지갑을 계속 열어보았어요."
+                },
+                {
+                    page:5,
+                    ES:"En el fondo de la cartera encontró una tarjeta con el nombre del dueño. Arthurius se puso triste sabiendo que ya no podía comprar lo que quería, pero sabía que tenía que hacer lo correcto.",
+                    EN:"In the last pocket of the wallet he found a card with the owner's name on it. Arthurius felt sad because he couldn't buy what he wanted anymore. He knew he had to do the right thing. ",
+                    PT:'No último bolso da carteira, ele encontrou um cartão com o nome do dono. Arthurius ficou triste porque não poderia mais comprar o que ele queria. Ele sabia que precisava fazer a coisa certa. ',
+                    ZH:"在钱包的最后一个口袋里，他发现了一张卡，上面写着失主的姓名。亚瑟鲁有点难过，因为他再也不能买他想要的东西了。因为他知道他必须做正确的事。",
+                    JA:"さいごの ポケットには、おさいふの もちぬしの なまえが かいてある カードが ありました。アーサリウスは ほしかったものが かえなくなってしまうので かなしくなりました。ちゃんと もちぬしに かえさなくてはいけないと しっていたのです。",
+                    KO:"맨 마지막에 카드가 한 장 있었어요. 그 카드에는 지갑 주인의 이름이 적혀 있었어요. 알투리우스는 갖고 싶은 걸 사지 못하게 되어서 조금 슬펐어요. 그렇지만 알투리우스는 올바른 일을 해야 한다는 걸 알았어요."
+                },
+                {
+                    page:6,
+                    ES:"Arthurius buscó al dueño por todas partes. De esquina a esquina y de casa en casa. Antes de que terminara el día lo encontró. El hombre que estaba muy agradecido lo abrazó.",
+                    EN:"Arthurius spent the rest of the day looking for the owner. He looked from corner to corner and house to house. Finally, he found him! The wallet's owner was so grateful that he gave Arthurius a big hug.",
+                    PT:"Arthurius passou o resto do dia procurando o dono. Ele procurou de rua em rua e de casa em casa. Até que, finalmente, ele o encontrou! O dono da carteira ficou tão agradecido que deu um grande abraço em Arthurius.",
+                    ZH:"亚瑟鲁花了一整天的时间寻找失主。他从一个角落找到另一个角落，从一幢房子找到另一幢房子。终于，他找到了失主！钱包的失主非常感激，给了亚瑟鲁一个大大的拥抱。 ",
+                    JA:"アーサリウスは そのあと、いちにちじゅう もちぬしを さがしまわりました。まちじゅう すみからすみまで いえを いっけんずつ たずねていきました。そして とうとう、もちぬしを みつけました！おさいふの もちぬしは とてもよろこんで、アーサリウスに おれいを いいました。",
+                    KO:"알투리우스는 그날 온종일 집집이 돌아다니면서 지갑을 주인에게 돌려주려고 노력했어요. 마침내 알투리우스는 지갑 주인을 찾았어요! 지갑 주인은 정말 고마워서 알투리우스를 꼭 안아주었어요."
+                }
+                ]     
+    
+    
+    </script>   
+</head>
+<body>
+
+<div id="canvas">
+
+
+<div class="magazine-viewport">
+	<div class="container">
+        
+		<div class="magazine">
+<!--  BOTON SIGUIENTE      -->
+                <div ignore="1" class="next-button">
+                    <div id="activeNext" >
+                        <div class="animation1"> 
+                        </div>
+                    </div>
+                    <img src="images/nextButton.png">
+                </div>
+            <!-- Previous button -->
+			<div ignore="1" class="previous-button">
+    <img src="images/nextButton.png">
+            </div>             
+            <div id="p1" depth="5" class="hard"> <div class="side"></div> </div>
+			<div depth="5" class="hard front-side"> <div class="depth"></div> </div>
+			<div class="hard fixed back-side p19"><div class="depth"></div> </div>
+			<div class="hard p20"> </div>
+
+            </div>
+            <script>
+                //console.log(languagePages[0][language]);
+                if(language == "ES"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1ES.png')");
+                }else if(language == "EN"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1EN.png')");
+                }else if(language == "ZH"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1ZH.png')");
+                }else if(language == "KO"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1KO.png')");
+                }else if(language == "JA"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1JA.png')");
+                }else if(language == "PT"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1PT.png')");
+                }else{
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1EN.png')");
+                }
+                
+                
+                
+            </script>
+        
+        
+			<!-- Next button -->
+		</div>
+	</div>
+   <a onclick="goBack()"><div id="homeButton"><img src="images/homeButton.png" /></div></a>
+
+<script>
+function goBack() {
+    window.location.href="../../books.html?cachebust=“..randomNumber..“&language=“..localization.getLanguage()..“&email=“..email..“&name="+name+"&remoteid=“..remoteID..“&educationid=“..educationID..“&age=“..age..“&app=true”";
+}
+</script>
+    <div class="languageButton"><img src="images/icon-languages.png"></div>
+    <div class="idiomas">
+        <div id="ButtonLanEs" class="overLanguage">Español</div>
+        <div id="ButtonLanEn" class="overLanguage">English</div>
+        <div id="ButtonLanZh" class="overLanguage">中國</div>
+        <div id="ButtonLanJa" class="overLanguage">日本語</div>
+        <div id="ButtonLanKo" class="overLanguage">한국어</div>
+        <div id="ButtonLanPt" class="overLanguage">PORTUGUES</div>
+    </div>
+    <div id="audiosGroup"></div>
+	<div class="bottom">    
+		<div id="slider-bar" class="turnjs-slider timeline-style">
+			<div id="slider">
+            </div>
+		</div>
+	</div>
+    
+</div>
+
+<script type="text/javascript">
+    var audioNumber;
+    var clearTimeOut;
+    var audioReady;
+    var playing = false;
+    var audioPlayer; 
+    //cambio de regex
+    function replaceQueryParam(param, newval, search) {
+        var regex = new RegExp("([?;&])" + param + "[^&;]*[;&]?");
+        var query = search.replace(regex, "$1").replace(/&$/, '');
+
+        return (query.length > 2 ? query + "&" : "?") + (newval ? param + "=" + newval : '');
+    }    
+    
+        function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}    
+    
+    
+    $("#ButtonLanEs").click(function(){
+
+        var str = window.location.search
+        str =  window.location.hash.substr(0)
+        //alert(str)
+        language="ES"
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name="+name;
+        //window.location = window.location.pathname + "#"+language+"/#page/" + audioNumber;
+        location.reload();
+    });
+    
+    $("#ButtonLanEn").click(function(){
+
+        var str = window.location.search
+        str =  window.location.hash.substr(0)
+        //alert(str)
+        language="EN"
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name="+name;
+        //window.location = window.location.pathname + "#"+language+"/#page/" + audioNumber;
+        location.reload();
+    });
+    
+    $("#ButtonLanZh").click(function(){
+
+       var str = window.location.search
+        str =  window.location.hash.substr(0)
+        //alert(str)
+        language="ZH"
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name="+name;
+        //window.location = window.location.pathname + "#"+language+"/#page/" + audioNumber;
+        location.reload();
+    });
+    
+    $("#ButtonLanJa").click(function(){
+
+        var str = window.location.search
+        str =  window.location.hash.substr(0)
+        //alert(str)
+        language="JA"
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name="+name;
+        //window.location = window.location.pathname + "#"+language+"/#page/" + audioNumber;
+        location.reload();
+    });
+    
+    $("#ButtonLanKo").click(function(){
+
+        var str = window.location.search
+        str =  window.location.hash.substr(0)
+        //alert(str)
+        language="KO"
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name="+name;
+        //window.location = window.location.pathname + "#"+language+"/#page/" + audioNumber;
+        location.reload();
+    });
+    
+    $("#ButtonLanPt").click(function(){
+
+        var str = window.location.search
+        str =  window.location.hash.substr(0)
+        //alert(str)
+        language="PT"
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name="+name;
+        //window.location = window.location.pathname + "#"+language+"/#page/" + audioNumber;
+        location.reload();
+    });
+    
+    $(".languageButton").click(function(){
+        var idioma = $(".idiomas");
+        if (idioma.css("display") === "block") {
+            idioma.css("display","none");
+        } else {
+            idioma.css("display","block");
+        }
+    
+        
+    });
+    
+    //TweenMax.fromTo($("#activeNext"),1,{alpha:0.5},{alpha:1,yoyo:true,repeat:-1});
+    
+
+    
+    $("#audiosGroup").append('<audio id="audio0" preload="true" src="audios/' +  0 + '.mp3"></audio>') 
+    for(var i = 1;i<=6;i++){
+       $("#audiosGroup").append('<audio id="audio'+i+'" preload="true" src="audios/' +[language] + "/" +  i + '.mp3"></audio>')  
+    }
+    
+    
+function loadApp() {
+
+ 	$('#canvas').fadeIn(1000);
+
+ 	var flipbook = $('.magazine');
+
+ 	// Check if the CSS was already loaded
+	
+	if (flipbook.width()==0 || flipbook.height()==0) {
+		setTimeout(loadApp, 10);
+		return;
+	}
+	
+	// Create the flipbook
+
+	flipbook.turn({
+			
+			// Magazine width
+
+			width: 922,
+
+			// Magazine height
+
+			height: 600,
+
+			// Duration in millisecond
+
+			duration: 1000,
+
+			// Enables gradients
+
+			gradients: true,
+			
+			// Auto center this flipbook
+
+			autoCenter: true,
+
+			// Elevation from the edge of the flipbook when turning a page
+
+			elevation: 50,
+
+			// The number of pages
+
+			pages: 20,
+
+			// Events
+
+			when: {
+                
+                
+                
+				turning: function(event, page, view) {
+					
+					var book = $(this),
+					currentPage = book.turn('page'),
+					pages = book.turn('pages');
+                    
+		
+
+				updateDepth(book, page);
+				
+				if (page>=2)
+					$('.magazine .p2').addClass('fixed');
+				else
+					$('.magazine .p2').removeClass('fixed');
+
+				if (page<book.turn('pages'))
+					$('.magazine .p19').addClass('fixed');
+				else
+					$('.magazine .p19').removeClass('fixed');
+
+                    if(language == "ES"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ES.png')");
+                }else if(language == "EN"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2EN.png')");
+                }else if(language == "ZH"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ZH.png')");
+                }else if(language == "KO"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2KO.png')");
+                }else if(language == "JA"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2JA.png')");
+                }else if(language == "PT"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2PT.png')");
+                }else{
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2EN.png')");
+                }
+                    
+                    if(language == "ES"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5ES.png')");
+                }else if(language == "EN"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5EN.png')");
+                }else if(language == "ZH"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5ZH.png')");
+                }else if(language == "KO"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5KO.png')");
+                }else if(language == "JA"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5JA.png')");
+                }else if(language == "PT"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5PT.png')");
+                }else{
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5EN.png')");
+                }
+                    
+					Hash.go(language +'/#page/' + page).update();
+
+					// Show and hide navigation buttons
+                    audioNumber = page;
+					disableControls(page);
+
+				},
+                
+				turned: function(event, page, view) {
+                    
+					disableControls(page);
+                    var object = $(this);
+
+					$(this).turn('center');
+                   
+
+					$('#slider').slider('value', getViewNumber(object, page));
+                    audioNumber = page;
+            
+					if (page==1) { 
+						$(this).turn('peel', 'br');
+					}
+
+				},
+
+				missing: function (event, pages) {
+
+					// Add pages that aren't in the magazine
+
+					for (var i = 0; i < pages.length; i++)
+						addPage(pages[i], $(this));
+
+				}
+			}
+
+        
+	});
+
+	// Zoom.js
+
+    
+    
+	$('.magazine-viewport').zoom({
+		flipbook: $('.magazine'),
+
+		max: function() { 
+			
+			return largeMagazineWidth()/$('.magazine').width();
+
+		}, 
+
+		when: {
+			swipeLeft: function() {
+
+				$(this).zoom('flipbook').turn('next');
+                
+                stopAllSounds();
+
+			},
+
+			swipeRight: function() {
+				
+				$(this).zoom('flipbook').turn('previous');
+                stopAllSounds();
+
+			},
+
+			resize: function(event, scale, page, pageElement) {
+
+//				if (scale==1)
+//					loadSmallPage(page, pageElement);
+//				else
+//					loadLargePage(page, pageElement);
+
+			},
+
+			zoomIn: function () {
+                
+                $(".userName").addClass("zoomUserName")
+				$('#slider-bar').hide();
+				$('.made').hide();
+				$('.magazine').removeClass('animated').addClass('zoom-in');
+				$('.zoom-icon').removeClass('zoom-icon-in').addClass('zoom-icon-out');
+				
+				if (!window.escTip && !$.isTouch) {
+					escTip = true;
+
+					$('<div />', {'class': 'exit-message'}).
+						html('<div>Press ESC to exit</div>').
+							appendTo($('body')).
+							delay(2000).
+							animate({opacity:0}, 500, function() {
+								$(this).remove();
+							});
+				}
+			},
+
+			zoomOut: function () {
+                
+                $(".userName").removeClass("zoomUserName")
+				$('#slider-bar').fadeIn();
+				$('.exit-message').hide();
+				$('.made').fadeIn();
+				$('.zoom-icon').removeClass('zoom-icon-out').addClass('zoom-icon-in');
+
+				setTimeout(function(){
+					$('.magazine').addClass('animated').removeClass('zoom-in');
+					resizeViewport();
+				}, 0);
+
+			}
+		}
+	});
+
+
+
+
+	// Using arrow keys to turn the page
+
+	$(document).keydown(function(e){
+
+		var previous = 37, next = 39, esc = 27;
+
+		switch (e.keyCode) {
+			case previous:
+
+				// left arrow
+				$('.magazine').turn('previous');
+                stopAllSounds();
+				e.preventDefault();
+
+			break;
+			case next:
+
+				//right arrow
+				$('.magazine').turn('next');
+                stopAllSounds();
+				e.preventDefault();
+                
+
+			break;
+			case esc:
+				
+				$('.magazine-viewport').zoom('zoomOut');	
+				e.preventDefault();
+
+			break;
+		}
+	});
+
+	// URIs - Format #/page/1 
+
+    
+    
+	Hash.on('^page\/([0-9]*)$', {
+		yep: function(path, parts) {
+			var page = parts[1];
+
+			if (page!==undefined) {
+				if ($('.magazine').turn('is'))
+					$('.magazine').turn('page', page);
+                audioReady = page;
+                
+			}
+
+		},
+		nop: function(path) {
+
+			if ($('.magazine').turn('is'))
+				$('.magazine').turn('page', 1);
+		}
+	});
+
+
+	$(window).resize(function() {
+		resizeViewport();
+	}).bind('orientationchange', function() {
+		resizeViewport();
+	});
+
+	// Regions
+
+	if ($.isTouch) {
+		$('.magazine').bind('touchstart', regionClick);
+	} else {
+		$('.magazine').click(regionClick);
+	}
+
+	// Events for the next button
+
+	$('.next-button').bind($.mouseEvents.over, function() {
+		
+		$(this).addClass('next-button-hover');
+
+	}).bind($.mouseEvents.out, function() {
+		
+		$(this).removeClass('next-button-hover');
+
+	}).bind($.mouseEvents.down, function() {
+		
+		$(this).addClass('next-button-down');
+
+	}).bind($.mouseEvents.up, function() {
+		
+		$(this).removeClass('next-button-down');
+
+	}).click(function() {
+		
+		$('.magazine').turn('next');
+        stopAllSounds();
+        
+	});
+
+	// Events for the next button
+	
+	$('.previous-button').bind($.mouseEvents.over, function() {
+		
+		$(this).addClass('previous-button-hover');
+
+	}).bind($.mouseEvents.out, function() {
+		
+		$(this).removeClass('previous-button-hover');
+
+	}).bind($.mouseEvents.down, function() {
+		
+		$(this).addClass('previous-button-down');
+
+	}).bind($.mouseEvents.up, function() {
+		
+		$(this).removeClass('previous-button-down');
+
+	}).click(function() {
+		
+		$('.magazine').turn('previous');
+            stopAllSounds();
+
+	});
+
+
+	// Slider
+
+	$( "#slider" ).slider({
+		min: 1,
+		max: numberOfViews(flipbook),
+
+		start: function(event, ui) {
+			if (!window._thumbPreview) {
+				_thumbPreview = $('<div />', {'class': 'thumbnail'}).html('<div></div>');
+				//setPreview(ui.value);
+				//_thumbPreview.appendTo($(ui.handle));
+			} else
+				//setPreview(ui.value);
+
+			moveBar(false);
+
+		},
+
+		slide: function(event, ui) {
+
+			//setPreview(ui.value);
+
+		},
+
+		stop: function() {
+
+			if (window._thumbPreview)
+				_thumbPreview.removeClass('show');
+			     
+			$('.magazine').turn('page', Math.max(1, $(this).slider('value')*2 - 2));
+            stopAllSounds();
+		}
+	});
+
+	resizeViewport();
+
+	$('.magazine').addClass('animated');
+
+}
+
+// Zoom icon
+
+ $('.zoom-icon').bind('mouseover', function() { 
+ 	
+ 	if ($(this).hasClass('zoom-icon-in'))
+ 		$(this).addClass('zoom-icon-in-hover');
+
+ 	if ($(this).hasClass('zoom-icon-out'))
+ 		$(this).addClass('zoom-icon-out-hover');
+ 
+ }).bind('mouseout', function() { 
+ 	
+ 	 if ($(this).hasClass('zoom-icon-in'))
+ 		$(this).removeClass('zoom-icon-in-hover');
+ 	
+ 	if ($(this).hasClass('zoom-icon-out'))
+ 		$(this).removeClass('zoom-icon-out-hover');
+
+ }).bind('click', function() {
+
+ 	if ($(this).hasClass('zoom-icon-in'))
+ 		$('.magazine-viewport').zoom('zoomIn');
+ 	else if ($(this).hasClass('zoom-icon-out'))	
+		$('.magazine-viewport').zoom('zoomOut');
+
+ });
+      
+    
+function visibleNext(){
+    $("#activeNext").css("display","block")
+    
+}    
+    
+    
+    function stopAllSounds(){
+        
+        if(audioNumber >= [allPages-2]){
+                mixpanel.track("OnBookFinished",{
+                        "user_id": credentials.educationID,
+                        "app": "web",
+                        "bookID" : "6",
+                        "bookName" : "Estoy enojada"
+                    });      
+        }
+        
+        
+        $("#activeNext").css("display","none");
+        $(".buttonSound").css("opacity",1);
+        playing = false;
+        audiosNumbers();
+        audioPlayer = document.getElementById("audio" +  audioReady);
+        audioPlayer.currentTime = 0;
+        
+          for(i= 0; i<=6;i++){
+                    var audio = document.getElementById("audio" + i);
+                        audio.pause();
+                        audio.currentTime = 0;
+                    
+                } 
+        
+        AudioPlay();
+        
+    }    
+
+    
+function audiosNumbers(){
+               
+            switch(audioNumber){
+                case 1:
+                    audioReady = 0
+                   break;
+                case 2:
+                    audioReady = 0
+                   break;
+                case 3:
+                    audioReady = 0
+                   break;
+                case 4:
+                    audioReady = 0
+                   break;
+                case 5:
+                    audioReady = 0
+                   break;
+                case 6:
+                    audioReady = 1
+                   break;
+                case 7:
+                    audioReady = 1
+                   break;
+                case 8:
+                    audioReady = 2
+                   break;
+                case 9:
+                    audioReady = 2
+                   break;
+                case 10:
+                    audioReady = 3
+                   break;
+                case 11:
+                    audioReady = 3
+                   break;
+                case 12:
+                    audioReady = 4
+                   break;
+                case 13:
+                    audioReady = 4
+                   break;
+                case 14:
+                    audioReady = 5
+                   break;
+                case 15:
+                    audioReady = 5
+                   break;
+                 case 16:    
+                    audioReady = 6
+                    break;
+                 case 17:    
+                    audioReady = 6
+                    break;
+                 case 18:    
+                    audioReady = 0
+                    break;
+                case 19:    
+                    audioReady = 0
+                    break;
+                case 20:    
+                    audioReady = 0
+                    break;
+            }
+}    
+
+    
+function AudioPlay(){
+   if(!playing) {
+       autoPlay();
+       audioPlayer.currentTime = 0;
+      
+   }else{
+       
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                $(".buttonSound").css("opacity",1);
+                } else {
+                    audioPlayer.pause();
+                                $(".buttonSound").css("opacity",0.5);    
+                }
+       if(language == "ES"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaES" + audioReady)); 
+        }else if(language == "EN"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaEN" + audioReady));
+        }else if(language == "KO"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaKO" + audioReady));
+        }   
+       
+       
+   }    
+    
+};
+
+function autoPlay(){
+    audiosNumbers();
+
+    console.log("audioReady: " + audioReady);
+    audioPlayer = document.getElementById("audio" +  audioReady); 
+        audioPlayer.play();
+        if(language == "ES"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaES" + audioReady)); 
+        }else if(language == "EN"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaEN" + audioReady));
+        }else if(language == "KO"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaKO" + audioReady));
+        }        
+        audioPlayer.addEventListener("timeupdate", function(e){
+            playing = true;
+        });
+
+}          
+    
+ $('#canvas').hide();
+
+
+yepnope({
+	test : Modernizr.csstransforms,
+	yep: ['lib/turn.js'],
+	nope: ['lib/turn.html4.min.js', 'css/jquery.ui.html4.css'],
+	both: ['lib/zoom.min.js', 'css/jquery.ui.css', 'js/magazine.js', 'css/magazine.css','css/custom_fonts.css'],
+	complete: loadApp
+});
+
+var credentials = epicModel.getCredentials();    
+    
+$(document).ready(function () {
+    /**
+     * * Metodo implementado en mixpanel.js
+     */
+    var credentials1 = epicModel.getCredentials();   
+
+    mixpanel.track(
+        "OnBookOpen",
+        {
+            "user_id": credentials1.educationID,
+            "app": "web",
+            "bookID" : "13",
+            "bookName" : "El espacio ideal"
+        }
+    );
+    
+    
+
+    
+});    
+    
+    
+var allPages =  20    
+
+
+function mixPanelClose(){
+        mixpanel.track(
+            "OnBookClose", 
+            {
+                "user_id": credentials.educationID,
+                "app": "web",
+                "bookID" : "13",
+                "bookName" : "El espacio ideal",
+                "lastPage" : audioNumber    
+            }
+        );
+}   
+    
+
+    function stopAllSounds(){
+        if(audioNumber >= [allPages-2]){
+                mixpanel.track("OnBookFinished",{
+                        "user_id": credentials.educationID,
+                        "app": "web",
+                        "bookID" : "13",
+                        "bookName" : "El espacio ideal"
+                    });      
+        }
+        
+        
+        $("#activeNext").css("display","none");
+        playing = false;
+        audiosNumbers();
+       audioPlayer = document.getElementById("audio" +  audioReady);
+        $("#buttonPlay").attr("src","images/Play.png");
+          for(i= 0; i<=6;i++){
+                    var audio = document.getElementById("audio" + i);
+                        audio.pause();
+                        audio.currentTime = 0;
+                    
+                } 
+        
+    }    
+    
+    var leaving = true;
+    var isClose = false;
+
+    function EndChatSession() {
+        var request = GetRequest();
+        request.open("GET", "../Chat.aspx", true);
+        request.send();
+    }
+    document.onkeydown = checkKeycode
+    function checkKeycode(e) {
+        var keycode;
+        if (window.event)
+            keycode = window.event.keyCode;
+        else if (e)
+            keycode = e.which;
+        if (keycode == 116) {
+            isClose = true;
+        }
+    }
+    function somefunction() {
+        isClose = true;
+    }
+    
+    window.onbeforeunload = function (e) {
+       if (!e) e = event;
+        if (leaving) {
+             EndChatSession();
+             mixPanelClose();
+             //e.returnValue = "Are You Sure";
+
+        }
+    }
+    function GetRequest() {
+        var xmlHttp = null;
+        try {
+            // Firefox, Opera 8.0+, Safari
+            xmlHttp = new XMLHttpRequest();
+        }
+        catch (e) {
+            //Internet Explorer
+            try {
+                xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+            }
+            catch (e) {
+                xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+        }
+        return xmlHttp;
+    }       
+</script>
+</body>
+</html>
