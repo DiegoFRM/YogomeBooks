@@ -1,5 +1,4 @@
 body{
-/*	overflow:hidden;*/
 	background-color:#fcfcfc;
 	margin:0;
 	padding:0;
@@ -30,14 +29,16 @@ body{
 }
 
 .magazine-viewport .magazine{
-	width:522px;
-	height:60px;
+    width:922px;
+	height:600px;
 	left:-461px;
 	top:-30px;
 }
 
 .magazine-viewport .page{
 
+    width:400px;
+	height:550px;
 	background-color:white;
 	background-repeat:no-repeat;
 	background-size:100% 100%;
@@ -440,6 +441,9 @@ body{
   top: 39.3%;
   left: 42%;
   transform: translate(-50%, -50%);
+  -webkit-margin-before: -.2em;
+  -webkit-margin-after: 5em;
+  -webkit-margin-start: -10px
 }
 
 #userContainer{
@@ -520,6 +524,7 @@ body{
     color: #FFF;
     font-size: 3vw;
     border-radius: 2vh;
+     z-index: 1000;
 }
 
 .overLanguage:hover {
@@ -612,20 +617,27 @@ body{
 }
 
 .magazine .p3{
-    	background-image:url(../bookpages/3.png) !important;
+/*    	background-image:url(../bookpages/3.png) !important;*/
 
 }
 
-.magazine .p17{
-    	background-image:url(../bookpages/17.png) !important;
-
-}
-.magazine .p18{
-    	background-image:url(../bookpages/18.png) !important;
+.magazine .p5{
+/*    	background-image:url(../bookpages/5.png) !important;*/
 
 }
 
+
+.magazine .p19{
+    	background-image:url(../bookpages/19.png) !important;
+
+}
+.magazine .p20{
+    	background-image:url(../bookpages/20.png) !important;
+
+}
 .magazine .hard{
+    width:480px;
+	height:600px;
 	background-color:transparent;
 	-webkit-box-shadow:none;
 	-moz-box-shadow:none;

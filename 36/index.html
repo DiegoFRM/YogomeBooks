@@ -1,0 +1,1040 @@
+<!doctype html>
+<html>
+<head>
+<title class="languageTitle">La decisión de Eagle</title>
+ <meta charset="UTF-8">    
+<meta name="viewport" content="width = 1050, user-scalable = no" />
+<link rel="icon" type="image/png" href="../../pics/favicon.png" />
+<script type="text/javascript" src="extras/jquery.min.1.7.js"></script>
+<script type="text/javascript" src="extras/jquery-ui-1.8.20.custom.min.js"></script>
+<script type="text/javascript" src="extras/modernizr.2.5.3.min.js"></script>
+<script type="text/javascript" src="lib/hash.js"></script>
+<script type="text/javascript" src="js/jquery.blast.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+    <script type="text/javascript" src="js/tracks.js"></script>
+<script type="text/javascript" src="js/audioSync.js"></script> 
+    <!--ESta de manera absoluta la direccion de epic model, por la profundidad que tiene dentro del server-->
+<script type="text/javascript" src="http://play.yogome.com/js/epic/models/epicModel.js"></script>    
+<script type="text/javascript" src="../../js/mixpanel/mixpanel.js"></script>        
+    
+    <script>
+        var meta = document.createElement('meta');
+        meta.setAttribute("property","og:description");
+        
+    </script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta property="og:url"				content="https://play.yogome.com/yogomebooks/36/#EN"/>
+    <meta property="og:type"			content="article" />
+    <meta property="og:title"			content="Interactive Book: Eagle Makes a Choice"/>
+    <meta property="og:image"			content="https://play.yogome.com/yogomebooks/posts/fbpost_36.png" />
+    
+<script>
+    var languageTitles = [
+            {
+                ES:"La decisión de Eagle",
+                EN:"Eagle Makes a Choice",
+                PT:"Eagle faz uma escolha",
+                ZH:"伊戈的抉择",
+                JA:"イーグルのけつだん",
+                KO:"이글이의선택"
+            }
+        ]
+    
+    //AQUI VA PARA SABER EL LENGUAGE
+        function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+        var language
+
+        var  str =window.location.hash;
+        var array=str.split("/")
+        language=array[0].substr(1)
+        console.log(language)  
+    
+    function changeTitle(){
+        if(language == "ES"){
+            $(".languageTitle").text(languageTitles[0][language])
+        }else if(language == "EN"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "PT"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "ZH"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "JA"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else if(language == "KO"){
+            $(".languageTitle").text(languageTitles[0][language])    
+        }else{
+            $(".languageTitle").text(languageTitles[0].EN)    
+        }
+    }    
+    
+    changeTitle()
+
+var languagePages = [
+                  {
+                    page:1,
+                    ES:"La batalla por los power cubes contra Ignorantia había llegado a Codus, donde Eagle estaba frente a frente con la malvada reina.",
+                    EN:"The battle against Queen Ignorantia for power cubes has reached Codus, where Eagle came face to face with the evil queen. ",
+                    PT:"A batalha contra a Rainha Ignorantia pelos Powercubes chegou a Codus, onde Eagle ficou cara a cara com a rainha malvada. ",
+                    ZH:"与Ignorantia女王争夺能量块的战火已蔓延到Codus，伊戈在那里与这位邪恶女王正面交锋。 ",
+                    JA:"パワーキューブをめぐり イグノランティア女王とたたかうため コーダス星までやってきました。イーグルはついに じゃあくな女王と たいけつします。 ",
+                    KO:"파워 큐브를 빼앗아 가려는 이그노란티아 여왕과의 전투는 코두스까지 오게 되었어요. 이곳에서 이글이는 사악한 여왕과 직접 만나게 되었어요."
+                },
+                {
+                    page:2,
+                    ES:"–Por fin nos conocemos Yogotar –dijo Ignorantia. </br></br>–¡Basta ya! deja esos power cubes –dijo Eagle. </br></br>–¿Y si te dijera que también pueden ser tuyos? ",
+                    EN:"&#34;At last we meet, Yogotar,&#34; said Ignorantia.</br></br>&#34;Stop!&#34; screamed Eagle.&#34; Leave the power cubes alone.&#34;</br></br>What if I told you they could also be yours?&#34;",
+                    PT:'“Finalmente nos encontramos, Yogotar”, disse Ignorantia.</br></br>“Pare!”, gritou Eagle. “Deixe os Powercubes em paz.”</br></br>“E se eu lhe dissesse que eles também podem ser seus?”',
+                    ZH:"“我们终于见面了，Yogotar。”Ignorantia说。</br></br>“住手！”伊戈尖叫道。“离能量块远点。”</br></br>“如果我告诉你这个能量块也能独属于你自己呢？”",
+                    JA:"「やっと来たわね、ヨゴター」イグノランティア女王が言いました。</br></br>「やめろ！パワーキューブをはなせ。」イーグルがさけびました。</br></br>「あなたのものに してあげるって言ったら、どうする？」",
+                    KO:"&#34;결국, 우리가 만났구나 요고타.&#34; 여왕이 말했어요.</br></br>&#34;그만해!&#34; 이글이가 소리쳤어요. &#34;파워 큐브를 가만히 놔둬.&#34; </br></br>&#34;이게 네 것이 될 수 있는데도?&#34;"
+                },
+                {
+                    page:3,
+                    ES:"–Los power cubes pertenecen al planeta –dijo Eagle. </br></br>–Imagina tener conocimiento sin límite, todo lo que siempre has querido y más. Únete a mí joven Yogotar y la galaxia Ignós será nuestra –dijo Ignorantia. ",
+                    EN:"&#34;The power cubes belong to the planet,&#34; said Eagle.</br></br>&#34;Imagine having unlimited knowledge, it's everything you've ever wanted and more!&#34;</br></br>&#34;Join me, Yogotar, and the whole Ignos galaxy could be ours,&#34; said Ignorantia, convincingly. ",
+                    PT:"“Os Powercubes pertencem ao planeta”, disse Eagle.</br></br>“Imagine ter conhecimento ilimitado; é tudo o que você sempre quis e muito mais!”</br></br>“Junte-se a mim, Yogotar, e toda a galáxia de Ignos pode ser nossa”, disse Ignorantia, tentando convencê-lo. ",
+                    ZH:"“能量块属于这个星球。”伊戈说道。</br></br>“想象一下，拥有无限的知识，得到你想要的一切，甚至更多！”</br></br>“加入我，Yogotar，整个Ignos星系就是我们的。”Ignorantia头头是道地说道。 ",
+                    JA:"「パワーキューブは この星のものだ」イーグルが言いました。</br></br>「むげんのちしきが 手に入るとしたら？あなたがずっと ほしかったものでしょう？」</br></br>  「ヨゴターよ、私といっしょに イグノス・ギャラクシーを しはいするのよ」イグノランティア女王が せっとくするように 言いました。",
+                    KO:"&#34;파워 큐브는 이 행성에 있어야 해.&#34; 이글이가 말했어요. </br></br>&#34무한한 지식을 갖게 된다고 상상해봐. 그거야말로 네가 무엇보다도 원하는 게 아니겠어?&#34; </br></br>&#34;나와 함께하자 요고타야. 그러면 우리는 이그노스 은하계 전체를 갖게 될 거야.&#34; 이그노란티아가 이글이를 설득했어요."
+                },
+                {
+                    page:4,
+                    ES:"–Eso no suena correcto –dijo Eagle. </br></br>–Deja a tus amigos, Yogotar y todo el conocimiento será tuyo –declaró Ignorantia. Quien sacó un power cube y lo puso frente a Eagle.",
+                    EN:"&#34;That doesn't sound right!&#34; exclaimed Eagle.</br></br>&#34;Leave your friends, Yogotar, and all the knowledge will be yours,&#34; declared Ignorantia, who pulled out a power cube and flaunted it in front of Eagle.",
+                    PT:"“Isso não parece certo!”, exclamou Eagle.</br></br>“Abandone seus amigos, Yogotar, e todo o conhecimento vai ser seu”, disse Ignorantia, exibindo um Powercube para Eagle. ",
+                    ZH:"“不是这样的！”伊戈喊道。</br></br>“离开你的朋友，Yogotar，所有的知识都将属于你。”Ignorantia说，她拿出一个能量块，在伊戈面前炫耀。 ",
+                    JA:"そんなの ひきょうだ！」イーグルが声をあげます。</br></br>「ともだちなんて ほっておきなさい ヨゴター。すべてのちしきが あなたのものになるのよ」イグノランティア女王は パワーキューブをとりだして イーグルにみせびらかしました。",
+                    KO:"&#34;그건 옳지 않아!&#34; </br></br>&#34;네 친구들을 떠나면 너는 모든 지식을 다 가질 수 있어.&#34; </br></br>이그노란티아 여왕은 파워 큐브를 이글이 앞에 꺼내 들고 과시했어요."
+                },
+                {
+                    page:5,
+                    ES:"–No, con mis amigos en mi equipo tengo todo lo que necesito y más.</br></br>–Bien, entonces prepárate para enfrentarme solo –dijo Ignorantia a Eagle.",
+                    EN:"&#34;No! With my friends on my team I have everything I need,&#34; said Eagle.</br></br>&#34;Well, where are they? You're going to have to face me all alone,&#34; said Ignorantia, taunting him.",
+                    PT:'“Não! Com meus amigos na minha equipe, tenho tudo o que eu preciso”, disse Eagle.</br></br>“Bem, onde estão eles? Você vai ter que me enfrentar sozinho”, disse Ignorantia, zombando dele.',
+                    ZH:"“不！和我的队友们在一起，我就拥有需要的一切。”伊戈说道。</br></br>“嗯，他们在哪儿？他们留下你一个人独自面对我。”Ignorantia嘲弄他。",
+                    JA:"「いやだ！ともだちがいれば、ほかには なにもいらない」イーグルは言いました。</br></br>「あら、じゃあ そのともだちは どこかしら？あなたひとりで わたしと たたかうつもり？」イグノランティア女王は かちほこったように言いました。",
+                    KO:"&#34;아니야! 내가 원하는 건 내 친구들이 함께하는 나의 팀이 전부야.&#34; 이글이가 말했어요. </br></br>&#34;그래? 그런데 그 친구들은 어디 있지? 너는 혼자서 나와 이렇게 싸워야 하는데? &#34;이그노란티아가 이글이를 비웃었어요."
+                },
+                {   
+                    page:6,
+                    ES:"–Un Yogotar nunca está solo –dijo Nao, quien lanzó un spinner contra Ignorantia para que esta soltara el power cube que tenía en la mano.",
+                    EN:"&#34;A Yogotar is never alone,&#34; said Nao, throwing a spinner at Ignorantia.</br></br>The spinner knocked the power cube out of her hand.",
+                    PT:'“Um Yogotar nunca está sozinho”, disse Nao, jogando um spinner em Ignorantia.</br></br>O spinner derrubou o Powercube da mão dela.',
+                    ZH:"“Yogotar绝不会是一个人，”奈绪说道，将一个旋转器朝Ignorantia扔去。</br></br>旋转器把她手中的能量块打掉了。",
+                    JA:"「ヨゴターはいつだって ひとりじゃない」ナオがスピナーを投げて言いました。</br></br>女王の手から パワーキューブがおちました。",
+                    KO:"&#34;요고타는 절대 혼자 있지 않아!&#34; 나오가 장난감 스피너를 이그노란티아에게 던졌어요. 스피너에 맞은 이그노란티아는 파워 큐브를 손에서 놓쳤어요."
+                },
+                {
+                    page:7,
+                    ES:"Ignorantia al ver unidos a los Yogotars decidió huir.</br></br>Y así fue como los Yogotars, trabajando en equipo, pudieron detener a Ignorantia y su invasión en Codus.",
+                    EN:"Seeing all the Yogotars together, Ignorantia decided to flee. </br></br>Working as a team, the Yogotars defeated Ignorantia and stopped her from invading Codus.",
+                    PT:"Vendo todos os Yogotars juntos, Ignorantia resolveu fugir. </br></br>Trabalhando em equipe, os Yogotars derrotaram Ignorantia e a impediram de invadir Codus.",
+                    ZH:"看到所有的Yogotar们集结在一起，Ignorantia决定逃跑。</br></br>Yogotar凭借团队的力量，打败了Ignorantia女王，阻止了她对Codus的入侵。",
+                    JA:"ヨゴターたちが みんなやってきたのをみて、イグノランティア女王は にげることに しました。</br></br>チームワークのおかげで ヨゴターたちは イグノランティア女王をたおし コーダス星を すくいました。",
+                    KO:"요고타들이 함께 있는 걸 본 이그노란티아는 도망쳤어요.</br></br> 함께 힘을 모은 요고타들은 이그노란티아를 무찌르고 코두스를 지킬 수 있었어요."
+                }
+                ]     
+    
+    
+    </script>   
+    
+    
+</head>
+<body onbeforeunload="noSound()">
+
+<div id="canvas">
+
+
+<div class="magazine-viewport">
+	<div class="container">
+        
+		<div class="magazine">
+<!--  BOTON SIGUIENTE      -->
+                <div ignore="1" class="next-button">
+                    <div id="activeNext" >
+                        <div class="animation1"> 
+                        </div>
+                    </div>
+                    <img src="images/nextButton.png">
+                </div>
+            <!-- Previous button -->
+			<div ignore="1" class="previous-button">
+    <img src="images/nextButton.png">
+            </div>             
+            <div id="p1" depth="5" class="hard"> <div class="side"></div> </div>
+			<div depth="5" class="hard front-side"> <div class="depth"></div> </div>
+			<div class="hard fixed back-side p21"><div class="depth"></div> </div>
+			<div class="hard p22"> </div>
+
+            </div>
+            <script>
+                //console.log(languagePages[0][language]);
+                if(language == "ES"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1ES.png')");
+                }else if(language == "EN"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1EN.png')");
+                }else if(language == "ZH"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1ZH.png')");
+                }else if(language == "KO"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1KO.png')");
+                }else if(language == "JA"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1JA.png')");
+                }else if(language == "PT"){
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1PT.png')");
+                }else{
+                    $(".magazine").find("#p1").css("background-image","url('bookpages/1EN.png')");
+                }
+                
+                
+                
+            </script>
+        
+
+        
+			<!-- Next button -->
+		</div>
+	</div>
+   <a onclick="goBack()"><div id="homeButton"><img src="images/homeButton.png" /></div></a>
+
+<script>
+function goBack() {
+    window.location.href="../../yogobooks.html";
+}
+</script>
+    <div class="languageButton"><img src="images/icon-languages.png"></div>
+    <div class="idiomas">
+        <div id="ButtonLanEs" class="overLanguage">Español</div>
+        <div id="ButtonLanEn" class="overLanguage">English</div>
+        <div id="ButtonLanZh" class="overLanguage">中國</div>
+        <div id="ButtonLanJa" class="overLanguage">日本語</div>
+        <div id="ButtonLanKo" class="overLanguage">한국어</div>
+        <div id="ButtonLanPt" class="overLanguage">PORTUGUES</div>
+    </div>
+    <div id="audiosGroup"></div>
+	<div class="bottom">    
+		<div id="slider-bar" class="turnjs-slider timeline-style">
+			<div id="slider">
+            </div>
+		</div>
+	</div>
+    
+</div>
+
+<script type="text/javascript">
+    var audioNumber;
+    var clearTimeOut;
+    var audioReady;
+    var playing = false;
+    var audioPlayer; 
+    //cambio de regex
+    function replaceQueryParam(param, newval, search) {
+        var regex = new RegExp("([?;&])" + param + "[^&;]*[;&]?");
+        var query = search.replace(regex, "$1").replace(/&$/, '');
+
+        return (query.length > 2 ? query + "&" : "?") + (newval ? param + "=" + newval : '');
+    }    
+    
+        function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+            
+}    
+    
+    
+    $("#ButtonLanEs").click(function(){
+
+        var str = window.location.search
+        str =  window.location.hash.substr(0)
+        //alert(str)
+        language="ES"
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name=Yogome";
+        //window.location = window.location.pathname + "#"+language+"/#page/" + audioNumber;
+        location.reload();
+    });
+    
+    $("#ButtonLanEn").click(function(){
+
+        var str = window.location.search
+        str =  window.location.hash.substr(0)
+        //alert(str)
+        language="EN"
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name=Yogome";
+        //window.location = window.location.pathname + "#"+language+"/#page/" + audioNumber;
+        location.reload();
+    });
+    
+    $("#ButtonLanZh").click(function(){
+
+       var str = window.location.search
+        str =  window.location.hash.substr(0)
+        //alert(str)
+        language="ZH"
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name=Yogome";
+        //window.location = window.location.pathname + "#"+language+"/#page/" + audioNumber;
+        location.reload();
+    });
+    
+    $("#ButtonLanJa").click(function(){
+
+        var str = window.location.search
+        str =  window.location.hash.substr(0)
+        //alert(str)
+        language="JA"
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name=Yogome";
+        //window.location = window.location.pathname + "#"+language+"/#page/" + audioNumber;
+        location.reload();
+    });
+    
+    $("#ButtonLanKo").click(function(){
+
+        var str = window.location.search
+        str =  window.location.hash.substr(0)
+        //alert(str)
+        language="KO"
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name=Yogome";
+        //window.location = window.location.pathname + "#"+language+"/#page/" + audioNumber;
+        location.reload();
+    });
+    
+    $("#ButtonLanPt").click(function(){
+
+        var str = window.location.search
+        str =  window.location.hash.substr(0)
+        //alert(str)
+        language="PT"
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name=Yogome";
+        //window.location = window.location.pathname + "#"+language+"/#page/" + audioNumber;
+        location.reload();
+    });
+    
+    $(".languageButton").click(function(){
+        var idioma = $(".idiomas");
+        if (idioma.css("display") === "block") {
+            idioma.css("display","none");
+        } else {
+            idioma.css("display","block");
+        }
+    
+        
+    });
+    
+    //TweenMax.fromTo($("#activeNext"),1,{alpha:0.5},{alpha:1,yoyo:true,repeat:-1});
+    
+
+    
+    $("#audiosGroup").append('<audio id="audio0" preload="true" src="audios/' +  0 + '.mp3"></audio>') 
+    for(var i = 1;i<=7;i++){
+       $("#audiosGroup").append('<audio id="audio'+i+'" preload="true" src="audios/' +[language] + "/" +  i + '.mp3"></audio>')  
+    }
+    
+    
+function loadApp() {
+
+ 	$('#canvas').fadeIn(1000);
+
+ 	var flipbook = $('.magazine');
+
+ 	// Check if the CSS was already loaded
+	
+	if (flipbook.width()==0 || flipbook.height()==0) {
+		setTimeout(loadApp, 10);
+		return;
+	}
+	
+	// Create the flipbook
+
+	flipbook.turn({
+			
+			// Magazine width
+
+			width: 922,
+
+			// Magazine height
+
+			height: 600,
+
+			// Duration in millisecond
+
+			duration: 1000,
+
+			// Enables gradients
+
+			gradients: true,
+			
+			// Auto center this flipbook
+
+			autoCenter: true,
+
+			// Elevation from the edge of the flipbook when turning a page
+
+			elevation: 50,
+
+			// The number of pages
+
+			pages: 22,
+
+			// Events
+
+			when: {
+                
+                
+                
+				turning: function(event, page, view) {
+					
+					var book = $(this),
+					currentPage = book.turn('page'),
+					pages = book.turn('pages');
+                    
+		
+
+				updateDepth(book, page);
+				
+				if (page>=2)
+					$('.magazine .p2').addClass('fixed');
+				else
+					$('.magazine .p2').removeClass('fixed');
+
+				if (page<book.turn('pages'))
+					$('.magazine .p21').addClass('fixed');
+				else
+					$('.magazine .p21').removeClass('fixed');
+
+                    if(language == "ES"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ES.png')");
+                }else if(language == "EN"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2EN.png')");
+                }else if(language == "ZH"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2ZH.png')");
+                }else if(language == "KO"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2KO.png')");
+                }else if(language == "JA"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2JA.png')");
+                }else if(language == "PT"){
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2PT.png')");
+                }else{
+                    $(".magazine").find(".p2").css("background-image","url('bookpages/2EN.png')");
+                }
+                    
+                    if(language == "ES"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5ES.png')");
+                }else if(language == "EN"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5EN.png')");
+                }else if(language == "ZH"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5ZH.png')");
+                }else if(language == "KO"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5KO.png')");
+                }else if(language == "JA"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5JA.png')");
+                }else if(language == "PT"){
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5PT.png')");
+                }else{
+                    $(".magazine").find(".p5").css("background-image","url('bookpages/5EN.png')");
+                }
+                    
+					Hash.go(language +'/#page/' + page).update();
+
+					// Show and hide navigation buttons
+                    audioNumber = page;
+					disableControls(page);
+
+				},
+                
+				turned: function(event, page, view) {
+                    
+					disableControls(page);
+                    var object = $(this);
+
+					$(this).turn('center');
+                   
+
+					$('#slider').slider('value', getViewNumber(object, page));
+                    audioNumber = page;
+            
+					if (page==1) { 
+						$(this).turn('peel', 'br');
+					}
+
+				},
+
+				missing: function (event, pages) {
+
+					// Add pages that aren't in the magazine
+
+					for (var i = 0; i < pages.length; i++)
+						addPage(pages[i], $(this));
+
+				}
+			}
+
+        
+	});
+
+	// Zoom.js
+
+    
+    
+	$('.magazine-viewport').zoom({
+		flipbook: $('.magazine'),
+
+		max: function() { 
+			
+			return largeMagazineWidth()/$('.magazine').width();
+
+		}, 
+
+		when: {
+			swipeLeft: function() {
+
+				$(this).zoom('flipbook').turn('next');
+                
+                stopAllSounds();
+
+			},
+
+			swipeRight: function() {
+				
+				$(this).zoom('flipbook').turn('previous');
+                stopAllSounds();
+
+			},
+
+			resize: function(event, scale, page, pageElement) {
+
+//				if (scale==1)
+//					loadSmallPage(page, pageElement);
+//				else
+//					loadLargePage(page, pageElement);
+
+			},
+
+			zoomIn: function () {
+                
+                $(".userName").addClass("zoomUserName")
+				$('#slider-bar').hide();
+				$('.made').hide();
+				$('.magazine').removeClass('animated').addClass('zoom-in');
+				$('.zoom-icon').removeClass('zoom-icon-in').addClass('zoom-icon-out');
+				
+				if (!window.escTip && !$.isTouch) {
+					escTip = true;
+
+					$('<div />', {'class': 'exit-message'}).
+						html('<div>Press ESC to exit</div>').
+							appendTo($('body')).
+							delay(2000).
+							animate({opacity:0}, 500, function() {
+								$(this).remove();
+							});
+				}
+			},
+
+			zoomOut: function () {
+                
+                $(".userName").removeClass("zoomUserName")
+				$('#slider-bar').fadeIn();
+				$('.exit-message').hide();
+				$('.made').fadeIn();
+				$('.zoom-icon').removeClass('zoom-icon-out').addClass('zoom-icon-in');
+
+				setTimeout(function(){
+					$('.magazine').addClass('animated').removeClass('zoom-in');
+					resizeViewport();
+				}, 0);
+
+			}
+		}
+	});
+
+
+
+
+	// Using arrow keys to turn the page
+
+	$(document).keydown(function(e){
+
+		var previous = 37, next = 39, esc = 27;
+
+		switch (e.keyCode) {
+			case previous:
+
+				// left arrow
+				$('.magazine').turn('previous');
+                stopAllSounds();
+				e.preventDefault();
+
+			break;
+			case next:
+
+				//right arrow
+				$('.magazine').turn('next');
+                stopAllSounds();
+				e.preventDefault();
+                
+
+			break;
+			case esc:
+				
+				$('.magazine-viewport').zoom('zoomOut');	
+				e.preventDefault();
+
+			break;
+		}
+	});
+
+	// URIs - Format #/page/1 
+
+    
+    
+	Hash.on('^page\/([0-9]*)$', {
+		yep: function(path, parts) {
+			var page = parts[1];
+
+			if (page!==undefined) {
+				if ($('.magazine').turn('is'))
+					$('.magazine').turn('page', page);
+                audioReady = page;
+                
+			}
+
+		},
+		nop: function(path) {
+
+			if ($('.magazine').turn('is'))
+				$('.magazine').turn('page', 1);
+		}
+	});
+
+
+	$(window).resize(function() {
+		resizeViewport();
+	}).bind('orientationchange', function() {
+		resizeViewport();
+	});
+
+	// Regions
+
+	if ($.isTouch) {
+		$('.magazine').bind('touchstart', regionClick);
+	} else {
+		$('.magazine').click(regionClick);
+	}
+
+	// Events for the next button
+
+	$('.next-button').bind($.mouseEvents.over, function() {
+		
+		$(this).addClass('next-button-hover');
+
+	}).bind($.mouseEvents.out, function() {
+		
+		$(this).removeClass('next-button-hover');
+
+	}).bind($.mouseEvents.down, function() {
+		
+		$(this).addClass('next-button-down');
+
+	}).bind($.mouseEvents.up, function() {
+		
+		$(this).removeClass('next-button-down');
+
+	}).click(function() {
+		
+		$('.magazine').turn('next');
+        stopAllSounds();
+        
+	});
+
+	// Events for the next button
+	
+	$('.previous-button').bind($.mouseEvents.over, function() {
+		
+		$(this).addClass('previous-button-hover');
+
+	}).bind($.mouseEvents.out, function() {
+		
+		$(this).removeClass('previous-button-hover');
+
+	}).bind($.mouseEvents.down, function() {
+		
+		$(this).addClass('previous-button-down');
+
+	}).bind($.mouseEvents.up, function() {
+		
+		$(this).removeClass('previous-button-down');
+
+	}).click(function() {
+		
+		$('.magazine').turn('previous');
+            stopAllSounds();
+
+	});
+
+
+	// Slider
+
+	$( "#slider" ).slider({
+		min: 1,
+		max: numberOfViews(flipbook),
+
+		start: function(event, ui) {
+			if (!window._thumbPreview) {
+				_thumbPreview = $('<div />', {'class': 'thumbnail'}).html('<div></div>');
+				//setPreview(ui.value);
+				//_thumbPreview.appendTo($(ui.handle));
+			} else
+				//setPreview(ui.value);
+
+			moveBar(false);
+
+		},
+
+		slide: function(event, ui) {
+
+			//setPreview(ui.value);
+
+		},
+
+		stop: function() {
+
+			if (window._thumbPreview)
+				_thumbPreview.removeClass('show');
+			     
+			$('.magazine').turn('page', Math.max(1, $(this).slider('value')*2 - 2));
+            stopAllSounds();
+		}
+	});
+
+	resizeViewport();
+
+	$('.magazine').addClass('animated');
+
+}
+
+// Zoom icon
+
+ $('.zoom-icon').bind('mouseover', function() { 
+ 	
+ 	if ($(this).hasClass('zoom-icon-in'))
+ 		$(this).addClass('zoom-icon-in-hover');
+
+ 	if ($(this).hasClass('zoom-icon-out'))
+ 		$(this).addClass('zoom-icon-out-hover');
+ 
+ }).bind('mouseout', function() { 
+ 	
+ 	 if ($(this).hasClass('zoom-icon-in'))
+ 		$(this).removeClass('zoom-icon-in-hover');
+ 	
+ 	if ($(this).hasClass('zoom-icon-out'))
+ 		$(this).removeClass('zoom-icon-out-hover');
+
+ }).bind('click', function() {
+
+ 	if ($(this).hasClass('zoom-icon-in'))
+ 		$('.magazine-viewport').zoom('zoomIn');
+ 	else if ($(this).hasClass('zoom-icon-out'))	
+		$('.magazine-viewport').zoom('zoomOut');
+
+ });
+      
+    
+function visibleNext(){
+    $("#activeNext").css("display","block")
+    
+}    
+    
+    
+    function stopAllSounds(){
+        
+        if(audioNumber >= [allPages-2]){
+                mixpanel.track("OnBookFinished",{
+                        "user_id": credentials.educationID,
+                        "app": "web",
+                        "bookID" : "37",
+                        "bookName" : "La bondad de Theffanie"
+                    });      
+        }
+        
+        
+        $("#activeNext").css("display","none");
+        $(".buttonSound").css("opacity",1);
+        playing = false;
+        audiosNumbers();
+        audioPlayer = document.getElementById("audio" +  audioReady);
+        audioPlayer.currentTime = 0;
+        
+          for(i= 0; i<=7;i++){
+                    var audio = document.getElementById("audio" + i);
+                        audio.pause();
+                        audio.currentTime = 0;
+                    
+                } 
+        
+        AudioPlay();
+        
+    }    
+
+    
+function audiosNumbers(){
+               
+            switch(audioNumber){
+                case 1:
+                    audioReady = 0
+                   break;
+                case 2:
+                    audioReady = 0
+                   break;
+                case 3:
+                    audioReady = 0
+                   break;
+                case 4:
+                    audioReady = 0
+                   break;
+                case 5:
+                    audioReady = 0
+                   break;
+                case 6:
+                    audioReady = 1
+                   break;
+                case 7:
+                    audioReady = 1
+                   break;
+                case 8:
+                    audioReady = 2
+                   break;
+                case 9:
+                    audioReady = 2
+                   break;
+                case 10:
+                    audioReady = 3
+                   break;
+                case 11:
+                    audioReady = 3
+                   break;
+                case 12:
+                    audioReady = 4
+                   break;
+                case 13:
+                    audioReady = 4
+                   break;
+                case 14:
+                    audioReady = 5
+                   break;
+                case 15:
+                    audioReady = 5
+                   break;
+                 case 16:    
+                    audioReady = 6
+                    break;
+                 case 17:    
+                    audioReady = 6
+                    break;
+                 case 18:    
+                    audioReady = 7
+                    break;
+                case 19:    
+                    audioReady = 7
+                    break;
+                case 20:    
+                    audioReady = 0
+                    break;
+                case 21:    
+                    audioReady = 0
+                    break;
+                case 22:    
+                    audioReady = 0
+                    break;
+            }
+}    
+
+    
+function AudioPlay(){
+   if(!playing) {
+       autoPlay();
+       audioPlayer.currentTime = 0;
+      
+   }else{
+       
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                $(".buttonSound").css("opacity",1);
+                } else {
+                    audioPlayer.pause();
+                                $(".buttonSound").css("opacity",0.5);    
+                }
+       if(language == "ES"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaES" + audioReady)); 
+        }else if(language == "EN"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaEN" + audioReady));
+        }else if(language == "KO"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaKO" + audioReady));
+        }   
+       
+       
+   }    
+    
+};
+
+function autoPlay(){
+    audiosNumbers();
+
+    console.log("audioReady: " + audioReady);
+    audioPlayer = document.getElementById("audio" +  audioReady); 
+        audioPlayer.play();
+        if(language == "ES"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaES" + audioReady)); 
+        }else if(language == "EN"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaEN" + audioReady));
+        }else if(language == "KO"){
+            audioSync("texto" + audioReady,"audio" + audioReady,eval("pistaKO" + audioReady));
+        }        
+        audioPlayer.addEventListener("timeupdate", function(e){
+            playing = true;
+        });
+
+}          
+    
+ $('#canvas').hide();
+
+
+yepnope({
+	test : Modernizr.csstransforms,
+	yep: ['lib/turn.js'],
+	nope: ['lib/turn.html4.min.js', 'css/jquery.ui.html4.css'],
+	both: ['lib/zoom.min.js', 'css/jquery.ui.css', 'js/magazine.js', 'css/magazine.css','css/custom_fonts.css'],
+	complete: loadApp
+});
+
+var credentials = epicModel.getCredentials();    
+    
+$(document).ready(function () {
+    /**
+     * * Metodo implementado en mixpanel.js
+     */
+    var credentials1 = epicModel.getCredentials();   
+
+    mixpanel.track(
+        "OnBookOpen",
+        {
+            "user_id": credentials1.educationID,
+            "app": "web",
+            "bookID" : "37",
+            "bookName" : "La bondad de Theffanie"
+        }
+    );
+    
+    
+
+    
+});    
+    
+    
+var allPages =  22    
+
+
+function mixPanelClose(){
+        mixpanel.track(
+            "OnBookClose", 
+            {
+                "user_id": credentials.educationID,
+                "app": "web",
+                "bookID" : "37",
+                "bookName" : "La bondad de Theffanie",
+                "lastPage" : audioNumber    
+            }
+        );
+}   
+    
+
+    function stopAllSounds(){
+        if(audioNumber >= [allPages-2]){
+                mixpanel.track("OnBookFinished",{
+                        "user_id": credentials.educationID,
+                        "app": "web",
+                        "bookID" : "37",
+                        "bookName" : "La bondad de Theffanie"
+                    });      
+        }
+        
+        
+        $("#activeNext").css("display","none");
+        playing = false;
+        audiosNumbers();
+       audioPlayer = document.getElementById("audio" +  audioReady);
+        $("#buttonPlay").attr("src","images/Play.png");
+          for(i= 0; i<=7;i++){
+                    var audio = document.getElementById("audio" + i);
+                        audio.pause();
+                        audio.currentTime = 0;
+                    
+                } 
+        
+    }    
+    
+    var leaving = true;
+    var isClose = false;
+
+    function EndChatSession() {
+        var request = GetRequest();
+        request.open("GET", "../Chat.aspx", true);
+        request.send();
+    }
+    document.onkeydown = checkKeycode
+    function checkKeycode(e) {
+        var keycode;
+        if (window.event)
+            keycode = window.event.keyCode;
+        else if (e)
+            keycode = e.which;
+        if (keycode == 116) {
+            isClose = true;
+        }
+    }
+    function somefunction() {
+        isClose = true;
+    }
+    
+    window.onbeforeunload = function (e) {
+       if (!e) e = event;
+        if (leaving) {
+             EndChatSession();
+             mixPanelClose();
+             //e.returnValue = "Are You Sure";
+
+        }
+    }
+    function GetRequest() {
+        var xmlHttp = null;
+        try {
+            // Firefox, Opera 8.0+, Safari
+            xmlHttp = new XMLHttpRequest();
+        }
+        catch (e) {
+            //Internet Explorer
+            try {
+                xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+            }
+            catch (e) {
+                xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+        }
+        return xmlHttp;
+    }       
+</script>
+</body>
+</html>
