@@ -53,6 +53,20 @@
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
+            /*SCRIPT APP or PLAY YOGOME*/
+var detectOrigins;    
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;  
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+    detectOrigins = getParameterByName("app");
+    nombre= getParameterByName("name")
         var language
 
       var  str =window.location.hash;
@@ -197,7 +211,11 @@ var languagePages = [
 
 <script>
 function goBack() {
-    window.location.href="../../yogobooks.html";
+    if(detectOrigins){
+           window.location.href="../../yogobooks.html?language="+language+"&app=true&name="+nombre;
+        }else{
+            window.location.href="../../yogobooks.html?language="+language+"&name="+nombre;
+        }
 }
 </script>
     <div class="languageButton"><img src="images/icon-languages.png"></div>
@@ -258,7 +276,7 @@ function goBack() {
         var str = window.location.search
         str =  window.location.hash.substr(1)
         language="ES"
-        window.location = "#"+language+"/page/" + audioNumber + "/&name=Yogome";
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name="+nombre;
         location.reload();
     });
     
@@ -267,7 +285,7 @@ function goBack() {
         var str = window.location.search
         str =  window.location.hash.substr(1)
         language="EN"
-        window.location = "#"+language+"/page/" + audioNumber + "/&name=Yogome";
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name="+nombre;
         location.reload();
     });
     
@@ -276,7 +294,7 @@ function goBack() {
         var str = window.location.search
         str =  window.location.hash.substr(1)
         language="JA"
-        window.location = "#"+language+"/page/" + audioNumber + "/&name=Yogome";
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name="+nombre;
         location.reload();
     });
     
@@ -285,7 +303,7 @@ function goBack() {
         var str = window.location.search
         str =  window.location.hash.substr(1)
         language="KO"
-        window.location = "#"+language+"/page/" + audioNumber + "/&name=Yogome";
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name="+nombre;
         location.reload();
     });
     
@@ -294,7 +312,7 @@ function goBack() {
         var str = window.location.search
         str =  window.location.hash.substr(1)
         language="PT"
-        window.location = "#"+language+"/page/" + audioNumber + "/&name=Yogome";
+        window.location = "#"+language+"/#page/" + audioNumber+ "/&name="+nombre;
         location.reload();
     });
     
