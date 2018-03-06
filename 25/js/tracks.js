@@ -168,7 +168,7 @@ var pistaEN3 = [
         {"start": "1.180","text": "meeting" },
         {"start": "1.467","text": "room" }
 ]
-"Eagle analyzes each place, but he can't figure out what seems to be wrong in each room. "
+
 var pistaEN4 = [
         {"start": "0.681","text": "Eagle" },
         {"start": "1.104","text": "analyzes" },
@@ -188,7 +188,7 @@ var pistaEN4 = [
         {"start": "5.672","text": "each" },
         {"start": "5.974","text": "room" }
 ]
-   "Eagle begins to realize what the problem is. </br></br>Toys and videogames are not supposed to be in the kitchen. Dirty plates shouldn't be in the playroom. And smelly laundry shouldn't be spread all over the meeting room table. "
+   
 var pistaEN5 = [
         {"start": "0.696","text": "Eagle" },
         {"start": "1.134","text": "begins" },
@@ -229,7 +229,7 @@ var pistaEN5 = [
         {"start": "15.321","text": "room" },
         {"start": "15.609","text": "table" }
 ]
-"In the end, Eagle put everything in order. He realizes there's a right place for every item, and knows that it's important to keep every room clean and tidy."
+
 var pistaEN6 = [
         {"start": "0.605","text": "In" },
         {"start": "0.832","text": "the" },
